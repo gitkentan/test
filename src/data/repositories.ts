@@ -28,10 +28,23 @@ export interface AuthSession {
   email: string;
 }
 
+export type SignInResult =
+  /** その場でセッションが確立した（端末内バックエンド）。 */
+  | { kind: 'session'; session: AuthSession }
+  /** 確認コードをメールで送った。`verifyCode` へ続く（Supabase）。 */
+  | { kind: 'code_sent' };
+
+/**
+ * 認証。
+ *
+ * メールに送った確認コードを入力してもらう二段構えにしている。
+ * magic link の deep link 復帰は端末やメールアプリによって落ちやすく、
+ * β 版で最初に踏む導線としては確実性を優先した。
+ */
 export interface AuthRepository {
   getCurrentSession(): Promise<AuthSession | null>;
-  signUp(email: string): Promise<AuthSession>;
-  signIn(email: string): Promise<AuthSession>;
+  requestSignIn(email: string): Promise<SignInResult>;
+  verifyCode(email: string, code: string): Promise<AuthSession>;
   signOut(): Promise<void>;
   deleteAccount(userId: UserId): Promise<void>;
 }

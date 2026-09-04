@@ -31,6 +31,22 @@ export const ageVerificationProviderUrl =
 /** 年齢確認から戻ってくる deep link のパス。 */
 export const AGE_VERIFICATION_RETURN_PATH = 'age-verification';
 
+/**
+ * Supabase の接続設定（項目4・5）。
+ *
+ * 両方が揃っているときだけ実バックエンドへ接続する。
+ * 欠けている場合は端末内の SessionBackend にフォールバックし、
+ * 開発環境では従来どおり fixture でループを試せる。
+ */
+export const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL ?? null;
+export const supabaseAnonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY ?? null;
+
+/** 実バックエンドへ接続する構成になっているか。 */
+export const isSupabaseConfigured = Boolean(supabaseUrl && supabaseAnonKey);
+
+/** 写真を置くストレージバケット。 */
+export const PHOTO_BUCKET = 'photos';
+
 export interface ConfigProblem {
   key: string;
   message: string;
@@ -50,6 +66,14 @@ export function findMissingProductionConfig(): ConfigProblem[] {
       key: 'EXPO_PUBLIC_AGE_VERIFICATION_URL',
       message:
         '年齢確認プロバイダの URL が未設定です。Session ON / Request / Chat が利用できません。',
+    });
+  }
+
+  if (!supabaseUrl || !supabaseAnonKey) {
+    problems.push({
+      key: 'EXPO_PUBLIC_SUPABASE_URL / EXPO_PUBLIC_SUPABASE_ANON_KEY',
+      message:
+        'バックエンドが未設定です。端末内で完結するため、他のユーザーへ Request が届きません。',
     });
   }
 

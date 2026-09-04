@@ -3,25 +3,35 @@ import { analytics } from '../analytics/analytics';
 import { AnalyticsEvent } from '../analytics/events';
 import type { ProfileDraft, Repositories } from '../data/repositories';
 import type { User, UserId } from '../domain/types';
+import type { PhotoUploadService } from './PhotoUploadService';
 
 /**
  * Profile / Onboarding / Location（仕様書 §17, §18, §10）。
  */
 export class ProfileService {
-  constructor(private readonly repos: Repositories) {}
+  constructor(
+    private readonly repos: Repositories,
+    private readonly photos: PhotoUploadService,
+  ) {}
 
   getUser(userId: UserId): Promise<User | null> {
     return this.repos.users.getUser(userId);
   }
 
+  /**
+   * Onboarding の完了。
+   * ImagePicker が返すのは端末内のローカル URI なので、保存の前に配信 URL へ差し替える。
+   */
   async completeOnboarding(userId: UserId, draft: ProfileDraft): Promise<User> {
-    const user = await this.repos.users.createProfile(userId, draft);
+    const photos = await this.photos.uploadAll(userId, draft.photos);
+    const user = await this.repos.users.createProfile(userId, { ...draft, photos });
     analytics.track(AnalyticsEvent.signupCompleted);
     return user;
   }
 
-  updateProfile(userId: UserId, patch: Partial<ProfileDraft>): Promise<User> {
-    return this.repos.users.updateProfile(userId, patch);
+  async updateProfile(userId: UserId, patch: Partial<ProfileDraft>): Promise<User> {
+    const photos = patch.photos ? await this.photos.uploadAll(userId, patch.photos) : undefined;
+    return this.repos.users.updateProfile(userId, photos ? { ...patch, photos } : patch);
   }
 
   /**

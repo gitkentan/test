@@ -9,7 +9,7 @@ import React, {
 } from 'react';
 import { EXPIRY_TICK_MS } from '../config/constants';
 import { deviceStorage } from '../data/asyncStorage';
-import type { AuthSession, ProfileDraft } from '../data/repositories';
+import type { AuthSession, ProfileDraft, SignInResult } from '../data/repositories';
 import { offStatus } from '../domain/sessionStatus';
 import type { Intent, SessionStatus, User } from '../domain/types';
 import { analytics } from '../analytics/analytics';
@@ -33,7 +33,8 @@ interface AppContextValue {
   auth: AuthSession | null;
   user: User | null;
   sessionStatus: SessionStatus;
-  signIn(email: string): Promise<void>;
+  requestSignIn(email: string): Promise<SignInResult>;
+  verifyCode(email: string, code: string): Promise<void>;
   signOut(): Promise<void>;
   deleteAccount(): Promise<void>;
   completeOnboarding(draft: ProfileDraft): Promise<void>;
@@ -116,10 +117,23 @@ export function AppProvider({
     return () => clearInterval(timer);
   }, [phase, auth, services]);
 
-  const signIn = useCallback(
-    async (email: string) => {
+  /**
+   * 確認コードを送る。端末内構成ではその場でセッションが確立するので、
+   * 呼び出し側は返り値を見てコード入力へ進むかどうかを決める。
+   */
+  const requestSignIn = useCallback(
+    async (email: string): Promise<SignInResult> => {
       analytics.track(AnalyticsEvent.signupStarted);
-      const session = await services.repos.auth.signIn(email);
+      const result = await services.repos.auth.requestSignIn(email);
+      if (result.kind === 'session') await hydrate(result.session);
+      return result;
+    },
+    [services, hydrate],
+  );
+
+  const verifyCode = useCallback(
+    async (email: string, code: string) => {
+      const session = await services.repos.auth.verifyCode(email, code);
       await hydrate(session);
     },
     [services, hydrate],
@@ -187,7 +201,8 @@ export function AppProvider({
       auth,
       user,
       sessionStatus,
-      signIn,
+      requestSignIn,
+      verifyCode,
       signOut,
       deleteAccount,
       completeOnboarding,
@@ -203,7 +218,8 @@ export function AppProvider({
       auth,
       user,
       sessionStatus,
-      signIn,
+      requestSignIn,
+      verifyCode,
       signOut,
       deleteAccount,
       completeOnboarding,

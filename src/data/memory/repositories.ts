@@ -21,8 +21,9 @@ import type { SessionBackend } from './backend';
 export function createRepositories(backend: SessionBackend): Repositories {
   const auth: AuthRepository = {
     getCurrentSession: () => backend.getCurrentSession(),
-    signUp: (email) => backend.signUp(email),
-    signIn: (email) => backend.signIn(email),
+    // 端末内構成では確認コードを挟まず、その場でセッションを確立する。
+    requestSignIn: async (email) => ({ kind: 'session', session: await backend.signIn(email) }),
+    verifyCode: (email) => backend.signIn(email),
     signOut: () => backend.signOut(),
     deleteAccount: (userId) => backend.deleteAccount(userId),
   };

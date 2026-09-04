@@ -1,9 +1,10 @@
 /**
  * Session ブランドアセット生成スクリプト。
  *
- * 正式な Session symbol アセットが支給された場合は、このスクリプトを使わず
- * そのアセットを assets/ に配置して正とすること（仕様書 §21）。
- * 支給が無い状態の β 版用に、symbol を決定的に再生成できるようにしている。
+ * この astroid スパークルが Session の正式 symbol（仕様書 §21）。
+ * app icon / splash / adaptive icon / favicon をここから決定的に再生成する。
+ * 同じ形状を src/ui/components/SessionSymbol.tsx がベクターで持つので、
+ * 形を変える場合は両方を合わせて更新すること。
  *
  *   node tools/generate-brand-assets.js
  */
