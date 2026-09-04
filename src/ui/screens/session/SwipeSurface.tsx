@@ -142,6 +142,10 @@ export function SwipeSurface({ candidates, onSwipe, onOpenDetail, disabled = fal
           <Animated.View
             style={[styles.cardLayer, styles.behind, { transform: [{ scale: nextScale }] }]}
             pointerEvents="none"
+            // 次のカードは見えているだけで操作対象ではない。
+            // VoiceOver が下のカードを読み上げないよう、支援技術からも隠す。
+            accessibilityElementsHidden
+            importantForAccessibility="no-hide-descendants"
           >
             <ProfileCard candidate={nextCandidate} onOpenDetail={() => undefined} interactive={false} />
           </Animated.View>

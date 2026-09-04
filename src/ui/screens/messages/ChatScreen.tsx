@@ -2,8 +2,6 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
   ActivityIndicator,
   FlatList,
-  KeyboardAvoidingView,
-  Platform,
   Pressable,
   StyleSheet,
   Text,
@@ -17,6 +15,7 @@ import { intentShortText } from '../../../domain/intent';
 import type { ConversationSummary, Message, ReportReason } from '../../../domain/types';
 import { useApp } from '../../../state/AppContext';
 import { colors, radius, spacing, typography } from '../../../theme';
+import { useKeyboardHeight } from '../../hooks/useKeyboardHeight';
 import { ChevronLeftIcon, ImageIcon, SendIcon } from '../../components/icons';
 import { Photo } from '../../components/Photo';
 import { SessionSymbol } from '../../components/SessionSymbol';
@@ -43,6 +42,7 @@ export function ChatScreen({ conversationId, onBack }: Props) {
   const { services, auth, user } = useApp();
   const { toast, showToast } = useToast();
   const listRef = useRef<FlatList<Message>>(null);
+  const keyboardHeight = useKeyboardHeight();
 
   const [summary, setSummary] = useState<ConversationSummary | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -219,11 +219,17 @@ export function ChatScreen({ conversationId, onBack }: Props) {
         />
       )}
 
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        keyboardVerticalOffset={insets.top}
-      >
-        <View style={[styles.composer, { paddingBottom: insets.bottom + spacing.sm }]}>
+      <View style={{ marginBottom: keyboardHeight }}>
+        <View
+          style={[
+            styles.composer,
+            {
+              // キーボードが出ている間、home indicator 分の余白は不要
+              // （キーボードが覆うため）。足すと composer とキーボードの間に隙間ができる。
+              paddingBottom: keyboardHeight > 0 ? spacing.sm : insets.bottom + spacing.sm,
+            },
+          ]}
+        >
           {canSendFreeForm ? (
             <>
               <Pressable
@@ -260,7 +266,7 @@ export function ChatScreen({ conversationId, onBack }: Props) {
             </Text>
           )}
         </View>
-      </KeyboardAvoidingView>
+      </View>
 
       <ReportSheet
         visible={reportOpen}

@@ -1,6 +1,5 @@
 import type {
   AgeVerificationRepository,
-  AgeVerificationResult,
   AuthRepository,
   ChatRepository,
   DiscoveryRepository,
@@ -38,7 +37,9 @@ export function createRepositories(backend: SessionBackend): Repositories {
 
   const ageVerification: AgeVerificationRepository = {
     startVerification: (userId) => backend.startVerification(userId),
-    applyResult: (result: AgeVerificationResult) => backend.applyVerificationResult(result),
+    // 照会のみ。client から age_verified を立てる経路は用意しない（§19）。
+    confirmVerification: (userId, reference) => backend.confirmVerification(userId, reference),
+    devForceVerified: (userId) => backend.devForceVerified(userId),
   };
 
   const sessionStatus: SessionStatusRepository = {

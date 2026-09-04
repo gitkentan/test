@@ -4,9 +4,11 @@ import {
   MAX_INTERESTS,
   MAX_PHOTOS,
 } from '../../config/constants';
+import { isDev } from '../../config/env';
 import { ageFromBirthDate, meetsMinimumAge } from '../../domain/age';
 import { blockedUserIds, isBlockedBetween } from '../../domain/blocks';
 import { resolveDiscoveryPool } from '../../domain/discovery';
+import { isMutuallyDiscoverable } from '../../domain/discoveryPreference';
 import { DomainError } from '../../domain/errors';
 import { createId, pairKey } from '../../domain/ids';
 import { evaluateMutualMatch } from '../../domain/matching';
@@ -37,7 +39,9 @@ import type {
 } from '../../domain/types';
 import type { KeyValueStorage } from '../storage';
 import type {
+  AgeVerificationOutcome,
   AgeVerificationResult,
+  AgeVerificationStart,
   AuthSession,
   DiscoveryResult,
   ProfileDraft,
@@ -72,6 +76,24 @@ interface Database {
   messages: Message[];
   blocks: Block[];
   reports: Report[];
+  /** 年齢確認の試行。プロバイダからの結果をここへ突き合わせる（§19）。 */
+  verifications: AgeVerificationAttempt[];
+}
+
+/**
+ * 年齢確認の1試行。
+ *
+ * 実バックエンドではプロバイダ側のセッション ID と紐づけ、
+ * webhook / サーバ間 API で受け取った結果をここへ書き込む。
+ * client からは `status` の照会しかできない。
+ */
+export interface AgeVerificationAttempt {
+  reference: string;
+  userId: UserId;
+  status: 'pending' | 'verified' | 'rejected';
+  reason: string | null;
+  createdAt: Millis;
+  resolvedAt: Millis | null;
 }
 
 const STORAGE_KEY = 'session.db.v1';
@@ -90,6 +112,7 @@ function emptyDatabase(): Database {
     messages: [],
     blocks: [],
     reports: [],
+    verifications: [],
   };
 }
 
@@ -355,26 +378,119 @@ export class SessionBackend {
 
   // --------------------------------------------------------- age verification
 
-  async startVerification(userId: UserId): Promise<{ redirectUrl: string | null; reference: string }> {
+  /**
+   * 確認セッションを開始する（§19）。
+   *
+   * 実運用ではここでプロバイダのサーバ間 API を叩いてセッションを作り、
+   * 返ってきた URL を client へ渡す。β 版の実装では試行だけを記録し、
+   * URL の組み立ては呼び出し側（AgeVerificationService）が設定値から行う。
+   */
+  async startVerification(userId: UserId): Promise<AgeVerificationStart> {
     await this.ready();
     this.requireUser(userId);
-    // 実運用では外部プロバイダのセッションを作り、その URL を返す。
-    return { redirectUrl: null, reference: createId('agv') };
+
+    const attempt: AgeVerificationAttempt = {
+      reference: createId('agv'),
+      userId,
+      status: 'pending',
+      reason: null,
+      createdAt: this.now(),
+      resolvedAt: null,
+    };
+    this.db.verifications.push(attempt);
+    await this.persist();
+
+    return { redirectUrl: null, reference: attempt.reference };
   }
 
+  /**
+   * 確認結果を照会する。
+   *
+   * client はここで「確認済みにしてほしい」と主張できない。
+   * 返すのはサーバが保持している状態だけで、状態を変えられるのは
+   * `applyVerificationResult`（プロバイダからの結果の取り込み）のみ。
+   */
+  async confirmVerification(userId: UserId, reference: string): Promise<AgeVerificationOutcome> {
+    await this.ready();
+    const user = this.requireUser(userId);
+
+    const attempt = this.db.verifications.find(
+      (a) => a.reference === reference && a.userId === userId,
+    );
+    if (!attempt) {
+      return { status: 'rejected', reason: 'unknown_reference' };
+    }
+
+    switch (attempt.status) {
+      case 'verified':
+        return { status: 'verified', user };
+      case 'rejected':
+        return { status: 'rejected', reason: attempt.reason };
+      case 'pending':
+        return { status: 'pending' };
+    }
+  }
+
+  /**
+   * プロバイダからの結果を取り込む（サーバ側の入口）。
+   *
+   * 実運用では webhook 受信ハンドラ、またはプロバイダへのサーバ間問い合わせの
+   * 結果としてのみ呼ばれる。client からは到達できない。
+   */
   async applyVerificationResult(result: AgeVerificationResult): Promise<User> {
     await this.ready();
     const user = this.requireUser(result.userId);
+    const now = this.now();
+
+    this.db.verifications = this.db.verifications.map((attempt) =>
+      attempt.reference === result.providerReference
+        ? {
+            ...attempt,
+            status: result.ageVerified ? ('verified' as const) : ('rejected' as const),
+            resolvedAt: now,
+          }
+        : attempt,
+    );
+
     const updated: User = {
       ...user,
       ageVerified: result.ageVerified,
       ageVerifiedAt: result.ageVerified ? result.verifiedAt : null,
       ageVerificationReference: result.providerReference,
-      updatedAt: this.now(),
+      updatedAt: now,
     };
     this.db.users[result.userId] = updated;
     await this.persist();
     return updated;
+  }
+
+  /**
+   * 開発環境専用。プロバイダ未接続でもコアループを通せるようにする。
+   * 本番ビルドでは呼ばれても必ず失敗する。
+   */
+  async devForceVerified(userId: UserId): Promise<User> {
+    if (!isDev) {
+      throw new DomainError(
+        'AGE_NOT_VERIFIED',
+        '年齢確認プロバイダが設定されていません。',
+      );
+    }
+    await this.ready();
+    const reference = createId('agv-dev');
+    this.db.verifications.push({
+      reference,
+      userId,
+      status: 'verified',
+      reason: null,
+      createdAt: this.now(),
+      resolvedAt: this.now(),
+    });
+    return this.applyVerificationResult({
+      userId,
+      ageVerified: true,
+      verifiedAt: this.now(),
+      providerReference: reference,
+    });
   }
 
   // ----------------------------------------------------------- session status
@@ -434,8 +550,9 @@ export class SessionBackend {
       if (candidate.id === userId) return false;
       if (blocked.has(candidate.id)) return false;
       if (excluded.has(candidate.id)) return false;
-      if (!matchesPreference(viewer, candidate)) return false;
-      if (!matchesPreference(candidate, viewer)) return false;
+      // 表示可否は domain/discoveryPreference.ts の規則だけで決める。
+      // non-binary の扱いを含め、判定をここへ書き足さない。
+      if (!isMutuallyDiscoverable(viewer, candidate)) return false;
       return true;
     });
 
@@ -806,20 +923,6 @@ export class SessionBackend {
     this.db.reports.push(report);
     await this.persist();
     return report;
-  }
-}
-
-/** discovery_preferences のマッチング（§18, §24）。 */
-function matchesPreference(viewer: User, candidate: User): boolean {
-  switch (viewer.discoveryPreference) {
-    case 'everyone':
-      return true;
-    case 'women':
-      return candidate.gender === 'woman';
-    case 'men':
-      return candidate.gender === 'man';
-    default:
-      return true;
   }
 }
 

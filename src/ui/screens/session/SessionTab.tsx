@@ -172,11 +172,11 @@ export function SessionTab({ onOpenChat, onOpenMessages }: Props) {
   const handleStartVerification = useCallback(async () => {
     setBusy(true);
     try {
-      const verified = await startAgeVerification();
+      const result = await startAgeVerification();
       setVerificationOpen(false);
-      if (!verified) {
+      if (result.status !== 'verified') {
         setPendingRequest(null);
-        showToast('年齢確認が完了しませんでした。');
+        showToast(result.message ?? '年齢確認が完了しませんでした。');
         return;
       }
       // 確認が済んだら、止めていた導線をそのまま続ける。

@@ -94,6 +94,16 @@ src/
 | Block の双方向遮断 | `src/domain/blocks.ts` + backend |
 | Swipe Surface / Match Overlay | `src/ui/screens/session/` |
 
+## Discovery の表示対象ルール
+
+`src/domain/discoveryPreference.ts` に集約している。backend 側に判定を書き足さない。
+
+1. 表示は**相互**に成立したときだけ。片側の設定だけでは出さない。
+2. `women` / `men` はその性別として登録しているユーザーだけを対象にする。
+3. **non-binary ユーザーは `everyone` を選んでいる相手にだけ表示される。**
+   二値の絞り込みに non-binary を割り当てると、本人が選んでいない性別として
+   扱うことになるため、そうしない。non-binary ユーザー自身が「誰を見るか」は制限されない。
+
 ## Product Constants
 
 実データを見てから調整できるよう `src/config/constants.ts` に集約している。
@@ -112,14 +122,47 @@ SKIP_COOLDOWN_HOURS = 24
 **生年月日の自己入力だけを法定年齢確認の完了として扱っていない。**
 
 Onboarding での生年月日入力は 18 歳未満の足切りにすぎず、`age_verified` は
-外部の適合プロバイダから返ってきた結果でのみ true になる。
+外部の適合プロバイダから返ってきた結果をサーバが確認したときにだけ true になる。
 Session 側で本人確認書類の画像を保持する設計にはしていない。
+
+### フロー
+
+```
+Session
+  ↓ startVerification              サーバが試行 (reference) を採番
+external compliant provider        EXPO_PUBLIC_AGE_VERIFICATION_URL へ遷移
+  ↓ 本人確認
+callback / return to Session       deep link: session://age-verification
+  ↓ confirmVerification            サーバがプロバイダの結果を照会
+age_verified = true
+```
+
+### 信頼モデル
+
+**戻ってきた URL のクエリを client が読んで確認済みにはしない。**
+リダイレクトは「ユーザーが操作を終えた」という合図でしかなく、
+確認済みかどうかはサーバがプロバイダに照会した結果だけで決まる。
+
+`AgeVerificationRepository` には client から `age_verified` を立てる経路が無い。
+
+| メソッド | 誰が呼ぶ | できること |
+|---|---|---|
+| `startVerification` | client | 試行の採番と確認 URL の取得 |
+| `confirmVerification` | client | 状態の**照会のみ**（`verified` / `pending` / `rejected`） |
+| `applyVerificationResult` | **サーバのみ** | プロバイダの結果を取り込む（webhook 相当） |
+| `devForceVerified` | 開発環境のみ | 本番ビルドでは必ず失敗する |
 
 `age_verified = true` が必要なもの：**Session ON / Session Request 送信 / free-form chat 送信**
 
-プロバイダの接続先は `EXPO_PUBLIC_AGE_VERIFICATION_URL` で指定する。
-未設定の場合、開発環境ではローカルで確認済みとして扱いループを試せるようにしてあるが、
-**本番では未設定を成功として扱わない**（`src/services/AgeVerificationService.ts`）。
+### プロバイダ側に必要な実装
+
+1. `EXPO_PUBLIC_AGE_VERIFICATION_URL` に `?reference=<id>&redirect_uri=<deep link>` が付いて遷移する
+2. 確認完了後、`redirect_uri` へリダイレクトして戻す
+3. **結果本体は webhook / サーバ間 API でバックエンドへ渡す**（client 経由では渡さない）
+4. バックエンドが `applyVerificationResult` 相当で `reference` に結果を紐づける
+
+プロバイダの審査が非同期な場合、`confirmVerification` は `pending` を返す。
+UI は「完了までしばらくお待ちください」と表示し、再試行できる。
 
 ## ブランドアセット
 
@@ -148,23 +191,74 @@ Face verification badge / 複数課金 tier / Likes 専用タブ / 複雑な検�
 Acceptance Criteria（§31）と Definition of Done（§32）を `__tests__/` で担保している。
 
 ```bash
-npm test
+npm test        # 61 tests
+npm run typecheck
 ```
 
 - `sessionStatus.test.ts` — TTL、Intent 変更でのリセット、再起動後に期限切れ ON が復活しないこと
 - `discovery.test.ts` — priority 1〜4、Session OFF も候補に残ること、radius fallback、Empty State
+- `discoveryPreference.test.ts` — 相互成立、non-binary の表示規則
 - `distance.test.ts` — 距離バケット、正確な距離を出さないこと
 - `requests.test.ts` — OFF/年齢未確認では送れない、duplicate、期限切れ、Skip クールダウン
 - `matching.test.ts` — Session は1件だけ、active_until、上限、期限後 past
+- `ageVerification.test.ts` — client が確認済みを主張できないこと、偽 reference、他人の reference
 - `safetyAndChat.test.ts` — Block の双方向遮断、年齢 gate、当事者以外の遮断
+- `fixtures.test.ts` — 本番ビルドで fixture が投入されないこと
 - `fullLoop.test.ts` — signup → onboarding → 年齢確認 → Session ON → swipe → Session → chat
 
-## 未接続 / 次にやること
+## 本番公開前に必要な設定値
 
-β 版として意図的に stub のままにしてある箇所：
+| 環境変数 | 必須 | 未設定時の挙動 |
+|---|---|---|
+| `EXPO_PUBLIC_AGE_VERIFICATION_URL` | **必須** | 年齢確認が完了できず、Session ON / Request / Chat がすべて使えない。開発環境のみローカルで確認済みにしてループを通せる |
+| `EXPO_PUBLIC_DISABLE_FIXTURES` | 任意 | `1` で開発環境でも fixture を投入しない。本番ビルドでは値に関わらず常に無効 |
 
-- **認証** — メールアドレスのみ。OTP / OAuth へ差し替える（`AuthRepository`）
-- **年齢確認プロバイダ** — 接続先 URL 未設定（上記）
-- **バックエンド** — 端末内 `SessionBackend`。ユーザー間の実同期は未実装
-- **画像アップロード** — ローカル URI をそのまま保持。ストレージ未接続
-- **P1** — Push 通知 / Meet アンケート / Received Requests 表示 / 近くの Session 人数 / Session 再開ショートカット
+`src/config/env.ts` の `findMissingProductionConfig()` が不足を検出できる。
+
+`app.json` 側で公開前に差し替えが必要なもの：
+
+- `ios.bundleIdentifier` / `android.package` — 現在は `app.session.beta`
+- `SettingsSheet` の利用規約 / プライバシーポリシー URL — 現在は `https://session.app/...` のプレースホルダ
+
+## 未接続箇所
+
+| 項目 | 現状 | 公開に必要なこと |
+|---|---|---|
+| **バックエンド** | 端末内の `SessionBackend`。**ユーザー間の同期は行われない** | 実サーバの実装と、`src/data/memory/repositories.ts` の差し替え |
+| **Session Request / Match / Chat の同期** | 同上。同じ端末内でしか成立しない | 上に同じ。相互 Request の成立はトランザクション + 一意制約が必須 |
+| **画像アップロード** | ローカル URI をそのまま保持 | オブジェクトストレージと、`photos[].uri` を配信 URL にする経路 |
+| **認証** | メールアドレスのみ、パスワードなし | OTP / OAuth への差し替え（`AuthRepository`） |
+| **年齢確認プロバイダ** | 接続先 URL 未設定 | 上記「年齢確認」節のプロバイダ側実装 |
+| **ロゴ** | `tools/generate-brand-assets.js` で生成した仮の symbol | 正式アセットへの差し替え |
+| **Push 通知** | 未実装（P1） | — |
+
+## 残リスク
+
+**公開を止めるもの**
+
+- **ユーザー間の同期が無い。** 現在の実装は端末内で完結しており、
+  別の端末のユーザーへ Request が届かない。β 公開にはバックエンドが要る。
+- **年齢確認プロバイダが未接続。** 未設定のまま本番ビルドを出すと、
+  ユーザーは Session ON も Request も Chat もできない。
+- **認証が実質無い。** メールアドレスを入れるだけでそのアカウントに入れてしまう。
+
+**公開後に効いてくるもの**
+
+- **non-binary ユーザーの母数が小さい。** 表示対象が `everyone` を選んだ層に限られる。
+  本来は「どの検索結果に自分を表示するか」を本人が選べるようにすべきだが、
+  β 版では設定項目を増やさない方針のため見送っている。
+- **Report の受け口が無い。** 記録はされるが、運用側で確認する導線が未整備。
+- **画像のモデレーションが無い。** UGC を扱う以上、通報前提の運用になる。
+- **キーボード表示時のレイアウトは実機未検証。**
+  `useKeyboardHeight` は iOS の `keyboardWillChangeFrame` を前提にしており、
+  Web プレビューでは検証できない。実機 / シミュレータでの確認が必要。
+- **Safe Area も実機未検証。** コード上は全画面が `useSafeAreaInsets` を適用しており、
+  inset を注入したブラウザ検証では崩れないことを確認済み。
+
+## 次にやること
+
+1. バックエンドの実装と repository 差し替え（同期・画像・認証）
+2. 年齢確認プロバイダの接続
+3. 正式ロゴアセットへの差し替え
+4. iOS シミュレータ / 実機での keyboard・Safe Area 検証
+5. P1 — Push 通知 / Meet アンケート / Received Requests 表示 / 近くの Session 人数 / Session 再開ショートカット

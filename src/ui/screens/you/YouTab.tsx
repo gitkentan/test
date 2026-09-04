@@ -129,9 +129,13 @@ export function YouTab() {
         onStart={() => {
           setBusy(true);
           void startAgeVerification()
-            .then((verified) => {
+            .then((result) => {
               setVerificationOpen(false);
-              showToast(verified ? '年齢確認が完了しました。' : '年齢確認が完了しませんでした。');
+              showToast(
+                result.status === 'verified'
+                  ? '年齢確認が完了しました。'
+                  : (result.message ?? '年齢確認が完了しませんでした。'),
+              );
             })
             .finally(() => setBusy(false));
         }}

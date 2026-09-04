@@ -15,6 +15,7 @@ import type { Intent, SessionStatus, User } from '../domain/types';
 import { analytics } from '../analytics/analytics';
 import { AnalyticsEvent } from '../analytics/events';
 import { createServices, type Services } from '../services';
+import type { VerificationResult } from '../services/AgeVerificationService';
 import type { KeyValueStorage } from '../data/storage';
 
 /**
@@ -39,7 +40,7 @@ interface AppContextValue {
   refreshUser(): Promise<void>;
   turnSessionOn(intent: Intent): Promise<void>;
   turnSessionOff(): Promise<void>;
-  startAgeVerification(): Promise<boolean>;
+  startAgeVerification(): Promise<VerificationResult>;
   requestLocation(): Promise<boolean>;
 }
 
@@ -163,11 +164,13 @@ export function AppProvider({
     setSessionStatus(await services.session.turnOff(auth.userId));
   }, [services, auth]);
 
-  const startAgeVerification = useCallback(async () => {
-    if (!auth) return false;
-    const verified = await services.ageVerification.start(auth.userId);
-    if (verified) setUser(verified);
-    return Boolean(verified?.ageVerified);
+  const startAgeVerification = useCallback(async (): Promise<VerificationResult> => {
+    if (!auth) {
+      return { status: 'unavailable', user: null, message: 'ログインが必要です。' };
+    }
+    const result = await services.ageVerification.start(auth.userId);
+    if (result.user) setUser(result.user);
+    return result;
   }, [services, auth]);
 
   const requestLocation = useCallback(async () => {

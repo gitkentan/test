@@ -54,6 +54,10 @@ export interface UserRepository {
   touchActivity(userId: UserId): Promise<void>;
 }
 
+/**
+ * プロバイダから受け取る最小限の結果（§19）。
+ * 本人確認書類の画像は Session 側で保持しない。
+ */
 export interface AgeVerificationResult {
   userId: UserId;
   ageVerified: boolean;
@@ -61,13 +65,37 @@ export interface AgeVerificationResult {
   providerReference: string;
 }
 
+export interface AgeVerificationStart {
+  /** プロバイダの確認セッション URL。未設定なら null。 */
+  redirectUrl: string | null;
+  /** この確認試行を識別する参照。結果の照会に使う。 */
+  reference: string;
+}
+
+export type AgeVerificationOutcome =
+  /** サーバがプロバイダの結果を確認済み。user は確定した状態。 */
+  | { status: 'verified'; user: User }
+  /** プロバイダの審査が継続中。時間をおいて再照会する。 */
+  | { status: 'pending' }
+  /** 確認が完了しなかった。 */
+  | { status: 'rejected'; reason: string | null };
+
 /**
  * 年齢確認は外部の適合プロバイダに委譲する（§19）。
- * Session 側は最小限の結果だけを受け取る。本人確認書類の画像は保持しない。
+ *
+ * 重要: **client は確認結果を主張できない。**
+ * `confirmVerification` はサーバに照会するだけで、age_verified を立てる権限は
+ * サーバ（プロバイダからの webhook / サーバ間 API）だけが持つ。
+ * リダイレクト URL のクエリを client が読んで検証済みにする設計にはしない。
  */
 export interface AgeVerificationRepository {
-  startVerification(userId: UserId): Promise<{ redirectUrl: string | null; reference: string }>;
-  applyResult(result: AgeVerificationResult): Promise<User>;
+  startVerification(userId: UserId): Promise<AgeVerificationStart>;
+  confirmVerification(userId: UserId, reference: string): Promise<AgeVerificationOutcome>;
+  /**
+   * 開発環境専用の近道。プロバイダ未接続でもループを通せるようにする。
+   * 本番ビルドでは実装側が必ず失敗させる。
+   */
+  devForceVerified(userId: UserId): Promise<User>;
 }
 
 export interface SessionStatusRepository {

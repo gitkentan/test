@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors, radius, spacing, typography } from '../../theme';
+import { useKeyboardHeight } from '../hooks/useKeyboardHeight';
 
 /**
  * Bottom Sheet（仕様書 §4, §17, §31）。
@@ -40,6 +41,7 @@ export function Sheet({
   tall = false,
 }: SheetProps) {
   const insets = useSafeAreaInsets();
+  const keyboardHeight = useKeyboardHeight();
   const progress = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -69,7 +71,13 @@ export function Sheet({
           style={[
             styles.sheet,
             tall && styles.sheetTall,
-            { paddingBottom: insets.bottom + spacing.lg, transform: [{ translateY }] },
+            {
+              // キーボードが出ている間はその分だけ持ち上げ、
+              // home indicator 分の余白は足さない（キーボードが覆うため）。
+              marginBottom: keyboardHeight,
+              paddingBottom: keyboardHeight > 0 ? spacing.lg : insets.bottom + spacing.lg,
+              transform: [{ translateY }],
+            },
           ]}
         >
           <View style={styles.grabber} />
