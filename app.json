@@ -1,0 +1,56 @@
+{
+  "expo": {
+    "name": "Session",
+    "slug": "session",
+    "scheme": "session",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#080B0B",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#080B0B"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "app.session.beta",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "近くでSession中の人を表示するために現在地を利用します。正確な位置情報が他のユーザーに公開されることはありません。",
+        "NSPhotoLibraryUsageDescription": "プロフィール写真やメッセージの画像を選ぶために写真へのアクセスを許可してください。",
+        "NSCameraUsageDescription": "プロフィール写真を撮影するためにカメラへのアクセスを許可してください。"
+      }
+    },
+    "android": {
+      "package": "app.session.beta",
+      "adaptiveIcon": {
+        "backgroundColor": "#080B0B",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "permissions": ["ACCESS_COARSE_LOCATION", "ACCESS_FINE_LOCATION"],
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "近くでSession中の人を表示するために現在地を利用します。"
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "プロフィール写真やメッセージの画像を選ぶために写真へのアクセスを許可してください。",
+          "cameraPermission": "プロフィール写真を撮影するためにカメラへのアクセスを許可してください。"
+        }
+      ]
+    ]
+  }
+}
