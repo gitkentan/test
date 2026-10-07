@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0c0a">
+<title>Session — 今日の気分で、近くのだれかと。</title>
+<meta name="description" content="「飲みに行きたい」「カフェで話したい」。いまの気分が同じ人と、近くでつながるマッチングアプリ。2026年冬リリース予定。事前登録でSession+ 1ヶ月無料。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Session — 今日の気分で、近くのだれかと。">
+<meta property="og:description" content="いまの気分が同じ人と、近くでつながるマッチングアプリ。事前登録でSession+ 1ヶ月無料。">
+<meta property="og:image" content="https://session.app/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/logo-mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#0b0c0a;color:#f2f3ee;-webkit-font-smoothing:antialiased;font-family:'Helvetica Neue',Helvetica,Arial,'Hiragino Sans','Noto Sans JP',sans-serif;overflow-x:hidden}
+a{color:#2bdb75;text-decoration:none}a:hover{color:#5ee89a}
+img{display:block;max-width:100%}
+.wrap{max-width:1160px;margin:0 auto;padding-left:24px;padding-right:24px}
+.narrow{max-width:820px}
+.sec{border-top:1px solid #171914}
+.alt{background:#0d0e0c}
+.pad{padding-top:96px;padding-bottom:96px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:56px;align-items:center}
+.label{font-size:13px;font-weight:700;letter-spacing:.14em;color:#2bdb75}
+.h2{margin:0;font-size:clamp(30px,4.4vw,44px);line-height:1.3;font-weight:900;letter-spacing:-.01em;text-wrap:balance}
+.head{display:flex;flex-direction:column;gap:14px}
+.body{margin:0;font-size:16px;line-height:1.9;color:#b9bcb3;text-wrap:pretty;max-width:30em}
+.line{display:flex;align-items:center;justify-content:center;gap:10px;border-radius:18px;background:#06c755;color:#fff;font-weight:700}
+.line:hover{background:#05b34c;color:#fff}
+.line svg{flex:none}
+.star{flex:none}
+
+header{position:sticky;top:0;z-index:50;background:rgba(11,12,10,.82);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid #171914}
+header .wrap{padding-top:14px;padding-bottom:14px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;color:#f2f3ee;font-size:21px;font-weight:700;letter-spacing:-.01em}
+.logo:hover{color:#f2f3ee}
+.hdr-cta{height:42px;padding:0 18px;border-radius:999px;font-size:14px;white-space:nowrap}
+
+.hero{position:relative;padding-top:72px;padding-bottom:96px}
+.hero-glow{position:absolute;right:-10%;top:10%;width:640px;height:640px;border-radius:50%;background:radial-gradient(closest-side,rgba(43,219,117,.16),transparent);pointer-events:none}
+.hero-copy{position:relative;display:flex;flex-direction:column;gap:28px}
+.badge{align-self:flex-start;display:flex;align-items:center;gap:8px;height:34px;padding:0 14px;border-radius:999px;border:1px solid #23261f;background:#121410;font-size:13px;font-weight:700;color:#d6d8d0}
+.dot{width:7px;height:7px;border-radius:50%;background:#2bdb75}
+h1{margin:0;font-size:clamp(40px,6.4vw,72px);line-height:1.18;font-weight:900;letter-spacing:-.02em;text-wrap:balance}
+h1 em{font-style:normal;color:#2bdb75}
+.lead{margin:0;max-width:30em;font-size:17px;line-height:1.85;color:#b9bcb3;text-wrap:pretty}
+.perk{display:flex;flex-direction:column;gap:14px;padding:22px;border-radius:24px;background:#121410;border:1px solid #1d201b;max-width:460px}
+.perk-row{display:flex;align-items:center;gap:12px}
+.perk-tag{flex:none;padding:5px 10px;border-radius:8px;background:#11301e;color:#2bdb75;font-size:12px;font-weight:700}
+.perk-row b{font-size:16px}
+.perk .line{height:60px;font-size:17px}
+.note{font-size:12px;line-height:1.7;color:#8f938a}
+.phones{position:relative;display:flex;justify-content:center;min-height:560px}
+.ph-back{position:absolute;left:50%;top:40px;margin-left:-250px;width:220px;transform:rotate(-8deg);opacity:.55}
+.ph-front{position:relative;z-index:2;width:262px;filter:drop-shadow(0 50px 60px rgba(0,0,0,.6))}
+
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px;margin-top:48px}
+.step{display:flex;flex-direction:column;border-radius:28px;background:#121410;border:1px solid #1d201b;overflow:hidden}
+.step-txt{display:flex;flex-direction:column;gap:10px;padding:28px 28px 0}
+.step-n{font-size:14px;font-weight:700;color:#2bdb75}
+.step-txt b{font-size:22px;line-height:1.4}
+.step-txt span:last-child{font-size:14.5px;line-height:1.8;color:#a6a99f;text-wrap:pretty}
+.step-img{position:relative;height:320px;margin-top:28px;overflow:hidden;display:flex;justify-content:center}
+.step-img img{width:230px;height:auto;align-self:flex-start}
+.step-img::after{content:"";position:absolute;left:0;right:0;bottom:0;height:80px;background:linear-gradient(to top,#121410,transparent)}
+
+.moods{display:flex;flex-direction:column;gap:10px}
+.mood{display:flex;align-items:center;gap:18px;min-height:72px;padding:12px 24px;border-radius:20px;background:#141613;border:1.5px solid transparent}
+.mood.on{background:#11301e;border-color:rgba(43,219,117,.55)}
+.mood .e{font-size:26px;line-height:1;width:32px;text-align:center}
+.mood span:last-child{flex:1;display:flex;flex-direction:column;gap:3px;min-width:0}
+.mood b{font-size:17px}
+.mood small{font-size:13px;color:#8f938a}
+
+.women{position:relative;overflow:hidden;padding:clamp(32px,5vw,64px);border-radius:36px;background:#10291b;border:1px solid rgba(43,219,117,.22);gap:40px}
+.women-glow{position:absolute;right:-120px;bottom:-160px;width:480px;height:480px;border-radius:50%;background:radial-gradient(closest-side,rgba(43,219,117,.2),transparent);pointer-events:none}
+.women .head{position:relative;gap:18px}
+.women p{margin:0;font-size:15.5px;line-height:1.9;color:#cfe9da;text-wrap:pretty}
+.wperks{position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.wperks div{display:flex;flex-direction:column;gap:6px;padding:20px;border-radius:20px;background:rgba(11,12,10,.55)}
+.wperks b{font-size:15.5px}
+.wperks span{font-size:12.5px;line-height:1.6;color:#9fbfac}
+
+.faq{display:flex;flex-direction:column;border-top:1px solid #1d201b;margin-top:36px}
+.faq details{border-bottom:1px solid #1d201b}
+.faq summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:24px 4px;font-size:17px;font-weight:700;cursor:pointer}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{color:#2bdb75}
+.faq summary svg{flex:none;transition:transform .25s}
+.faq details[open] summary svg{transform:rotate(45deg)}
+.faq p{margin:0;padding:0 4px 24px;font-size:15px;line-height:1.9;color:#a6a99f;text-wrap:pretty}
+
+.center{display:flex;flex-direction:column;align-items:center;text-align:center}
+.ai{gap:20px}
+.ai .h2{font-size:clamp(28px,4vw,40px)}
+.ai p{margin:0;max-width:32em;font-size:15.5px;line-height:1.85;color:#a6a99f;text-wrap:pretty}
+.ai-btns{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:12px}
+.ai-btns a{display:flex;align-items:center;gap:10px;height:54px;padding:0 24px;border-radius:999px;border:1px solid #2b2e27;background:#121410;color:#f2f3ee;font-size:15.5px;font-weight:700;white-space:nowrap;transition:border-color .2s,background .2s}
+.ai-btns a:hover{border-color:#2bdb75;background:#141a15;color:#f2f3ee}
+.ai-btns i{width:8px;height:8px;border-radius:50%}
+#copied{font-size:13px;color:#2bdb75;min-height:18px;opacity:0;transition:opacity .2s}
+#copied.show{opacity:1}
+
+.final{padding-top:110px;padding-bottom:110px;gap:26px}
+.final .h2{font-size:clamp(30px,5vw,52px)}
+.final p{margin:0;font-size:15.5px;line-height:1.8;color:#a6a99f}
+.final .line{width:100%;max-width:400px;height:62px;font-size:17px}
+
+footer .wrap{padding-top:56px;padding-bottom:64px;gap:26px}
+.flogo{display:flex;align-items:center;gap:8px;font-size:18px;font-weight:700}
+.fnav{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 22px;font-size:13px}
+.fnav a{color:#a6a99f}.fnav a:hover{color:#f2f3ee}
+.sns{gap:24px;font-size:14.5px;font-weight:700}
+.sns a{color:#f2f3ee}.sns a:hover{color:#2bdb75}
+.fine{font-size:12px;line-height:1.8;color:#6e7268}
+
+@media (max-width:640px){
+  .ph-back{display:none}
+  .phones{min-height:0}
+  .hero{padding-top:48px}
+  .pad{padding-top:72px;padding-bottom:72px}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="wrap">
+<a class="logo" href="#top"><svg class="star" width="20" height="20" viewBox="0 0 24 24" fill="#2bdb75"><path d="M12 2.5C12.7 8 16 11.3 21.5 12C16 12.7 12.7 16 12 21.5C11.3 16 8 12.7 2.5 12C8 11.3 11.3 8 12 2.5Z"/></svg>Session</a>
+<a class="line hdr-cta js-line" href="https://lin.ee/xxxxxxx" target="_blank" rel="noopener">LINEで事前登録</a>
+</div>
+</header>
+
+<main>
+<section id="top" class="wrap hero grid2">
+<div class="hero-glow"></div>
+<div class="hero-copy">
+<span class="badge"><span class="dot"></span>2026年冬 リリース予定</span>
+<h1>今日の気分で、<br>近くの<em>だれか</em>と。</h1>
+<p class="lead">「飲みに行きたい」「カフェで話したい」。いまの気分が同じ人と、近くでつながるマッチングアプリ。</p>
+<div class="perk">
+<div class="perk-row"><span class="perk-tag">事前登録特典</span><b>Session+ 1ヶ月無料</b></div>
+<a class="line js-line" href="https://lin.ee/xxxxxxx" target="_blank" rel="noopener"><svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s5.8-3.4 7.9-5.9c1.4-1.6 2.1-3.2 2.1-4.9C22 6.6 17.5 3 12 3z"/></svg>LINEで友だち追加して登録</a>
+<span class="note">リリース時に特典コードをLINEでお届けします。登録は無料、いつでもブロックで解除できます。</span>
+</div>
+</div>
+<div class="phones">
+<img class="ph-back" src="assets/screen-chatlist.webp" width="220" height="459" alt="" loading="lazy">
+<img class="ph-front" src="assets/screen-swipe.webp" width="262" height="547" alt="Sessionのスワイプ画面">
+</div>
+</section>
+
+<section class="sec alt">
+<div class="wrap pad">
+<div class="head" style="max-width:640px"><span class="label">HOW IT WORKS</span><h2 class="h2">使い方は、3ステップ。</h2></div>
+<div class="steps">
+<div class="step"><div class="step-txt"><span class="step-n">STEP 01</span><b>今の気分を選ぶ</b><span>「飲みに行く」「カフェ」など、今日したいことをひとつ選ぶだけ。</span></div><div class="step-img"><img src="assets/screen-step1-intent.webp" width="230" height="480" alt="気分を選ぶ画面" loading="lazy"></div></div>
+<div class="step"><div class="step-txt"><span class="step-n">STEP 02</span><b>近くの人をスワイプ</b><span>気になったら右へ。距離が近い人から表示されます。</span></div><div class="step-img"><img src="assets/screen-step2-swipe.webp" width="230" height="480" alt="スワイプ画面" loading="lazy"></div></div>
+<div class="step"><div class="step-txt"><span class="step-n">STEP 03</span><b>マッチしたら会おう</b><span>お互いにLikeでマッチ。気分が同じだから、話が早い。</span></div><div class="step-img"><img src="assets/screen-step3-match.webp" width="230" height="480" alt="マッチ画面" loading="lazy"></div></div>
+</div>
+</div>
+</section>
+
+<section class="sec">
+<div class="wrap pad grid2">
+<div class="head" style="gap:22px"><span class="label">TODAY'S MOOD</span><h2 class="h2">プロフィールより先に、<br>いまの気分。</h2><p class="body">カードには相手の「今、何したい？」が表示されます。気分が合う人とつながるから、会うまでが早い。気分はいつでも切り替えられます。</p></div>
+<div class="moods">
+<div class="mood on"><span class="e">🍸</span><span><b>飲みに行く</b><small>仕事終わりに一杯どう？</small></span></div>
+<div class="mood"><span class="e">🍽️</span><span><b>ご飯</b><small>おいしいもの、一緒に食べよう</small></span></div>
+<div class="mood"><span class="e">☕️</span><span><b>カフェ</b><small>まずはお茶から、ゆるっと</small></span></div>
+<div class="mood"><span class="e">📞</span><span><b>電話したい</b><small>会う前に、声で話したい</small></span></div>
+<div class="mood"><span class="e">🌙</span><span><b>今ひま</b><small>とりあえず話し相手募集中</small></span></div>
+</div>
+</div>
+</section>
+
+<section class="sec alt">
+<div class="wrap pad">
+<div class="women grid2">
+<div class="women-glow"></div>
+<div class="head"><span class="label">FOR WOMEN</span><h2 class="h2">女性は、<br>すべての機能が無料。</h2><p>有料プラン Session+ の機能も、最初からぜんぶ使えます。課金の案内も表示されません。</p></div>
+<div class="wperks">
+<div><b>Like無制限</b><span>1日の上限なし</span></div>
+<div><b>Likesが全員見える</b><span>誰がLikeしたか一覧で</span></div>
+<div><b>Rewind</b><span>うっかりNOPEを取り消し</span></div>
+<div><b>距離を細かく</b><span>1kmから絞り込み</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="sec">
+<div class="wrap narrow pad">
+<div class="head"><span class="label">FAQ</span><h2 class="h2">よくある質問</h2></div>
+<div class="faq">
+<details open><summary>料金はかかりますか？<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary><p>基本機能は無料です。Like無制限やRewindなどが使える Session+ は月額¥1,480（3日間無料）。女性はすべての機能が無料です。</p></details>
+<details><summary>事前登録の特典は？<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary><p>リリース時に Session+ 1ヶ月無料の特典コードをLINEでお届けします。</p></details>
+<details><summary>事前登録で何が送られてきますか？<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary><p>リリース日のお知らせと特典コードだけです。個人情報の入力はありません。</p></details>
+<details><summary>対応機種は？<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary><p>iPhone（iOS 16以上）と Android（9以上）に対応予定です。</p></details>
+<details><summary>年齢確認は必要ですか？<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary><p>法律にもとづき、メッセージを送る前に一度だけ本人確認書類で年齢確認をします。18歳未満の方はご利用いただけません。</p></details>
+<details><summary>位置情報は相手に見えますか？<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary><p>相手に表示されるのはおおよその距離だけです。正確な場所が共有されることはありません。</p></details>
+</div>
+</div>
+</section>
+
+<section class="sec">
+<div class="wrap narrow pad center ai">
+<span class="label">ASK AI</span>
+<h2 class="h2">Sessionのこと、AIに聞いてみる</h2>
+<p>ふだん使っているAIに、Sessionが自分に合うか聞いてみよう。ボタンを押すと質問が入った状態で開きます。</p>
+<div class="ai-btns">
+<a data-ai="chatgpt" href="https://chatgpt.com/" target="_blank" rel="noopener"><i style="background:#10a37f"></i>ChatGPTに聞く</a>
+<a data-ai="gemini" href="https://gemini.google.com/app" target="_blank" rel="noopener"><i style="background:#8e75ff"></i>Geminiに聞く</a>
+<a data-ai="claude" href="https://claude.ai/new" target="_blank" rel="noopener"><i style="background:#d97757"></i>Claudeに聞く</a>
+<a data-ai="perplexity" href="https://www.perplexity.ai/" target="_blank" rel="noopener"><i style="background:#20b8cd"></i>Perplexityに聞く</a>
+</div>
+<span id="copied">質問をコピーしました。Geminiに貼り付けて送信してください。</span>
+</div>
+</section>
+
+<section class="sec alt">
+<div class="wrap center final">
+<svg width="44" height="44" viewBox="0 0 24 24" fill="#2bdb75"><path d="M12 2.5C12.7 8 16 11.3 21.5 12C16 12.7 12.7 16 12 21.5C11.3 16 8 12.7 2.5 12C8 11.3 11.3 8 12 2.5Z"/></svg>
+<h2 class="h2">リリースの知らせを、<br>いちばん早く。</h2>
+<p>事前登録で Session+ 1ヶ月無料。2026年冬リリース予定。</p>
+<a class="line js-line" href="https://lin.ee/xxxxxxx" target="_blank" rel="noopener"><svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s5.8-3.4 7.9-5.9c1.4-1.6 2.1-3.2 2.1-4.9C22 6.6 17.5 3 12 3z"/></svg>LINEで事前登録する</a>
+</div>
+</section>
+</main>
+
+<footer class="sec">
+<div class="wrap center">
+<span class="flogo"><svg width="16" height="16" viewBox="0 0 24 24" fill="#2bdb75"><path d="M12 2.5C12.7 8 16 11.3 21.5 12C16 12.7 12.7 16 12 21.5C11.3 16 8 12.7 2.5 12C8 11.3 11.3 8 12 2.5Z"/></svg>Session</span>
+<nav class="fnav sns"><a href="#">X (Twitter)</a><a href="#">Instagram</a><a href="#">TikTok</a></nav>
+<nav class="fnav"><a href="#">運営会社</a><a href="#">お問い合わせ</a><a href="#">利用規約</a><a href="#">プライバシーポリシー</a><a href="#">特定商取引法に基づく表記</a></nav>
+<span class="fine">インターネット異性紹介事業 届出済み 受理番号：00000000000<br>18歳未満の方はご利用いただけません。</span>
+<span class="fine">© 2026 Session</span>
+</div>
+</footer>
+
+<script>
+// ===== 公開前に差し替え =====
+var LINE_URL = 'https://lin.ee/xxxxxxx';
+var SITE_URL = 'https://session.app';
+// ===========================
+document.querySelectorAll('.js-line').forEach(function (a) { a.href = LINE_URL; });
+
+var prompt = SITE_URL + ' のマッチングアプリ「Session」について、ページを読んで教えてください。どんなアプリで、ほかのマッチングアプリと何が違いますか？私に合いそうかも知りたいです。';
+var q = encodeURIComponent(prompt);
+var urls = { chatgpt: 'https://chatgpt.com/?q=' + q, claude: 'https://claude.ai/new?q=' + q, perplexity: 'https://www.perplexity.ai/search?q=' + q };
+var copied = document.getElementById('copied'), t;
+document.querySelectorAll('[data-ai]').forEach(function (a) {
+  var k = a.getAttribute('data-ai');
+  if (urls[k]) a.href = urls[k];
+  if (k === 'gemini') a.addEventListener('click', function () {
+    if (navigator.clipboard) navigator.clipboard.writeText(prompt);
+    copied.classList.add('show'); clearTimeout(t); t = setTimeout(function () { copied.classList.remove('show'); }, 4000);
+  });
+});
+
+// FAQ: 1つだけ開く
+var ds = document.querySelectorAll('.faq details');
+ds.forEach(function (d) { d.addEventListener('toggle', function () { if (d.open) ds.forEach(function (o) { if (o !== d) o.open = false; }); }); });
+</script>
+</body>
+</html>

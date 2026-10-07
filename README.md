@@ -1,4 +1,11 @@
-# Session — Flutter 実装
+# Session
+
+- **アプリ（Flutter）** … このリポジトリのルート。下記の通り。
+- **事前登録ページ（LP）** … [`site/`](site/)。ビルド不要の静的サイト。公開手順は [`site/README.md`](site/README.md)。
+
+---
+
+## アプリ — Flutter 実装
 
 デザイン「Session v4」（`Session v4 Core.dc.html` / `Session v4 App.dc.html`）を Flutter で実装したもの。
 Session は「今、何をしたいか（intent）× 時間 × 距離」でマッチングする、iOS ファーストの日本市場向けアプリ。
