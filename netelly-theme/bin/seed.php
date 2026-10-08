@@ -105,6 +105,63 @@ function nts_link_tr( array $ids ): void {
 	pll_save_post_translations( $ids );
 }
 
+/**
+ * Serialized Snow Monkey Forms item block (markup = the plugin's item/save.js).
+ *
+ * @param string $label    Item label.
+ * @param string $for      Control id the label points to ('' = no <label>).
+ * @param array  $control  [ block name, attrs ].
+ * @param bool   $show     Show the label column.
+ */
+function nts_smf_item( string $label, string $for, array $control, bool $show = true ): string {
+	$inner = serialize_block(
+		array(
+			'blockName'    => 'snow-monkey-forms/' . $control[0],
+			'attrs'        => $control[1],
+			'innerBlocks'  => array(),
+			'innerHTML'    => '',
+			'innerContent' => array(),
+		)
+	);
+	$head  = '';
+	if ( $show ) {
+		$text = '<span class="smf-item__label__text">' . esc_html( $label ) . '</span>';
+		$head = '<div class="smf-item__col smf-item__col--label"><div class="smf-item__label">'
+			. ( $for ? '<label for="' . esc_attr( $for ) . '">' . $text . '</label>' : $text )
+			. '</div></div>';
+	}
+	$attrs = $show ? array() : array( 'isDisplayLabelColumn' => false );
+	return '<!-- wp:snow-monkey-forms/item ' . ( $attrs ? serialize_block_attributes( $attrs ) . ' ' : '' ) . '-->'
+		. '<div class="wp-block-snow-monkey-forms-item smf-item' . ( $show ? '' : ' smf-item--divider' ) . '">' . $head
+		. '<div class="smf-item__col smf-item__col--controls"><div class="smf-item__controls">' . $inner . '</div></div></div>'
+		. '<!-- /wp:snow-monkey-forms/item -->';
+}
+
+/**
+ * Full post_content of a contact form (input + complete screens).
+ */
+function nts_form_content( array $d ): string {
+	$l   = $d['labels'];
+	$ph  = $d['placeholders'];
+	$req = wp_json_encode( array( 'required' => true ) );
+
+	$items = array(
+		nts_smf_item( $l['type'], '', array( 'control-radio-buttons', array( 'name' => 'type', 'options' => implode( "\n", $d['types'] ), 'value' => $d['types'][0], 'validations' => $req ) ) ),
+		nts_smf_item( $l['company'], 'company', array( 'control-text', array( 'name' => 'company', 'id' => 'company', 'placeholder' => $ph['company'], 'autocomplete' => 'organization' ) ) ),
+		nts_smf_item( $l['name'], 'name', array( 'control-text', array( 'name' => 'name', 'id' => 'name', 'placeholder' => $ph['name'], 'autocomplete' => 'name', 'validations' => $req ) ) ),
+		nts_smf_item( $l['email'], 'email', array( 'control-email', array( 'name' => 'email', 'id' => 'email', 'placeholder' => $ph['email'], 'validations' => wp_json_encode( array( 'required' => true, 'email' => true ) ) ) ) ),
+		nts_smf_item( $l['tel'], 'tel', array( 'control-tel', array( 'name' => 'tel', 'id' => 'tel', 'placeholder' => $ph['tel'] ) ) ),
+		nts_smf_item( $l['message'], 'message', array( 'control-textarea', array( 'name' => 'message', 'id' => 'message', 'rows' => 8, 'placeholder' => $ph['message'], 'validations' => $req ) ) ),
+		nts_smf_item( '', '', array( 'control-checkboxes', array( 'name' => 'consent', 'options' => $l['consent'], 'validations' => $req ) ), false ),
+	);
+
+	$complete = '<!-- wp:heading -->' . "\n" . '<h2 class="wp-block-heading">' . esc_html( $d['complete']['heading'] ) . '</h2>' . "\n" . '<!-- /wp:heading -->'
+		. "\n\n" . '<!-- wp:paragraph -->' . "\n" . '<p>' . esc_html( $d['complete']['text'] ) . '</p>' . "\n" . '<!-- /wp:paragraph -->';
+
+	return '<!-- wp:snow-monkey-forms/form--input -->' . "\n" . '<div class="wp-block-snow-monkey-forms-form--input smf-form">' . implode( "\n\n", $items ) . '</div>' . "\n" . '<!-- /wp:snow-monkey-forms/form--input -->'
+		. "\n\n" . '<!-- wp:snow-monkey-forms/form--complete -->' . "\n" . $complete . "\n" . '<!-- /wp:snow-monkey-forms/form--complete -->';
+}
+
 /* --------------------------------------------------------------------------
  * 1. Languages (Polylang)
  * ----------------------------------------------------------------------- */
@@ -319,6 +376,37 @@ foreach ( NTS_POSITIONS as $i => $p ) {
 }
 
 /* --------------------------------------------------------------------------
+ * 6b. Contact forms (Snow Monkey Forms; one form per language)
+ * ----------------------------------------------------------------------- */
+WP_CLI::log( '6b Contact forms' );
+$forms = array();
+if ( post_type_exists( 'snow-monkey-forms' ) ) {
+	$map = (array) get_option( 'netelly_seed_map', array() );
+	foreach ( array( 'ja', 'en' ) as $lang ) {
+		$d    = nts_form_data( $lang );
+		$id   = (int) ( $map[ 'form:' . $lang ] ?? 0 );
+		$args = array(
+			'post_type'    => 'snow-monkey-forms',
+			'post_status'  => 'publish',
+			'post_title'   => $d['title'] . ( 'en' === $lang ? ' (EN)' : '' ),
+			'post_content' => nts_form_content( $d ),
+		);
+		if ( $id && get_post( $id ) ) {
+			$args['ID'] = $id;
+			wp_update_post( wp_slash( $args ) );
+		} else {
+			$id = (int) wp_insert_post( wp_slash( $args ) );
+		}
+		foreach ( $d['meta'] as $k => $v ) {
+			update_post_meta( $id, $k, $v );
+		}
+		$map[ 'form:' . $lang ] = $id;
+		$forms[ $lang ]         = $id;
+	}
+	update_option( 'netelly_seed_map', $map, false );
+}
+
+/* --------------------------------------------------------------------------
  * 7. Page fields + site settings (per language)
  * ----------------------------------------------------------------------- */
 WP_CLI::log( '7/8 Page fields & site settings' );
@@ -326,6 +414,9 @@ foreach ( array( 'ja', 'en' ) as $lang ) {
 	$data = nts_lang_data( $lang, $purl, $works );
 	foreach ( $data['pages'] as $key => $groups ) {
 		foreach ( $groups as $group => $values ) {
+			if ( 'page_contact' === $group ) {
+				$values['form'] = $forms[ $lang ] ?? '';
+			}
 			nts_fields( $group, $values, $pages[ $key ][ $lang ] );
 		}
 	}

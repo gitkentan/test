@@ -19,6 +19,9 @@
     "WP_ENVIRONMENT_TYPE": "local"
   },
   "lifecycleScripts": {
-    "afterStart": "wp-env run cli wp language core install ja --activate && wp-env run cli wp theme activate netelly-theme && wp-env run cli wp rewrite structure '/news/%post_id%/' --hard"
+    "afterStart": "wp-env run cli wp language core install ja --activate && wp-env run cli wp language plugin install --all ja && wp-env run cli wp theme activate netelly-theme && wp-env run cli wp rewrite structure '/news/%post_id%/' --hard"
+  },
+  "mappings": {
+    "wp-content/mu-plugins/netelly-local-mail.php": "./dev/netelly-local-mail.php"
   }
 }

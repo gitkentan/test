@@ -82,6 +82,12 @@ function netelly_strings(): array {
 		'nf_heading'       => array( 'ページが見つかりません', 'Page not found' ),
 		'nf_text'          => array( 'お探しのページは移動または削除された可能性があります。', 'The page you are looking for may have been moved or deleted.' ),
 		'nf_button'        => array( 'トップへ戻る →', 'Back to home →' ),
+		// Contact form (README 9).
+		'form_required'       => array( '必須', 'Required' ),
+		'form_optional'       => array( '任意', 'Optional' ),
+		'form_error_required' => array( '入力してください', 'This field is required' ),
+		'form_error_email'    => array( 'メールアドレスの形式で入力してください', 'Enter a valid email address' ),
+		'form_sending'        => array( '送信中…', 'Sending…' ),
 	);
 }
 

@@ -6,6 +6,7 @@ import { initReveal, initParallax, initCountUp } from './motion.js';
 import { initHeroVideo, initShortDrama, initTrailer } from './video.js';
 import { initFilter } from './filter.js';
 import { initSmoothScroll } from './scroll.js';
+import { initForm } from './form.js';
 
 initIntro();
 initHeader();
@@ -18,6 +19,7 @@ initShortDrama();
 initTrailer();
 initFilter();
 initSmoothScroll();
+initForm();
 
 // Article share: copy link.
 document.querySelectorAll('.share__copy').forEach((btn) => {

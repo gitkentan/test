@@ -43,8 +43,34 @@
             "allow_null": 1,
             "multiple": 0,
             "ui": 1,
+            "instructions": "項目・ボタン名・完了画面・通知メールは「Snow Monkey Forms」メニューのフォームで編集します。",
             "key": "field_nt_page_contact_form",
-            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "recruit_option",
+            "label": "「採用」の選択肢名",
+            "instructions": "採用ページから来たときに選択済みにする「お問い合わせの種類」の選択肢（フォームの選択肢と同じ文字）。",
+            "key": "field_nt_page_contact_recruit_option",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "position_format",
+            "label": "応募職種の挿入文",
+            "instructions": "採用ページの職種から来たとき、お問い合わせ内容に入れる文。%s が職種名になります。",
+            "key": "field_nt_page_contact_position_format",
             "required": 0,
             "wrapper": {
                 "width": "",
@@ -57,7 +83,7 @@
             "name": "",
             "label": "",
             "message": "メール・電話番号・受付時間は「サイト設定」で編集します。",
-            "key": "field_nt_page_contact_tab_3",
+            "key": "field_nt_page_contact_tab_5",
             "instructions": "",
             "required": 0,
             "wrapper": {

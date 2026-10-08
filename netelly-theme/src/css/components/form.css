@@ -1,0 +1,340 @@
+/*
+ * Contact form (design #p11, README 9) on top of Snow Monkey Forms markup.
+ * The plugin's own CSS is dequeued (inc/forms.php); only the rules its JS relies on are kept here.
+ */
+.snow-monkey-form[data-screen="loading"] {
+	visibility: hidden;
+}
+
+.smf-system-error-content-ready {
+	display: none !important;
+}
+
+.smf-focus-point {
+	position: relative;
+	top: -100px;
+	visibility: hidden;
+}
+
+/* Items: PC 2 columns for the one-line inputs (gap 36 / 32), SP one column (gap 28). */
+.smf-form {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	gap: 36px 32px;
+}
+
+.smf-item {
+	grid-column: 1 / -1;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	min-width: 0;
+}
+
+.smf-item:has(.smf-text-control) {
+	grid-column: auto;
+}
+
+.smf-item:has(.smf-radio-buttons-control) {
+	gap: 12px;
+}
+
+.smf-item__label {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	font-size: 14px;
+	font-weight: 700;
+}
+
+.smf-item__label label {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+}
+
+.smf-badge {
+	font-family: var(--f-mono);
+	font-size: 10px;
+	font-weight: 400;
+	color: var(--muted);
+}
+
+.smf-badge--required {
+	padding: 1px 6px;
+	background: var(--ink);
+	color: var(--cream);
+}
+
+/* One-line inputs: underline, 2px while focused (inset shadow keeps the height). */
+.smf-text-control__control {
+	display: block;
+	width: 100%;
+	border: none;
+	border-bottom: 1px solid var(--ink);
+	border-radius: 0;
+	background: transparent;
+	padding: 12px 0;
+	font: inherit;
+	font-size: 16px;
+	line-height: 1.5;
+	color: var(--ink);
+	outline: none;
+	appearance: none;
+}
+
+.smf-textarea-control__control {
+	display: block;
+	width: 100%;
+	border: 1px solid var(--ink);
+	border-radius: 0;
+	background: transparent;
+	padding: 16px;
+	font: inherit;
+	font-size: 16px;
+	line-height: 1.5;
+	color: var(--ink);
+	outline: none;
+	resize: vertical;
+}
+
+.smf-text-control__control::placeholder,
+.smf-textarea-control__control::placeholder {
+	color: var(--muted);
+	opacity: 1;
+}
+
+.smf-text-control__control:focus,
+.smf-text-control__control:focus-visible {
+	outline: none;
+	box-shadow: inset 0 -1px 0 var(--ink);
+}
+
+.smf-textarea-control__control:focus,
+.smf-textarea-control__control:focus-visible {
+	outline: none;
+	box-shadow: inset 0 0 0 1px var(--ink);
+}
+
+/* Inquiry type: chips (radio stays in the DOM for keyboard / screen readers). */
+.smf-radio-buttons-control__control {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.smf-radio-buttons-control .smf-label label {
+	display: block;
+	cursor: pointer;
+}
+
+.smf-radio-button-control {
+	position: relative;
+	display: block;
+}
+
+.smf-radio-button-control__control {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.smf-radio-button-control__label {
+	display: block;
+	padding: 10px 18px;
+	border: 1px solid var(--line);
+	font-size: 14px;
+	white-space: nowrap;
+	transition: background-color var(--t-fast) var(--ease-out), color var(--t-fast) var(--ease-out);
+}
+
+.smf-radio-button-control__control:checked + .smf-radio-button-control__label {
+	padding: 10px 17px;
+	border-color: var(--ink);
+	background: var(--ink);
+	color: var(--cream);
+}
+
+.smf-radio-button-control__control:focus-visible + .smf-radio-button-control__label {
+	outline: 2px solid var(--ink);
+	outline-offset: 3px;
+}
+
+/* Consent checkbox. */
+.smf-checkboxes-control .smf-label label {
+	display: flex;
+	gap: 12px;
+	align-items: center;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+.smf-checkbox-control {
+	display: flex;
+	gap: 12px;
+	align-items: center;
+}
+
+.smf-checkbox-control__control {
+	flex: none;
+	width: 18px;
+	height: 18px;
+	margin: 0;
+	accent-color: var(--ink);
+}
+
+.smf-checkbox-control__label a {
+	border-bottom: 1px solid currentColor;
+}
+
+/* Errors (README 9): ink + bold + ⚠ text instead of red. */
+.smf-error-messages,
+.form-error {
+	margin-top: 8px;
+	font-size: 13px;
+	font-weight: 700;
+	color: var(--ink);
+}
+
+.smf-error-messages::before,
+.form-error::before {
+	content: "⚠ ";
+}
+
+.smf-item:has(.form-error) .smf-error-messages {
+	display: none;
+}
+
+/* Actions: buttons get .btn classes from js/form.js. */
+.smf-action {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-top: 36px;
+}
+
+.smf-action:empty {
+	display: none;
+}
+
+.smf-action .smf-button-control {
+	display: flex;
+}
+
+.smf-button-control__control {
+	gap: 0;
+	border: none;
+	border-radius: 0;
+	cursor: pointer;
+}
+
+.smf-button-control__control.btn--outline {
+	border: 1px solid var(--ink);
+	background: transparent;
+}
+
+.smf-button-control__control[disabled] {
+	cursor: not-allowed;
+	opacity: .35;
+}
+
+.smf-button-control__control.is-sending {
+	opacity: 1;
+	cursor: progress;
+}
+
+.smf-sending {
+	display: none;
+}
+
+/* Confirm screen: values as text under the labels. */
+.snow-monkey-form[data-screen="confirm"] .smf-item__controls {
+	padding: 12px 0;
+	border-bottom: 1px solid var(--line);
+	font-size: 16px;
+	line-height: 1.5;
+	min-height: 49px;
+	overflow-wrap: anywhere;
+}
+
+.snow-monkey-form[data-screen="confirm"] .smf-item:has(.smf-checkboxes-control),
+.snow-monkey-form[data-screen="confirm"] .smf-item--divider {
+	display: none;
+}
+
+/* Complete screen: horizon line + message (README 9). */
+.snow-monkey-form[data-screen="complete"] .smf-form,
+.snow-monkey-form[data-screen="systemerror"] .smf-form {
+	display: block;
+}
+
+.snow-monkey-form[data-screen="complete"] .smf-form::before {
+	content: "";
+	display: block;
+	height: 1px;
+	margin-bottom: 40px;
+	background: var(--ink);
+	transform-origin: left center;
+	animation: line-grow var(--t-slow) var(--ease-out) both;
+}
+
+.snow-monkey-form[data-screen="complete"] h2 {
+	font-family: var(--f-head);
+	font-weight: 700;
+	font-size: 32px;
+	line-height: 1.5;
+}
+
+.snow-monkey-form[data-screen="complete"] p {
+	margin-top: 24px;
+	font-size: 16px;
+	line-height: 2;
+	color: var(--sub);
+}
+
+.smf-system-error-content {
+	font-weight: 700;
+}
+
+.smf-system-error-content::before {
+	content: "⚠ ";
+}
+
+@media (max-width: 768px) {
+	.smf-form {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 28px;
+	}
+
+	.smf-action {
+		margin-top: 28px;
+	}
+
+	.smf-action .smf-button-control,
+	.smf-action .smf-button-control__control {
+		width: 100%;
+	}
+
+	.smf-textarea-control__control {
+		height: calc(6 * 24px + 34px);
+	}
+
+	.snow-monkey-form[data-screen="complete"] h2 {
+		font-size: 24px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.snow-monkey-form[data-screen="complete"] .smf-form::before {
+		animation: none;
+	}
+}
+
+/* The plugin reads event.target for data-action; inner spans must not take the click. */
+.smf-button-control__control > * {
+	pointer-events: none;
+}

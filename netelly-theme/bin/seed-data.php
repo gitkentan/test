@@ -456,7 +456,9 @@ function nts_lang_data( string $lang, callable $purl, array $works ): array {
 			'page_contact' => array(
 				'lead_heading' => $L( "制作・配給・協業の\nご相談はこちらから。", "Production, distribution\nand partnership inquiries." ),
 				'lead_text'    => $L( '内容を確認のうえ、担当者よりご連絡します。お急ぎの場合はメールでもお問い合わせいただけます。', 'We will review your message and a member of our team will get back to you. For urgent matters, you can also reach us by email.' ),
-				'form'         => '',
+				'form'            => '',
+				'recruit_option'  => $L( '採用', 'Careers' ),
+				'position_format' => $L( '応募職種：%s', 'Position: %s' ),
 			),
 		),
 		'privacy'  => array(
@@ -541,6 +543,61 @@ function nts_menus( string $lang, callable $purl, array $works ): array {
 					array( $L( 'プライバシーポリシー', 'Privacy Policy' ), $p( 'privacy' ) ),
 				),
 			),
+		),
+	);
+}
+
+/**
+ * Contact form (Snow Monkey Forms) per language. JP = design #p11 copy.
+ *
+ * @param string $lang ja|en.
+ */
+function nts_form_data( string $lang ): array {
+	$ja     = 'ja' === $lang;
+	$L      = static fn( $j, $e ) => $ja ? $j : $e;
+	$labels = array(
+		'type'    => $L( 'お問い合わせの種類', 'Inquiry type' ),
+		'company' => $L( '会社名・団体名', 'Company / organization' ),
+		'name'    => $L( 'お名前', 'Name' ),
+		'email'   => $L( 'メールアドレス', 'Email' ),
+		'tel'     => $L( '電話番号', 'Phone' ),
+		'message' => $L( 'お問い合わせ内容', 'Message' ),
+	);
+	$fields = implode( "\n\n", array_map( static fn( $k, $v ) => "■ {$v}\n{{$k}}", array_keys( $labels ), $labels ) );
+	return array(
+		'title'    => $L( 'お問い合わせ', 'Contact' ),
+		'types'    => $ja
+			? array( '制作・配給のご相談', '協業・出資', 'クリエイターズファンド', '取材・プレス', '採用', 'その他' )
+			: array( 'Production & distribution', 'Partnership & investment', 'Creators Fund', 'Press & media', 'Careers', 'Other' ),
+		'labels'   => $labels + array( 'consent' => $L( 'プライバシーポリシーに同意する', 'I agree to the Privacy Policy' ) ),
+		'placeholders' => array(
+			'company' => $L( 'Netelly株式会社', 'Netelly Inc.' ),
+			'name'    => $L( '山田 太郎', 'Taro Yamada' ),
+			'email'   => 'name@example.com',
+			'tel'     => '03-0000-0000',
+			'message' => $L( 'ご相談の内容をご記入ください', 'Tell us about your inquiry' ),
+		),
+		'complete' => array(
+			'heading' => $L( 'お問い合わせを受け付けました', 'Thank you for your message' ),
+			'text'    => $L( '内容を確認のうえ、担当者よりご連絡します。自動返信メールをお送りしましたので、あわせてご確認ください。', 'We will review your message and a member of our team will get back to you. An automatic confirmation has been sent to your email address.' ),
+		),
+		'meta'     => array(
+			'use_confirm_page'            => true,
+			'confirm_button_label'        => $L( '内容を確認する →', 'Review →' ),
+			'back_button_label'           => $L( '修正する', 'Edit' ),
+			'send_button_label'           => $L( '送信する →', 'Send →' ),
+			'administrator_email_to'      => get_option( 'admin_email' ),
+			'administrator_email_subject' => $L( '【Netelly】お問い合わせがありました', '[Netelly] New inquiry (EN)' ),
+			'administrator_email_body'    => $L( "サイトからお問い合わせがありました。\n\n", "A new inquiry was sent from the English site.\n\n" ) . $fields,
+			'administrator_email_replyto' => '{email}',
+			'administrator_email_sender'  => 'Netelly',
+			'auto_reply_email_to'         => '{email}',
+			'auto_reply_email_subject'    => $L( '【Netelly】お問い合わせありがとうございます', '[Netelly] Thank you for your message' ),
+			'auto_reply_email_body'       => $L(
+				"{name} 様\n\nNetellyへお問い合わせいただき、ありがとうございます。\n以下の内容で受け付けました。担当者より折り返しご連絡します。\n\n" . $fields . "\n\n――\nNetelly株式会社",
+				"Dear {name},\n\nThank you for contacting Netelly.\nWe have received the message below and will get back to you shortly.\n\n" . $fields . "\n\n--\nNetelly Inc."
+			),
+			'auto_reply_email_sender'     => 'Netelly',
 		),
 	);
 }

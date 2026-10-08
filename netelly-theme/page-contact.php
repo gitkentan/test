@@ -34,10 +34,26 @@ $tel   = (string) netelly_opt( 'contact_tel' );
 					</p>
 				<?php endif; ?>
 			</div>
-			<div class="contact__form">
+			<?php
+			// README 9 hooks for js/form.js: careers prefill (?type=recruit&position=…),
+			// privacy link inside the consent label, badge / error / sending texts.
+			$privacy = netelly_find_by_slug( 'page', 'privacy', netelly_lang() );
+			$data    = array(
+				'recruit'        => (string) $f( 'recruit_option' ),
+				'position'       => (string) $f( 'position_format' ),
+				'privacy-url'    => $privacy ? get_permalink( $privacy ) : '',
+				'privacy-title'  => $privacy ? get_the_title( $privacy ) : '',
+				'required'       => netelly_t( 'form_required' ),
+				'optional'       => netelly_t( 'form_optional' ),
+				'error-required' => netelly_t( 'form_error_required' ),
+				'error-email'    => netelly_t( 'form_error_email' ),
+				'sending'        => netelly_t( 'form_sending' ),
+			);
+			?>
+			<div class="contact__form"<?php foreach ( $data as $k => $v ) { printf( ' data-%s="%s"', esc_attr( $k ), esc_attr( $v ) ); } // phpcs:ignore Generic.ControlStructures.InlineControlStructure ?>>
 				<?php
-				if ( $form && shortcode_exists( 'snow_monkey_form' ) ) {
-					echo do_shortcode( '[snow_monkey_form id="' . $form . '"]' ); // phpcs:ignore WordPress.Security.EscapeOutput
+				if ( $form && 'snow-monkey-forms' === get_post_type( $form ) ) {
+					echo do_blocks( '<!-- wp:snow-monkey-forms/snow-monkey-form ' . wp_json_encode( array( 'formId' => $form ) ) . ' /-->' ); // phpcs:ignore WordPress.Security.EscapeOutput
 				}
 				?>
 			</div>
