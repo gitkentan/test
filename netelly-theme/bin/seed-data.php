@@ -25,6 +25,7 @@ const NTS_PAGES = array(
 	'careers'  => array( 'slug' => 'careers', 'order' => 5, 'template' => 'page-careers.php', 'en_title' => 'CAREERS', 'title' => array( 'ja' => '採用', 'en' => 'Careers' ) ),
 	'contact'  => array( 'slug' => 'contact', 'order' => 6, 'template' => 'page-contact.php', 'en_title' => 'CONTACT', 'title' => array( 'ja' => 'お問い合わせ', 'en' => 'Contact' ) ),
 	'privacy'  => array( 'slug' => 'privacy', 'order' => 7, 'template' => 'page-privacy.php', 'en_title' => 'PRIVACY', 'title' => array( 'ja' => 'プライバシーポリシー', 'en' => 'Privacy Policy' ) ),
+	'press'    => array( 'slug' => 'press', 'order' => 8, 'template' => 'page-press.php', 'en_title' => 'PRESS KIT', 'title' => array( 'ja' => 'プレスキット', 'en' => 'Press Kit' ) ),
 );
 
 const NTS_WORKS = array(
@@ -459,7 +460,62 @@ function nts_lang_data( string $lang, callable $purl, array $works ): array {
 				'lead_text'    => $L( '内容を確認のうえ、担当者よりご連絡します。お急ぎの場合はメールでもお問い合わせいただけます。', 'We will review your message and a member of our team will get back to you. For urgent matters, you can also reach us by email.' ),
 				'form'            => '',
 				'recruit_option'  => $L( '採用', 'Careers' ),
+				'press_option'    => $L( '取材・プレス', 'Press & media' ),
 				'position_format' => $L( '応募職種：%s', 'Position: %s' ),
+			),
+		),
+		'press'    => array(
+			'page_press' => array(
+				'intro_label'     => 'PRESS KIT',
+				'intro_heading'   => $L( "メディア・報道関係の\nみなさまへ。", "For media\nand press." ),
+				'intro_text'      => $L( '記事・番組でNetellyをご紹介いただく際の素材をまとめています。ロゴ・会社概要・紹介文は、下記のガイドラインの範囲でご自由にお使いください。', 'Everything you need to feature Netelly in your coverage. Logos, company facts and boilerplate may be used freely within the guidelines below.' ),
+				'kit_button'      => $L( '一括ダウンロード（ZIP）', 'Download all (ZIP)' ),
+				'contact_button'  => $L( '取材のお問い合わせ →', 'Media inquiries →' ),
+				'boiler_label'    => 'BOILERPLATE',
+				'boiler_heading'  => $L( '会社紹介文', 'Boilerplate' ),
+				'boilerplates'    => array(
+					array(
+						'label' => $L( '短文', 'Short' ),
+						'text'  => $L( 'Netelly（ネテリー）は、東京・ニューヨーク・ロサンゼルス発のグローバル・エンターテインメントカンパニーです。', 'Netelly is a global entertainment company from Tokyo, New York and Los Angeles.' ),
+					),
+					array(
+						'label' => $L( '長文', 'Long' ),
+						'text'  => $L(
+							'Netelly株式会社は、東京・ニューヨーク・ロサンゼルス発のグローバル・エンターテインメントカンパニーです。2019年の創業以来、ドラマ・映画・ショートドラマなどのオリジナル作品を自社で企画・制作し、配信、YouTube、SNS、劇場を通じて届けています。スマートフォンの縦画面で観るショートドラマの走りとなった一社であり、監督・脚本家・プランナーの企画に出資する「Creators Fund」も運営しています。',
+							'Netelly Inc. is a global entertainment company from Tokyo, New York and Los Angeles. Since its founding in 2019, Netelly has developed and produced original series, films and short dramas in-house, delivering them through streaming, YouTube, social media and theaters. The company helped pioneer short dramas for the vertical smartphone screen, and also runs the Creators Fund, which invests in projects by directors, writers and planners.'
+						),
+					),
+					array(
+						'label' => $L( '英文', '日本語' ),
+						'text'  => $L(
+							'Netelly is a global entertainment company from Tokyo, New York and Los Angeles. Since its founding in 2019, Netelly has developed and produced original series, films and short dramas in-house, delivering them through streaming, YouTube, social media and theaters.',
+							'Netelly株式会社は、東京・ニューヨーク・ロサンゼルス発のグローバル・エンターテインメントカンパニーです。2019年の創業以来、ドラマ・映画・ショートドラマなどのオリジナル作品を自社で企画・制作し、配信、YouTube、SNS、劇場を通じて届けています。'
+						),
+					),
+				),
+				'logo_label'      => 'LOGO',
+				'logo_heading'    => $L( 'ロゴ', 'Logos' ),
+				'facts_label'     => 'FACT SHEET',
+				'facts_heading'   => $L( '会社概要', 'Company facts' ),
+				'people_label'    => 'LEADERSHIP',
+				'people_heading'  => $L( '経営陣', 'Leadership' ),
+				'people'          => array(
+					array( 'photo' => '', 'role' => $L( '代表取締役社長 兼 CEO', 'CEO' ), 'name' => $L( '乙崎 健太', 'Kenta Otozaki' ), 'name_en' => $L( 'KENTA OTOZAKI', '' ), 'bio' => '', 'photo_file' => '' ),
+				),
+				'guide_label'     => 'GUIDELINES',
+				'guide_heading'   => $L( 'ご利用にあたって', 'Usage guidelines' ),
+				'guides'          => array(
+					array( 'text' => $L( 'ロゴの縦横比・色・形は変更せず、周囲に十分な余白をとってご使用ください。', 'Do not change the proportions, colors or shape of the logo, and keep clear space around it.' ) ),
+					array( 'text' => $L( '作品画像は、該当作品をご紹介いただく目的に限りご使用いただけます。', 'Images of our works may be used only to feature the works concerned.' ) ),
+					array( 'text' => $L( '素材に記載のクレジットがある場合は、あわせて表記してください。', 'If credits are specified for an asset, please display them with it.' ) ),
+					array( 'text' => $L( '掲載後、媒体名・掲載日をお知らせいただけると幸いです。', 'We would appreciate it if you let us know the outlet and date once published.' ) ),
+				),
+				'rel_label'       => 'PRESS RELEASES',
+				'rel_heading'     => $L( 'プレスリリース', 'Press releases' ),
+				'cta_label'       => 'MEDIA CONTACT',
+				'cta_heading'     => $L( "取材・掲載のご相談は\nこちらから。", "Media and press\ninquiries." ),
+				'cta_email_label' => 'EMAIL',
+				'press_email'     => '',
 			),
 		),
 		'privacy'  => array(
@@ -539,6 +595,7 @@ function nts_menus( string $lang, callable $purl, array $works ): array {
 				'#',
 				array(
 					array( $L( 'ニュース', 'News' ), $p( 'news' ) ),
+					array( $L( 'プレスキット', 'Press Kit' ), $p( 'press' ) ),
 					array( $L( '採用', 'Careers' ), $p( 'careers' ) ),
 					array( $L( 'お問い合わせ', 'Contact' ), $p( 'contact' ) ),
 					array( $L( 'プライバシーポリシー', 'Privacy Policy' ), $p( 'privacy' ) ),

@@ -67,6 +67,19 @@
         },
         {
             "type": "text",
+            "name": "press_option",
+            "label": "「取材・プレス」の選択肢名",
+            "instructions": "プレスキットページから来たときに選択済みにする選択肢（フォームの選択肢と同じ文字）。",
+            "key": "field_nt_page_contact_press_option",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
             "name": "position_format",
             "label": "応募職種の挿入文",
             "instructions": "採用ページの職種から来たとき、お問い合わせ内容に入れる文。%s が職種名になります。",
@@ -83,7 +96,7 @@
             "name": "",
             "label": "",
             "message": "メール・電話番号・受付時間は「サイト設定」で編集します。",
-            "key": "field_nt_page_contact_tab_5",
+            "key": "field_nt_page_contact_tab_6",
             "instructions": "",
             "required": 0,
             "wrapper": {

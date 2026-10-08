@@ -1,0 +1,738 @@
+{
+    "key": "group_netelly_page_press",
+    "title": "プレスキットページ",
+    "fields": [
+        {
+            "type": "tab",
+            "label": "導入",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_page_press_tab_0",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "intro_label",
+            "label": "ラベル",
+            "key": "field_nt_page_press_intro_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "intro_heading",
+            "label": "見出し",
+            "rows": 2,
+            "new_lines": "",
+            "instructions": "改行はそのまま反映されます。",
+            "key": "field_nt_page_press_intro_heading",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "intro_text",
+            "label": "説明",
+            "rows": 3,
+            "new_lines": "",
+            "key": "field_nt_page_press_intro_text",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "file",
+            "name": "kit_file",
+            "label": "一括ダウンロード用ファイル（ZIP）",
+            "return_format": "id",
+            "library": "all",
+            "instructions": "ロゴ・写真などをまとめた ZIP。空ならボタンは表示されません。",
+            "key": "field_nt_page_press_kit_file",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "kit_button",
+            "label": "一括ダウンロードのボタン名",
+            "key": "field_nt_page_press_kit_button",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "contact_button",
+            "label": "取材のお問い合わせボタン名",
+            "instructions": "お問い合わせページ（種類「取材・プレス」選択済み）へ移動します。",
+            "key": "field_nt_page_press_contact_button",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "会社紹介文",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_page_press_tab_7",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "boiler_label",
+            "label": "ラベル",
+            "key": "field_nt_page_press_boiler_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "boiler_heading",
+            "label": "見出し",
+            "key": "field_nt_page_press_boiler_heading",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "repeater",
+            "name": "boilerplates",
+            "label": "会社紹介文",
+            "sub_fields": [
+                {
+                    "type": "text",
+                    "name": "label",
+                    "label": "種類",
+                    "instructions": "例：短文（50字）",
+                    "key": "field_nt_page_press_boilerplates_label",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "textarea",
+                    "name": "text",
+                    "label": "本文",
+                    "rows": 5,
+                    "new_lines": "",
+                    "key": "field_nt_page_press_boilerplates_text",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ],
+            "layout": "block",
+            "button_label": "紹介文を追加",
+            "collapsed": "",
+            "key": "field_nt_page_press_boilerplates",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "ロゴ",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_page_press_tab_11",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "logo_label",
+            "label": "ラベル",
+            "key": "field_nt_page_press_logo_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "logo_heading",
+            "label": "見出し",
+            "key": "field_nt_page_press_logo_heading",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "repeater",
+            "name": "logos",
+            "label": "ロゴ",
+            "sub_fields": [
+                {
+                    "type": "text",
+                    "name": "name",
+                    "label": "名前",
+                    "key": "field_nt_page_press_logos_name",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "image",
+                    "name": "preview",
+                    "label": "プレビュー画像",
+                    "return_format": "id",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "key": "field_nt_page_press_logos_preview",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "file",
+                    "name": "file",
+                    "label": "ダウンロードファイル",
+                    "return_format": "id",
+                    "library": "all",
+                    "key": "field_nt_page_press_logos_file",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "text",
+                    "name": "format",
+                    "label": "形式",
+                    "instructions": "例：PNG / 2400×523",
+                    "key": "field_nt_page_press_logos_format",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "true_false",
+                    "name": "dark",
+                    "label": "黒背景で表示",
+                    "ui": 1,
+                    "key": "field_nt_page_press_logos_dark",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ],
+            "layout": "block",
+            "button_label": "ロゴを追加",
+            "collapsed": "",
+            "key": "field_nt_page_press_logos",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "会社概要",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_page_press_tab_15",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "facts_label",
+            "label": "ラベル",
+            "key": "field_nt_page_press_facts_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "facts_heading",
+            "label": "見出し",
+            "key": "field_nt_page_press_facts_heading",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "message",
+            "name": "",
+            "label": "",
+            "message": "表の中身は「サイト設定 › 会社概要・沿革」の会社概要を表示します。",
+            "key": "field_nt_page_press_tab_18",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "経営陣",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_page_press_tab_19",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "people_label",
+            "label": "ラベル",
+            "key": "field_nt_page_press_people_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "people_heading",
+            "label": "見出し",
+            "key": "field_nt_page_press_people_heading",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "repeater",
+            "name": "people",
+            "label": "人物",
+            "sub_fields": [
+                {
+                    "type": "image",
+                    "name": "photo",
+                    "label": "写真",
+                    "return_format": "id",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "key": "field_nt_page_press_people_photo",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "text",
+                    "name": "role",
+                    "label": "役職",
+                    "key": "field_nt_page_press_people_role",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "text",
+                    "name": "name",
+                    "label": "氏名",
+                    "key": "field_nt_page_press_people_name",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "text",
+                    "name": "name_en",
+                    "label": "氏名（英字）",
+                    "key": "field_nt_page_press_people_name_en",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "textarea",
+                    "name": "bio",
+                    "label": "プロフィール",
+                    "rows": 4,
+                    "new_lines": "",
+                    "key": "field_nt_page_press_people_bio",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "file",
+                    "name": "photo_file",
+                    "label": "写真ダウンロード（高解像度）",
+                    "return_format": "id",
+                    "library": "all",
+                    "key": "field_nt_page_press_people_photo_file",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ],
+            "layout": "block",
+            "button_label": "人物を追加",
+            "collapsed": "",
+            "key": "field_nt_page_press_people",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "ご利用にあたって",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_page_press_tab_23",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "guide_label",
+            "label": "ラベル",
+            "key": "field_nt_page_press_guide_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "guide_heading",
+            "label": "見出し",
+            "key": "field_nt_page_press_guide_heading",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "repeater",
+            "name": "guides",
+            "label": "注意事項",
+            "sub_fields": [
+                {
+                    "type": "textarea",
+                    "name": "text",
+                    "label": "内容",
+                    "rows": 2,
+                    "new_lines": "",
+                    "key": "field_nt_page_press_guides_text",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ],
+            "layout": "table",
+            "button_label": "項目を追加",
+            "collapsed": "",
+            "key": "field_nt_page_press_guides",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "プレスリリース",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_page_press_tab_27",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "rel_label",
+            "label": "ラベル",
+            "key": "field_nt_page_press_rel_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "rel_heading",
+            "label": "見出し",
+            "key": "field_nt_page_press_rel_heading",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "link",
+            "name": "rel_link",
+            "label": "一覧リンク",
+            "return_format": "array",
+            "instructions": "カテゴリー「プレスリリース」の最新3件を表示します。",
+            "key": "field_nt_page_press_rel_link",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "問い合わせ帯",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_page_press_tab_31",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "cta_label",
+            "label": "ラベル",
+            "key": "field_nt_page_press_cta_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "cta_heading",
+            "label": "見出し",
+            "rows": 2,
+            "new_lines": "",
+            "instructions": "改行はそのまま反映されます。",
+            "key": "field_nt_page_press_cta_heading",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "press_email",
+            "label": "広報窓口メールアドレス",
+            "instructions": "空なら「サイト設定」のメールアドレス。",
+            "key": "field_nt_page_press_press_email",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "cta_email_label",
+            "label": "メールの見出し",
+            "instructions": "例：EMAIL",
+            "key": "field_nt_page_press_cta_email_label",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-press.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1791446400
+}

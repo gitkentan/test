@@ -162,6 +162,51 @@ function nts_form_content( array $d ): string {
 		. "\n\n" . '<!-- wp:snow-monkey-forms/form--complete -->' . "\n" . $complete . "\n" . '<!-- /wp:snow-monkey-forms/form--complete -->';
 }
 
+/**
+ * Import a file from bin/press into the media library once (tracked in the seed map).
+ */
+function nts_media( string $key, string $path, string $title ): int {
+	$map = (array) get_option( 'netelly_seed_map', array() );
+	$id  = (int) ( $map[ 'media:' . $key ] ?? 0 );
+	if ( $id && get_post( $id ) ) {
+		return $id;
+	}
+	require_once ABSPATH . 'wp-admin/includes/file.php';
+	require_once ABSPATH . 'wp-admin/includes/media.php';
+	require_once ABSPATH . 'wp-admin/includes/image.php';
+	$tmp = wp_tempnam( basename( $path ) );
+	copy( $path, $tmp );
+	$id = media_handle_sideload( array( 'name' => basename( $path ), 'tmp_name' => $tmp ), 0, $title );
+	if ( is_wp_error( $id ) ) {
+		WP_CLI::warning( $id->get_error_message() );
+		return 0;
+	}
+	$map[ 'media:' . $key ] = $id;
+	update_option( 'netelly_seed_map', $map, false );
+	return (int) $id;
+}
+
+/**
+ * Press kit media: logo PNGs + a ZIP with SVG / PNG logos.
+ */
+function nts_press_media(): array {
+	$dir = __DIR__ . '/press';
+	$zip = get_temp_dir() . 'netelly-press-kit.zip';
+	if ( class_exists( 'ZipArchive' ) && ! is_file( $zip ) ) {
+		$z = new ZipArchive();
+		$z->open( $zip, ZipArchive::CREATE | ZipArchive::OVERWRITE );
+		foreach ( array_merge( glob( $dir . '/netelly-logo-*.svg' ), glob( $dir . '/netelly-logo-*.png' ) ) as $file ) { // No GLOB_BRACE on musl.
+			$z->addFile( $file, 'netelly-press-kit/logo/' . basename( $file ) );
+		}
+		$z->close();
+	}
+	return array(
+		'black' => nts_media( 'logo-black', $dir . '/netelly-logo-black.png', 'Netelly logo (black)' ),
+		'white' => nts_media( 'logo-white', $dir . '/netelly-logo-white.png', 'Netelly logo (white)' ),
+		'zip'   => is_file( $zip ) ? nts_media( 'press-zip', $zip, 'Netelly press kit' ) : 0,
+	);
+}
+
 /* --------------------------------------------------------------------------
  * 1. Languages (Polylang)
  * ----------------------------------------------------------------------- */
@@ -416,6 +461,18 @@ foreach ( array( 'ja', 'en' ) as $lang ) {
 		foreach ( $groups as $group => $values ) {
 			if ( 'page_contact' === $group ) {
 				$values['form'] = $forms[ $lang ] ?? '';
+			}
+			if ( 'page_press' === $group ) {
+				$ja                 = 'ja' === $lang;
+				$pm                 = nts_press_media();
+				$fmt                = 'PNG / 2400×523';
+				$values['kit_file'] = $pm['zip'];
+				$values['logos']    = array(
+					array( 'name' => $ja ? 'ロゴ（黒）' : 'Logo (black)', 'preview' => $pm['black'], 'file' => $pm['black'], 'format' => $fmt, 'dark' => 0 ),
+					array( 'name' => $ja ? 'ロゴ（白）' : 'Logo (white)', 'preview' => $pm['white'], 'file' => $pm['white'], 'format' => $fmt, 'dark' => 1 ),
+				);
+				$cat                = get_category_by_slug( $ja ? 'press' : 'press-en' );
+				$values['rel_link'] = $cat ? nts_link( $ja ? 'プレスリリース一覧 →' : 'All press releases →', get_category_link( $cat ) ) : '';
 			}
 			nts_fields( $group, $values, $pages[ $key ][ $lang ] );
 		}

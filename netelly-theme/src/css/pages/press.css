@@ -1,0 +1,186 @@
+/*
+ * Press kit (no design comp): built from the site's tokens and components.
+ * Tiles / rows follow the same rules as works cards and tables (1px lines, mono labels).
+ */
+
+/* Boilerplate: text + copy button. */
+.press-boiler__body {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	align-items: flex-start;
+}
+
+.press-boiler__text {
+	white-space: pre-line;
+	max-width: 760px;
+}
+
+.press-boiler__tools {
+	display: flex;
+	gap: 16px;
+	align-items: center;
+	font-family: var(--f-mono);
+	font-size: 12px;
+}
+
+.press-copy {
+	padding: 6px 14px;
+	border: 1px solid var(--ink);
+	border-radius: 0;
+	background: none;
+	font: inherit;
+	letter-spacing: .08em;
+	color: var(--ink);
+	cursor: pointer;
+}
+
+.press-copy__status {
+	color: var(--muted);
+}
+
+/* Logo tiles. */
+.press-assets {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 40px 24px;
+}
+
+.press-asset {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.press-asset__preview {
+	display: grid;
+	place-items: center;
+	aspect-ratio: 3 / 2;
+	padding: 12%;
+	border: 1px solid var(--line);
+	background: var(--paper);
+}
+
+.press-asset.is-dark-bg .press-asset__preview {
+	border-color: var(--black);
+	background: var(--black);
+}
+
+.press-asset__preview img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.press-asset__name {
+	font-size: 15px;
+	font-weight: 700;
+}
+
+.press-asset__dl {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px 16px;
+	align-items: baseline;
+}
+
+.press-dl__note {
+	font-family: var(--f-mono);
+	font-size: 11px;
+	letter-spacing: .06em;
+	color: var(--muted);
+}
+
+/* Executives. */
+.press-people {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 40px 24px;
+}
+
+.press-person {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.press-person__body {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	align-items: flex-start;
+}
+
+.press-person__role {
+	font-family: var(--f-mono);
+	font-size: 11px;
+	letter-spacing: .14em;
+	color: var(--muted);
+}
+
+.press-person__name {
+	font-family: var(--f-head);
+	font-weight: 700;
+	font-size: 20px;
+	line-height: 1.5;
+}
+
+.press-person__name-en {
+	display: block;
+	font-family: var(--f-mono);
+	font-weight: 400;
+	font-size: 11px;
+	letter-spacing: .14em;
+	color: var(--muted);
+}
+
+.press-person__bio {
+	font-size: 14px;
+	line-height: 1.9;
+	color: var(--sub);
+}
+
+/* Guidelines reuse .table--history (numbered rows). */
+.press-guides .table__year {
+	color: var(--muted);
+}
+
+/* Media-contact band: email under the heading. */
+.press-email {
+	display: flex;
+	gap: 16px;
+	align-items: baseline;
+	margin-top: 8px;
+	font-size: 17px;
+}
+
+.press-email__label {
+	font-family: var(--f-mono);
+	font-size: 11px;
+	letter-spacing: .14em;
+	color: var(--muted-dark);
+}
+
+@media (max-width: 1024px) {
+	.press-assets,
+	.press-people {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 768px) {
+	.press-assets {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 32px;
+	}
+
+	.press-people {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 40px;
+	}
+
+	.entry-band__head .press-email {
+		flex-direction: column;
+		gap: 6px;
+	}
+}

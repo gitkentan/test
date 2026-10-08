@@ -40,6 +40,7 @@ $tel   = (string) netelly_opt( 'contact_tel' );
 			$privacy = netelly_find_by_slug( 'page', 'privacy', netelly_lang() );
 			$data    = array(
 				'recruit'        => (string) $f( 'recruit_option' ),
+				'press'          => (string) $f( 'press_option' ),
 				'position'       => (string) $f( 'position_format' ),
 				'privacy-url'    => $privacy ? get_permalink( $privacy ) : '',
 				'privacy-title'  => $privacy ? get_the_title( $privacy ) : '',

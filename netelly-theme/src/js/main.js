@@ -34,4 +34,18 @@ document.querySelectorAll('.share__copy').forEach((btn) => {
 	});
 });
 
+// Press kit: copy a boilerplate text.
+document.querySelectorAll('.press-copy').forEach((btn) => {
+	btn.addEventListener('click', async () => {
+		const text = document.getElementById(btn.dataset.copy)?.textContent || '';
+		const status = btn.parentElement.querySelector('.press-copy__status');
+		try {
+			await navigator.clipboard.writeText(text);
+			if (status) status.textContent = btn.dataset.done;
+		} catch (e) {
+			window.prompt('', text);
+		}
+	});
+});
+
 document.documentElement.classList.add('motion-ready');
