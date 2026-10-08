@@ -243,7 +243,7 @@ function nts_lang_data( string $lang, callable $purl, array $works ): array {
 	$settings = array(
 		// Company / contact.
 		'company_name'       => $L( 'Netelly株式会社', 'Netelly Inc.' ),
-		'meta_description'   => $L( '縦型ショートドラマから映画まで。企画し、制作し、届けるエンターテインメントカンパニー。', 'From vertical short dramas to feature films — an entertainment company that develops, produces and delivers.' ),
+		'meta_description'   => $L( '東京、ニューヨーク、ロサンゼルス。国境を越えて物語を企画し、制作し、届けるグローバル・エンターテインメントカンパニー。', 'Tokyo, New York, Los Angeles — a global entertainment company that develops, produces and delivers stories across borders.' ),
 		'company_address'    => $L( "〒141-0033 東京都品川区西品川1-1-1\n住友不動産大崎ガーデンタワー 9F", "Sumitomo Fudosan Osaki Garden Tower 9F\n1-1-1 Nishi-Shinagawa, Shinagawa-ku, Tokyo" ),
 		'contact_email'      => 'info@netelly.com',
 		'contact_tel'        => '03-4400-1235',
@@ -270,15 +270,15 @@ function nts_lang_data( string $lang, callable $purl, array $works ): array {
 		// Top: hero.
 		'hero_label'         => 'NETELLY INC. · TOKYO / NEW YORK / LOS ANGELES',
 		'hero_copy'          => $L( "まだ誰も見たことのない、\n物語を。", "Stories no one\nhas seen yet." ),
-		'hero_lead'          => $L( '縦型ショートドラマから映画まで。企画し、制作し、届けるエンターテインメントカンパニー。', 'From vertical short dramas to feature films — an entertainment company that develops, produces and delivers.' ),
+		'hero_lead'          => $L( '東京、ニューヨーク、ロサンゼルス。国境を越えて物語を企画し、制作し、届けるグローバル・エンターテインメントカンパニー。', 'Tokyo, New York, Los Angeles — a global entertainment company that develops, produces and delivers stories across borders.' ),
 		'hero_cta1'          => nts_link( $L( 'Netellyについて →', 'About Netelly →' ), $p( 'company' ) ),
 		'hero_cta2'          => nts_link( $L( '作品を見る', 'View works' ), $wurl ),
 		// Top: short drama.
-		'sd_label'           => 'VERTICAL SHORT DRAMA · PIONEER',
-		'sd_heading'         => $L( "縦型ショートドラマを、\nいち早く。", "Vertical short drama,\nahead of the curve." ),
+		'sd_label'           => 'VERTICAL SERIES · FOR THE WORLD',
+		'sd_heading'         => $L( "縦の画面から、\n世界へ。", "From the vertical screen\nto the world." ),
 		'sd_text'            => $L(
-			'Netellyは、スマートフォンの縦画面で観るショートドラマに、国内でいち早く取り組んできた制作会社です。1話数分の尺と縦の画面に合わせた脚本・撮影・編集のノウハウを、作品づくりの中で積み上げています。',
-			'Netelly is a production company that was among the first in Japan to take on short dramas made for the vertical smartphone screen. Work by work, we keep building know-how in writing, shooting and editing for a few minutes per episode and a vertical frame.'
+			'スマートフォンの縦画面で観るショートドラマを、世界の視聴者に向けて企画・制作しています。数分の尺と縦のフレームに合わせた脚本・撮影・編集で、言語や国を越えて届く物語をつくります。',
+			'We develop and produce short dramas for the vertical smartphone screen, made for audiences around the world. With writing, shooting and editing built for a few minutes and a vertical frame, we tell stories that travel across languages and borders.'
 		),
 		'sd_links'           => array(
 			array( 'link' => nts_link( $L( 'ショートドラマを見る →', 'Watch short dramas →' ), $wurl ) ),
@@ -306,7 +306,7 @@ function nts_lang_data( string $lang, callable $purl, array $works ): array {
 			'Netelly brings four functions — creating, delivering, connecting and supporting — together in one organization, and keeps them in motion so that talent and new work keep emerging.'
 		),
 		'biz_items'          => array(
-			array( 'num' => 'I', 'en' => 'CREATIVE', 'title' => $L( '制作', 'Production' ), 'text' => $L( '縦型ショートドラマ、ドラマ・映画を企画し、制作する。', 'We develop and produce vertical short dramas, series and films.' ), 'image' => '', 'link' => nts_link( 'CREATIVE', $p( 'business', '#creative' ) ), 'is_fund' => 0 ),
+			array( 'num' => 'I', 'en' => 'CREATIVE', 'title' => $L( '制作', 'Production' ), 'text' => $L( 'ドラマ・映画・ショートドラマを、世界に向けて企画し、制作する。', 'We develop and produce series, films and short dramas for the world.' ), 'image' => '', 'link' => nts_link( 'CREATIVE', $p( 'business', '#creative' ) ), 'is_fund' => 0 ),
 			array( 'num' => 'II', 'en' => 'MEDIA', 'title' => $L( '配給・メディア', 'Distribution & Media' ), 'text' => $L( '劇場・配信・YouTubeへ作品を届ける。', 'We bring our work to theaters, streaming and YouTube.' ), 'image' => '', 'link' => nts_link( 'MEDIA', $p( 'business', '#media' ) ), 'is_fund' => 0 ),
 			array( 'num' => 'III', 'en' => 'COMMUNITY', 'title' => $L( 'コミュニティ', 'Community' ), 'text' => $L( 'つくり手が出会い、次の企画が生まれる場。', 'A place where creators meet and new projects begin.' ), 'image' => '', 'link' => nts_link( 'COMMUNITY', $p( 'business', '#community' ) ), 'is_fund' => 0 ),
 			array( 'num' => 'IV', 'en' => 'CREATORS FUND', 'title' => $L( 'クリエイターズファンド', 'Creators Fund' ), 'text' => $L( '監督・脚本家・プランナーの企画に出資する。', 'We invest in projects by directors, writers and planners.' ), 'image' => '', 'link' => '', 'is_fund' => 1 ),
@@ -366,8 +366,8 @@ function nts_lang_data( string $lang, callable $purl, array $works ): array {
 				'mission_heading' => $L( "エンタメで、\n新しい価値を生み出す。", "Creating new value\nthrough entertainment." ),
 				'mission_sub'     => 'NEW ENTERTAINMENT, NEW VALUE.',
 				'mission_text'    => $L(
-					'Netellyは、縦型ショートドラマにいち早く取り組んできたエンターテインメント企業です。ショートドラマからドラマ・映画・コメディまでを自社で企画・制作し、配信やYouTube、SNS、劇場へ届けています。2019年の創業以来、オリジナル作品だけをつくり続けてきました。',
-					'Netelly is an entertainment company that was among the first to take on vertical short dramas. We develop and produce everything in-house — from short dramas to series, films and comedy — and deliver it through streaming, YouTube, social media and theaters. Since our founding in 2019, we have made nothing but original work.'
+					'Netellyは、国や言語を越えて届く物語をつくるグローバル・エンターテインメント企業です。ショートドラマからドラマ・映画・コメディまでを自社で企画・制作し、配信やYouTube、SNS、劇場へ届けています。2019年の創業以来、オリジナル作品だけをつくり続けてきました。',
+					'Netelly is a global entertainment company creating stories that travel across countries and languages. We develop and produce everything in-house — from short dramas to series, films and comedy — and deliver it through streaming, YouTube, social media and theaters. Since our founding in 2019, we have made nothing but original work.'
 				),
 				'vision_label'    => 'VISION',
 				'vision_heading'  => $L( '文化を、アップデートする。', 'Updating culture.' ),
