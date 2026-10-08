@@ -61,7 +61,7 @@ export function initMenu() {
 	menu.addEventListener('click', (e) => {
 		if (e.target.closest('a')) close({ restoreFocus: false });
 	});
-	window.matchMedia('(min-width: 1281px)').addEventListener('change', (mq) => {
+	window.matchMedia('(min-width: 1101px)').addEventListener('change', (mq) => {
 		if (mq.matches && !menu.hidden) close({ restoreFocus: false });
 	});
 }

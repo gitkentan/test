@@ -351,8 +351,8 @@ function nts_lang_data( string $lang, callable $purl, array $works ): array {
 			array( 'year' => '2026', 'text' => $L( '新作オリジナルシリーズの制作を開始', 'Began production of a new original series' ) ),
 		),
 		// Works archive.
-		'wa_en_title'        => 'WORKS',
-		'wa_title'           => $L( '作品', 'Works' ),
+		'wa_en_title'        => 'ORIGINALS',
+		'wa_title'           => $L( 'オリジナル作品', 'Originals' ),
 		'wa_featured'        => $works['more-than-friends'][ $lang ],
 		'wa_cta_label'       => $L( 'NETELLY CREATORS FUND · 常時募集', 'NETELLY CREATORS FUND · OPEN CALL' ),
 		'wa_cta_heading'     => $L( '次の作品は、あなたの企画から。', 'Our next work starts with your idea.' ),
@@ -557,8 +557,6 @@ function nts_menus( string $lang, callable $purl, array $works ): array {
 		'primary' => array(
 			array( 'COMPANY', $p( 'company' ) ),
 			array( 'BUSINESS', $p( 'business' ) ),
-			array( 'WORKS', $wurl ),
-			array( 'CREATORS FUND', $fund ),
 			array( 'NEWS', $p( 'news' ) ),
 			array( 'CAREERS', $p( 'careers' ) ),
 		),
@@ -584,10 +582,10 @@ function nts_menus( string $lang, callable $purl, array $works ): array {
 				),
 			),
 			array(
-				$L( '作品', 'Works' ),
+				$L( '作品', 'Originals' ),
 				'#',
 				array(
-					array( $L( '作品一覧', 'All works' ), $wurl ),
+					array( $L( '作品一覧', 'All originals' ), $wurl ),
 					array( $L( '友達以上、恋人未満', 'More Than Friends, Less Than Lovers' ), get_permalink( $works['more-than-friends'][ $lang ] ) ),
 				),
 			),
