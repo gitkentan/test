@@ -269,16 +269,16 @@ function nts_lang_data( string $lang, callable $purl, array $works ): array {
 		'cb_button'          => nts_link( $L( '募集職種を見る →', 'View open positions →' ), $p( 'careers', '#positions' ) ),
 		// Top: hero.
 		'hero_label'         => 'NETELLY INC. · TOKYO / NEW YORK / LOS ANGELES',
-		'hero_copy'          => $L( "まだ誰も見たことのない、\n物語を。", "Stories no one\nhas seen yet." ),
-		'hero_lead'          => $L( '東京、ニューヨーク、ロサンゼルス。国境を越えて物語を企画し、制作し、届けるグローバル・エンターテインメントカンパニー。', 'Tokyo, New York, Los Angeles — a global entertainment company that develops, produces and delivers stories across borders.' ),
+		'hero_copy'          => $L( "世界が、次に\n夢中になるものを。", "What the world\nfalls for next." ),
+		'hero_lead'          => $L( '東京・ニューヨーク・ロサンゼルス発、グローバル・エンターテインメントカンパニー。', 'A global entertainment company from Tokyo, New York and Los Angeles.' ),
 		'hero_cta1'          => nts_link( $L( 'Netellyについて →', 'About Netelly →' ), $p( 'company' ) ),
 		'hero_cta2'          => nts_link( $L( '作品を見る', 'View works' ), $wurl ),
 		// Top: short drama.
-		'sd_label'           => 'VERTICAL SERIES · FOR THE WORLD',
-		'sd_heading'         => $L( "縦の画面から、\n世界へ。", "From the vertical screen\nto the world." ),
+		'sd_label'           => 'VERTICAL SHORT DRAMA',
+		'sd_heading'         => $L( "流行る前から、\nつくっていた。", "Before it was a trend,\nwe were making it." ),
 		'sd_text'            => $L(
-			'スマートフォンの縦画面で観るショートドラマを、世界の視聴者に向けて企画・制作しています。数分の尺と縦のフレームに合わせた脚本・撮影・編集で、言語や国を越えて届く物語をつくります。',
-			'We develop and produce short dramas for the vertical smartphone screen, made for audiences around the world. With writing, shooting and editing built for a few minutes and a vertical frame, we tell stories that travel across languages and borders.'
+			'いまや当たり前になった、スマートフォンの縦画面で観るショートドラマ。Netellyは、それがブームになる前からこのフォーマットを手がけてきました。',
+			'Vertical short dramas for the smartphone are everywhere now. Netelly was making them before they became a trend.'
 		),
 		'sd_links'           => array(
 			array( 'link' => nts_link( $L( 'ショートドラマを見る →', 'Watch short dramas →' ), $wurl ) ),
