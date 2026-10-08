@@ -43,3 +43,7 @@
 .arrow {
 	display: inline-block;
 }
+
+.nowrap {
+	white-space: nowrap;
+}

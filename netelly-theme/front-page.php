@@ -46,8 +46,12 @@ $latest = get_posts(
 		<div class="hero__body">
 			<div class="hero__text">
 				<p class="hero__label"><span class="mask"><span><?php echo esc_html( (string) netelly_opt( 'hero_label' ) ); ?></span></span></p>
-				<h1 class="hero__copy" id="hero-title"><?php echo netelly_br( (string) netelly_opt( 'hero_copy' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?></h1>
-				<p class="hero__lead"><?php echo esc_html( (string) netelly_opt( 'hero_lead' ) ); ?></p>
+				<h1 class="hero__copy" id="hero-title">
+					<?php foreach ( preg_split( '/\R/', (string) netelly_opt( 'hero_copy' ) ) as $line ) : ?>
+						<span class="mask hero__line-text"><span><?php echo esc_html( $line ); ?></span></span>
+					<?php endforeach; ?>
+				</h1>
+				<p class="hero__lead"><span class="mask"><span><?php echo esc_html( (string) netelly_opt( 'hero_lead' ) ); ?></span></span></p>
 			</div>
 			<div class="btn-group hero__cta">
 				<?php echo netelly_link_button( netelly_opt( 'hero_cta1' ), 'primary' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>

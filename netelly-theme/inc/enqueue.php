@@ -61,3 +61,20 @@ add_action(
 		remove_action( 'wp_footer', 'wp_enqueue_global_styles', 1 );
 	}
 );
+
+/*
+ * Inline head script (runs before first paint):
+ * - html.js            : CSS may hide reveal targets until motion.js shows them.
+ * - html.intro(-full|-short) on the top page (README 1): full sequence once per
+ *   session (sessionStorage "netelly_intro_seen"), shortened afterwards.
+ * Nothing is hidden when the visitor prefers reduced motion.
+ */
+add_action(
+	'wp_head',
+	static function () {
+		$front = is_front_page() ? 'true' : 'false';
+		$js    = "(function(d){var h=d.documentElement;h.classList.add('js');setTimeout(function(){if(!h.classList.contains('motion-ready')){h.classList.remove('js','intro','intro-full','intro-short');}},3000);try{if(matchMedia('(prefers-reduced-motion: reduce)').matches){h.classList.add('reduced');return;}if({$front}){h.classList.add('intro',sessionStorage.getItem('netelly_intro_seen')?'intro-short':'intro-full');}}catch(e){}})(document);";
+		echo '<script>' . $js . '</script>' . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput
+	},
+	1
+);

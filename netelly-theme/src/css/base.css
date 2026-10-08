@@ -5,6 +5,24 @@
 	box-sizing: border-box;
 }
 
+html {
+	scroll-padding-top: 88px;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+	height: auto;
+}
+
+.lenis.lenis-smooth {
+	scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+	overflow: clip;
+}
+
 html,
 body {
 	margin: 0;
@@ -93,4 +111,10 @@ ol {
 	padding: 12px 16px;
 	background: var(--ink);
 	color: var(--paper);
+}
+
+@media (max-width: 768px) {
+	html {
+		scroll-padding-top: 64px;
+	}
 }

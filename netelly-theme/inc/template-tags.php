@@ -176,14 +176,19 @@ function netelly_menu( string $location ): array {
  * @param string $class Link class.
  */
 function netelly_menu_link( array $item, string $class = '' ): string {
+	$title = esc_html( $item['title'] );
+	if ( $item['external'] ) {
+		// Keep the last character and ↗ together so the arrow never wraps alone.
+		$last  = mb_substr( $item['title'], -1 );
+		$title = esc_html( mb_substr( $item['title'], 0, -1 ) ) . '<span class="nowrap">' . esc_html( $last ) . ' <span class="ext" aria-hidden="true">↗</span></span>';
+	}
 	return sprintf(
-		'<a class="%1$s%2$s"%3$s%4$s>%5$s%6$s%7$s</a>',
+		'<a class="%1$s%2$s"%3$s%4$s>%5$s%6$s</a>',
 		esc_attr( $class ),
 		$item['current'] ? ' is-current' : '',
 		netelly_link_attrs( $item['url'], $item['external'] ),
 		$item['current'] ? ' aria-current="page"' : '',
-		esc_html( $item['title'] ),
-		$item['external'] ? '&nbsp;<span class="ext" aria-hidden="true">↗</span>' : '', // nbsp: the arrow never wraps alone.
+		$title,
 		$item['external'] ? '<span class="screen-reader-text">' . esc_html( netelly_t( 'new_tab' ) ) . '</span>' : ''
 	);
 }

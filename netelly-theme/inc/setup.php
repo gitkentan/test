@@ -58,3 +58,14 @@ add_filter(
 		return $parts;
 	}
 );
+
+// Body classes used by header.js / motion.css.
+add_filter(
+	'body_class',
+	static function ( $classes ) {
+		if ( is_singular( 'work' ) ) {
+			$classes[] = 'page-is-dark';
+		}
+		return $classes;
+	}
+);
