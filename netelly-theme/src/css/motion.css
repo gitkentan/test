@@ -312,12 +312,14 @@ body.is-menu-open .site-header .site-header__cta {
 
 	/* Cards: image scales to 1.04 (900ms), title underlined, meta unchanged. */
 	.card .media__img,
-	.featured-work .media__img {
+	.featured-work .media__img,
+	.work-row .media__img {
 		transition: transform var(--t-slow) var(--ease-out);
 	}
 
 	.card:hover .media.is-in .media__img,
 	.featured-work:hover .media.is-in .media__img,
+	.work-row:hover .media.is-in .media__img,
 	.card:hover .media:not(.is-in) .media__img {
 		transform: scale(1.04);
 	}
@@ -326,7 +328,8 @@ body.is-menu-open .site-header .site-header__cta {
 	.card-episode__title,
 	.card-biz__title,
 	.episode__title,
-	.featured-work__title {
+	.featured-work__title,
+	.work-row__title {
 		text-decoration: underline;
 		text-decoration-color: transparent;
 		text-decoration-thickness: 1px;
@@ -338,7 +341,8 @@ body.is-menu-open .site-header .site-header__cta {
 	.card:hover .card-episode__title,
 	.card:hover .card-biz__title,
 	.card:hover .episode__title,
-	.featured-work:hover .featured-work__title {
+	.featured-work:hover .featured-work__title,
+	.work-row:hover .work-row__title {
 		text-decoration-color: currentColor;
 	}
 
@@ -390,7 +394,8 @@ body.is-menu-open .site-header .site-header__cta {
 	}
 
 	.btn:hover .arrow,
-	.text-link:hover .arrow {
+	.text-link:hover .arrow,
+	.work-row:hover .work-row__link .arrow {
 		transform: translateX(4px);
 	}
 
