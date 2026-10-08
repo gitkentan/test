@@ -19,7 +19,7 @@ defined( 'ABSPATH' ) || exit;
 function netelly_strings(): array {
 	return array(
 		// Header / navigation.
-		'header_contact'   => array( 'お問い合わせ', 'Contact' ),
+		'header_contact'   => array( 'CONTACT', 'CONTACT' ),
 		'skip'             => array( '本文へスキップ', 'Skip to content' ),
 		'nav_label'        => array( 'メインメニュー', 'Main menu' ),
 		'menu_open'        => array( 'メニューを開く', 'Open menu' ),

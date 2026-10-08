@@ -37,6 +37,21 @@
 }
 
 
+.sp-menu__link.is-latin {
+	font-family: var(--f-en);
+	font-stretch: 125%;
+	font-size: 24px;
+	font-weight: 600;
+	letter-spacing: .04em;
+}
+
+.sp-menu__cta.is-latin {
+	font-family: var(--f-en);
+	font-stretch: 125%;
+	font-weight: 600;
+	letter-spacing: .16em;
+}
+
 .sp-menu__link.is-current {
 	border-bottom: 1px solid currentColor;
 }

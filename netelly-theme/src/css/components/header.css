@@ -47,6 +47,16 @@
 }
 
 /* Current page: 1px underline (border-bottom in the design). */
+/* English labels: Archivo wide caps, like the other English labels (SNS bar, business cards). */
+.site-nav__link.is-latin,
+.site-header__cta.is-latin {
+	font-family: var(--f-en);
+	font-stretch: 125%;
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: .16em;
+}
+
 .site-nav__link.is-current {
 	border-bottom: 1px solid currentColor;
 }
@@ -124,7 +134,19 @@
 }
 
 /* The full nav needs ~1080px; below that the PC header keeps its size and uses the menu toggle. */
-@media (max-width: 1100px) {
+/* Narrow desktops: tighter English nav so it fits between the logo and the tools. */
+@media (max-width: 1439px) {
+	.site-nav__list {
+		gap: 24px;
+	}
+
+	.site-nav__link.is-latin {
+		font-size: 11px;
+		letter-spacing: .12em;
+	}
+}
+
+@media (max-width: 1280px) {
 	.site-nav,
 	.site-header__cta {
 		display: none;

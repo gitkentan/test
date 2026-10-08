@@ -553,13 +553,14 @@ function nts_menus( string $lang, callable $purl, array $works ): array {
 	$fund = '#creators-fund';
 
 	return array(
+		// Header / SP menu: English labels on both languages (set in Archivo, see header.css).
 		'primary' => array(
-			array( $L( '企業情報', 'Company' ), $p( 'company' ) ),
-			array( $L( '事業', 'Business' ), $p( 'business' ) ),
-			array( $L( '作品', 'Works' ), $wurl ),
-			array( $L( 'クリエイターズファンド', 'Creators Fund' ), $fund ),
-			array( $L( 'ニュース', 'News' ), $p( 'news' ) ),
-			array( $L( '採用', 'Careers' ), $p( 'careers' ) ),
+			array( 'COMPANY', $p( 'company' ) ),
+			array( 'BUSINESS', $p( 'business' ) ),
+			array( 'WORKS', $wurl ),
+			array( 'CREATORS FUND', $fund ),
+			array( 'NEWS', $p( 'news' ) ),
+			array( 'CAREERS', $p( 'careers' ) ),
 		),
 		'footer'  => array(
 			array(

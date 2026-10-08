@@ -28,7 +28,7 @@ $contact = netelly_page_url( 'contact' );
 
 		<div class="site-header__tools">
 			<?php echo netelly_lang_switch(); // phpcs:ignore WordPress.Security.EscapeOutput ?>
-			<a class="site-header__cta" href="<?php echo esc_url( $contact ); ?>"><?php echo esc_html( netelly_t( 'header_contact' ) ); ?></a>
+			<a class="site-header__cta<?php echo netelly_is_latin( netelly_t( 'header_contact' ) ) ? ' is-latin' : ''; ?>" href="<?php echo esc_url( $contact ); ?>"><?php echo esc_html( netelly_t( 'header_contact' ) ); ?></a>
 			<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="sp-menu" data-label-open="<?php echo esc_attr( netelly_t( 'menu_open' ) ); ?>" data-label-close="<?php echo esc_attr( netelly_t( 'menu_close' ) ); ?>">
 				<span class="screen-reader-text"><?php echo esc_html( netelly_t( 'menu_open' ) ); ?></span>
 				<span class="menu-toggle__line menu-toggle__line--1" aria-hidden="true"></span>
@@ -50,7 +50,7 @@ $contact = netelly_page_url( 'contact' );
 			</nav>
 		<?php endif; ?>
 		<div class="sp-menu__foot">
-			<?php echo netelly_button( netelly_t( 'header_contact' ), $contact, 'primary', array( 'class' => 'sp-menu__cta' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+			<?php echo netelly_button( netelly_t( 'header_contact' ), $contact, 'primary', array( 'class' => 'sp-menu__cta' . ( netelly_is_latin( netelly_t( 'header_contact' ) ) ? ' is-latin' : '' ) ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 			<ul class="sp-menu__sns">
 				<?php foreach ( netelly_socials() as $sns ) : ?>
 					<li><a href="<?php echo esc_url( $sns['url'] ); ?>" target="_blank" rel="noopener"><?php echo esc_html( $sns['label'] ); ?> <span class="ext" aria-hidden="true">↗</span><span class="screen-reader-text"><?php echo esc_html( netelly_t( 'new_tab' ) ); ?></span></a></li>
