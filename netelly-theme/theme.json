@@ -1,0 +1,29 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"settings": {
+		"appearanceTools": false,
+		"color": {
+			"custom": false,
+			"customGradient": false,
+			"defaultPalette": false,
+			"defaultGradients": false,
+			"palette": [
+				{ "slug": "ink", "color": "#121211", "name": "Ink" },
+				{ "slug": "paper", "color": "#fbfaf7", "name": "Paper" },
+				{ "slug": "cream", "color": "#f4f3ef", "name": "Cream" },
+				{ "slug": "black", "color": "#0b0b0a", "name": "Black" },
+				{ "slug": "muted", "color": "#6e6d69", "name": "Muted" }
+			]
+		},
+		"typography": {
+			"customFontSize": false,
+			"dropCap": false,
+			"fontFamilies": [
+				{ "slug": "jp", "name": "Zen Kaku Gothic New", "fontFamily": "'Zen Kaku Gothic New', sans-serif" },
+				{ "slug": "en", "name": "Archivo", "fontFamily": "'Archivo', sans-serif" },
+				{ "slug": "mono", "name": "IBM Plex Mono", "fontFamily": "'IBM Plex Mono', monospace" }
+			]
+		}
+	}
+}

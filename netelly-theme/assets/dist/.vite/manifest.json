@@ -1,0 +1,17 @@
+{
+  "css/main.css": {
+    "file": "assets/style-CdGjkL2n.css",
+    "src": "css/main.css",
+    "isEntry": true,
+    "name": "style",
+    "names": [
+      "style.css"
+    ]
+  },
+  "js/main.js": {
+    "file": "assets/main-D4XfaV74.js",
+    "name": "main",
+    "src": "js/main.js",
+    "isEntry": true
+  }
+}

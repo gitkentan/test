@@ -1,0 +1,12 @@
+/* Stage-1 check page only (index.php). Removed once real templates land. */
+.specimen { padding: 80px var(--pad-x); }
+.specimen h1 { font-family: var(--f-en); font-stretch: 125%; font-weight: 600; font-size: 88px; line-height: 1; letter-spacing: .02em; }
+.specimen .row { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 24px; padding: 20px 0; border-top: 1px solid var(--line); }
+.specimen .label { font-family: var(--f-mono); font-size: 12px; letter-spacing: .14em; color: var(--muted); }
+.specimen .swatches { display: flex; flex-wrap: wrap; gap: 12px; }
+.specimen .sw { width: 120px; font-family: var(--f-mono); font-size: 11px; letter-spacing: .1em; }
+.specimen .sw i { display: block; height: 64px; border: 1px solid var(--line); margin-bottom: 6px; }
+@media (max-width: 768px) {
+	.specimen h1 { font-size: 40px; }
+	.specimen .row { grid-template-columns: 1fr; gap: 8px; }
+}

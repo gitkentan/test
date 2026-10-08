@@ -1,0 +1,42 @@
+/* Design tokens — values from README "Design Tokens" / "Interactions & Motion". */
+:root {
+	--ink: #121211;
+	--paper: #fbfaf7;
+	--cream: #f4f3ef;
+	--black: #0b0b0a;
+	--line: #d8d6d0;
+	--line-dark: #2c2c2a;
+	--sub: #3a3936;
+	--sub-dark: #c9c6bf;
+	--muted: #6e6d69;
+	--muted-dark: #8c8b86;
+
+	--f-jp: 'Zen Kaku Gothic New', sans-serif;
+	--f-en: 'Archivo', sans-serif;
+	--f-mono: 'IBM Plex Mono', monospace;
+	/* Body face: JP pages use Zen Kaku; EN pages switch to Archivo at 100% width. */
+	--f-body: var(--f-jp);
+	--stretch-body: 100%;
+
+	--pad-x: 64px;
+	--sec: 140px;
+	--sec-head: 48px;
+
+	--ease-out: cubic-bezier(.16, 1, .3, 1);
+	--ease-io: cubic-bezier(.65, 0, .35, 1);
+	--t-fast: 180ms;
+	--t-base: 420ms;
+	--t-slow: 900ms;
+}
+
+:root:lang(en) {
+	--f-body: var(--f-en);
+}
+
+@media (max-width: 768px) {
+	:root {
+		--pad-x: 20px;
+		--sec: 72px;
+		--sec-head: 32px;
+	}
+}

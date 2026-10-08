@@ -1,0 +1,20 @@
+{
+  "name": "netelly-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "env:start": "wp-env start",
+    "env:stop": "wp-env stop",
+    "env:clean": "wp-env clean all",
+    "dev": "vite build --watch --mode development",
+    "build": "vite build",
+    "seed": "wp-env run cli bash wp-content/themes/netelly-theme/bin/seed.sh"
+  },
+  "devDependencies": {
+    "@wordpress/env": "^10",
+    "vite": "^7"
+  },
+  "dependencies": {
+    "lenis": "^1"
+  }
+}
