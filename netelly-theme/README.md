@@ -31,7 +31,8 @@ npm run dev     # 監視ビルド
 | `src/css/tokens.css` | デザイントークン（README の値そのまま。SP ≤768px で `--pad-x`/`--sec` を切替） |
 | `src/css/base.css` | ベース（デザインのグローバルスタイル＋フォーカスリング） |
 | `assets/fonts/` | 自前ホストの Google Fonts（Zen Kaku Gothic New / Archivo / IBM Plex Mono。unicode-range 分割の woff2） |
-| `assets/netelly-*.svg` | 支給ロゴ（原本）。`assets/images/*.min.svg` はインライン用にメタデータを除いた版 |
+| `assets/netelly-wordmark.svg` | サイトのロゴ（Archivo 字幅125%・600・字間.02em をアウトライン化。`tools/build-wordmark.py` で再生成） |
+| `assets/netelly-logo.svg` / `netelly-l-mark.svg` | 支給ロゴ（原本、ロゴとしては未使用）／L字マーク。`assets/images/*.min.svg` はインライン用 |
 | `inc/` | PHP（setup / enqueue / helpers …） |
 
 ## 多言語（Polylang 無料版）

@@ -115,8 +115,9 @@ function netelly_text_link( $link, string $class = '' ): string {
  * @param string $class CSS class.
  */
 function netelly_logo( string $class = '' ): string {
+	// Archivo 125% / 600 wordmark (client decision; tools/build-wordmark.py). The supplied italic SVG stays in assets/.
 	return netelly_svg(
-		'netelly-logo',
+		'netelly-wordmark',
 		array(
 			'class'       => $class,
 			'role'        => 'img',
