@@ -1,0 +1,957 @@
+/* Company / message / business (design #p02–#p04). */
+
+/* ----- Statement: mono label column + heading/body column (4fr 8fr) ----- */
+.statement {
+	display: grid;
+	grid-template-columns: 4fr 8fr;
+	gap: 64px;
+}
+
+.statement--ruled {
+	border-top: 1px solid var(--line);
+	padding-top: 56px;
+}
+
+.statement__label {
+	font-family: var(--f-mono);
+	font-size: 12px;
+	letter-spacing: .14em;
+	color: var(--muted);
+}
+
+.statement__body {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	align-items: flex-start;
+}
+
+.statement__heading {
+	font-family: var(--f-head);
+	font-weight: 700;
+	font-size: 40px;
+	line-height: 1.4;
+}
+
+.statement__heading--xl {
+	font-size: 56px;
+}
+
+.statement__heading--intro {
+	font-size: 36px;
+	line-height: 1.6;
+}
+
+.statement__sub {
+	font-family: var(--f-en);
+	font-stretch: 125%;
+	font-size: 13px;
+	font-weight: 500;
+	letter-spacing: .3em;
+}
+
+.statement__text {
+	font-size: 16px;
+	line-height: 2;
+	color: var(--sub);
+	max-width: 640px;
+	text-wrap: pretty;
+}
+
+/* ----- Table (profile / history) ----- */
+.table {
+	display: flex;
+	flex-direction: column;
+	border-top: 1px solid var(--ink);
+}
+
+.table__row {
+	display: grid;
+	grid-template-columns: 220px minmax(0, 1fr);
+	gap: 24px;
+	padding: 22px 0;
+	border-bottom: 1px solid var(--line);
+}
+
+.table__label {
+	font-size: 14px;
+	color: var(--muted);
+}
+
+.table__value {
+	font-size: 16px;
+	line-height: 1.8;
+}
+
+.table--history .table__row {
+	padding: 24px 0;
+	align-items: baseline;
+}
+
+.table__year {
+	font-family: var(--f-mono);
+	font-size: 15px;
+}
+
+/* ----- Access ----- */
+.access {
+	display: grid;
+	grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+	gap: 48px;
+	align-items: end;
+}
+
+.access__text {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	align-items: flex-start;
+}
+
+.access__name {
+	font-size: 19px;
+	font-weight: 700;
+}
+
+.access__address {
+	font-size: 15px;
+	line-height: 1.9;
+	color: var(--sub);
+}
+
+/* ----- CEO message ----- */
+.message {
+	display: grid;
+	grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+	gap: 80px;
+	align-items: start;
+}
+
+.message__photo {
+	position: sticky;
+	top: 128px;
+}
+
+.message__text {
+	display: flex;
+	flex-direction: column;
+	gap: 36px;
+}
+
+.message__label {
+	font-family: var(--f-mono);
+	font-size: 12px;
+	letter-spacing: .14em;
+	color: var(--muted);
+}
+
+.message__heading {
+	font-family: var(--f-head);
+	font-weight: 700;
+	font-size: 52px;
+	line-height: 1.45;
+}
+
+.message__body {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.message__body p {
+	font-size: 16px;
+	line-height: 2;
+	color: var(--sub);
+	max-width: 640px;
+	text-wrap: pretty;
+}
+
+.message__sign {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	border-top: 1px solid var(--ink);
+	padding-top: 20px;
+}
+
+.message__role {
+	font-size: 13px;
+	color: var(--muted);
+}
+
+.message__name {
+	font-size: 24px;
+	font-weight: 700;
+	letter-spacing: .14em;
+}
+
+.message__name-en {
+	font-family: var(--f-en);
+	font-stretch: 125%;
+	font-size: 10px;
+	font-weight: 500;
+	letter-spacing: .3em;
+	color: var(--muted);
+}
+
+/* ----- Business rows ----- */
+.biz-rows {
+	padding: 0 var(--pad-x);
+}
+
+/* Each business is its own block in the design: 100px (SP 56px) above every row. */
+.biz-rows .biz-row {
+	margin-top: 100px;
+}
+
+.biz-row {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	gap: 80px;
+	align-items: center;
+	border-top: 1px solid var(--ink);
+	padding-top: 56px;
+	scroll-margin-top: 88px;
+}
+
+.biz-row.is-reverse .biz-row__media {
+	order: 2;
+}
+
+.biz-row__text {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	align-items: flex-start;
+}
+
+.biz-row__num {
+	font-family: var(--f-mono);
+	font-size: 15px;
+	color: var(--muted);
+}
+
+.biz-row__en {
+	font-family: var(--f-en);
+	font-stretch: 125%;
+	font-size: 40px;
+	font-weight: 600;
+	letter-spacing: .06em;
+	line-height: 1;
+}
+
+.biz-row__title {
+	font-family: var(--f-head);
+	font-weight: 700;
+	font-size: 22px;
+}
+
+.biz-row__body {
+	font-size: 16px;
+	line-height: 2;
+	color: var(--sub);
+	max-width: 560px;
+	text-wrap: pretty;
+}
+
+.biz-row__note {
+	font-size: 13.5px;
+	color: var(--muted);
+}
+
+.biz-row__link {
+	margin-top: 8px;
+}
+
+/* ----- Creators Fund band (cream, horizon at 60%) ----- */
+.fund-cta {
+	margin-top: var(--sec);
+	background: var(--cream);
+	color: var(--ink);
+	position: relative;
+	height: 560px;
+}
+
+.fund-cta__upper {
+	position: absolute;
+	left: 120px;
+	right: 120px;
+	bottom: 40%;
+	padding-bottom: 40px;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	gap: 24px;
+}
+
+.fund-cta__head {
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+}
+
+.fund-cta__label {
+	font-family: var(--f-mono);
+	font-size: 12px;
+	letter-spacing: .14em;
+	color: var(--muted);
+}
+
+.fund-cta__heading {
+	font-family: var(--f-head);
+	font-weight: 700;
+	font-size: 52px;
+	line-height: 1.35;
+}
+
+.fund-cta__mark {
+	height: 110px;
+	width: auto;
+	flex: none;
+}
+
+.fund-cta__line {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 60%;
+	height: 1px;
+	background: var(--ink);
+}
+
+.fund-cta__lower {
+	position: absolute;
+	left: 120px;
+	right: 120px;
+	top: calc(60% + 32px);
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 48px;
+}
+
+.fund-cta__text {
+	font-size: 16px;
+	line-height: 1.9;
+	max-width: 560px;
+}
+
+.fund-cta__buttons {
+	flex: none;
+	flex-wrap: nowrap;
+}
+
+@media (max-width: 768px) {
+	.statement {
+		grid-template-columns: 1fr;
+		gap: 16px;
+	}
+
+	.statement--ruled {
+		padding-top: 32px;
+	}
+
+	.statement__label {
+		font-size: 11px;
+	}
+
+	.statement__body {
+		gap: 16px;
+	}
+
+	.statement__heading {
+		font-size: 26px;
+	}
+
+	.statement__heading--xl {
+		font-size: 30px;
+	}
+
+	.statement__heading--intro {
+		font-size: 24px;
+	}
+
+	.statement__sub {
+		font-size: 10px;
+	}
+
+	.statement__text {
+		font-size: 15px;
+	}
+
+	.table__row {
+		grid-template-columns: 1fr;
+		gap: 4px;
+		padding: 16px 0;
+	}
+
+	.table__value {
+		font-size: 15px;
+	}
+
+	.table--history .table__row {
+		grid-template-columns: 80px minmax(0, 1fr);
+		gap: 12px;
+		padding: 18px 0;
+	}
+
+	.table--history .table__value {
+		font-size: 14.5px;
+	}
+
+	.table__year {
+		font-size: 13px;
+	}
+
+	.access {
+		grid-template-columns: 1fr;
+		gap: 24px;
+	}
+
+	.access__name {
+		font-size: 17px;
+	}
+
+	.message {
+		grid-template-columns: 1fr;
+		gap: 32px;
+	}
+
+	.message__photo {
+		position: static;
+	}
+
+	.message__text {
+		gap: 24px;
+	}
+
+	.message__label {
+		font-size: 11px;
+	}
+
+	.message__heading {
+		font-size: 30px;
+	}
+
+	.message__body {
+		gap: 20px;
+	}
+
+	.message__body p {
+		font-size: 15px;
+	}
+
+	.message__name {
+		font-size: 20px;
+	}
+
+	.biz-rows .biz-row {
+		margin-top: 56px;
+	}
+
+	.biz-row {
+		grid-template-columns: 1fr;
+		gap: 24px;
+		padding-top: 32px;
+		scroll-margin-top: 64px;
+	}
+
+	.biz-row.is-reverse .biz-row__media {
+		order: 0;
+	}
+
+	.biz-row__text {
+		gap: 14px;
+	}
+
+	.biz-row__num {
+		font-size: 13px;
+	}
+
+	.biz-row__en {
+		font-size: 24px;
+	}
+
+	.biz-row__title {
+		font-size: 18px;
+	}
+
+	.biz-row__body {
+		font-size: 15px;
+	}
+
+	.fund-cta {
+		height: 520px;
+	}
+
+	.fund-cta__upper {
+		left: var(--pad-x);
+		right: var(--pad-x);
+		bottom: 52%;
+		padding-bottom: 24px;
+	}
+
+	.fund-cta__head {
+		gap: 12px;
+	}
+
+	.fund-cta__label {
+		font-size: 10px;
+	}
+
+	.fund-cta__heading {
+		font-size: 28px;
+	}
+
+	.fund-cta__mark {
+		display: none;
+	}
+
+	.fund-cta__line {
+		top: 48%;
+	}
+
+	.fund-cta__lower {
+		left: var(--pad-x);
+		right: var(--pad-x);
+		top: calc(48% + 24px);
+		flex-direction: column;
+		gap: 24px;
+	}
+
+	.fund-cta__text {
+		font-size: 14.5px;
+	}
+
+	.fund-cta__buttons {
+		flex-direction: column;
+		width: 100%;
+	}
+}
+
+/* ===== Careers (#p10) ===== */
+.careers-intro {
+	display: grid;
+	grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+	gap: 80px;
+	align-items: end;
+}
+
+.careers-intro__text {
+	display: flex;
+	flex-direction: column;
+	gap: 28px;
+}
+
+.careers-intro__label {
+	font-family: var(--f-mono);
+	font-size: 12px;
+	letter-spacing: .14em;
+	color: var(--muted);
+}
+
+.careers-intro__heading {
+	font-family: var(--f-head);
+	font-weight: 700;
+	font-size: 64px;
+	line-height: 1.35;
+}
+
+.careers-intro__body {
+	font-size: 16px;
+	line-height: 2;
+	color: var(--sub);
+	max-width: 560px;
+	text-wrap: pretty;
+}
+
+.reasons {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 24px;
+}
+
+.reason {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	padding: 32px 0 0;
+	border-top: 1px solid var(--ink);
+}
+
+.reason__num {
+	font-family: var(--f-mono);
+	font-size: 13px;
+	letter-spacing: .14em;
+	color: var(--muted);
+}
+
+.reason__title {
+	font-family: var(--f-head);
+	font-size: 22px;
+	font-weight: 700;
+	line-height: 1.85;
+}
+
+.reason__text {
+	font-size: 14.5px;
+	line-height: 1.9;
+	color: var(--sub);
+}
+
+.positions {
+	display: flex;
+	flex-direction: column;
+	border-top: 1px solid var(--ink);
+}
+
+.position {
+	display: grid;
+	grid-template-columns: 280px 200px minmax(0, 1fr) auto;
+	gap: 24px;
+	align-items: center;
+	padding: 28px 0;
+	border-bottom: 1px solid var(--line);
+}
+
+.position__title {
+	grid-area: 1 / 1;
+	font-family: var(--f-head);
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.position__tag {
+	grid-area: 1 / 2;
+	font-size: 12.5px;
+	border: 1px solid var(--ink);
+	padding: 2px 10px;
+	justify-self: start;
+	white-space: nowrap;
+}
+
+.position__summary {
+	grid-area: 1 / 3;
+	font-size: 14px;
+	color: var(--sub);
+}
+
+.position__arrow {
+	grid-area: 1 / 4;
+	font-family: var(--f-mono);
+}
+
+.steps {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	border-top: 1px solid var(--ink);
+}
+
+.step {
+	padding: 32px 28px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	border-right: 1px solid var(--line);
+}
+
+.step:first-child {
+	padding-left: 0;
+}
+
+.step:last-child {
+	border-right: 0;
+}
+
+.step__num {
+	font-family: var(--f-mono);
+	font-size: 13px;
+}
+
+.step__title {
+	font-family: var(--f-head);
+	font-size: 21px;
+	font-weight: 700;
+	line-height: 1.85;
+}
+
+.step__text {
+	font-size: 14px;
+	line-height: 1.9;
+	color: var(--sub);
+}
+
+.entry-band {
+	background: var(--ink);
+	color: var(--cream);
+	padding: 112px var(--pad-x);
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	gap: 48px;
+}
+
+.entry-band__head {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.entry-band__label {
+	font-family: var(--f-mono);
+	font-size: 12px;
+	letter-spacing: .14em;
+	color: var(--muted-dark);
+}
+
+.entry-band__heading {
+	font-family: var(--f-head);
+	font-weight: 700;
+	font-size: 52px;
+	line-height: 1.35;
+}
+
+.entry-band__cta {
+	display: flex;
+}
+
+/* ===== Contact (#p11) / Privacy (#p12): 96px (SP 48px) top ===== */
+.section--tight {
+	padding-top: 96px;
+}
+
+.contact {
+	display: grid;
+	grid-template-columns: 4fr 8fr;
+	gap: 80px;
+	align-items: start;
+}
+
+.contact__info {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.contact__heading {
+	font-family: var(--f-head);
+	font-weight: 700;
+	font-size: 32px;
+	line-height: 1.5;
+}
+
+.contact__lead {
+	font-size: 16px;
+	line-height: 2;
+	color: var(--sub);
+	text-wrap: pretty;
+}
+
+.contact__item {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.contact__item--first {
+	border-top: 1px solid var(--line);
+	padding-top: 20px;
+}
+
+.contact__label {
+	font-family: var(--f-mono);
+	font-size: 11px;
+	letter-spacing: .14em;
+	color: var(--muted);
+}
+
+.contact__value {
+	font-size: 17px;
+	align-self: flex-start;
+}
+
+.contact__hours {
+	font-size: 13px;
+	color: var(--muted);
+}
+
+.policy {
+	display: grid;
+	grid-template-columns: 4fr 8fr;
+	gap: 64px;
+}
+
+.policy__date {
+	font-size: 13.5px;
+	color: var(--muted);
+}
+
+.policy__body {
+	display: flex;
+	flex-direction: column;
+	gap: 48px;
+	max-width: 760px;
+}
+
+.policy__intro,
+.policy__text {
+	font-size: 16px;
+	line-height: 2;
+	color: var(--sub);
+	text-wrap: pretty;
+}
+
+.policy__article {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	border-top: 1px solid var(--ink);
+	padding-top: 24px;
+}
+
+.policy__title {
+	font-family: var(--f-head);
+	font-size: 20px;
+	font-weight: 700;
+	line-height: 1.85;
+	display: flex;
+	gap: 16px;
+}
+
+.policy__num {
+	font-family: var(--f-mono);
+	font-weight: 400;
+}
+
+@media (max-width: 768px) {
+	.careers-intro {
+		grid-template-columns: 1fr;
+		gap: 24px;
+	}
+
+	.careers-intro__text {
+		gap: 18px;
+	}
+
+	.careers-intro__label {
+		font-size: 11px;
+	}
+
+	.careers-intro__heading {
+		font-size: 32px;
+	}
+
+	.careers-intro__body {
+		font-size: 15px;
+	}
+
+	.reasons {
+		grid-template-columns: 1fr;
+		gap: 0;
+	}
+
+	.reason {
+		padding: 24px 0;
+	}
+
+	.reason__title {
+		font-size: 18px;
+	}
+
+	.position {
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 6px 12px;
+		align-items: start;
+		padding: 20px 0;
+	}
+
+	.position__title {
+		grid-area: 1 / 1;
+		font-size: 17px;
+	}
+
+	.position__arrow {
+		grid-area: 1 / 2;
+	}
+
+	.position__tag {
+		grid-area: 2 / 1 / 3 / -1;
+	}
+
+	.position__summary {
+		grid-area: 3 / 1 / 4 / -1;
+	}
+
+	.steps {
+		grid-template-columns: 1fr;
+	}
+
+	.step,
+	.step:first-child {
+		padding: 20px 0;
+		border-right: 0;
+		border-bottom: 1px solid var(--line);
+	}
+
+	.step__title {
+		font-size: 18px;
+	}
+
+	.entry-band {
+		padding: 64px var(--pad-x);
+		flex-direction: column;
+		align-items: stretch;
+		gap: 32px;
+	}
+
+	.entry-band__label {
+		font-size: 11px;
+	}
+
+	.entry-band__heading {
+		font-size: 28px;
+	}
+
+	.section--tight {
+		padding-top: 48px;
+	}
+
+	.contact {
+		grid-template-columns: 1fr;
+		gap: 40px;
+	}
+
+	.contact__info {
+		gap: 18px;
+	}
+
+	.contact__heading {
+		font-size: 24px;
+	}
+
+	.contact__lead {
+		font-size: 15px;
+	}
+
+	.policy {
+		grid-template-columns: 1fr;
+		gap: 24px;
+	}
+
+	.policy__body {
+		gap: 36px;
+	}
+
+	.policy__intro,
+	.policy__text {
+		font-size: 15px;
+	}
+
+	.policy__article {
+		padding-top: 18px;
+	}
+
+	.policy__title {
+		font-size: 17px;
+	}
+}
