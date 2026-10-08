@@ -1,0 +1,464 @@
+/* Top page (design #p01). */
+
+/* Hero: 810px (SP 800), horizon at 60% (SP 50%). */
+.hero {
+	position: relative;
+	height: 810px;
+	background: var(--black);
+	color: var(--cream);
+	overflow: hidden;
+}
+
+.hero__media {
+	position: absolute;
+	inset: 0;
+	background: rgba(127, 127, 127, .08);
+}
+
+.hero__poster,
+.hero__video {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.hero__shade {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(180deg, rgba(11, 11, 10, .55) 0%, rgba(11, 11, 10, 0) 22%, rgba(11, 11, 10, 0) 45%, rgba(11, 11, 10, .9) 100%);
+	pointer-events: none;
+}
+
+.hero__line {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 60%;
+	height: 1px;
+	background: var(--cream);
+	opacity: .8;
+	pointer-events: none;
+}
+
+.hero__body {
+	position: absolute;
+	left: var(--pad-x);
+	right: var(--pad-x);
+	top: calc(60% + 28px);
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	gap: 40px;
+}
+
+.hero__text {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+.hero__label {
+	font-family: var(--f-mono);
+	font-size: 12px;
+	letter-spacing: .14em;
+	color: var(--sub-dark);
+}
+
+.hero__copy {
+	font-family: var(--f-head);
+	font-weight: 700;
+	font-size: 64px;
+	line-height: 1.3;
+	letter-spacing: .02em;
+}
+
+.hero__lead {
+	font-size: 17px;
+	line-height: 1.8;
+	color: var(--sub-dark);
+}
+
+.hero__cta {
+	flex: none;
+	flex-wrap: nowrap;
+}
+
+/* WCAG 2.2.2 pause / play (shown by JS only when the video plays). */
+.hero__toggle {
+	position: absolute;
+	right: var(--pad-x);
+	bottom: 24px;
+	width: 40px;
+	height: 40px;
+	border: 1px solid rgba(244, 243, 239, .6);
+	background: transparent;
+	color: var(--cream);
+	cursor: pointer;
+}
+
+.hero__toggle-icon {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 10px;
+	height: 12px;
+	transform: translate(-50%, -50%);
+	border-left: 3px solid currentColor;
+	border-right: 3px solid currentColor;
+}
+
+.hero__toggle[aria-pressed="true"] .hero__toggle-icon {
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 7px 0 7px 11px;
+	border-color: transparent transparent transparent currentColor;
+	transform: translate(-35%, -50%);
+}
+
+/* News band under the hero. */
+.news-band {
+	display: grid;
+	grid-template-columns: 120px 140px 1fr auto;
+	gap: 24px;
+	align-items: center;
+	padding: 22px var(--pad-x);
+	border-bottom: 1px solid var(--line);
+	background: var(--cream);
+}
+
+.news-band__label {
+	font-family: var(--f-mono);
+	font-size: 11px;
+	letter-spacing: .14em;
+}
+
+.news-band__meta {
+	display: contents;
+}
+
+.news-band__sep {
+	display: none;
+}
+
+.news-band__date {
+	font-family: var(--f-mono);
+	font-size: 13px;
+	color: var(--muted);
+}
+
+.news-band__title {
+	font-size: 15px;
+}
+
+.news-band__arrow {
+	font-family: var(--f-mono);
+	font-size: 12px;
+}
+
+/* Vertical short drama. */
+.short-drama {
+	background: var(--paper);
+	padding: 140px var(--pad-x);
+	display: grid;
+	grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+	gap: 80px;
+	align-items: center;
+}
+
+.short-drama__text {
+	display: flex;
+	flex-direction: column;
+	gap: 28px;
+}
+
+.short-drama__label {
+	font-family: var(--f-mono);
+	font-size: 12px;
+	letter-spacing: .14em;
+	color: var(--muted);
+}
+
+.short-drama__heading {
+	font-family: var(--f-head);
+	font-weight: 700;
+	font-size: 44px;
+	line-height: 1.45;
+	white-space: nowrap;
+}
+
+.short-drama__body {
+	font-size: 16px;
+	line-height: 2;
+	color: var(--sub);
+	max-width: 520px;
+	text-wrap: pretty;
+}
+
+.short-drama__links {
+	display: flex;
+	gap: 24px;
+	flex-wrap: wrap;
+}
+
+.short-drama__frames {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 20px;
+	align-items: start;
+}
+
+.short-drama__frame {
+	position: relative;
+	display: block;
+}
+
+.short-drama__frame:nth-child(2) {
+	margin-top: 64px;
+}
+
+.short-drama__video {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	opacity: 0;
+}
+
+/* Black band: ORIGINALS + MEDIA. */
+.top-band {
+	padding: 120px var(--pad-x) 140px;
+	display: flex;
+	flex-direction: column;
+	gap: 120px;
+}
+
+.top-band__block {
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+}
+
+.section-head--media .section-head__text {
+	gap: 8px;
+}
+
+.section-head__logo {
+	height: 31px;
+	width: auto;
+	align-self: flex-start;
+}
+
+.section-head__media-label {
+	font-family: var(--f-en);
+	font-stretch: 125%;
+	font-size: 9px;
+	font-weight: 500;
+	letter-spacing: .34em;
+	line-height: 1.85;
+}
+
+.grid-media {
+	display: grid;
+	grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr);
+	gap: 24px;
+}
+
+.grid-media .card-episode:first-child .card-episode__title {
+	font-size: 24px;
+}
+
+/* CEO message excerpt. */
+.top-message {
+	display: grid;
+	grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+	gap: 80px;
+	align-items: center;
+}
+
+.top-message__text {
+	display: flex;
+	flex-direction: column;
+	gap: 28px;
+}
+
+.top-message__label {
+	font-family: var(--f-mono);
+	font-size: 12px;
+	letter-spacing: .14em;
+	color: var(--muted);
+}
+
+.top-message__heading {
+	font-family: var(--f-head);
+	font-weight: 700;
+	font-size: 44px;
+	line-height: 1.5;
+}
+
+.top-message__body {
+	font-size: 16px;
+	line-height: 2;
+	color: var(--sub);
+	max-width: 620px;
+	text-wrap: pretty;
+}
+
+.top-message .text-link {
+	align-self: flex-start;
+}
+
+@media (max-width: 768px) {
+	.hero {
+		height: 800px;
+	}
+
+	.hero__line {
+		top: 50%;
+	}
+
+	.hero__body {
+		top: calc(50% + 22px);
+		flex-direction: column;
+		align-items: stretch;
+		justify-content: flex-start;
+		gap: 24px;
+	}
+
+	.hero__text {
+		gap: 10px;
+	}
+
+	.hero__label {
+		font-size: 10px;
+	}
+
+	.hero__copy {
+		font-size: 30px;
+		line-height: 1.4;
+	}
+
+	.hero__lead {
+		font-size: 14px;
+	}
+
+	.hero__cta {
+		flex-direction: column;
+	}
+
+	.news-band {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		gap: 4px;
+		padding: 16px var(--pad-x);
+	}
+
+	.news-band__meta {
+		display: block;
+		font-family: var(--f-mono);
+		font-size: 11px;
+		letter-spacing: .14em;
+	}
+
+	.news-band__sep {
+		display: inline;
+	}
+
+	/* SP: "NEWS · 2026.10.08" on one mono line. */
+	.news-band__label,
+	.news-band__date {
+		font-size: 11px;
+		letter-spacing: .14em;
+		color: var(--ink);
+	}
+
+	.news-band__title {
+		font-size: 14px;
+	}
+
+	.news-band__arrow {
+		display: none;
+	}
+
+	.short-drama {
+		padding: 72px var(--pad-x);
+		grid-template-columns: 1fr;
+		gap: 40px;
+	}
+
+	.short-drama__text {
+		gap: 18px;
+	}
+
+	.short-drama__label {
+		font-size: 11px;
+	}
+
+	.short-drama__heading {
+		font-size: 30px;
+		line-height: 1.4;
+	}
+
+	.short-drama__body {
+		font-size: 15px;
+	}
+
+	.short-drama__frames {
+		gap: 10px;
+	}
+
+	.short-drama__frame:nth-child(2) {
+		margin-top: 28px;
+	}
+
+	.top-band {
+		padding: 72px var(--pad-x);
+		gap: 72px;
+	}
+
+	.top-band__block {
+		gap: 28px;
+	}
+
+	.section-head__logo {
+		height: 22px;
+	}
+
+	.grid-media {
+		grid-template-columns: 1fr 1fr;
+		gap: 24px 14px;
+	}
+
+	.grid-media .card-episode:first-child {
+		grid-column: 1 / -1;
+	}
+
+	.grid-media .card-episode:first-child .card-episode__title {
+		font-size: 18px;
+	}
+
+	.top-message {
+		grid-template-columns: 1fr;
+		gap: 32px;
+	}
+
+	.top-message__text {
+		gap: 20px;
+	}
+
+	.top-message__label {
+		font-size: 11px;
+	}
+
+	.top-message__heading {
+		font-size: 28px;
+	}
+
+	.top-message__body {
+		font-size: 15px;
+	}
+}

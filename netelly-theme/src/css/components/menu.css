@@ -29,18 +29,13 @@
 }
 
 .sp-menu__link {
-	font-family: var(--f-jp);
+	font-family: var(--f-head);
 	font-size: 28px;
 	font-weight: 700;
 	line-height: 1.5;
 	letter-spacing: .04em;
 }
 
-:root:lang(en) .sp-menu__link {
-	font-family: var(--f-en);
-	font-stretch: 125%;
-	font-weight: 600;
-}
 
 .sp-menu__link.is-current {
 	border-bottom: 1px solid currentColor;

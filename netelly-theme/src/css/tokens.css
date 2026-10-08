@@ -16,6 +16,7 @@
 	--f-mono: 'IBM Plex Mono', monospace;
 	/* Body face: JP pages use Zen Kaku; EN pages switch to Archivo at 100% width. */
 	--f-body: var(--f-jp);
+	--f-head: var(--f-jp);
 	--stretch-body: 100%;
 
 	--pad-x: 64px;
@@ -31,6 +32,7 @@
 
 :root:lang(en) {
 	--f-body: var(--f-en);
+	--f-head: var(--f-en);
 }
 
 @media (max-width: 768px) {

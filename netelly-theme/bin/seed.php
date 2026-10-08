@@ -66,6 +66,11 @@ function nts_post( string $key, string $lang, array $args ): int {
 		$id = 0;
 	}
 	$args = array_merge( array( 'post_status' => 'publish' ), $args );
+	if ( isset( $args['post_date'] ) ) {
+		// Keep GMT in sync so re-runs never leave a post "scheduled".
+		$args['post_date_gmt'] = get_gmt_from_date( $args['post_date'] );
+		$args['edit_date']     = true;
+	}
 	if ( $id ) {
 		$args['ID'] = $id;
 		wp_update_post( wp_slash( $args ) );
@@ -104,6 +109,9 @@ function nts_link_tr( array $ids ): void {
  * 1. Languages (Polylang)
  * ----------------------------------------------------------------------- */
 WP_CLI::log( '1/8 Languages' );
+update_option( 'timezone_string', 'Asia/Tokyo' );
+update_option( 'date_format', 'Y.m.d' );
+update_option( 'blogname', 'Netelly' );
 $model = PLL()->model;
 $have  = wp_list_pluck( $model->languages->get_list(), 'slug' );
 if ( ! in_array( 'ja', $have, true ) ) {
@@ -254,7 +262,7 @@ foreach ( NTS_NEWS as $i => $n ) {
 				'post_type'     => 'post',
 				'post_title'    => $n['title'][ $lang ],
 				'post_content'  => isset( $n['body'] ) ? implode( "\n\n", array_map( static fn( $p ) => "<!-- wp:paragraph -->\n<p>{$p}</p>\n<!-- /wp:paragraph -->", $n['body'][ $lang ] ) ) : '',
-				'post_date'     => $n['date'] . ' 10:00:00',
+				'post_date'     => $n['date'] . ' 00:00:00',
 				'post_category' => array( $cats[ $n['cat'] ][ $lang ] ),
 			)
 		);

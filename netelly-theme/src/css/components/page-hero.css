@@ -51,16 +51,13 @@
 }
 
 .page-hero__title {
-	font-family: var(--f-jp);
+	font-family: var(--f-head);
 	font-weight: 700;
 	font-size: 22px;
 	line-height: 1.85;
 	letter-spacing: .06em;
 }
 
-:root:lang(en) .page-hero__title {
-	font-family: var(--f-en);
-}
 
 /* PC: breadcrumb sits at the right end of the English-title row. */
 .page-hero__crumbs {

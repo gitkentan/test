@@ -23,16 +23,12 @@
 }
 
 .section-head__heading {
-	font-family: var(--f-jp);
+	font-family: var(--f-head);
 	font-weight: 700;
 	font-size: 44px;
 	line-height: 1.3;
 }
 
-:root:lang(en) .section-head__heading {
-	font-family: var(--f-en);
-	font-weight: 600;
-}
 
 .section-head__link {
 	color: var(--ink);

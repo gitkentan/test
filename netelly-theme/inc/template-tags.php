@@ -258,3 +258,77 @@ function netelly_socials(): array {
 	}
 	return $out;
 }
+
+/**
+ * Image box with a fixed aspect ratio. Without an image it renders the grey
+ * placeholder (CLAUDE.md: keep the ratio). Inner <img> is for hover/reveal motion.
+ *
+ * @param int|string $id    Attachment ID (0/'' = placeholder).
+ * @param string     $ratio CSS aspect-ratio, e.g. '4/5'.
+ * @param array      $args  { size, class, eager (bool), sizes, alt, vt (view-transition name) }.
+ */
+function netelly_media( $id, string $ratio, array $args = array() ): string {
+	$id    = (int) $id;
+	$class = trim( 'media ' . ( $args['class'] ?? '' ) . ( $id ? '' : ' is-placeholder' ) );
+	$style = 'aspect-ratio:' . $ratio . ';' . ( ! empty( $args['vt'] ) ? 'view-transition-name:' . $args['vt'] . ';' : '' );
+	$img   = '';
+	if ( $id ) {
+		$attr = array(
+			'class'    => 'media__img',
+			'loading'  => empty( $args['eager'] ) ? 'lazy' : 'eager',
+			'decoding' => 'async',
+			'sizes'    => $args['sizes'] ?? '(max-width: 768px) 100vw, 50vw',
+		);
+		if ( ! empty( $args['eager'] ) ) {
+			$attr['fetchpriority'] = 'high';
+		}
+		if ( isset( $args['alt'] ) ) {
+			$attr['alt'] = $args['alt'];
+		}
+		$img = wp_get_attachment_image( $id, $args['size'] ?? 'large', false, $attr );
+	}
+	return sprintf( '<div class="%1$s" style="%2$s">%3$s</div>', esc_attr( $class ), esc_attr( $style ), $img );
+}
+
+/**
+ * Genre labels (value => EN caps shown on cards; tab labels come from netelly_t()).
+ */
+function netelly_genres(): array {
+	return array(
+		'drama'          => 'DRAMA',
+		'variety'        => 'VARIETY',
+		'film'           => 'FILM',
+		'in_development' => 'IN DEVELOPMENT',
+	);
+}
+
+/**
+ * Card meta line: "DRAMA · 2021".
+ */
+function netelly_work_meta( int $id ): string {
+	$genres = netelly_genres();
+	$genre  = (string) netelly_field( 'genre', $id );
+	$parts  = array_filter( array( $genres[ $genre ] ?? '', (string) netelly_field( 'year', $id ) ) );
+	return implode( ' · ', $parts );
+}
+
+/**
+ * Whether a work is shown as the COMING SOON card.
+ */
+function netelly_is_coming_soon( int $id ): bool {
+	return 'in_development' === netelly_field( 'genre', $id ) && ! netelly_field( 'key_art', $id );
+}
+
+/**
+ * Supplied L-mark (decorative).
+ */
+function netelly_lmark( string $class = '' ): string {
+	return netelly_svg(
+		'netelly-l-mark',
+		array(
+			'class'       => $class,
+			'aria-hidden' => 'true',
+			'focusable'   => 'false',
+		)
+	);
+}
