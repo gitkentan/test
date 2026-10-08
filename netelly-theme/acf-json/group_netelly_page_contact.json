@@ -1,0 +1,89 @@
+{
+    "key": "group_netelly_page_contact",
+    "title": "お問い合わせページ",
+    "fields": [
+        {
+            "type": "textarea",
+            "name": "lead_heading",
+            "label": "見出し",
+            "rows": 2,
+            "new_lines": "",
+            "instructions": "改行はそのまま反映されます。",
+            "key": "field_nt_page_contact_lead_heading",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "lead_text",
+            "label": "説明",
+            "rows": 3,
+            "new_lines": "",
+            "key": "field_nt_page_contact_lead_text",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "post_object",
+            "name": "form",
+            "label": "フォーム（Snow Monkey Forms）",
+            "post_type": [
+                "snow-monkey-forms"
+            ],
+            "return_format": "id",
+            "allow_null": 1,
+            "multiple": 0,
+            "ui": 1,
+            "key": "field_nt_page_contact_form",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "message",
+            "name": "",
+            "label": "",
+            "message": "メール・電話番号・受付時間は「サイト設定」で編集します。",
+            "key": "field_nt_page_contact_tab_3",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-contact.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1791446400
+}

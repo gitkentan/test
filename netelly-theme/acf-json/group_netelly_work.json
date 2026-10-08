@@ -1,0 +1,598 @@
+{
+    "key": "group_netelly_work",
+    "title": "作品情報",
+    "fields": [
+        {
+            "type": "tab",
+            "label": "基本",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_work_tab_0",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "select",
+            "name": "genre",
+            "label": "ジャンル",
+            "choices": {
+                "drama": "DRAMA",
+                "variety": "VARIETY",
+                "film": "FILM",
+                "in_development": "IN DEVELOPMENT"
+            },
+            "default_value": "drama",
+            "return_format": "value",
+            "ui": 0,
+            "key": "field_nt_work_genre",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "year",
+            "label": "年",
+            "key": "field_nt_work_year",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "format",
+            "label": "形式",
+            "instructions": "例：恋愛ドラマ · 全4話",
+            "key": "field_nt_work_format",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "platform",
+            "label": "配信先",
+            "instructions": "例：YouTube",
+            "key": "field_nt_work_platform",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "card_note",
+            "label": "カードの補足",
+            "instructions": "一覧カードのタイトル下（例：出演：坂口候一、辻凪子）。空なら「形式」を表示。",
+            "key": "field_nt_work_card_note",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "true_false",
+            "name": "is_featured",
+            "label": "注目作品",
+            "ui": 1,
+            "key": "field_nt_work_is_featured",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "featured_text",
+            "label": "注目作品の紹介文（作品一覧）",
+            "rows": 3,
+            "new_lines": "",
+            "key": "field_nt_work_featured_text",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "ビジュアル",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_work_tab_8",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "image",
+            "name": "key_art",
+            "label": "キーアート（4:5）",
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "instructions": "未設定かつ IN DEVELOPMENT の作品は COMING SOON 表示になります。",
+            "key": "field_nt_work_key_art",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "image",
+            "name": "key_visual",
+            "label": "キービジュアル（16:9）",
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "key": "field_nt_work_key_visual",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "file",
+            "name": "key_visual_video",
+            "label": "キービジュアル動画（16:9 mp4・任意）",
+            "return_format": "id",
+            "library": "all",
+            "mime_types": "mp4",
+            "key": "field_nt_work_key_visual_video",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "動画リンク",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_work_tab_12",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "url",
+            "name": "trailer_url",
+            "label": "予告編（YouTube URL）",
+            "key": "field_nt_work_trailer_url",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "url",
+            "name": "playlist_url",
+            "label": "全話（YouTube プレイリスト URL）",
+            "key": "field_nt_work_playlist_url",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "ストーリー",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_work_tab_15",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "series_label",
+            "label": "シリーズ表記",
+            "instructions": "例：NETELLY ORIGINAL SERIES",
+            "key": "field_nt_work_series_label",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "synopsis_lead",
+            "label": "ストーリー見出し",
+            "rows": 2,
+            "new_lines": "",
+            "instructions": "改行はそのまま反映されます。",
+            "key": "field_nt_work_synopsis_lead",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "synopsis",
+            "label": "あらすじ",
+            "rows": 4,
+            "new_lines": "",
+            "key": "field_nt_work_synopsis",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "総再生数",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_work_tab_19",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "number",
+            "name": "total_views",
+            "label": "総再生数",
+            "instructions": "例：4000000（0からカウントアップ表示）",
+            "key": "field_nt_work_total_views",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "total_views_suffix",
+            "label": "数字の後ろ",
+            "default_value": "+",
+            "key": "field_nt_work_total_views_suffix",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "total_views_note",
+            "label": "注記",
+            "key": "field_nt_work_total_views_note",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "エピソード",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_work_tab_23",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "repeater",
+            "name": "episodes",
+            "label": "エピソード",
+            "sub_fields": [
+                {
+                    "type": "text",
+                    "name": "no",
+                    "label": "話数",
+                    "instructions": "例：EP.01",
+                    "key": "field_nt_work_episodes_no",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "text",
+                    "name": "title",
+                    "label": "タイトル",
+                    "key": "field_nt_work_episodes_title",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "date_picker",
+                    "name": "date",
+                    "label": "配信日",
+                    "display_format": "Y.m.d",
+                    "return_format": "Y.m.d",
+                    "first_day": 1,
+                    "key": "field_nt_work_episodes_date",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "image",
+                    "name": "thumb",
+                    "label": "サムネイル（16:9）",
+                    "return_format": "id",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "key": "field_nt_work_episodes_thumb",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "url",
+                    "name": "url",
+                    "label": "リンク（YouTube）",
+                    "key": "field_nt_work_episodes_url",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ],
+            "layout": "block",
+            "button_label": "エピソードを追加",
+            "collapsed": "",
+            "key": "field_nt_work_episodes",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "キャスト",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_work_tab_25",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "repeater",
+            "name": "cast",
+            "label": "キャスト",
+            "sub_fields": [
+                {
+                    "type": "text",
+                    "name": "role",
+                    "label": "役名",
+                    "key": "field_nt_work_cast_role",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "text",
+                    "name": "name",
+                    "label": "氏名",
+                    "key": "field_nt_work_cast_name",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "image",
+                    "name": "photo",
+                    "label": "写真（3:4）",
+                    "return_format": "id",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "key": "field_nt_work_cast_photo",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ],
+            "layout": "block",
+            "button_label": "キャストを追加",
+            "collapsed": "",
+            "key": "field_nt_work_cast",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "スタッフ",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_work_tab_27",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "repeater",
+            "name": "staff",
+            "label": "スタッフ",
+            "sub_fields": [
+                {
+                    "type": "text",
+                    "name": "role",
+                    "label": "役職",
+                    "key": "field_nt_work_staff_role",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "text",
+                    "name": "name",
+                    "label": "氏名",
+                    "key": "field_nt_work_staff_name",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ],
+            "layout": "table",
+            "button_label": "スタッフを追加",
+            "collapsed": "",
+            "key": "field_nt_work_staff",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "work"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1791446400
+}

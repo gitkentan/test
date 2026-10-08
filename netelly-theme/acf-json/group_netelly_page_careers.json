@@ -1,0 +1,386 @@
+{
+    "key": "group_netelly_page_careers",
+    "title": "採用ページ",
+    "fields": [
+        {
+            "type": "tab",
+            "label": "メッセージ",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_page_careers_tab_0",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "cm_label",
+            "label": "ラベル",
+            "key": "field_nt_page_careers_cm_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "cm_heading",
+            "label": "見出し",
+            "rows": 2,
+            "new_lines": "",
+            "instructions": "改行はそのまま反映されます。",
+            "key": "field_nt_page_careers_cm_heading",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "cm_text",
+            "label": "本文",
+            "rows": 3,
+            "new_lines": "",
+            "key": "field_nt_page_careers_cm_text",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "image",
+            "name": "cm_image",
+            "label": "写真（4:5）",
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "key": "field_nt_page_careers_cm_image",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "働く理由",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_page_careers_tab_5",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "why_label",
+            "label": "ラベル",
+            "key": "field_nt_page_careers_why_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "why_heading",
+            "label": "見出し",
+            "key": "field_nt_page_careers_why_heading",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "repeater",
+            "name": "reasons",
+            "label": "理由",
+            "sub_fields": [
+                {
+                    "type": "text",
+                    "name": "title",
+                    "label": "見出し",
+                    "key": "field_nt_page_careers_reasons_title",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "textarea",
+                    "name": "text",
+                    "label": "本文",
+                    "rows": 2,
+                    "new_lines": "",
+                    "key": "field_nt_page_careers_reasons_text",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ],
+            "layout": "table",
+            "button_label": "理由を追加",
+            "collapsed": "",
+            "max": 3,
+            "key": "field_nt_page_careers_reasons",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "募集職種",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_page_careers_tab_9",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "pos_label",
+            "label": "ラベル",
+            "key": "field_nt_page_careers_pos_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "pos_heading",
+            "label": "見出し",
+            "key": "field_nt_page_careers_pos_heading",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "message",
+            "name": "",
+            "label": "",
+            "message": "職種は左メニュー「募集職種」で追加・並べ替えします。",
+            "key": "field_nt_page_careers_tab_12",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "選考の流れ",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_page_careers_tab_13",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "proc_label",
+            "label": "ラベル",
+            "key": "field_nt_page_careers_proc_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "proc_heading",
+            "label": "見出し",
+            "key": "field_nt_page_careers_proc_heading",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "repeater",
+            "name": "steps",
+            "label": "ステップ",
+            "sub_fields": [
+                {
+                    "type": "text",
+                    "name": "title",
+                    "label": "見出し",
+                    "key": "field_nt_page_careers_steps_title",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "textarea",
+                    "name": "text",
+                    "label": "本文",
+                    "rows": 2,
+                    "new_lines": "",
+                    "key": "field_nt_page_careers_steps_text",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ],
+            "layout": "table",
+            "button_label": "ステップを追加",
+            "collapsed": "",
+            "max": 4,
+            "key": "field_nt_page_careers_steps",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "エントリー帯",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_page_careers_tab_17",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "entry_label",
+            "label": "ラベル",
+            "key": "field_nt_page_careers_entry_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "entry_heading",
+            "label": "見出し",
+            "rows": 2,
+            "new_lines": "",
+            "instructions": "改行はそのまま反映されます。",
+            "key": "field_nt_page_careers_entry_heading",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "entry_button",
+            "label": "ボタン",
+            "instructions": "お問い合わせページ（種類「採用」選択済み）へ移動します。",
+            "key": "field_nt_page_careers_entry_button",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-careers.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1791446400
+}

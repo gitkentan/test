@@ -1,0 +1,1420 @@
+{
+    "key": "group_netelly_settings",
+    "title": "サイト設定",
+    "fields": [
+        {
+            "type": "tab",
+            "label": "会社情報・連絡先",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_settings_tab_0",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "company_name",
+            "label": "会社名（フッター）",
+            "key": "field_nt_settings_company_name",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "company_address",
+            "label": "住所（フッター・アクセス）",
+            "rows": 3,
+            "new_lines": "",
+            "instructions": "改行はそのまま反映されます。",
+            "key": "field_nt_settings_company_address",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "contact_email",
+            "label": "メールアドレス",
+            "key": "field_nt_settings_contact_email",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "contact_tel",
+            "label": "電話番号",
+            "key": "field_nt_settings_contact_tel",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "contact_hours",
+            "label": "受付時間",
+            "key": "field_nt_settings_contact_hours",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "copyright",
+            "label": "コピーライト",
+            "key": "field_nt_settings_copyright",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "footer_domain",
+            "label": "フッター右下の表記",
+            "key": "field_nt_settings_footer_domain",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "外部リンク",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_settings_tab_8",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "url",
+            "name": "fund_url",
+            "label": "Creators Fund URL",
+            "instructions": "クリエイターズファンド（外部サイト）へのリンクはすべてこのURLになります。新しいタブで開きます。",
+            "key": "field_nt_settings_fund_url",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "url",
+            "name": "youtube_url",
+            "label": "YouTube",
+            "key": "field_nt_settings_youtube_url",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "url",
+            "name": "line_url",
+            "label": "LINE",
+            "key": "field_nt_settings_line_url",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "url",
+            "name": "x_url",
+            "label": "X",
+            "key": "field_nt_settings_x_url",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "url",
+            "name": "instagram_url",
+            "label": "Instagram",
+            "key": "field_nt_settings_instagram_url",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "プレフッター",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_settings_tab_14",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "pf_sponsor_title",
+            "label": "スポンサー募集：見出し",
+            "key": "field_nt_settings_pf_sponsor_title",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "pf_sponsor_text",
+            "label": "スポンサー募集：説明",
+            "key": "field_nt_settings_pf_sponsor_text",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "link",
+            "name": "pf_sponsor_link",
+            "label": "スポンサー募集：リンク先",
+            "return_format": "array",
+            "key": "field_nt_settings_pf_sponsor_link",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "pf_creators_title",
+            "label": "For Creators：見出し",
+            "key": "field_nt_settings_pf_creators_title",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "pf_creators_badge",
+            "label": "For Creators：バッジ",
+            "key": "field_nt_settings_pf_creators_badge",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "pf_creators_text",
+            "label": "For Creators：説明",
+            "instructions": "リンク先は Creators Fund URL です。",
+            "key": "field_nt_settings_pf_creators_text",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "採用帯（トップ・代表メッセージ）",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_settings_tab_21",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "cb_label",
+            "label": "ラベル",
+            "key": "field_nt_settings_cb_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "cb_heading",
+            "label": "見出し",
+            "rows": 2,
+            "new_lines": "",
+            "instructions": "改行はそのまま反映されます。",
+            "key": "field_nt_settings_cb_heading",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "link",
+            "name": "cb_button",
+            "label": "ボタン",
+            "return_format": "array",
+            "key": "field_nt_settings_cb_button",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "image",
+            "name": "cb_image",
+            "label": "写真",
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "key": "field_nt_settings_cb_image",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "トップ：ヒーロー",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_settings_tab_26",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "hero_label",
+            "label": "地平線の上のラベル",
+            "key": "field_nt_settings_hero_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "hero_copy",
+            "label": "キャッチコピー",
+            "rows": 2,
+            "new_lines": "",
+            "instructions": "改行はそのまま反映されます。",
+            "key": "field_nt_settings_hero_copy",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "hero_lead",
+            "label": "説明文",
+            "rows": 2,
+            "new_lines": "",
+            "key": "field_nt_settings_hero_lead",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "file",
+            "name": "hero_video",
+            "label": "背景動画（mp4）",
+            "return_format": "id",
+            "library": "all",
+            "mime_types": "mp4",
+            "instructions": "15–30秒・無音ループ・8MB以下・H.264。SP・省データ設定・動きを減らす設定ではポスター画像のみ表示します。",
+            "key": "field_nt_settings_hero_video",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "image",
+            "name": "hero_poster",
+            "label": "ポスター画像",
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "instructions": "動画の1フレーム目と同じ画像。LCP対象のため必ず設定してください。",
+            "key": "field_nt_settings_hero_poster",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "link",
+            "name": "hero_cta1",
+            "label": "ボタン1（塗り）",
+            "return_format": "array",
+            "key": "field_nt_settings_hero_cta1",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "link",
+            "name": "hero_cta2",
+            "label": "ボタン2（線）",
+            "return_format": "array",
+            "key": "field_nt_settings_hero_cta2",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "トップ：縦型ショートドラマ",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_settings_tab_34",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "sd_label",
+            "label": "ラベル",
+            "key": "field_nt_settings_sd_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "sd_heading",
+            "label": "見出し",
+            "rows": 2,
+            "new_lines": "",
+            "instructions": "改行はそのまま反映されます。",
+            "key": "field_nt_settings_sd_heading",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "sd_text",
+            "label": "本文",
+            "rows": 4,
+            "new_lines": "",
+            "key": "field_nt_settings_sd_text",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "repeater",
+            "name": "sd_links",
+            "label": "テキストリンク",
+            "sub_fields": [
+                {
+                    "type": "link",
+                    "name": "link",
+                    "label": "リンク",
+                    "return_format": "array",
+                    "key": "field_nt_settings_sd_links_link",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ],
+            "layout": "table",
+            "button_label": "リンクを追加",
+            "collapsed": "",
+            "max": 2,
+            "key": "field_nt_settings_sd_links",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "repeater",
+            "name": "sd_items",
+            "label": "縦型動画・画像（3本）",
+            "sub_fields": [
+                {
+                    "type": "image",
+                    "name": "image",
+                    "label": "画像（9:16）",
+                    "return_format": "id",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "key": "field_nt_settings_sd_items_image",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "file",
+                    "name": "video",
+                    "label": "動画（9:16 mp4・任意）",
+                    "return_format": "id",
+                    "library": "all",
+                    "mime_types": "mp4",
+                    "instructions": "ホバー/タップでミュート再生します。",
+                    "key": "field_nt_settings_sd_items_video",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "link",
+                    "name": "link",
+                    "label": "リンク先（任意）",
+                    "return_format": "array",
+                    "key": "field_nt_settings_sd_items_link",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ],
+            "layout": "block",
+            "button_label": "枠を追加",
+            "collapsed": "",
+            "min": 0,
+            "max": 3,
+            "key": "field_nt_settings_sd_items",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "トップ：オリジナル作品",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_settings_tab_40",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "orig_label",
+            "label": "ラベル",
+            "key": "field_nt_settings_orig_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "orig_heading",
+            "label": "見出し",
+            "key": "field_nt_settings_orig_heading",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "link",
+            "name": "orig_link",
+            "label": "右上のリンク",
+            "return_format": "array",
+            "key": "field_nt_settings_orig_link",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "relationship",
+            "name": "orig_works",
+            "label": "表示する作品（4件）",
+            "post_type": [
+                "work"
+            ],
+            "filters": [
+                "search"
+            ],
+            "return_format": "id",
+            "max": 4,
+            "min": 0,
+            "key": "field_nt_settings_orig_works",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "media_label",
+            "label": "MEDIA：ラベル",
+            "key": "field_nt_settings_media_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "link",
+            "name": "media_link",
+            "label": "MEDIA：右上のリンク",
+            "return_format": "array",
+            "key": "field_nt_settings_media_link",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "post_object",
+            "name": "media_work",
+            "label": "MEDIA：エピソードを表示する作品",
+            "post_type": [
+                "work"
+            ],
+            "return_format": "id",
+            "allow_null": 1,
+            "multiple": 0,
+            "ui": 1,
+            "instructions": "この作品のエピソード先頭3本を表示します。",
+            "key": "field_nt_settings_media_work",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "トップ：事業",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_settings_tab_48",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "biz_label",
+            "label": "ラベル",
+            "key": "field_nt_settings_biz_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "biz_heading",
+            "label": "見出し",
+            "key": "field_nt_settings_biz_heading",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "link",
+            "name": "biz_link",
+            "label": "右上のリンク",
+            "return_format": "array",
+            "key": "field_nt_settings_biz_link",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "biz_lead",
+            "label": "導入文",
+            "rows": 3,
+            "new_lines": "",
+            "key": "field_nt_settings_biz_lead",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "repeater",
+            "name": "biz_items",
+            "label": "事業カード",
+            "sub_fields": [
+                {
+                    "type": "text",
+                    "name": "num",
+                    "label": "番号",
+                    "key": "field_nt_settings_biz_items_num",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "text",
+                    "name": "en",
+                    "label": "英字",
+                    "key": "field_nt_settings_biz_items_en",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "text",
+                    "name": "title",
+                    "label": "日本語",
+                    "key": "field_nt_settings_biz_items_title",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "textarea",
+                    "name": "text",
+                    "label": "説明",
+                    "rows": 2,
+                    "new_lines": "",
+                    "key": "field_nt_settings_biz_items_text",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "image",
+                    "name": "image",
+                    "label": "画像（4:3）",
+                    "return_format": "id",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "key": "field_nt_settings_biz_items_image",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "link",
+                    "name": "link",
+                    "label": "リンク先",
+                    "return_format": "array",
+                    "key": "field_nt_settings_biz_items_link",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "true_false",
+                    "name": "is_fund",
+                    "label": "Creators Fund（外部）へリンク",
+                    "ui": 1,
+                    "key": "field_nt_settings_biz_items_is_fund",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ],
+            "layout": "block",
+            "button_label": "カードを追加",
+            "collapsed": "",
+            "max": 4,
+            "key": "field_nt_settings_biz_items",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "トップ：代表メッセージ・ニュース",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_settings_tab_54",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "tm_label",
+            "label": "代表メッセージ：ラベル",
+            "key": "field_nt_settings_tm_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "link",
+            "name": "tm_link",
+            "label": "代表メッセージ：リンク",
+            "return_format": "array",
+            "key": "field_nt_settings_tm_link",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "tn_label",
+            "label": "ニュース：ラベル",
+            "key": "field_nt_settings_tn_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "tn_heading",
+            "label": "ニュース：見出し",
+            "key": "field_nt_settings_tn_heading",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "link",
+            "name": "tn_link",
+            "label": "ニュース：右上のリンク",
+            "return_format": "array",
+            "key": "field_nt_settings_tn_link",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "代表メッセージ",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_settings_tab_60",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "msg_label",
+            "label": "ラベル（代表メッセージページ）",
+            "key": "field_nt_settings_msg_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "msg_heading",
+            "label": "見出し",
+            "rows": 2,
+            "new_lines": "",
+            "instructions": "改行はそのまま反映されます。",
+            "key": "field_nt_settings_msg_heading",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "msg_excerpt",
+            "label": "抜粋（トップ）",
+            "rows": 3,
+            "new_lines": "",
+            "key": "field_nt_settings_msg_excerpt",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "msg_body",
+            "label": "本文",
+            "rows": 16,
+            "new_lines": "wpautop",
+            "instructions": "空行で段落が分かれます。",
+            "key": "field_nt_settings_msg_body",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "msg_role",
+            "label": "肩書き（トップ）",
+            "key": "field_nt_settings_msg_role",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "msg_signature_role",
+            "label": "肩書き（全文ページ）",
+            "key": "field_nt_settings_msg_signature_role",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "msg_name",
+            "label": "氏名",
+            "key": "field_nt_settings_msg_name",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "msg_name_en",
+            "label": "氏名（英字）",
+            "key": "field_nt_settings_msg_name_en",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "image",
+            "name": "msg_photo",
+            "label": "代表写真（4:5）",
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "key": "field_nt_settings_msg_photo",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "会社概要・沿革",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_settings_tab_70",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "repeater",
+            "name": "profile",
+            "label": "会社概要",
+            "sub_fields": [
+                {
+                    "type": "text",
+                    "name": "label",
+                    "label": "項目",
+                    "key": "field_nt_settings_profile_label",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "textarea",
+                    "name": "value",
+                    "label": "内容",
+                    "rows": 2,
+                    "new_lines": "",
+                    "instructions": "改行はそのまま反映されます。",
+                    "key": "field_nt_settings_profile_value",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ],
+            "layout": "table",
+            "button_label": "項目を追加",
+            "collapsed": "",
+            "key": "field_nt_settings_profile",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "repeater",
+            "name": "history",
+            "label": "沿革",
+            "sub_fields": [
+                {
+                    "type": "text",
+                    "name": "year",
+                    "label": "年月",
+                    "instructions": "例：2019.10 / 20XX",
+                    "key": "field_nt_settings_history_year",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "textarea",
+                    "name": "text",
+                    "label": "内容",
+                    "rows": 2,
+                    "new_lines": "",
+                    "key": "field_nt_settings_history_text",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ],
+            "layout": "table",
+            "button_label": "沿革を追加",
+            "collapsed": "",
+            "key": "field_nt_settings_history",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "作品一覧ページ",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_settings_tab_73",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "wa_en_title",
+            "label": "ページ英字タイトル",
+            "key": "field_nt_settings_wa_en_title",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "wa_title",
+            "label": "ページ見出し",
+            "key": "field_nt_settings_wa_title",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "post_object",
+            "name": "wa_featured",
+            "label": "注目作品",
+            "post_type": [
+                "work"
+            ],
+            "return_format": "id",
+            "allow_null": 1,
+            "multiple": 0,
+            "ui": 1,
+            "key": "field_nt_settings_wa_featured",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "wa_cta_label",
+            "label": "ファンド帯：ラベル",
+            "key": "field_nt_settings_wa_cta_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "wa_cta_heading",
+            "label": "ファンド帯：見出し",
+            "rows": 2,
+            "new_lines": "",
+            "key": "field_nt_settings_wa_cta_heading",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "wa_cta_text",
+            "label": "ファンド帯：説明",
+            "rows": 2,
+            "new_lines": "",
+            "key": "field_nt_settings_wa_cta_text",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "wa_cta_button",
+            "label": "ファンド帯：ボタン",
+            "instructions": "リンク先は Creators Fund URL です。",
+            "key": "field_nt_settings_wa_cta_button",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "netelly-settings-ja"
+            }
+        ],
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "netelly-settings-en"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1791446400
+}

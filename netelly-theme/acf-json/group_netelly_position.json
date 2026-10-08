@@ -1,0 +1,77 @@
+{
+    "key": "group_netelly_position",
+    "title": "募集職種",
+    "fields": [
+        {
+            "type": "text",
+            "name": "employment_type",
+            "label": "雇用形態",
+            "instructions": "例：正社員 / 業務委託",
+            "key": "field_nt_position_employment_type",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "location",
+            "label": "勤務地",
+            "key": "field_nt_position_location",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "summary",
+            "label": "仕事内容",
+            "key": "field_nt_position_summary",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "url",
+            "name": "entry_url",
+            "label": "エントリーURL（任意）",
+            "instructions": "空ならお問い合わせページ（種類「採用」・職種名入り）へ移動します。",
+            "key": "field_nt_position_entry_url",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "position"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1791446400
+}

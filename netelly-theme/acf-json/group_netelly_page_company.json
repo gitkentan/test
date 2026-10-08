@@ -1,0 +1,348 @@
+{
+    "key": "group_netelly_page_company",
+    "title": "企業情報ページ",
+    "fields": [
+        {
+            "type": "tab",
+            "label": "MISSION",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_page_company_tab_0",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "mission_label",
+            "label": "ラベル",
+            "key": "field_nt_page_company_mission_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "mission_heading",
+            "label": "見出し",
+            "rows": 2,
+            "new_lines": "",
+            "instructions": "改行はそのまま反映されます。",
+            "key": "field_nt_page_company_mission_heading",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "mission_sub",
+            "label": "英字サブ",
+            "key": "field_nt_page_company_mission_sub",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "mission_text",
+            "label": "本文",
+            "rows": 4,
+            "new_lines": "",
+            "key": "field_nt_page_company_mission_text",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "VISION",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_page_company_tab_5",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "vision_label",
+            "label": "ラベル",
+            "key": "field_nt_page_company_vision_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "vision_heading",
+            "label": "見出し",
+            "rows": 2,
+            "new_lines": "",
+            "key": "field_nt_page_company_vision_heading",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "vision_text",
+            "label": "本文",
+            "rows": 4,
+            "new_lines": "",
+            "key": "field_nt_page_company_vision_text",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "link",
+            "name": "vision_link",
+            "label": "リンク",
+            "return_format": "array",
+            "key": "field_nt_page_company_vision_link",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "会社概要・沿革",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_page_company_tab_10",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "profile_label",
+            "label": "会社概要：ラベル",
+            "key": "field_nt_page_company_profile_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "profile_heading",
+            "label": "会社概要：見出し",
+            "key": "field_nt_page_company_profile_heading",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "history_label",
+            "label": "沿革：ラベル",
+            "key": "field_nt_page_company_history_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "history_heading",
+            "label": "沿革：見出し",
+            "key": "field_nt_page_company_history_heading",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "message",
+            "name": "",
+            "label": "",
+            "message": "会社概要の表・沿革の内容は「サイト設定」で編集します。",
+            "key": "field_nt_page_company_tab_15",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "アクセス",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_page_company_tab_16",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "access_label",
+            "label": "ラベル",
+            "key": "field_nt_page_company_access_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "access_heading",
+            "label": "見出し",
+            "key": "field_nt_page_company_access_heading",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "access_name",
+            "label": "拠点名",
+            "key": "field_nt_page_company_access_name",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "access_address",
+            "label": "住所",
+            "rows": 3,
+            "new_lines": "",
+            "instructions": "改行はそのまま反映されます。",
+            "key": "field_nt_page_company_access_address",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "image",
+            "name": "access_map",
+            "label": "地図画像",
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "key": "field_nt_page_company_access_map",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "link",
+            "name": "access_map_link",
+            "label": "地図リンク",
+            "return_format": "array",
+            "key": "field_nt_page_company_access_map_link",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-company.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1791446400
+}

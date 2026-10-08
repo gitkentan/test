@@ -12,5 +12,10 @@ define( 'NETELLY_DIR', get_template_directory() );
 define( 'NETELLY_URI', get_template_directory_uri() );
 
 require_once NETELLY_DIR . '/inc/helpers.php';
+require_once NETELLY_DIR . '/inc/i18n.php';
+require_once NETELLY_DIR . '/inc/strings.php';
+require_once NETELLY_DIR . '/inc/acf.php';
+require_once NETELLY_DIR . '/inc/cpt.php';
+require_once NETELLY_DIR . '/inc/menus.php';
 require_once NETELLY_DIR . '/inc/setup.php';
 require_once NETELLY_DIR . '/inc/enqueue.php';

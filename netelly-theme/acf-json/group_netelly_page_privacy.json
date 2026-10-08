@@ -1,0 +1,99 @@
+{
+    "key": "group_netelly_page_privacy",
+    "title": "プライバシーポリシーページ",
+    "fields": [
+        {
+            "type": "text",
+            "name": "enacted",
+            "label": "制定日",
+            "key": "field_nt_page_privacy_enacted",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "intro",
+            "label": "前文",
+            "rows": 3,
+            "new_lines": "",
+            "key": "field_nt_page_privacy_intro",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "repeater",
+            "name": "articles",
+            "label": "条文",
+            "sub_fields": [
+                {
+                    "type": "text",
+                    "name": "title",
+                    "label": "見出し",
+                    "key": "field_nt_page_privacy_articles_title",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "textarea",
+                    "name": "body",
+                    "label": "本文",
+                    "rows": 4,
+                    "new_lines": "",
+                    "instructions": "改行はそのまま反映されます。",
+                    "key": "field_nt_page_privacy_articles_body",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ],
+            "layout": "block",
+            "button_label": "条文を追加",
+            "collapsed": "",
+            "key": "field_nt_page_privacy_articles",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-privacy.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1791446400
+}

@@ -1,0 +1,73 @@
+{
+    "key": "group_netelly_post",
+    "title": "ニュース設定",
+    "fields": [
+        {
+            "type": "url",
+            "name": "external_url",
+            "label": "外部リンク URL",
+            "instructions": "入力すると一覧から新しいタブでこのURLを開きます（↗表示）。記事ページは使われません。",
+            "key": "field_nt_post_external_url",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "post_object",
+            "name": "related_work",
+            "label": "関連作品",
+            "post_type": [
+                "work"
+            ],
+            "return_format": "id",
+            "allow_null": 1,
+            "multiple": 0,
+            "ui": 1,
+            "key": "field_nt_post_related_work",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "work_summary",
+            "label": "作品概要ボックス",
+            "rows": 5,
+            "new_lines": "",
+            "instructions": "関連作品がある場合に記事下に表示。改行はそのまま反映されます。",
+            "key": "field_nt_post_work_summary",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1791446400
+}
