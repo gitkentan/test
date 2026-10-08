@@ -17,5 +17,6 @@ require_once NETELLY_DIR . '/inc/strings.php';
 require_once NETELLY_DIR . '/inc/acf.php';
 require_once NETELLY_DIR . '/inc/cpt.php';
 require_once NETELLY_DIR . '/inc/menus.php';
+require_once NETELLY_DIR . '/inc/template-tags.php';
 require_once NETELLY_DIR . '/inc/setup.php';
 require_once NETELLY_DIR . '/inc/enqueue.php';

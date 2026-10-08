@@ -1,0 +1,60 @@
+/* Buttons (README): Primary = inverse fill, Outline = 1px. 16×26 (outline 15×25), 14px 700, .06em. */
+.btn {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	flex: none;
+	padding: 16px 26px;
+	font-family: var(--f-jp);
+	font-weight: 700;
+	font-size: 14px;
+	letter-spacing: .06em;
+	line-height: 1.85;
+	white-space: nowrap;
+}
+
+:root:lang(en) .btn {
+	font-family: var(--f-en);
+}
+
+.btn--primary {
+	background: var(--ink);
+	color: var(--cream);
+}
+
+.btn--outline {
+	border: 1px solid var(--ink);
+	padding: 15px 25px;
+	color: var(--ink);
+}
+
+.is-dark .btn--primary {
+	background: var(--cream);
+	color: var(--black);
+}
+
+.is-dark .btn--outline {
+	border-color: var(--cream);
+	color: var(--cream);
+}
+
+.btn-group {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+}
+
+/* SP: full width, stacked. */
+@media (max-width: 768px) {
+	.btn-group {
+		flex-direction: column;
+		flex-wrap: nowrap;
+	}
+
+	.btn-group .btn,
+	.btn.is-block-sp {
+		display: flex;
+		width: 100%;
+	}
+}

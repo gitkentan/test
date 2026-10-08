@@ -1,0 +1,165 @@
+/* Site header — PC 88px / SP 64px. Fixed so it can overlay the black hero and change state on scroll. */
+.site-header {
+	position: fixed;
+	z-index: 50;
+	top: 0;
+	left: 0;
+	right: 0;
+	color: var(--cream);
+}
+
+.site-header[data-variant="light"] {
+	background: var(--paper);
+	color: var(--ink);
+	border-bottom: 1px solid var(--line);
+}
+
+.site-header__bar {
+	height: 88px;
+	padding: 0 var(--pad-x);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 24px;
+}
+
+.site-header__logo {
+	flex: none;
+	align-self: center;
+}
+
+.site-header__logo .logo {
+	height: 28px;
+	width: auto;
+}
+
+.site-nav__list {
+	display: flex;
+	gap: 36px;
+	font-size: 14px;
+	font-weight: 500;
+}
+
+.site-nav__link {
+	position: relative;
+	display: block;
+	white-space: nowrap;
+}
+
+/* Current page: 1px underline (border-bottom in the design). */
+.site-nav__link.is-current {
+	border-bottom: 1px solid currentColor;
+}
+
+.site-header__tools {
+	display: flex;
+	align-items: center;
+	gap: 24px;
+}
+
+.lang-switch {
+	font-family: var(--f-mono);
+	font-size: 11px;
+	letter-spacing: .14em;
+	white-space: nowrap;
+}
+
+.site-header__cta {
+	background: var(--cream);
+	color: var(--black);
+	font-size: 13px;
+	font-weight: 500;
+	padding: 12px 22px;
+	white-space: nowrap;
+}
+
+.site-header[data-variant="light"] .site-header__cta {
+	background: var(--ink);
+	color: var(--cream);
+}
+
+/* SP toggle: two 1.5px lines, 24px wide, 7px apart (44px hit area). */
+.menu-toggle {
+	display: none;
+	position: relative;
+	width: 44px;
+	height: 44px;
+	margin: 0 -10px 0 -10px;
+	padding: 0;
+	border: 0;
+	background: none;
+	color: inherit;
+	cursor: pointer;
+}
+
+.menu-toggle__line {
+	position: absolute;
+	left: 10px;
+	width: 24px;
+	height: 1.5px;
+	background: currentColor;
+}
+
+/* Design: a 10px-high stack (1.5 + 7 + 1.5) centred in the bar. */
+.menu-toggle__line--1 {
+	top: calc(50% - 5px);
+}
+
+.menu-toggle__line--2 {
+	top: calc(50% + 3.5px);
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle__line--1 {
+	top: calc(50% - .75px);
+	transform: rotate(45deg);
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle__line--2 {
+	top: calc(50% - .75px);
+	transform: rotate(-45deg);
+}
+
+.header-spacer {
+	height: 88px;
+}
+
+/* The full nav needs ~1080px; below that the PC header keeps its size and uses the menu toggle. */
+@media (max-width: 1100px) {
+	.site-nav,
+	.site-header__cta {
+		display: none;
+	}
+
+	.menu-toggle {
+		display: block;
+	}
+}
+
+@media (max-width: 768px) {
+	.site-header__bar {
+		height: 64px;
+	}
+
+	.site-header__logo .logo {
+		height: 20px;
+	}
+
+	.site-header__tools {
+		gap: 18px;
+	}
+
+	.lang-switch {
+		font-size: 10px;
+	}
+
+	.header-spacer {
+		height: 64px;
+	}
+}
+
+/* Menu open: header sits on the black overlay. */
+body.is-menu-open .site-header {
+	color: var(--cream);
+	background: transparent;
+	border-bottom-color: transparent;
+}

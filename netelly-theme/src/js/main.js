@@ -1,2 +1,4 @@
-// Entry. Modules (motion, header, menu, filter, transitions) are added in stages 3 and 5.
+import { initMenu } from './menu.js';
+
 document.documentElement.classList.add('js');
+initMenu();

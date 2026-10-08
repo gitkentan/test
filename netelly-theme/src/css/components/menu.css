@@ -1,0 +1,85 @@
+/* SP menu (README 5): full-screen black overlay, items 28px 700, contact (Primary) + SNS + JP/EN at the bottom. */
+.sp-menu {
+	position: fixed;
+	z-index: 40;
+	inset: 0;
+	background: var(--black);
+	color: var(--cream);
+	overflow-y: auto;
+	overscroll-behavior: contain;
+}
+
+.sp-menu[hidden] {
+	display: none;
+}
+
+.sp-menu__inner {
+	min-height: 100%;
+	padding: calc(88px + 40px) var(--pad-x) 40px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 48px;
+}
+
+.sp-menu__nav ul {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+.sp-menu__link {
+	font-family: var(--f-jp);
+	font-size: 28px;
+	font-weight: 700;
+	line-height: 1.5;
+	letter-spacing: .04em;
+}
+
+:root:lang(en) .sp-menu__link {
+	font-family: var(--f-en);
+	font-stretch: 125%;
+	font-weight: 600;
+}
+
+.sp-menu__link.is-current {
+	border-bottom: 1px solid currentColor;
+}
+
+.sp-menu__foot {
+	display: flex;
+	flex-direction: column;
+	gap: 28px;
+}
+
+.sp-menu__cta {
+	display: flex;
+	width: 100%;
+	background: var(--cream);
+	color: var(--black);
+}
+
+.sp-menu__sns {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px 24px;
+	font-family: var(--f-en);
+	font-stretch: 125%;
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: .28em;
+}
+
+.sp-menu__lang {
+	font-size: 11px;
+}
+
+@media (max-width: 768px) {
+	.sp-menu__inner {
+		padding-top: calc(64px + 32px);
+	}
+}
+
+body.is-menu-open {
+	overflow: hidden;
+}

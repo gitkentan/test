@@ -1,10 +1,12 @@
 <?php
 /**
- * Document foot. Prefooter/footer parts are added in stage 3.
+ * Prefooter + footer + document foot.
  *
  * @package netelly
  */
 
+get_template_part( 'template-parts/prefooter' );
+get_template_part( 'template-parts/footer' );
 wp_footer();
 ?>
 </body>

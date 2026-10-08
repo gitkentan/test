@@ -1,0 +1,45 @@
+/* Page sections: PC 140px / SP 72px between sections, heading gap 48 / 32 (README layout rules). */
+.section {
+	padding: var(--sec) var(--pad-x) 0;
+	display: flex;
+	flex-direction: column;
+	gap: var(--sec-head);
+}
+
+/* Bottom spacer some pages place before the prefooter (design: height:140px / 72px). */
+.end-spacer {
+	height: var(--sec);
+}
+
+.is-dark {
+	background: var(--black);
+	color: var(--cream);
+}
+
+/* Mask wrapper for line reveals (stage 5); no visual effect by itself. */
+.mask {
+	display: inline-block;
+	overflow: clip;
+	vertical-align: top;
+}
+
+.mask > span {
+	display: inline-block;
+}
+
+/* Plain text links: design global "a:hover{opacity:.65}". Components with their own hover opt out. */
+@media (hover: hover) and (pointer: fine) {
+	a:where(:not(.btn, .pf-card, .sns-bar__link, .site-nav__link, .sp-menu__link, .card, .row-link)):hover {
+		opacity: .65;
+	}
+}
+
+.text-link {
+	font-family: var(--f-mono);
+	font-size: 12px;
+	white-space: nowrap;
+}
+
+.arrow {
+	display: inline-block;
+}

@@ -21,6 +21,7 @@ function netelly_strings(): array {
 		// Header / navigation.
 		'header_contact'   => array( 'お問い合わせ', 'Contact' ),
 		'skip'             => array( '本文へスキップ', 'Skip to content' ),
+		'nav_label'        => array( 'メインメニュー', 'Main menu' ),
 		'menu_open'        => array( 'メニューを開く', 'Open menu' ),
 		'menu_close'       => array( 'メニューを閉じる', 'Close menu' ),
 		'new_tab'          => array( '（新しいタブで開きます）', '(opens in a new tab)' ),

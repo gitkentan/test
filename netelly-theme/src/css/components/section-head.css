@@ -1,0 +1,69 @@
+/* Section head (design): label mono 12/.14em muted, heading 44/1.3 (SP 11 / 26), 1px rule, padding-bottom 20 (SP 16). */
+.section-head {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	gap: 16px;
+	border-bottom: 1px solid var(--ink);
+	padding-bottom: 20px;
+	position: relative;
+}
+
+.section-head__text {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.section-head__label {
+	font-family: var(--f-mono);
+	font-size: 12px;
+	letter-spacing: .14em;
+	color: var(--muted);
+}
+
+.section-head__heading {
+	font-family: var(--f-jp);
+	font-weight: 700;
+	font-size: 44px;
+	line-height: 1.3;
+}
+
+:root:lang(en) .section-head__heading {
+	font-family: var(--f-en);
+	font-weight: 600;
+}
+
+.section-head__link {
+	color: var(--ink);
+}
+
+.is-dark .section-head {
+	border-bottom-color: var(--cream);
+}
+
+.is-dark .section-head__label {
+	color: var(--muted-dark);
+}
+
+.is-dark .section-head__link {
+	color: var(--sub-dark);
+}
+
+@media (max-width: 768px) {
+	.section-head {
+		padding-bottom: 16px;
+	}
+
+	.section-head__text {
+		gap: 6px;
+	}
+
+	.section-head__label {
+		font-size: 11px;
+	}
+
+	.section-head__heading {
+		font-size: 26px;
+	}
+}
