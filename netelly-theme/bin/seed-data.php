@@ -269,16 +269,16 @@ function nts_lang_data( string $lang, callable $purl, array $works ): array {
 		'cb_button'          => nts_link( $L( '募集職種を見る →', 'View open positions →' ), $p( 'careers', '#positions' ) ),
 		// Top: hero.
 		'hero_label'         => 'NETELLY INC. · TOKYO / NEW YORK / LOS ANGELES',
-		'hero_copy'          => $L( "世界が、次に\n夢中になるものを。", "What the world\nfalls for next." ),
+		'hero_copy'          => "New Entertainment,\nNew Value.",
 		'hero_lead'          => $L( '東京・ニューヨーク・ロサンゼルス発、グローバル・エンターテインメントカンパニー。', 'A global entertainment company from Tokyo, New York and Los Angeles.' ),
 		'hero_cta1'          => nts_link( $L( 'Netellyについて →', 'About Netelly →' ), $p( 'company' ) ),
 		'hero_cta2'          => nts_link( $L( '作品を見る', 'View works' ), $wurl ),
 		// Top: short drama.
 		'sd_label'           => 'VERTICAL SHORT DRAMA',
-		'sd_heading'         => $L( "流行る前から、\nつくっていた。", "Before it was a trend,\nwe were making it." ),
+		'sd_heading'         => $L( "次の当たり前を、\n先につくる。", "Making tomorrow’s\nnormal, first." ),
 		'sd_text'            => $L(
-			'いまや当たり前になった、スマートフォンの縦画面で観るショートドラマ。Netellyは、それがブームになる前からこのフォーマットを手がけてきました。',
-			'Vertical short dramas for the smartphone are everywhere now. Netelly was making them before they became a trend.'
+			'いまや当たり前になった、スマートフォンの縦画面で観るショートドラマ。その走りとなったのがNetellyです。ブームになる前からこのフォーマットに取り組み、脚本・撮影・編集のノウハウを積み上げてきました。',
+			'Vertical short dramas for the smartphone are everywhere now — and Netelly helped pioneer them. We took on the format before it became a trend, and have been building know-how in writing, shooting and editing ever since.'
 		),
 		'sd_links'           => array(
 			array( 'link' => nts_link( $L( 'ショートドラマを見る →', 'Watch short dramas →' ), $wurl ) ),

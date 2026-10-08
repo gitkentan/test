@@ -74,6 +74,12 @@
 	letter-spacing: .02em;
 }
 
+/* Latin-only copy (e.g. "New Entertainment, New Value.") is set in Archivo on JP pages too. */
+.hero__copy.is-latin {
+	font-family: var(--f-en);
+	letter-spacing: 0;
+}
+
 .hero__lead {
 	font-size: 17px;
 	line-height: 1.8;

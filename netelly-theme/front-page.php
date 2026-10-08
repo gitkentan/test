@@ -47,8 +47,9 @@ $latest = get_posts(
 			<div class="hero__text">
 				<?php $i = 0; // Intro stagger order (--i, README 1). ?>
 				<p class="hero__label"><span class="mask" style="--i:<?php echo (int) $i++; ?>"><span><?php echo esc_html( (string) netelly_opt( 'hero_label' ) ); ?></span></span></p>
-				<h1 class="hero__copy" id="hero-title">
-					<?php foreach ( preg_split( '/\R/', (string) netelly_opt( 'hero_copy' ) ) as $line ) : ?>
+				<?php $hero_copy = (string) netelly_opt( 'hero_copy' ); ?>
+				<h1 class="hero__copy<?php echo netelly_is_latin( str_replace( "\n", ' ', $hero_copy ) ) ? ' is-latin' : ''; ?>" id="hero-title">
+					<?php foreach ( preg_split( '/\R/', $hero_copy ) as $line ) : ?>
 						<span class="mask hero__line-text" style="--i:<?php echo (int) $i++; ?>"><span><?php echo esc_html( $line ); ?></span></span>
 					<?php endforeach; ?>
 				</h1>
