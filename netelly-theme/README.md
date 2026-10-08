@@ -4,6 +4,8 @@ Netelly株式会社 コーポレートサイト用 WordPress クラシックテ�
 
 ## ローカル環境
 
+**Node.js 22（LTS）を使ってください**（`.nvmrc`）。Node 25 以降では `wp-env start` が途中で無言終了します。Docker Desktop の起動も必要です。
+
 ```bash
 npm install
 npx wp-env start      # http://localhost:8888 （管理画面 /wp-admin  admin / password）

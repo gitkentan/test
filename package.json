@@ -16,5 +16,8 @@
   },
   "dependencies": {
     "lenis": "^1"
+  },
+  "engines": {
+    "node": ">=20 <25"
   }
 }
