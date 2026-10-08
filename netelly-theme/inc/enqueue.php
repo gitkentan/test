@@ -30,11 +30,9 @@ function netelly_asset( string $entry ): ?string {
 add_action(
 	'wp_enqueue_scripts',
 	static function () {
-		wp_enqueue_style( 'netelly-fonts', NETELLY_URI . '/assets/fonts/fonts.css', array(), NETELLY_VERSION );
-
 		$css = netelly_asset( 'css/main.css' );
 		if ( $css ) {
-			wp_enqueue_style( 'netelly', $css, array( 'netelly-fonts' ), null ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- hashed file name.
+			wp_enqueue_style( 'netelly', $css, array(), null ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- hashed file name.
 		}
 		$js = netelly_asset( 'js/main.js' );
 		if ( $js ) {
@@ -77,4 +75,19 @@ add_action(
 		echo '<script>' . $js . '</script>' . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput
 	},
 	1
+);
+
+/*
+ * Fonts (README 10): the @font-face list is large (Japanese unicode-range slices), so it is
+ * loaded without blocking the first paint; text shows in the fallback until the woff2 arrive
+ * (font-display: swap).
+ */
+add_action(
+	'wp_head',
+	static function () {
+		$url = esc_url( NETELLY_URI . '/assets/fonts/fonts.min.css?ver=' . NETELLY_VERSION );
+		echo '<link rel="preload" href="' . $url . '" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">' . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput, WordPress.WP.EnqueuedResources
+		echo '<noscript><link rel="stylesheet" href="' . $url . '"></noscript>' . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput, WordPress.WP.EnqueuedResources
+	},
+	2
 );

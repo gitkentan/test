@@ -45,15 +45,16 @@ $latest = get_posts(
 		<div class="hero__line horizon" aria-hidden="true"></div>
 		<div class="hero__body">
 			<div class="hero__text">
-				<p class="hero__label"><span class="mask"><span><?php echo esc_html( (string) netelly_opt( 'hero_label' ) ); ?></span></span></p>
+				<?php $i = 0; // Intro stagger order (--i, README 1). ?>
+				<p class="hero__label"><span class="mask" style="--i:<?php echo (int) $i++; ?>"><span><?php echo esc_html( (string) netelly_opt( 'hero_label' ) ); ?></span></span></p>
 				<h1 class="hero__copy" id="hero-title">
 					<?php foreach ( preg_split( '/\R/', (string) netelly_opt( 'hero_copy' ) ) as $line ) : ?>
-						<span class="mask hero__line-text"><span><?php echo esc_html( $line ); ?></span></span>
+						<span class="mask hero__line-text" style="--i:<?php echo (int) $i++; ?>"><span><?php echo esc_html( $line ); ?></span></span>
 					<?php endforeach; ?>
 				</h1>
-				<p class="hero__lead"><span class="mask"><span><?php echo esc_html( (string) netelly_opt( 'hero_lead' ) ); ?></span></span></p>
+				<p class="hero__lead"><span class="mask" style="--i:<?php echo (int) $i++; ?>"><span><?php echo esc_html( (string) netelly_opt( 'hero_lead' ) ); ?></span></span></p>
 			</div>
-			<div class="btn-group hero__cta">
+			<div class="btn-group hero__cta" style="--i:<?php echo (int) $i; ?>">
 				<?php echo netelly_link_button( netelly_opt( 'hero_cta1' ), 'primary' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 				<?php echo netelly_link_button( netelly_opt( 'hero_cta2' ), 'outline' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 			</div>

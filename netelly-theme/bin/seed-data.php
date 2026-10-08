@@ -243,6 +243,7 @@ function nts_lang_data( string $lang, callable $purl, array $works ): array {
 	$settings = array(
 		// Company / contact.
 		'company_name'       => $L( 'Netelly株式会社', 'Netelly Inc.' ),
+		'meta_description'   => $L( '縦型ショートドラマから映画まで。企画し、制作し、届けるエンターテインメントカンパニー。', 'From vertical short dramas to feature films — an entertainment company that develops, produces and delivers.' ),
 		'company_address'    => $L( "〒141-0033 東京都品川区西品川1-1-1\n住友不動産大崎ガーデンタワー 9F", "Sumitomo Fudosan Osaki Garden Tower 9F\n1-1-1 Nishi-Shinagawa, Shinagawa-ku, Tokyo" ),
 		'contact_email'      => 'info@netelly.com',
 		'contact_tel'        => '03-4400-1235',

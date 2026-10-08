@@ -50,6 +50,12 @@
 	}
 }
 
+@keyframes cover-out {
+	to {
+		opacity: 0;
+	}
+}
+
 @keyframes fade-in {
 	from {
 		opacity: 0;
@@ -78,21 +84,52 @@
 		animation: fade-in var(--t-base) var(--ease-out) 500ms both;
 	}
 
-	/* ----- 1. Intro (top page): hidden until intro.js plays the sequence ----- */
+	/* ----- 1. Intro (top page). CSS animations start with the first paint (no wait for JS);
+	   html.intro-full / .intro-short come from the inline head script, intro.js handles skip + cleanup.
+	   full: black 300ms → horizon 900ms → lines mask up 700ms / 80ms stagger → media fades 1200ms. ----- */
+	.intro-full {
+		--in-delay: 300ms;
+		--in-line: 900ms;
+		--in-t0: 750ms;
+		--in-mask: 700ms;
+		--in-stagger: 80ms;
+		--in-media: 1200ms;
+	}
+
+	.intro-short {
+		--in-delay: 0ms;
+		--in-line: 400ms;
+		--in-t0: 200ms;
+		--in-mask: 400ms;
+		--in-stagger: 40ms;
+		--in-media: 400ms;
+	}
+
 	.intro .hero__line {
-		transform: scaleX(0);
+		animation: line-grow var(--in-line) var(--ease-io) var(--in-delay) both;
 	}
 
 	.intro .hero .mask > span {
-		transform: translateY(100%);
+		animation: mask-up var(--in-mask) var(--ease-out) calc(var(--in-t0) + var(--i, 0) * var(--in-stagger)) both;
 	}
 
-	.intro .hero__cta,
-	.intro .hero__media,
+	.intro .hero__cta {
+		animation: fade-in var(--in-mask) var(--ease-out) calc(var(--in-t0) + var(--i, 0) * var(--in-stagger)) both;
+	}
+
 	.intro .site-header {
-		opacity: 0;
+		animation: fade-in var(--in-mask) var(--ease-out) var(--in-t0) both;
 	}
 
+	/* Media "fades in" by fading a black cover out: the poster still paints (and counts as LCP)
+	   underneath from the start, which an opacity-0 image would not. */
+	.intro .hero__media::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background: var(--black);
+		animation: cover-out var(--in-media) linear var(--in-delay) both;
+	}
 
 	/* ----- 3. Scroll reveals (motion.js adds .is-in once, rootMargin -15% bottom) ----- */
 

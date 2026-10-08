@@ -64,6 +64,13 @@ npm run dev     # 監視ビルド
 - ローカル（wp-env）ではメールを送れないため、`dev/netelly-local-mail.php` が `wp-content/uploads/netelly-mail.log` に書き出します（本番には入りません）。
 - メールアドレス検証はプラグインがドメインの DNS を確認します。
 
+## パフォーマンス / ファビコン / 説明文
+
+- フォント CSS（`assets/fonts/fonts.min.css`、日本語の unicode-range 分割で約 87KB gzip）は描画をブロックしないよう preload → stylesheet で読み込みます（`font-display: swap`）。`fonts.css` は可読版の元ファイル。
+- トップのイントロ（README 1）は CSS アニメーション（`motion.css`「1. Intro」）で最初の描画から始まります。`intro.js` はセッション記録・スキップ・後片付けのみ。背景は黒いカバーを消す形でフェードインするため、ヒーローのポスター画像がそのまま LCP として扱われます。**ヒーローのポスター画像は必ず設定してください**（未設定だと LCP がイントロ最後のボタンになり、スコアが下がります）。
+- ファビコンはシンボルマーク①（一文字）の小サイズ版（`assets/favicon/`）。外観 › カスタマイズ › サイトアイコンを設定するとそちらが優先されます。
+- meta description：ニュース＝抜粋（なければ本文）、作品＝あらすじ、それ以外＝サイト設定「検索結果の説明文」。
+
 ## フィールド定義（acf-json）
 
 `acf-json/` が正です（Secure Custom Fields / ACF Pro のどちらでも自動読み込み）。管理画面でフィールドを変更すると、このフォルダの JSON が更新されます。

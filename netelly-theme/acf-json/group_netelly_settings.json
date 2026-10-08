@@ -98,6 +98,21 @@
             }
         },
         {
+            "type": "textarea",
+            "name": "meta_description",
+            "label": "検索結果の説明文（meta description）",
+            "rows": 3,
+            "new_lines": "",
+            "instructions": "ニュース記事は抜粋（なければ本文）、作品はあらすじが優先されます。120字程度まで。",
+            "key": "field_nt_settings_meta_description",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
             "type": "text",
             "name": "footer_domain",
             "label": "フッター右下の表記",
@@ -116,7 +131,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_8",
+            "key": "field_nt_settings_tab_9",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -196,7 +211,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_14",
+            "key": "field_nt_settings_tab_15",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -290,7 +305,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_21",
+            "key": "field_nt_settings_tab_22",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -363,7 +378,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_26",
+            "key": "field_nt_settings_tab_27",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -481,7 +496,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_34",
+            "key": "field_nt_settings_tab_35",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -638,7 +653,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_40",
+            "key": "field_nt_settings_tab_41",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -762,7 +777,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_48",
+            "key": "field_nt_settings_tab_49",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -949,7 +964,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_54",
+            "key": "field_nt_settings_tab_55",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -1031,7 +1046,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_60",
+            "key": "field_nt_settings_tab_61",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -1172,7 +1187,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_70",
+            "key": "field_nt_settings_tab_71",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -1279,7 +1294,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_73",
+            "key": "field_nt_settings_tab_74",
             "instructions": "",
             "required": 0,
             "wrapper": {
