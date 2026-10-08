@@ -43,8 +43,8 @@ const NTS_WORKS = array(
 				'ja' => 'マッチングアプリで出会った男女の、名前のつかない関係を描く全4話の恋愛ドラマ。総再生回数は400万回を超えました。',
 				'en' => 'A four-episode romance about a man and a woman who meet on a dating app, and the relationship they can’t put a name to. It has passed 4 million total views.',
 			),
-			'trailer_url'        => '',
-			'playlist_url'       => '',
+			'trailer_url'        => 'https://www.youtube.com/',  // Replace with the real trailer URL.
+			'playlist_url'       => 'https://www.youtube.com/',  // Replace with the real playlist URL.
 			'series_label'       => 'NETELLY ORIGINAL SERIES',
 			'synopsis_lead'      => array( 'ja' => "近づくほど、\n名前のない関係になっていく。", 'en' => "The closer they get,\nthe more nameless it becomes." ),
 			'synopsis'           => array(

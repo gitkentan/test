@@ -311,6 +311,13 @@
 	align-self: flex-start;
 }
 
+/* 769–1279px: the 5fr column is narrower than the one-line heading. */
+@media (max-width: 1279px) {
+	.short-drama__heading {
+		white-space: normal;
+	}
+}
+
 @media (max-width: 768px) {
 	.hero {
 		height: 800px;

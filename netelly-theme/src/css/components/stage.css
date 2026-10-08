@@ -1,5 +1,0 @@
-/* Temporary: stage-3 parts check page (template-parts/stage-stub.php). Removed in stage 4. */
-.stage-demo { display: flex; flex-direction: column; gap: 24px; }
-.stage-demo__row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-.stage-demo__dark { background: var(--black); padding: 40px var(--pad-x); margin: 0 calc(var(--pad-x) * -1); }
-.stage-demo__note { font-family: var(--f-mono); font-size: 12px; letter-spacing: .14em; color: var(--muted); }
