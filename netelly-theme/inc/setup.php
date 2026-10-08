@@ -35,12 +35,12 @@ remove_action( 'wp_head', 'wp_generator' );
 remove_action( 'wp_head', 'wlwmanifest_link' );
 remove_action( 'wp_head', 'rsd_link' );
 
-// Generate WebP sub-sizes for uploaded JPEG/PNG (README 10: WebP/AVIF + srcset).
+// Photos (JPEG) are stored as WebP (README 10: WebP/AVIF + srcset). PNG stays PNG so logos /
+// press-kit files keep transparency and the format people download.
 add_filter(
 	'image_editor_output_format',
 	static function ( $formats ) {
 		$formats['image/jpeg'] = 'image/webp';
-		$formats['image/png']  = 'image/webp';
 		return $formats;
 	}
 );
