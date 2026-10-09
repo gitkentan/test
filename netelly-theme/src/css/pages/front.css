@@ -74,10 +74,40 @@
 	letter-spacing: .02em;
 }
 
-/* Latin-only copy (e.g. "New Entertainment, New Value.") is set in Archivo on JP pages too. */
+/* Latin-only copy (e.g. "New Entertainment, New Value."): editorial display serif,
+   last line italic, horizon raised so the type can run large. */
 .hero__copy.is-latin {
-	font-family: var(--f-en);
-	letter-spacing: 0;
+	font-family: 'Instrument Serif', 'Times New Roman', serif;
+	font-weight: 400;
+	font-size: clamp(56px, 10.6vw, 156px);
+	line-height: .94;
+	letter-spacing: -.012em;
+}
+
+.hero__copy.is-latin .hero__line-text {
+	display: block;
+	padding: 0 .08em .12em 0;
+	margin-bottom: -.12em;
+}
+
+.hero__copy.is-latin .hero__line-text:last-child {
+	font-style: italic;
+}
+
+.hero--display .hero__line {
+	top: 26%;
+}
+
+.hero--display .hero__body {
+	top: calc(26% + 40px);
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+	gap: 32px;
+}
+
+.hero--display .hero__text {
+	gap: 22px;
 }
 
 .hero__lead {
@@ -508,6 +538,21 @@
 	.hero__copy {
 		font-size: 30px;
 		line-height: 1.4;
+	}
+
+	.hero__copy.is-latin {
+		font-size: 12.8vw;
+		line-height: .95;
+	}
+
+	.hero--display .hero__line {
+		top: 36%;
+	}
+
+	.hero--display .hero__body {
+		top: calc(36% + 24px);
+		align-items: stretch;
+		gap: 24px;
 	}
 
 	.hero__lead {

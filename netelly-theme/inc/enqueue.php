@@ -91,3 +91,17 @@ add_action(
 	},
 	2
 );
+
+// Hero display face (Instrument Serif) is preloaded on the top page so the headline doesn't swap late.
+add_action(
+	'wp_head',
+	static function () {
+		if ( ! is_front_page() || ! netelly_is_latin( str_replace( "\n", ' ', (string) netelly_opt( 'hero_copy' ) ) ) ) {
+			return;
+		}
+		foreach ( array( 'instrument-serif-400-latin.woff2', 'instrument-serif-400-italic-latin.woff2' ) as $f ) {
+			printf( '<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin>' . "\n", esc_url( NETELLY_URI . '/assets/fonts/' . $f ) );
+		}
+	},
+	2
+);
