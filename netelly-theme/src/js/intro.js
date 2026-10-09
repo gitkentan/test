@@ -12,7 +12,7 @@ export function initIntro() {
 	}
 
 	const scope = [document.querySelector('.hero'), document.querySelector('.site-header')].filter(Boolean);
-	const anims = document.getAnimations().filter((a) => a.effect?.target && scope.some((el) => el.contains(a.effect.target)) && ['line-grow', 'mask-up', 'fade-in', 'cover-out'].includes(a.animationName));
+	const anims = document.getAnimations().filter((a) => a.effect?.target && scope.some((el) => el.contains(a.effect.target)) && ['line-grow', 'mask-up', 'fade-in', 'cover-out', 'char-in'].includes(a.animationName));
 	if (!anims.length) return done();
 
 	const skip = () => anims.forEach((a) => a.finish());

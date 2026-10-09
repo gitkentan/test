@@ -1,0 +1,231 @@
+/*
+ * Signature effects (see js/fx.js). Everything moving lives under
+ * prefers-reduced-motion: no-preference; scroll-linked parts use native
+ * scroll-driven animations where supported (progressive enhancement).
+ */
+
+/* ----- Marquee band (サイト設定 › トップ：流れる帯) ----- */
+.marquee {
+	overflow: hidden;
+	margin-top: var(--sec);
+	padding: 28px 0;
+	border-top: 1px solid var(--ink);
+	border-bottom: 1px solid var(--ink);
+	white-space: nowrap;
+}
+
+.marquee__track {
+	display: inline-flex;
+	will-change: transform;
+}
+
+.marquee__item {
+	display: inline-flex;
+	align-items: center;
+	gap: .5em;
+	padding-right: .5em;
+	font-family: 'Instrument Serif', 'Times New Roman', serif;
+	font-size: clamp(48px, 7.2vw, 112px);
+	line-height: 1;
+	letter-spacing: -.01em;
+}
+
+.marquee__item:nth-child(odd) {
+	font-style: italic;
+}
+
+.marquee__dot {
+	display: inline-block;
+	width: .18em;
+	height: .18em;
+	border-radius: 50%;
+	background: currentColor;
+	transform: translateY(-.1em);
+}
+
+/* Hero headline letters (split by JS). */
+.hero__copy.is-split .w {
+	display: inline-block;
+	white-space: nowrap;
+}
+
+.hero__copy.is-split .ch {
+	display: inline-block;
+	transition: translate 600ms var(--ease-out);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+
+	/* Letters focus-pull in: rise + blur → sharp, one after another. */
+	.intro .hero__copy.is-split .mask > span {
+		animation: none;
+	}
+
+	.intro .hero__copy.is-split .ch {
+		animation: char-in calc(var(--in-mask) + 200ms) var(--ease-out) calc(var(--in-t0) + var(--c) * 22ms) both;
+	}
+
+	/* Film grain over the hero (cinema texture). */
+	.hero::after {
+		content: "";
+		position: absolute;
+		inset: -50%;
+		z-index: 1;
+		pointer-events: none;
+		opacity: .07;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+		animation: grain 900ms steps(6) infinite;
+	}
+
+	/* Business rows: a rule sweeps under the hovered row, the English name opens up. */
+	.biz-item {
+		position: relative;
+	}
+
+	.biz-item::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: -1px;
+		height: 1px;
+		background: var(--ink);
+		transform: scaleX(0);
+		transform-origin: 0 50%;
+		transition: transform 700ms var(--ease-out);
+	}
+
+	.biz-item__en {
+		transition: letter-spacing 700ms var(--ease-out);
+	}
+
+	@media (hover: hover) and (pointer: fine) {
+		.biz-item:hover::after {
+			transform: none;
+		}
+
+		.biz-item:hover .biz-item__en {
+			letter-spacing: .08em;
+		}
+	}
+
+	.is-magnetic {
+		transition: translate 450ms var(--ease-out);
+	}
+
+	@supports (animation-timeline: scroll()) {
+
+		/* Scroll progress "horizon" across the top of the screen. */
+		body::after {
+			content: "";
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 1000;
+			height: 2px;
+			background: #fff;
+			mix-blend-mode: difference;
+			transform-origin: 0 50%;
+			pointer-events: none;
+			animation: progress linear both;
+			animation-timeline: scroll(root);
+		}
+
+		/* Hero: copy drifts up and fades, background slowly pushes in. */
+		.hero__body {
+			animation: hero-drift linear both;
+			animation-timeline: scroll(root);
+			animation-range: 0 90vh;
+		}
+
+		.hero__media {
+			animation: hero-push linear both;
+			animation-timeline: scroll(root);
+			animation-range: 0 100vh;
+		}
+
+		/* Every photo drifts inside its frame (individual `translate`, so the reveal's transform is untouched). */
+		.media:not(.hero .media, .work-hero .media) .media__img {
+			scale: 1.12;
+			animation: img-drift linear both;
+			animation-timeline: view();
+		}
+
+		/* Section headings ease up as they arrive. */
+		.section-head__heading,
+		.statement__heading,
+		.work-row__title {
+			animation: rise-in linear both;
+			animation-timeline: view();
+			animation-range: entry 0% entry 60%;
+		}
+	}
+}
+
+@keyframes char-in {
+	from {
+		opacity: 0;
+		filter: blur(10px);
+		transform: translateY(70%) rotate(4deg);
+	}
+}
+
+@keyframes grain {
+	0% { transform: translate(0, 0); }
+	20% { transform: translate(-6%, 4%); }
+	40% { transform: translate(5%, -3%); }
+	60% { transform: translate(-3%, -6%); }
+	80% { transform: translate(6%, 5%); }
+	100% { transform: translate(-2%, 2%); }
+}
+
+@keyframes progress {
+	from {
+		transform: scaleX(0);
+	}
+
+	to {
+		transform: scaleX(1);
+	}
+}
+
+@keyframes hero-drift {
+	to {
+		translate: 0 -14vh;
+		opacity: .1;
+		filter: blur(3px);
+	}
+}
+
+@keyframes hero-push {
+	to {
+		scale: 1.12;
+	}
+}
+
+@keyframes img-drift {
+	from {
+		translate: 0 -5%;
+	}
+
+	to {
+		translate: 0 5%;
+	}
+}
+
+@keyframes rise-in {
+	from {
+		translate: 0 24px;
+	}
+
+	to {
+		translate: 0 0;
+	}
+}
+
+@media (max-width: 768px) {
+	.marquee {
+		padding: 18px 0;
+	}
+}

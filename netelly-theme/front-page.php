@@ -146,6 +146,20 @@ $latest = get_posts(
 		</div>
 	</section>
 
+	<?php /* ---------- Marquee (サイト設定 › トップ：流れる帯; decorative, hidden when empty) ---------- */ ?>
+	<?php $marquee = array_values( array_filter( array_map( 'trim', preg_split( '/\R/', (string) netelly_opt( 'marquee_text' ) ) ) ) ); ?>
+	<?php if ( $marquee ) : ?>
+		<div class="marquee" aria-hidden="true">
+			<div class="marquee__track">
+				<?php for ( $r = 0; $r < 2; $r++ ) : ?>
+					<?php foreach ( $marquee as $item ) : ?>
+						<span class="marquee__item"><?php echo esc_html( $item ); ?><span class="marquee__dot"></span></span>
+					<?php endforeach; ?>
+				<?php endfor; ?>
+			</div>
+		</div>
+	<?php endif; ?>
+
 	<?php /* ---------- Vertical short drama: copy + three 9:16 frames (middle one lowered) ---------- */ ?>
 	<section class="short-drama">
 		<div class="short-drama__text">
