@@ -198,11 +198,12 @@
 		transition: transform var(--t-slow) var(--ease-out);
 	}
 
-	.js .media.is-in {
+	/* Same selector weight as the start state above, so the reveal can finish. */
+	.js .media.is-in:not(.hero .media, .work-hero .media, .page-hero .media) {
 		clip-path: inset(0);
 	}
 
-	.js .media.is-in .media__img {
+	.js .media.is-in:not(.hero .media, .work-hero .media) .media__img {
 		transform: none;
 	}
 

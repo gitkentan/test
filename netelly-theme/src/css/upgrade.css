@@ -161,3 +161,11 @@
 .step__text {
 	font-size: 15px;
 }
+
+/* Phones: a long section-head link wraps under the heading instead of overflowing. */
+@media (max-width: 768px) {
+	.section-head--en {
+		flex-wrap: wrap;
+		row-gap: 12px;
+	}
+}

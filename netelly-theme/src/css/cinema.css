@@ -170,7 +170,6 @@ body {
 	font-size: clamp(56px, 10.4vw, 188px);
 	line-height: .9;
 	letter-spacing: -.005em;
-	overflow-wrap: anywhere;
 }
 
 .chapter__body {
@@ -283,8 +282,9 @@ body {
 		padding: calc(var(--pad-x) + 72px) var(--pad-x) 40px;
 	}
 
+	/* Sized so the longest single word (COMMUNITY) fits a 360px-wide phone. */
 	.chapter__en {
-		font-size: clamp(40px, 14vw, 72px);
+		font-size: min(10.6vw, 64px);
 	}
 
 	.chapter__body {
@@ -295,4 +295,14 @@ body {
 	.chapter__text {
 		font-size: 15px;
 	}
+}
+
+/* Hover states tuned for the dark ground. */
+.row-link:hover,
+.adjacent__item:not(.is-empty):hover {
+	background: #1a1a18;
+}
+
+.pf-card:hover .pf-card__text {
+	color: #3a3936;
 }
