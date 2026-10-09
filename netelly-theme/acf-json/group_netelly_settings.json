@@ -663,6 +663,20 @@
             }
         },
         {
+            "type": "message",
+            "name": "",
+            "label": "",
+            "message": "現在トップページには作品を表示していません（この欄の内容は使われません）。",
+            "key": "field_nt_settings_tab_42",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
             "type": "text",
             "name": "orig_label",
             "label": "ラベル",
@@ -777,7 +791,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_49",
+            "key": "field_nt_settings_tab_50",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -964,7 +978,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_55",
+            "key": "field_nt_settings_tab_56",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -1046,7 +1060,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_61",
+            "key": "field_nt_settings_tab_62",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -1187,7 +1201,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_71",
+            "key": "field_nt_settings_tab_72",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -1294,7 +1308,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_74",
+            "key": "field_nt_settings_tab_75",
             "instructions": "",
             "required": 0,
             "wrapper": {

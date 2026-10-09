@@ -318,6 +318,96 @@
 }
 
 /* 769–1279px: the 5fr column is narrower than the one-line heading. */
+/* ----- Business: four stacked full-width sections ----- */
+.biz-list {
+	display: flex;
+	flex-direction: column;
+	border-top: 1px solid var(--ink);
+}
+
+.biz-item {
+	display: grid;
+	grid-template-columns: 72px minmax(0, 4fr) minmax(0, 4fr) minmax(0, 3fr) 32px;
+	grid-template-areas: "num head text media arrow";
+	gap: 40px;
+	align-items: center;
+	padding: 40px 0;
+	border-bottom: 1px solid var(--line);
+}
+
+.biz-item__num {
+	grid-area: num;
+	align-self: start;
+	padding-top: 10px;
+	font-family: var(--f-mono);
+	font-size: 12px;
+	letter-spacing: .14em;
+	color: var(--muted);
+}
+
+.biz-item__head {
+	grid-area: head;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.biz-item__en {
+	font-family: var(--f-en);
+	font-stretch: 125%;
+	font-weight: 600;
+	font-size: 34px;
+	line-height: 1.15;
+	letter-spacing: .02em;
+}
+
+.biz-item__title {
+	font-size: 15px;
+	font-weight: 700;
+}
+
+.biz-item__text {
+	grid-area: text;
+	font-size: 15px;
+	line-height: 1.9;
+	color: var(--sub);
+	text-wrap: pretty;
+}
+
+.biz-item__media {
+	grid-area: media;
+}
+
+.biz-item__arrow {
+	grid-area: arrow;
+	justify-self: end;
+	font-family: var(--f-mono);
+	font-size: 16px;
+}
+
+/* Short drama is followed directly by the message section (works band removed). */
+.short-drama + .section {
+	padding-top: 0;
+}
+
+@media (max-width: 1024px) {
+	.biz-item {
+		grid-template-columns: 48px minmax(0, 1fr) minmax(0, 220px) 24px;
+		grid-template-areas:
+			"num head media arrow"
+			"num text media arrow";
+		gap: 12px 28px;
+	}
+
+	.biz-item__head {
+		align-self: end;
+	}
+
+	.biz-item__text {
+		align-self: start;
+	}
+}
+
 @media (max-width: 1279px) {
 	.short-drama__heading {
 		white-space: normal;
@@ -473,5 +563,35 @@
 
 	.top-message__body {
 		font-size: 15px;
+	}
+}
+
+@media (max-width: 768px) {
+	.biz-item {
+		grid-template-columns: minmax(0, 1fr) 24px;
+		grid-template-areas:
+			"media media"
+			"num arrow"
+			"head head"
+			"text text";
+		gap: 12px;
+		padding: 28px 0 32px;
+	}
+
+	.biz-item__num {
+		padding-top: 4px;
+		font-size: 11px;
+	}
+
+	.biz-item__head {
+		gap: 6px;
+	}
+
+	.biz-item__en {
+		font-size: 24px;
+	}
+
+	.biz-item__text {
+		font-size: 14px;
 	}
 }

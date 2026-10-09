@@ -84,7 +84,7 @@ $latest = get_posts(
 		</a>
 	<?php endif; ?>
 
-	<?php /* ---------- Business: lead + four cards ---------- */ ?>
+	<?php /* ---------- Business: lead + four stacked sections (no works on the top page) ---------- */ ?>
 	<section class="section">
 		<?php
 		get_template_part(
@@ -98,20 +98,21 @@ $latest = get_posts(
 		);
 		?>
 		<p class="lead-text"><?php echo esc_html( (string) netelly_opt( 'biz_lead' ) ); ?></p>
-		<div class="grid-biz" data-stagger="60">
+		<div class="biz-list" data-stagger="80">
 			<?php foreach ( (array) netelly_opt( 'biz_items' ) as $biz ) : ?>
 				<?php
 				$is_fund = ! empty( $biz['is_fund'] );
 				$burl    = $is_fund ? netelly_fund_url() : ( $biz['link']['url'] ?? '' );
 				?>
-				<a class="card card-biz"<?php echo netelly_link_attrs( $burl, $is_fund ); // phpcs:ignore WordPress.Security.EscapeOutput ?>>
-					<?php echo netelly_media( $biz['image'] ?? 0, '4/5', array( 'sizes' => '(max-width: 768px) 50vw, 25vw' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
-					<span class="card-biz__body">
-						<span class="card-biz__num"><?php echo esc_html( (string) ( $biz['num'] ?? '' ) ); ?></span>
-						<span class="card-biz__en"><?php echo esc_html( (string) ( $biz['en'] ?? '' ) ); ?></span>
-						<span class="card-biz__title"><?php echo esc_html( (string) ( $biz['title'] ?? '' ) ); ?><?php echo $is_fund ? ' <span class="ext" aria-hidden="true">↗</span>' : ''; ?></span>
-						<span class="card-biz__text"><?php echo esc_html( (string) ( $biz['text'] ?? '' ) ); ?></span>
+				<a class="biz-item"<?php echo netelly_link_attrs( $burl, $is_fund ); // phpcs:ignore WordPress.Security.EscapeOutput ?>>
+					<span class="biz-item__num"><?php echo esc_html( (string) ( $biz['num'] ?? '' ) ); ?></span>
+					<span class="biz-item__head">
+						<span class="biz-item__en"><?php echo esc_html( (string) ( $biz['en'] ?? '' ) ); ?></span>
+						<span class="biz-item__title"><?php echo esc_html( (string) ( $biz['title'] ?? '' ) ); ?></span>
 					</span>
+					<span class="biz-item__text"><?php echo esc_html( (string) ( $biz['text'] ?? '' ) ); ?></span>
+					<span class="biz-item__media"><?php echo netelly_media( $biz['image'] ?? 0, '4/3', array( 'sizes' => '(max-width: 768px) 100vw, 25vw' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
+					<span class="biz-item__arrow arrow" aria-hidden="true"><?php echo $is_fund ? '↗' : '→'; ?></span>
 					<?php echo netelly_new_tab_note( $burl, $is_fund ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 				</a>
 			<?php endforeach; ?>
@@ -151,55 +152,6 @@ $latest = get_posts(
 			<?php endforeach; ?>
 		</div>
 	</section>
-
-	<?php /* ---------- Black band: ORIGINALS (4) + MEDIA (3 episodes) ---------- */ ?>
-	<div class="top-band is-dark">
-		<section class="top-band__block">
-			<?php
-			get_template_part(
-				'template-parts/section-head',
-				null,
-				array(
-					'label'   => (string) netelly_opt( 'orig_label' ),
-					'heading' => (string) netelly_opt( 'orig_heading' ),
-					'link'    => netelly_opt( 'orig_link' ),
-				)
-			);
-			?>
-			<div class="grid-works grid-works--4" data-stagger="60">
-				<?php foreach ( (array) netelly_opt( 'orig_works' ) as $wid ) : ?>
-					<?php get_template_part( 'template-parts/card-work', null, array( 'id' => (int) $wid ) ); ?>
-				<?php endforeach; ?>
-			</div>
-		</section>
-
-		<?php
-		$media_work = (int) netelly_opt( 'media_work' );
-		$episodes   = $media_work ? array_slice( (array) netelly_field( 'episodes', $media_work ), 0, 3 ) : array();
-		?>
-		<?php if ( $episodes ) : ?>
-			<section class="top-band__block">
-				<div class="section-head section-head--media">
-					<div class="section-head__text">
-						<?php echo netelly_logo( 'section-head__logo' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
-						<h2 class="section-head__media-label"><?php echo esc_html( (string) netelly_opt( 'media_label' ) ); ?></h2>
-					</div>
-					<?php echo netelly_text_link( netelly_opt( 'media_link' ), 'section-head__link' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
-				</div>
-				<div class="grid-media" data-stagger="60">
-					<?php foreach ( $episodes as $ep ) : ?>
-						<?php $ep_url = ! empty( $ep['url'] ) ? $ep['url'] : get_permalink( $media_work ); ?>
-						<a class="card card-episode"<?php echo netelly_link_attrs( $ep_url ); // phpcs:ignore WordPress.Security.EscapeOutput ?>>
-							<?php echo netelly_media( $ep['thumb'] ?? 0, '16/9', array( 'sizes' => '(max-width: 768px) 100vw, 50vw' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
-							<span class="card-episode__meta"><?php echo esc_html( get_the_title( $media_work ) . ' · ' . ( $ep['no'] ?? '' ) ); ?></span>
-							<span class="card-episode__title"><?php echo esc_html( (string) ( $ep['title'] ?? '' ) ); ?></span>
-							<?php echo netelly_new_tab_note( $ep_url ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
-						</a>
-					<?php endforeach; ?>
-				</div>
-			</section>
-		<?php endif; ?>
-	</div>
 
 	<?php /* ---------- CEO message excerpt ---------- */ ?>
 	<section class="section">
