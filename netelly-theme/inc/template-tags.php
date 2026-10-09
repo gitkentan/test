@@ -28,7 +28,8 @@ function netelly_label( string $label ): string {
  * True when a string is Latin-only (design sets those in Archivo, e.g. "For Creators").
  */
 function netelly_is_latin( string $text ): bool {
-	return (bool) preg_match( '/^[\x20-\x7E’‘“”–—·]+$/u', $text );
+	// Whitespace-insensitive: admin textareas save line breaks as \r\n.
+	return (bool) preg_match( '/^[\x20-\x7E’‘“”–—·]+$/u', (string) preg_replace( '/\s+/u', ' ', trim( $text ) ) );
 }
 
 /**

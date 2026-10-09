@@ -2,7 +2,7 @@
 .site-header {
 	position: fixed;
 	z-index: 50;
-	top: 0;
+	top: var(--wp-admin--admin-bar--height, 0px);
 	left: 0;
 	right: 0;
 	color: var(--cream);
