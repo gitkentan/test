@@ -27,6 +27,7 @@ $contact = netelly_page_url( 'contact' );
 		<?php endif; ?>
 
 		<div class="site-header__tools">
+			<?php echo netelly_theme_toggle(); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 			<?php echo netelly_lang_switch(); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 			<a class="site-header__cta<?php echo netelly_is_latin( netelly_t( 'header_contact' ) ) ? ' is-latin' : ''; ?>" href="<?php echo esc_url( $contact ); ?>"><?php echo esc_html( netelly_t( 'header_contact' ) ); ?></a>
 			<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="sp-menu" data-label-open="<?php echo esc_attr( netelly_t( 'menu_open' ) ); ?>" data-label-close="<?php echo esc_attr( netelly_t( 'menu_close' ) ); ?>">
@@ -57,6 +58,7 @@ $contact = netelly_page_url( 'contact' );
 				<?php endforeach; ?>
 			</ul>
 			<?php echo netelly_lang_switch( 'sp-menu__lang' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+			<?php echo netelly_theme_toggle( 'sp-menu__theme' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 		</div>
 	</div>
 </div>

@@ -291,3 +291,35 @@ export function initCursor() {
 	}, { passive: true });
 	document.documentElement.addEventListener('pointerleave', () => ring.classList.remove('is-visible'));
 }
+
+/**
+ * Dark / light switch: flips html[data-theme], the site-wide dark body classes, and
+ * remembers the choice on this device (the head script applies it before paint).
+ */
+export function initThemeToggle() {
+	const buttons = [...document.querySelectorAll('[data-theme-toggle]')];
+	if (!buttons.length) return;
+	const root = document.documentElement;
+	const body = document.body;
+	const label = () => {
+		const light = root.getAttribute('data-theme') === 'light';
+		buttons.forEach((b) => {
+			b.setAttribute('aria-pressed', String(light));
+			const sr = b.querySelector('.screen-reader-text');
+			if (sr) sr.textContent = light ? b.dataset.labelDark : b.dataset.labelLight;
+		});
+	};
+	buttons.forEach((b) => b.addEventListener('click', () => {
+		const light = root.getAttribute('data-theme') !== 'light';
+		root.setAttribute('data-theme', light ? 'light' : 'dark');
+		body.classList.toggle('is-dark', !light);
+		if (!body.classList.contains('single-work')) body.classList.toggle('page-is-dark', !light);
+		try {
+			localStorage.setItem('netelly-theme', light ? 'light' : 'dark');
+		} catch (e) {
+			// Storage blocked: the switch still works for this page view.
+		}
+		label();
+	}));
+	label();
+}

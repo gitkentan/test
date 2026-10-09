@@ -30,6 +30,8 @@ function netelly_strings(): array {
 		// Hero video.
 		'video_pause'      => array( '背景動画を一時停止', 'Pause background video' ),
 		'cursor_view'      => array( 'VIEW', 'VIEW' ),
+		'theme_to_light'   => array( 'ライト表示に切り替える', 'Switch to light mode' ),
+		'theme_to_dark'    => array( 'ダーク表示に切り替える', 'Switch to dark mode' ),
 		'video_play'       => array( '背景動画を再生', 'Play background video' ),
 		// News band / lists.
 		'news_label'       => array( 'NEWS', 'NEWS' ),

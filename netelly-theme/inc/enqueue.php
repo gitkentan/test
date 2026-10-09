@@ -66,12 +66,13 @@ add_action(
  * - html.intro(-full|-short) on the top page (README 1): full sequence once per
  *   session (sessionStorage "netelly_intro_seen"), shortened afterwards.
  * Nothing is hidden when the visitor prefers reduced motion.
+ * - html[data-theme]   : dark (default) or light, as chosen with the header toggle (fx.js).
  */
 add_action(
 	'wp_head',
 	static function () {
 		$front = is_front_page() ? 'true' : 'false';
-		$js    = "(function(d){var h=d.documentElement;h.classList.add('js');setTimeout(function(){if(!h.classList.contains('motion-ready')){h.classList.remove('js','intro','intro-full','intro-short');}},3000);try{if(matchMedia('(prefers-reduced-motion: reduce)').matches){h.classList.add('reduced');return;}if({$front}){h.classList.add('intro',sessionStorage.getItem('netelly_intro_seen')?'intro-short':'intro-full');}}catch(e){}})(document);";
+		$js    = "(function(d){var h=d.documentElement;var t=null;try{t=localStorage.getItem('netelly-theme')}catch(e){}h.setAttribute('data-theme',t==='light'?'light':'dark');h.classList.add('js');setTimeout(function(){if(!h.classList.contains('motion-ready')){h.classList.remove('js','intro','intro-full','intro-short');}},3000);try{if(matchMedia('(prefers-reduced-motion: reduce)').matches){h.classList.add('reduced');return;}if({$front}){h.classList.add('intro',sessionStorage.getItem('netelly_intro_seen')?'intro-short':'intro-full');}}catch(e){}})(document);";
 		echo '<script>' . $js . '</script>' . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput
 	},
 	1
@@ -104,4 +105,16 @@ add_action(
 		}
 	},
 	2
+);
+
+/*
+ * Light theme: drop the site-wide dark classes before the body paints (the work detail page
+ * keeps its black ground in both themes).
+ */
+add_action(
+	'wp_body_open',
+	static function () {
+		echo "<script>if(document.documentElement.getAttribute('data-theme')==='light'){var b=document.body;b.classList.remove('is-dark');if(!b.classList.contains('single-work')){b.classList.remove('page-is-dark');}}</script>\n"; // phpcs:ignore WordPress.Security.EscapeOutput
+	},
+	1
 );

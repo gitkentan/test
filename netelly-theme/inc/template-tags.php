@@ -46,6 +46,18 @@ function netelly_split_words( string $text ): array {
 }
 
 /**
+ * Dark / light switch (fx.js toggles html[data-theme] and remembers the choice).
+ */
+function netelly_theme_toggle( string $class = '' ): string {
+	return sprintf(
+		'<button class="theme-toggle %1$s" type="button" data-theme-toggle data-label-light="%2$s" data-label-dark="%3$s"><span class="theme-toggle__icon" aria-hidden="true"></span><span class="theme-toggle__text">DARK / LIGHT</span><span class="screen-reader-text">%2$s</span></button>',
+		esc_attr( $class ),
+		esc_attr( netelly_t( 'theme_to_light' ) ),
+		esc_attr( netelly_t( 'theme_to_dark' ) )
+	);
+}
+
+/**
  * Wraps a trailing arrow (→ / ↗) of a label in a span so it can move on hover.
  */
 function netelly_label( string $label ): string {

@@ -1,8 +1,10 @@
 /*
- * Cinematic theme: every page (header and footer included) runs dark by flipping the
- * colour tokens on body, so every component follows.
+ * Cinematic theme (default): every page (header and footer included) runs dark by flipping
+ * the colour tokens on body, so every component follows. Visitors can switch to the light
+ * theme (html[data-theme="light"], fx.js), which drops these overrides and shows the
+ * original cream design.
  */
-body {
+html:not([data-theme="light"]) body {
 	--paper: #0c0c0b;
 	--ink: #efede7;
 	--line: #2a2a28;
@@ -11,52 +13,52 @@ body {
 }
 
 /* Light panels become raised dark panels. */
-.fund-cta,
-.work-summary,
-.careers-band,
-.entry-band {
+html:not([data-theme="light"]) .fund-cta,
+html:not([data-theme="light"]) .work-summary,
+html:not([data-theme="light"]) .careers-band,
+html:not([data-theme="light"]) .entry-band {
 	background: #151514;
 	color: var(--ink);
 }
 
-.careers-band__label,
-.entry-band__label,
-.press-email__label {
+html:not([data-theme="light"]) .careers-band__label,
+html:not([data-theme="light"]) .entry-band__label,
+html:not([data-theme="light"]) .press-email__label {
 	color: var(--muted);
 }
 
 /* Elements that fill with --ink (now light) take dark text. */
-.smf-badge--required,
-.smf-radio-button-control__control:checked + .smf-radio-button-control__label,
-.tab.is-current,
-.pager__item.is-current,
-.site-header[data-variant="light"] .site-header__cta {
+html:not([data-theme="light"]) .smf-badge--required,
+html:not([data-theme="light"]) .smf-radio-button-control__control:checked + .smf-radio-button-control__label,
+html:not([data-theme="light"]) .tab.is-current,
+html:not([data-theme="light"]) .pager__item.is-current,
+html:not([data-theme="light"]) .site-header[data-variant="light"] .site-header__cta {
 	color: var(--paper);
 }
 
 /* "COMING SOON" key art: a dark tile with a readable label. */
-.is-dark .card-work__soon-label {
+html:not([data-theme="light"]) .is-dark .card-work__soon-label {
 	color: var(--muted);
 }
 
 /* Press kit: the black logo keeps a light tile so it stays visible. */
-.press-asset:not(.is-dark-bg) .press-asset__preview {
+html:not([data-theme="light"]) .press-asset:not(.is-dark-bg) .press-asset__preview {
 	background: #efede7;
 	border-color: #efede7;
 }
 
 /* The light grey news band becomes a quiet strip. */
-.news-band {
+html:not([data-theme="light"]) .news-band {
 	background: #141413;
 	border-color: var(--line);
 }
 
 /* Empty image slots go dark with the page. */
-.media.is-placeholder {
+html:not([data-theme="light"]) .media.is-placeholder {
 	background: linear-gradient(155deg, #1f1f1d 0%, #121211 100%);
 }
 
-.media.is-placeholder::after {
+html:not([data-theme="light"]) .media.is-placeholder::after {
 	mix-blend-mode: screen;
 	opacity: .35;
 }
@@ -298,11 +300,11 @@ body {
 }
 
 /* Hover states tuned for the dark ground. */
-.row-link:hover,
-.adjacent__item:not(.is-empty):hover {
+html:not([data-theme="light"]) .row-link:hover,
+html:not([data-theme="light"]) .adjacent__item:not(.is-empty):hover {
 	background: #1a1a18;
 }
 
-.pf-card:hover .pf-card__text {
+html:not([data-theme="light"]) .pf-card:hover .pf-card__text {
 	color: #3a3936;
 }
