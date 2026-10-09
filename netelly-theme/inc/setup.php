@@ -83,6 +83,8 @@ add_action(
 		$base = NETELLY_URI . '/assets/favicon/';
 		printf( '<link rel="icon" href="%s" type="image/svg+xml">' . "\n", esc_url( $base . 'favicon.svg' ) );
 		printf( '<link rel="icon" href="%s" sizes="32x32" type="image/png">' . "\n", esc_url( $base . 'favicon-32.png' ) );
+		// Google's search-result icon prefers ≥48px (multiples of 48).
+		printf( '<link rel="icon" href="%s" sizes="192x192" type="image/png">' . "\n", esc_url( $base . 'favicon-192.png' ) );
 		printf( '<link rel="apple-touch-icon" href="%s">' . "\n", esc_url( $base . 'apple-touch-icon.png' ) );
 	},
 	5

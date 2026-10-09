@@ -294,6 +294,7 @@ foreach ( NTS_PAGES as $key => $p ) {
 		if ( isset( $p['en_title'] ) ) {
 			update_field( nts_key( 'page_hero', 'page_en_title' ), $p['en_title'], $id );
 		}
+		update_field( nts_key( 'page_hero', 'seo_description' ), $p['desc'][ $lang ] ?? '', $id );
 		$tr[ $lang ]            = $id;
 		$pages[ $key ][ $lang ] = $id;
 	}

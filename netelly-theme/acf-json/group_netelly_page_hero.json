@@ -14,6 +14,21 @@
                 "class": "",
                 "id": ""
             }
+        },
+        {
+            "type": "textarea",
+            "name": "seo_description",
+            "label": "検索結果の説明文（このページ）",
+            "rows": 2,
+            "new_lines": "",
+            "instructions": "Google の検索結果やサイトリンクに出る説明。ページごとに内容が分かる文を80〜120字で。空ならサイト共通の説明文。",
+            "key": "field_nt_page_hero_seo_description",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
         }
     ],
     "location": [

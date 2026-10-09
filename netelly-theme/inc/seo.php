@@ -45,6 +45,18 @@ function netelly_meta_description(): string {
 			$text .= $bio;
 		}
 	}
+	// Per-page description (page screen › ページヒーロー), posts page, works list.
+	$own = '';
+	if ( is_page() ) {
+		$own = (string) netelly_field( 'seo_description', get_queried_object_id() );
+	} elseif ( is_home() ) {
+		$own = (string) netelly_field( 'seo_description', (int) get_option( 'page_for_posts' ) );
+	} elseif ( is_post_type_archive( 'work' ) ) {
+		$own = (string) netelly_opt( 'wa_description' );
+	}
+	if ( '' !== trim( $own ) ) {
+		$text = $own;
+	}
 	$text = netelly_plain( (string) $text, 120 );
 	return '' !== $text ? $text : netelly_plain( (string) netelly_opt( 'meta_description' ), 120 );
 }
@@ -191,10 +203,12 @@ function netelly_schema_graph(): array {
 	$graph = array(
 		$org,
 		array(
-			'@type'      => 'WebSite',
-			'@id'        => $site_id,
-			'url'        => $home,
-			'name'       => 'Netelly',
+			'@type'         => 'WebSite',
+			'@id'           => $site_id,
+			'url'           => $home,
+			// Google "site name" in results: the company name, with the short forms as alternates.
+			'name'          => (string) netelly_opt( 'company_name', 'ja' ),
+			'alternateName' => array_values( array_unique( array_filter( array( 'Netelly', (string) netelly_opt( 'company_name', 'en' ), 'ネテリー' ) ) ) ),
 			'inLanguage' => $lang,
 			'publisher'  => array( '@id' => $org_id ),
 		),
@@ -320,6 +334,27 @@ add_action(
 		echo '<script type="application/ld+json">' . str_replace( '</', '<\/', (string) $json ) . '</script>' . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput
 	},
 	4
+);
+
+// Old-site URLs → new pages (サイト設定 › 旧サイトからの転送). Only for URLs that 404 here.
+add_action(
+	'template_redirect',
+	static function () {
+		if ( ! is_404() ) {
+			return;
+		}
+		$path = strtolower( untrailingslashit( (string) wp_parse_url( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), PHP_URL_PATH ) ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+		foreach ( (array) netelly_opt( 'redirects', 'ja' ) as $rule ) {
+			if ( ! is_array( $rule ) || empty( $rule['from'] ) || empty( $rule['to'] ) ) {
+				continue;
+			}
+			$from = strtolower( untrailingslashit( (string) wp_parse_url( (string) $rule['from'], PHP_URL_PATH ) ) );
+			if ( $from && $from === $path ) {
+				wp_redirect( esc_url_raw( (string) $rule['to'] ), 301 ); // phpcs:ignore WordPress.Security.SafeRedirect -- admin-defined targets (may be external).
+				exit;
+			}
+		}
+	}
 );
 
 // The users sitemap would publish login names; companies list people on pages instead.

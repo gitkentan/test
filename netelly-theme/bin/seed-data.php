@@ -18,14 +18,14 @@ const NTS_CATEGORIES = array(
 
 const NTS_PAGES = array(
 	'home'     => array( 'slug' => 'home', 'order' => 0, 'title' => array( 'ja' => 'トップ', 'en' => 'Home' ) ),
-	'company'  => array( 'slug' => 'company', 'order' => 1, 'template' => 'page-company.php', 'en_title' => 'COMPANY', 'title' => array( 'ja' => '企業情報', 'en' => 'Company' ) ),
+	'company'  => array( 'slug' => 'company', 'order' => 1, 'template' => 'page-company.php', 'en_title' => 'COMPANY', 'desc' => array( 'ja' => 'Netelly株式会社の企業情報。ミッション・ビジョン、会社概要、沿革、アクセスをご紹介します。', 'en' => 'Company information for Netelly Inc.: mission, vision, company profile, history and access.' ), 'title' => array( 'ja' => '企業情報', 'en' => 'Company' ) ),
 	'message'  => array( 'slug' => 'message', 'order' => 2, 'template' => 'page-message.php', 'en_title' => 'MESSAGE', 'title' => array( 'ja' => '代表メッセージ', 'en' => 'CEO Message' ) ),
-	'business' => array( 'slug' => 'business', 'order' => 3, 'template' => 'page-business.php', 'en_title' => 'BUSINESS', 'title' => array( 'ja' => '事業', 'en' => 'Business' ) ),
-	'news'     => array( 'slug' => 'news', 'order' => 4, 'en_title' => 'NEWS', 'title' => array( 'ja' => 'ニュース', 'en' => 'News' ) ),
-	'careers'  => array( 'slug' => 'careers', 'order' => 5, 'template' => 'page-careers.php', 'en_title' => 'CAREERS', 'title' => array( 'ja' => '採用', 'en' => 'Careers' ) ),
-	'contact'  => array( 'slug' => 'contact', 'order' => 6, 'template' => 'page-contact.php', 'en_title' => 'CONTACT', 'title' => array( 'ja' => 'お問い合わせ', 'en' => 'Contact' ) ),
-	'privacy'  => array( 'slug' => 'privacy', 'order' => 7, 'template' => 'page-privacy.php', 'en_title' => 'PRIVACY', 'title' => array( 'ja' => 'プライバシーポリシー', 'en' => 'Privacy Policy' ) ),
-	'press'    => array( 'slug' => 'press', 'order' => 8, 'template' => 'page-press.php', 'en_title' => 'PRESS KIT', 'title' => array( 'ja' => 'プレスキット', 'en' => 'Press Kit' ) ),
+	'business' => array( 'slug' => 'business', 'order' => 3, 'template' => 'page-business.php', 'en_title' => 'BUSINESS', 'desc' => array( 'ja' => 'Netellyの事業。ドラマ・映画・ショートドラマの企画制作、配給・メディア、クリエイターのコミュニティ、企画に出資するCreators Fundを展開しています。', 'en' => 'Netelly\'s businesses: developing and producing series, films and short dramas, distribution and media, a creator community, and the Creators Fund that invests in new projects.' ), 'title' => array( 'ja' => '事業', 'en' => 'Business' ) ),
+	'news'     => array( 'slug' => 'news', 'order' => 4, 'en_title' => 'NEWS', 'desc' => array( 'ja' => 'Netellyの最新ニュース。プレスリリース、作品情報、お知らせを掲載しています。', 'en' => 'The latest from Netelly: press releases, news about our works and announcements.' ), 'title' => array( 'ja' => 'ニュース', 'en' => 'News' ) ),
+	'careers'  => array( 'slug' => 'careers', 'order' => 5, 'template' => 'page-careers.php', 'en_title' => 'CAREERS', 'desc' => array( 'ja' => 'Netellyの採用情報。募集職種、選考の流れ、エントリー方法をご案内します。', 'en' => 'Careers at Netelly: open positions, the hiring process and how to apply.' ), 'title' => array( 'ja' => '採用', 'en' => 'Careers' ) ),
+	'contact'  => array( 'slug' => 'contact', 'order' => 6, 'template' => 'page-contact.php', 'en_title' => 'CONTACT', 'desc' => array( 'ja' => '制作・配給・協業・取材などのご相談は、こちらのフォームからNetellyへお問い合わせください。', 'en' => 'Contact Netelly about production, distribution, partnerships, press and more.' ), 'title' => array( 'ja' => 'お問い合わせ', 'en' => 'Contact' ) ),
+	'privacy'  => array( 'slug' => 'privacy', 'order' => 7, 'template' => 'page-privacy.php', 'en_title' => 'PRIVACY', 'desc' => array( 'ja' => 'Netelly株式会社のプライバシーポリシー（個人情報の取り扱いについて）。', 'en' => 'Netelly Inc. privacy policy: how we handle personal information.' ), 'title' => array( 'ja' => 'プライバシーポリシー', 'en' => 'Privacy Policy' ) ),
+	'press'    => array( 'slug' => 'press', 'order' => 8, 'template' => 'page-press.php', 'en_title' => 'PRESS KIT', 'desc' => array( 'ja' => 'メディア・報道関係者向けのプレスキット。会社紹介文、ロゴ、会社概要、経営陣、プレスリリースを掲載しています。', 'en' => 'Press kit for media: boilerplate, logos, company facts, leadership and press releases.' ), 'title' => array( 'ja' => 'プレスキット', 'en' => 'Press Kit' ) ),
 );
 
 const NTS_WORKS = array(
@@ -244,6 +244,13 @@ function nts_lang_data( string $lang, callable $purl, array $works ): array {
 	$settings = array(
 		// Company / contact.
 		'company_name'       => $L( 'Netelly株式会社', 'Netelly Inc.' ),
+		// Candidates from the current Google sitelinks (COMPANY / SERVICE / Creators Capital / CONTACT);
+		// confirm the real old paths with a site: search or Search Console.
+		'redirects'          => $ja ? array(
+			array( 'from' => '/service/', 'to' => $p( 'business' ) ),
+			array( 'from' => '/creators-capital/', 'to' => NTS_FUND_URL ),
+			array( 'from' => '/creatorscapital/', 'to' => NTS_FUND_URL ),
+		) : array(),
 		'seo_home_title'     => $L( 'Netelly株式会社｜東京・ニューヨーク・ロサンゼルス発のグローバル・エンターテインメントカンパニー', 'Netelly Inc. | A global entertainment company from Tokyo, New York and Los Angeles' ),
 		'ogp_image'          => '',
 		'org_founding_date'  => '2019-10-10',
@@ -360,6 +367,7 @@ function nts_lang_data( string $lang, callable $purl, array $works ): array {
 		),
 		// Works archive.
 		'wa_en_title'        => 'ORIGINALS',
+		'wa_description'     => $L( 'Netellyのオリジナル作品。ドラマ・バラエティ・ショートドラマなど、自社で企画・制作した作品を紹介します。', 'Netelly Originals: series, variety shows and short dramas developed and produced in-house.' ),
 		'wa_title'           => $L( 'オリジナル作品', 'Originals' ),
 		'wa_featured'        => $works['more-than-friends'][ $lang ],
 		'wa_cta_label'       => $L( 'NETELLY CREATORS FUND · 常時募集', 'NETELLY CREATORS FUND · OPEN CALL' ),

@@ -215,11 +215,84 @@
         },
         {
             "type": "tab",
-            "label": "外部リンク",
+            "label": "旧サイトからの転送",
             "name": "",
             "placement": "top",
             "endpoint": 0,
             "key": "field_nt_settings_tab_14",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "message",
+            "name": "",
+            "label": "",
+            "message": "旧サイトのURLを開いたときに、新しいページへ自動で転送します（301リダイレクト）。検索順位を引き継ぐために、旧サイトで検索に出ていたページはすべて登録してください。転送は「そのURLのページが新サイトに存在しない場合」だけ働きます。",
+            "key": "field_nt_settings_tab_15",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "repeater",
+            "name": "redirects",
+            "label": "転送ルール",
+            "sub_fields": [
+                {
+                    "type": "text",
+                    "name": "from",
+                    "label": "旧URLのパス",
+                    "instructions": "例：/service/ （ドメインより後ろ）",
+                    "key": "field_nt_settings_redirects_from",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "url",
+                    "name": "to",
+                    "label": "転送先URL",
+                    "instructions": "例：https://netelly.co.jp/business/",
+                    "key": "field_nt_settings_redirects_to",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ],
+            "layout": "table",
+            "button_label": "ルールを追加",
+            "collapsed": "",
+            "key": "field_nt_settings_redirects",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "外部リンク",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_settings_tab_17",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -299,7 +372,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_20",
+            "key": "field_nt_settings_tab_23",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -393,7 +466,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_27",
+            "key": "field_nt_settings_tab_30",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -466,7 +539,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_32",
+            "key": "field_nt_settings_tab_35",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -584,7 +657,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_40",
+            "key": "field_nt_settings_tab_43",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -741,7 +814,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_46",
+            "key": "field_nt_settings_tab_49",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -755,7 +828,7 @@
             "name": "",
             "label": "",
             "message": "現在トップページには作品を表示していません（この欄の内容は使われません）。",
-            "key": "field_nt_settings_tab_47",
+            "key": "field_nt_settings_tab_50",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -879,7 +952,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_55",
+            "key": "field_nt_settings_tab_58",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -1066,7 +1139,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_61",
+            "key": "field_nt_settings_tab_64",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -1148,7 +1221,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_67",
+            "key": "field_nt_settings_tab_70",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -1288,7 +1361,7 @@
             "name": "",
             "label": "",
             "message": "以下は代表メッセージページの「プロフィール」欄と、検索エンジン向けの人物情報（構造化データ）に使われます。名前で検索したときにGoogleが代表者として認識しやすくなるよう、事実のみを正確に入力してください。",
-            "key": "field_nt_settings_tab_77",
+            "key": "field_nt_settings_tab_80",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -1421,7 +1494,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_82",
+            "key": "field_nt_settings_tab_85",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -1528,7 +1601,22 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_85",
+            "key": "field_nt_settings_tab_88",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "wa_description",
+            "label": "検索結果の説明文（作品一覧）",
+            "rows": 2,
+            "new_lines": "",
+            "key": "field_nt_settings_wa_description",
             "instructions": "",
             "required": 0,
             "wrapper": {
