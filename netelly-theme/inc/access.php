@@ -31,6 +31,23 @@ function netelly_default_access_rows( string $lang ): array {
 }
 
 /**
+ * Default links for 企業情報 › アクセス (shuttle bus timetable of the building, PDF).
+ *
+ * @return array<int,array{link:array{title:string,url:string,target:string}}>
+ */
+function netelly_default_access_links( string $lang ): array {
+	return array(
+		array(
+			'link' => array(
+				'title'  => 'en' === $lang ? 'Free shuttle bus timetable (from Osaki, Oimachi and Shinagawa stations; weekdays only) ↗' : '無料シャトルバス時刻表（大崎駅発、大井町駅発、品川駅発 平日のみ運行） ↗',
+				'url'    => 'https://www.segasammy.co.jp/cms/wp-content/uploads/pdf/ja/img-bustimetable_20251216-1.pdf',
+				'target' => '_blank',
+			),
+		),
+	);
+}
+
+/**
  * Google Maps embed URL for a place (no API key needed).
  */
 function netelly_map_embed_url( string $query ): string {
@@ -47,10 +64,16 @@ function netelly_map_embed_url( string $query ): string {
 add_action(
 	'acf/init',
 	static function () {
-		if ( get_option( 'netelly_access_v1' ) || ! function_exists( 'update_field' ) ) {
+		if ( ! function_exists( 'update_field' ) ) {
+			return;
+		}
+		$v1 = ! get_option( 'netelly_access_v1' );
+		$v2 = ! get_option( 'netelly_access_v2' );
+		if ( ! $v1 && ! $v2 ) {
 			return;
 		}
 		update_option( 'netelly_access_v1', 1 );
+		update_option( 'netelly_access_v2', 1 );
 		$pages = get_posts(
 			array(
 				'post_type'      => 'page',
@@ -64,6 +87,13 @@ add_action(
 		);
 		foreach ( $pages as $id ) {
 			$lang = function_exists( 'pll_get_post_language' ) ? (string) pll_get_post_language( $id ) : 'ja';
+			// v2: shuttle bus timetable link, unless links were already entered.
+			if ( $v2 && ! (int) get_post_meta( $id, 'access_links', true ) ) {
+				update_field( 'field_nt_page_company_access_links', netelly_default_access_links( $lang ), $id );
+			}
+			if ( ! $v1 ) {
+				continue;
+			}
 			if ( ! metadata_exists( 'post', $id, 'access_map_query' ) ) {
 				update_field( 'field_nt_page_company_access_map_query', NETELLY_ACCESS_QUERY, $id );
 			}
