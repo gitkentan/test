@@ -46,7 +46,9 @@ $adjacent = static function ( $p, string $label, string $class ) {
 			</p>
 			<h1 class="article__title"><?php the_title(); ?></h1>
 		</header>
-		<?php echo netelly_media( get_post_thumbnail_id(), '16/9', array( 'eager' => true, 'sizes' => '(max-width: 768px) 100vw, 912px' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+		<?php if ( has_post_thumbnail() ) : // No アイキャッチ → no empty frame; the body follows the title. ?>
+			<?php echo netelly_media( get_post_thumbnail_id(), '16/9', array( 'eager' => true, 'sizes' => '(max-width: 768px) 100vw, 912px' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+		<?php endif; ?>
 		<div class="article__body">
 			<div class="article__content"><?php the_content(); ?></div>
 			<?php if ( $work && $summary ) : ?>
