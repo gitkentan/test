@@ -59,13 +59,13 @@ add_filter(
 	}
 );
 
-// Body classes used by header.js / motion.css.
+// Body classes used by header.js / motion.css. The cinematic theme runs every page dark,
+// so the components' own dark styles (.is-dark …, .page-is-dark header) apply site-wide.
 add_filter(
 	'body_class',
 	static function ( $classes ) {
-		if ( is_singular( 'work' ) ) {
-			$classes[] = 'page-is-dark';
-		}
+		$classes[] = 'is-dark';
+		$classes[] = 'page-is-dark';
 		return $classes;
 	}
 );

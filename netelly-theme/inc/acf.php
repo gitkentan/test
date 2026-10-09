@@ -84,3 +84,25 @@ function netelly_fund_url(): string {
 	$url = (string) netelly_opt( 'fund_url' );
 	return $url ? $url : 'https://fund.netelly.co.jp';
 }
+
+/*
+ * Fields added after a site was seeded have no stored value: show the default text both
+ * on the page and in the edit screen (so saving the settings page keeps it).
+ */
+add_filter(
+	'acf/load_value/name=manifesto_text',
+	static function ( $value, $post_id ) {
+		if ( null !== $value ) {
+			return $value;
+		}
+		return 'netelly_en' === $post_id
+			? 'Netelly is an entertainment company that develops, produces and delivers everything in-house — from short dramas to series, films and comedy.'
+			: 'Netellyは、ショートドラマからドラマ・映画・コメディまでを自社で企画・制作し、届けるエンターテインメント企業です。';
+	},
+	10,
+	2
+);
+add_filter(
+	'acf/load_value/name=manifesto_label',
+	static fn( $value ) => null === $value ? 'WHO WE ARE' : $value
+);

@@ -260,11 +260,11 @@ function nts_lang_data( string $lang, callable $purl, array $works ): array {
 		'gsc_verification'   => '',
 		'manifesto_label'    => 'WHO WE ARE',
 		'manifesto_link'     => nts_link( $L( 'Netellyについて →', 'About Netelly →' ), $p( 'company' ) ),
-		'manifesto_text'     => $L( 'Netellyは、国や言語を越えて届く物語をつくるグローバル・エンターテインメント企業です。', 'Netelly is a global entertainment company creating stories that travel across countries and languages.' ),
-		'marquee_text'       => "New Entertainment, New Value.\nTokyo — New York — Los Angeles",
+		'manifesto_text'     => $L( 'Netellyは、ショートドラマからドラマ・映画・コメディまでを自社で企画・制作し、届けるエンターテインメント企業です。', 'Netelly is an entertainment company that develops, produces and delivers everything in-house — from short dramas to series, films and comedy.' ),
+		'marquee_text'       => "New Entertainment, New Value.\nCreate — Deliver — Connect — Support",
 		'stats_label'        => 'BY THE NUMBERS',
 		'stats'              => array(), // Real figures only; the band stays hidden until filled.
-		'seo_home_title'     => $L( 'Netelly株式会社｜東京・ニューヨーク・ロサンゼルス発のグローバル・エンターテインメントカンパニー', 'Netelly Inc. | A global entertainment company from Tokyo, New York and Los Angeles' ),
+		'seo_home_title'     => $L( 'Netelly株式会社｜ドラマ・映画・ショートドラマを企画・制作するエンターテインメントカンパニー', 'Netelly Inc. | An entertainment company developing series, films and short dramas' ),
 		'ogp_image'          => '',
 		'org_founding_date'  => '2019-10-10',
 		'org_same_as'        => array(),
@@ -272,7 +272,7 @@ function nts_lang_data( string $lang, callable $purl, array $works ): array {
 		'ceo_bio'            => '', // Real bio to be supplied (no invented facts).
 		'ceo_career'         => array(),
 		'ceo_links'          => array(),
-		'meta_description'   => $L( '東京、ニューヨーク、ロサンゼルス。国境を越えて物語を企画し、制作し、届けるグローバル・エンターテインメントカンパニー。', 'Tokyo, New York, Los Angeles — a global entertainment company that develops, produces and delivers stories across borders.' ),
+		'meta_description'   => $L( 'ドラマ・映画・ショートドラマを自社で企画・制作し、配信・YouTube・SNS・劇場へ届けるエンターテインメントカンパニー、Netelly株式会社の公式サイト。', 'Official site of Netelly Inc., an entertainment company that develops and produces series, films and short dramas in-house and delivers them through streaming, YouTube, social media and theaters.' ),
 		'company_address'    => $L( "〒141-0033 東京都品川区西品川1-1-1\n住友不動産大崎ガーデンタワー 9F", "Sumitomo Fudosan Osaki Garden Tower 9F\n1-1-1 Nishi-Shinagawa, Shinagawa-ku, Tokyo" ),
 		'contact_email'      => 'info@netelly.com',
 		'contact_tel'        => '03-4400-1235',
@@ -297,9 +297,9 @@ function nts_lang_data( string $lang, callable $purl, array $works ): array {
 		'cb_heading'         => $L( "好きな作品を、\n仕事にする。", "Make the stories you love\nyour work." ),
 		'cb_button'          => nts_link( $L( '募集職種を見る →', 'View open positions →' ), $p( 'careers', '#positions' ) ),
 		// Top: hero.
-		'hero_label'         => 'NETELLY INC. · TOKYO / NEW YORK / LOS ANGELES',
+		'hero_label'         => 'NETELLY INC. · EST. 2019',
 		'hero_copy'          => "New Entertainment,\nNew Value.",
-		'hero_lead'          => $L( '東京・ニューヨーク・ロサンゼルス発、グローバル・エンターテインメントカンパニー。', 'A global entertainment company from Tokyo, New York and Los Angeles.' ),
+		'hero_lead'          => $L( 'ドラマ・映画・ショートドラマを企画・制作する、エンターテインメントカンパニー。', 'An entertainment company developing and producing series, films and short dramas.' ),
 		'hero_cta1'          => nts_link( $L( 'Netellyについて →', 'About Netelly →' ), $p( 'company' ) ),
 		'hero_cta2'          => nts_link( $L( '作品を見る', 'View works' ), $wurl ),
 		// Top: short drama.
@@ -335,7 +335,7 @@ function nts_lang_data( string $lang, callable $purl, array $works ): array {
 			'Netelly brings four functions — creating, delivering, connecting and supporting — together in one organization, and keeps them in motion so that talent and new work keep emerging.'
 		),
 		'biz_items'          => array(
-			array( 'num' => 'I', 'en' => 'CREATIVE', 'title' => $L( '制作', 'Production' ), 'text' => $L( 'ドラマ・映画・ショートドラマを、世界に向けて企画し、制作する。', 'We develop and produce series, films and short dramas for the world.' ), 'image' => '', 'link' => nts_link( 'CREATIVE', $p( 'business', '#creative' ) ), 'is_fund' => 0 ),
+			array( 'num' => 'I', 'en' => 'CREATIVE', 'title' => $L( '制作', 'Production' ), 'text' => $L( 'ドラマ・映画・ショートドラマを、企画から制作まで手がける。', 'We develop and produce series, films and short dramas.' ), 'image' => '', 'link' => nts_link( 'CREATIVE', $p( 'business', '#creative' ) ), 'is_fund' => 0 ),
 			array( 'num' => 'II', 'en' => 'MEDIA', 'title' => $L( '配給・メディア', 'Distribution & Media' ), 'text' => $L( '劇場・配信・YouTubeへ作品を届ける。', 'We bring our work to theaters, streaming and YouTube.' ), 'image' => '', 'link' => nts_link( 'MEDIA', $p( 'business', '#media' ) ), 'is_fund' => 0 ),
 			array( 'num' => 'III', 'en' => 'COMMUNITY', 'title' => $L( 'コミュニティ', 'Community' ), 'text' => $L( 'つくり手が出会い、次の企画が生まれる場。', 'A place where creators meet and new projects begin.' ), 'image' => '', 'link' => nts_link( 'COMMUNITY', $p( 'business', '#community' ) ), 'is_fund' => 0 ),
 			array( 'num' => 'IV', 'en' => 'CREATORS FUND', 'title' => $L( 'クリエイターズファンド', 'Creators Fund' ), 'text' => $L( '監督・脚本家・プランナーの企画に出資する。', 'We invest in projects by directors, writers and planners.' ), 'image' => '', 'link' => '', 'is_fund' => 1 ),
@@ -396,8 +396,8 @@ function nts_lang_data( string $lang, callable $purl, array $works ): array {
 				'mission_heading' => $L( "エンタメで、\n新しい価値を生み出す。", "Creating new value\nthrough entertainment." ),
 				'mission_sub'     => 'NEW ENTERTAINMENT, NEW VALUE.',
 				'mission_text'    => $L(
-					'Netellyは、国や言語を越えて届く物語をつくるグローバル・エンターテインメント企業です。ショートドラマからドラマ・映画・コメディまでを自社で企画・制作し、配信やYouTube、SNS、劇場へ届けています。2019年の創業以来、オリジナル作品だけをつくり続けてきました。',
-					'Netelly is a global entertainment company creating stories that travel across countries and languages. We develop and produce everything in-house — from short dramas to series, films and comedy — and deliver it through streaming, YouTube, social media and theaters. Since our founding in 2019, we have made nothing but original work.'
+					'Netellyは、ショートドラマからドラマ・映画・コメディまでを自社で企画・制作し、配信やYouTube、SNS、劇場へ届けるエンターテインメント企業です。2019年の創業以来、オリジナル作品だけをつくり続けてきました。',
+					'Netelly is an entertainment company that develops and produces everything in-house — from short dramas to series, films and comedy — and delivers it through streaming, YouTube, social media and theaters. Since our founding in 2019, we have made nothing but original work.'
 				),
 				'vision_label'    => 'VISION',
 				'vision_heading'  => $L( '文化を、アップデートする。', 'Updating culture.' ),
@@ -505,20 +505,20 @@ function nts_lang_data( string $lang, callable $purl, array $works ): array {
 				'boilerplates'    => array(
 					array(
 						'label' => $L( '短文', 'Short' ),
-						'text'  => $L( 'Netelly（ネテリー）は、東京・ニューヨーク・ロサンゼルス発のグローバル・エンターテインメントカンパニーです。', 'Netelly is a global entertainment company from Tokyo, New York and Los Angeles.' ),
+						'text'  => $L( 'Netelly（ネテリー）は、ドラマ・映画・ショートドラマを企画・制作するエンターテインメントカンパニーです。', 'Netelly is an entertainment company developing and producing series, films and short dramas.' ),
 					),
 					array(
 						'label' => $L( '長文', 'Long' ),
 						'text'  => $L(
-							'Netelly株式会社は、東京・ニューヨーク・ロサンゼルス発のグローバル・エンターテインメントカンパニーです。2019年の創業以来、ドラマ・映画・ショートドラマなどのオリジナル作品を自社で企画・制作し、配信、YouTube、SNS、劇場を通じて届けています。スマートフォンの縦画面で観るショートドラマの走りとなった一社であり、監督・脚本家・プランナーの企画に出資する「Creators Fund」も運営しています。',
-							'Netelly Inc. is a global entertainment company from Tokyo, New York and Los Angeles. Since its founding in 2019, Netelly has developed and produced original series, films and short dramas in-house, delivering them through streaming, YouTube, social media and theaters. The company helped pioneer short dramas for the vertical smartphone screen, and also runs the Creators Fund, which invests in projects by directors, writers and planners.'
+							'Netelly株式会社は、2019年の創業以来、ドラマ・映画・ショートドラマなどのオリジナル作品を自社で企画・制作し、配信、YouTube、SNS、劇場を通じて届けています。スマートフォンの縦画面で観るショートドラマの走りとなった一社であり、監督・脚本家・プランナーの企画に出資する「Creators Fund」も運営しています。',
+							'Since its founding in 2019, Netelly Inc. has developed and produced original series, films and short dramas in-house, delivering them through streaming, YouTube, social media and theaters. The company helped pioneer short dramas for the vertical smartphone screen, and also runs the Creators Fund, which invests in projects by directors, writers and planners.'
 						),
 					),
 					array(
 						'label' => $L( '英文', '日本語' ),
 						'text'  => $L(
-							'Netelly is a global entertainment company from Tokyo, New York and Los Angeles. Since its founding in 2019, Netelly has developed and produced original series, films and short dramas in-house, delivering them through streaming, YouTube, social media and theaters.',
-							'Netelly株式会社は、東京・ニューヨーク・ロサンゼルス発のグローバル・エンターテインメントカンパニーです。2019年の創業以来、ドラマ・映画・ショートドラマなどのオリジナル作品を自社で企画・制作し、配信、YouTube、SNS、劇場を通じて届けています。'
+							'Since its founding in 2019, Netelly has developed and produced original series, films and short dramas in-house, delivering them through streaming, YouTube, social media and theaters.',
+							'Netelly株式会社は、2019年の創業以来、ドラマ・映画・ショートドラマなどのオリジナル作品を自社で企画・制作し、配信、YouTube、SNS、劇場を通じて届けています。'
 						),
 					),
 				),

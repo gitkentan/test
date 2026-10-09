@@ -1,8 +1,8 @@
 /*
- * Cinematic top page: the whole page (header and footer included) runs dark by
- * flipping the colour tokens on body.home, so every component follows.
+ * Cinematic theme: every page (header and footer included) runs dark by flipping the
+ * colour tokens on body, so every component follows.
  */
-body.home {
+body {
 	--paper: #0c0c0b;
 	--ink: #efede7;
 	--line: #2a2a28;
@@ -10,18 +10,53 @@ body.home {
 	--muted: #8a8984;
 }
 
+/* Light panels become raised dark panels. */
+.fund-cta,
+.work-summary,
+.careers-band,
+.entry-band {
+	background: #151514;
+	color: var(--ink);
+}
+
+.careers-band__label,
+.entry-band__label,
+.press-email__label {
+	color: var(--muted);
+}
+
+/* Elements that fill with --ink (now light) take dark text. */
+.smf-badge--required,
+.smf-radio-button-control__control:checked + .smf-radio-button-control__label,
+.tab.is-current,
+.pager__item.is-current,
+.site-header[data-variant="light"] .site-header__cta {
+	color: var(--paper);
+}
+
+/* "COMING SOON" key art: a dark tile with a readable label. */
+.is-dark .card-work__soon-label {
+	color: var(--muted);
+}
+
+/* Press kit: the black logo keeps a light tile so it stays visible. */
+.press-asset:not(.is-dark-bg) .press-asset__preview {
+	background: #efede7;
+	border-color: #efede7;
+}
+
 /* The light grey news band becomes a quiet strip. */
-body.home .news-band {
+.news-band {
 	background: #141413;
 	border-color: var(--line);
 }
 
 /* Empty image slots go dark with the page. */
-body.home .media.is-placeholder {
+.media.is-placeholder {
 	background: linear-gradient(155deg, #1f1f1d 0%, #121211 100%);
 }
 
-body.home .media.is-placeholder::after {
+.media.is-placeholder::after {
 	mix-blend-mode: screen;
 	opacity: .35;
 }

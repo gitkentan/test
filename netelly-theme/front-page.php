@@ -115,17 +115,13 @@ $latest = get_posts(
 
 	<?php /* ---------- Statement (サイト設定 › トップ：ステートメント): lights up as it scrolls by ---------- */ ?>
 	<?php
-	$manifesto = netelly_opt( 'manifesto_text' );
-	if ( null === $manifesto ) { // Never saved (site seeded before this field existed): use the company line.
-		$manifesto = 'en' === netelly_lang() ? 'Netelly is a global entertainment company creating stories that travel across countries and languages.' : 'Netellyは、国や言語を越えて届く物語をつくるグローバル・エンターテインメント企業です。';
-	}
+	$manifesto = netelly_opt( 'manifesto_text' ); // Default text comes from inc/acf.php when never saved.
 	$manifesto = trim( (string) $manifesto );
 	?>
 	<?php if ( '' !== $manifesto ) : ?>
 		<?php
 		$m_split = netelly_split_words( $manifesto );
-		$m_label = netelly_opt( 'manifesto_label' );
-		$m_label = null === $m_label ? 'WHO WE ARE' : (string) $m_label;
+		$m_label = (string) netelly_opt( 'manifesto_label' );
 		$m_link  = netelly_opt( 'manifesto_link' );
 		$m_link  = null === $m_link ? netelly_opt( 'hero_cta1' ) : $m_link;
 		?>
