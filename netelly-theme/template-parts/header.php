@@ -45,7 +45,12 @@ $contact = netelly_page_url( 'contact' );
 			<nav class="sp-menu__nav" aria-label="<?php echo esc_attr( netelly_t( 'nav_label' ) ); ?>">
 				<ul>
 					<?php foreach ( $menu as $i => $item ) : ?>
-						<li class="sp-menu__item" style="--i:<?php echo (int) $i; ?>"><span class="mask"><?php echo netelly_menu_link( $item, 'sp-menu__link' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span></li>
+						<li class="sp-menu__item" style="--i:<?php echo (int) $i; ?>">
+							<span class="mask"><?php echo netelly_menu_link( $item, 'sp-menu__link' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
+							<?php if ( $item['sub'] ) : ?>
+								<span class="sp-menu__sub" aria-hidden="true"><?php echo esc_html( $item['sub'] ); ?></span>
+							<?php endif; ?>
+						</li>
 					<?php endforeach; ?>
 				</ul>
 			</nav>

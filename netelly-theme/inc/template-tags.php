@@ -209,6 +209,7 @@ function netelly_menu( string $location ): array {
 			// Section match: /works/ is current on /works/foo/, /news/ on /news/123/.
 			'current'  => ! $external && '#' !== $item->url && $item_path && trailingslashit( $item_path ) !== trailingslashit( $home ) && str_starts_with( trailingslashit( $path ), trailingslashit( $item_path ) ),
 			'parent'   => (int) $item->menu_item_parent,
+			'sub'      => netelly_menu_sub( $item ),
 			'children' => array(),
 		);
 	}
@@ -222,6 +223,37 @@ function netelly_menu( string $location ): array {
 	}
 	unset( $node );
 	return $tree;
+}
+
+/**
+ * Small Japanese label shown under an English menu item in the SP menu: the item's
+ * 説明 (外観 › メニュー, "説明" in 表示オプション), else a default for the Japanese site.
+ *
+ * @param WP_Post $item Menu item.
+ */
+function netelly_menu_sub( $item ): string {
+	$desc = trim( (string) ( $item->description ?? '' ) );
+	if ( '' !== $desc ) {
+		return $desc;
+	}
+	if ( 'ja' !== netelly_lang() || ! netelly_is_latin( (string) $item->title ) ) {
+		return '';
+	}
+	$path     = trim( (string) wp_parse_url( (string) $item->url, PHP_URL_PATH ), '/' );
+	$segment  = (string) basename( $path );
+	$defaults = array(
+		'company'  => '企業情報',
+		'business' => '事業',
+		'works'    => 'オリジナル作品',
+		'news'     => 'ニュース',
+		'careers'  => '採用',
+		'studio'   => '映像制作',
+		'fund'     => 'クリエイターズファンド',
+		'contact'  => 'お問い合わせ',
+		'message'  => '代表メッセージ',
+		'press'    => 'プレスキット',
+	);
+	return $defaults[ $segment ] ?? '';
 }
 
 /**
