@@ -55,8 +55,9 @@ export function initCountUp() {
 		for (const e of entries) {
 			if (!e.isIntersecting) continue;
 			io.unobserve(e.target);
-			const digits = e.target.querySelector('.work-views__digits');
+			const digits = e.target.querySelector('[data-digits], .work-views__digits');
 			const target = Number(e.target.dataset.count) || 0;
+			if (!digits) continue;
 			const t0 = performance.now();
 			const tick = (now) => {
 				const p = Math.min((now - t0) / 1200, 1);

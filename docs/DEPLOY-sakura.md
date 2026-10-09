@@ -119,7 +119,8 @@ Polylang を有効化すると初期設定の画面（ウィザード）が開�
 4. WordPress の 設定 › 一般 の「WordPress アドレス」「サイトアドレス」を `https://netelly.co.jp` にする（**切り替え直後にログインできなくなった場合は、先にここを変えてからフォルダを切り替えます**）
 5. 表示設定の「インデックスしない」のチェックを外す
 6. **旧サイトのURLからの転送（301）**：管理画面 › サイト設定 › **旧サイトからの転送** に「旧URLのパス → 新URL」を登録します（コード不要）。初期値として、Google の `site:netelly.co.jp` で確認した旧URL（/publish・/terms・/privacy-policy・/posts/…・/funding-commingsoon など）の転送と、テンプレートの見本ページ（/templates・/pricing）の「削除済み（410）」を入れてあります。それ以外にも旧サイトの実際のURLは Google で `site:netelly.co.jp` と検索するか、Search Console の「ページ」で確認して、検索に出ているURLをすべて登録してください。
-7. **Google Search Console** に `netelly.co.jp` を登録し、サイトマップ `https://netelly.co.jp/wp-sitemap.xml` を送信。代表メッセージページは「URL検査」→「インデックス登録をリクエスト」
+7. **Google アナリティクス（GA4）**：GA4 でプロパティを作り、測定ID（G-…）を サイト設定 › アクセス解析 に貼る。GA4 の管理画面で「generate_lead」を**キーイベント（コンバージョン）**に設定すると、問い合わせ数と種類が分かります
+8. **Google Search Console** に `netelly.co.jp` を登録（「HTMLタグ」の確認コードを サイト設定 › アクセス解析 に貼る）し、サイトマップ `https://netelly.co.jp/wp-sitemap.xml` を送信。代表メッセージページは「URL検査」→「インデックス登録をリクエスト」
 
 ## 4. 公開前チェックリスト
 

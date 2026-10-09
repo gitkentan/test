@@ -191,7 +191,14 @@ export function initForm() {
 		}
 	}, true );
 
+	// GA4 conversion (inc/seo.php loads gtag when an ID is set): inquiry type of the sent form.
+	let inquiryType = '';
+	form.addEventListener( 'smf.complete', () => {
+		window.gtag?.( 'event', 'generate_lead', { form_name: 'contact', inquiry_type: inquiryType, language: document.documentElement.lang } );
+	} );
+
 	form.addEventListener( 'smf.beforesubmit', () => {
+		inquiryType = form.querySelector( '[name="type"]:checked, input[type="hidden"][name="type"]' )?.value || inquiryType;
 		const button = clicked || form.querySelector( '.smf-action [type="submit"]' );
 		clicked = null;
 		if ( button && 'back' !== button.dataset.action ) {

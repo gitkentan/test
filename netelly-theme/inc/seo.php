@@ -367,6 +367,25 @@ add_action(
 	}
 );
 
+// Search Console verification + GA4 (サイト設定 › アクセス解析). GA4 loads after the page
+// (no effect on first paint) and skips logged-in editors so internal visits aren't counted.
+add_action(
+	'wp_head',
+	static function () {
+		$gsc = trim( (string) netelly_opt( 'gsc_verification', 'ja' ) );
+		if ( $gsc ) {
+			printf( '<meta name="google-site-verification" content="%s">' . "\n", esc_attr( $gsc ) );
+		}
+		$ga = strtoupper( trim( (string) netelly_opt( 'ga4_id', 'ja' ) ) );
+		if ( ! preg_match( '/^G-[A-Z0-9]+$/', $ga ) || current_user_can( 'edit_posts' ) ) {
+			return;
+		}
+		$id = wp_json_encode( $ga );
+		echo "<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',{$id});addEventListener('load',function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+{$id};document.head.appendChild(s);});</script>\n"; // phpcs:ignore WordPress.Security.EscapeOutput, WordPress.WP.EnqueuedResources
+	},
+	2
+);
+
 // The users sitemap would publish login names; companies list people on pages instead.
 add_filter(
 	'wp_sitemaps_add_provider',

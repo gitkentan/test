@@ -318,6 +318,72 @@
 }
 
 /* 769–1279px: the 5fr column is narrower than the one-line heading. */
+/* ----- Numbers band (top page) ----- */
+.stats {
+	padding: 96px var(--pad-x) 0;
+}
+
+.stats__label {
+	margin-bottom: 32px;
+	font-family: var(--f-mono);
+	font-size: 12px;
+	letter-spacing: .14em;
+	color: var(--muted);
+}
+
+.stats__list {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+	border-top: 1px solid var(--ink);
+}
+
+.stat {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	padding: 28px 24px 8px 0;
+}
+
+.stat + .stat {
+	padding-left: 24px;
+	border-left: 1px solid var(--line);
+}
+
+.stat__label {
+	font-size: 13px;
+	font-weight: 700;
+}
+
+.stat__value {
+	display: flex;
+	align-items: baseline;
+	gap: 6px;
+	font-family: var(--f-en);
+	font-stretch: 125%;
+	font-weight: 600;
+	font-size: 56px;
+	line-height: 1;
+	letter-spacing: .01em;
+	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
+}
+
+.stat.is-long .stat__value {
+	font-size: 34px;
+}
+
+.stat__unit {
+	font-family: var(--f-head);
+	font-stretch: 100%;
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.stat__note {
+	font-size: 12px;
+	color: var(--muted);
+}
+
 /* ----- Business: four stacked full-width sections ----- */
 .biz-list {
 	display: flex;
@@ -593,5 +659,53 @@
 
 	.biz-item__text {
 		font-size: 14px;
+	}
+}
+
+@media (max-width: 1024px) {
+	.stat__value {
+		font-size: 40px;
+	}
+
+	.stat.is-long .stat__value {
+		font-size: 24px;
+	}
+}
+
+@media (max-width: 768px) {
+	.stats {
+		padding-top: 56px;
+	}
+
+	.stats__label {
+		margin-bottom: 20px;
+	}
+
+	.stats__list {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.stat,
+	.stat + .stat {
+		padding: 20px 12px 20px 0;
+		border-left: 0;
+		border-bottom: 1px solid var(--line);
+	}
+
+	.stat:nth-child(even) {
+		padding-left: 16px;
+		border-left: 1px solid var(--line);
+	}
+
+	.stat__value {
+		font-size: 30px;
+	}
+
+	.stat.is-long .stat__value {
+		font-size: 19px;
+	}
+
+	.stat__unit {
+		font-size: 13px;
 	}
 }

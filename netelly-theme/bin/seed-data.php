@@ -256,6 +256,10 @@ function nts_lang_data( string $lang, callable $purl, array $works ): array {
 			array( 'from' => '/posts/*', 'to' => $p( 'news' ) ),
 		) : array(),
 		'gone'               => $ja ? "/templates\n/pricing" : '',
+		'ga4_id'             => '',
+		'gsc_verification'   => '',
+		'stats_label'        => 'BY THE NUMBERS',
+		'stats'              => array(), // Real figures only; the band stays hidden until filled.
 		'seo_home_title'     => $L( 'Netelly株式会社｜東京・ニューヨーク・ロサンゼルス発のグローバル・エンターテインメントカンパニー', 'Netelly Inc. | A global entertainment company from Tokyo, New York and Los Angeles' ),
 		'ogp_image'          => '',
 		'org_founding_date'  => '2019-10-10',

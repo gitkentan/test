@@ -84,6 +84,32 @@ $latest = get_posts(
 		</a>
 	<?php endif; ?>
 
+	<?php /* ---------- Numbers band (サイト設定 › トップ：数字の帯; hidden until real figures are entered) ---------- */ ?>
+	<?php $stats = array_filter( (array) netelly_opt( 'stats' ), static fn( $r ) => is_array( $r ) && '' !== trim( (string) ( $r['value'] ?? '' ) ) ); ?>
+	<?php if ( $stats ) : ?>
+		<section class="stats" aria-label="<?php echo esc_attr( (string) netelly_opt( 'stats_label' ) ); ?>">
+			<?php if ( netelly_opt( 'stats_label' ) ) : ?>
+				<p class="stats__label"><?php echo esc_html( (string) netelly_opt( 'stats_label' ) ); ?></p>
+			<?php endif; ?>
+			<dl class="stats__list" data-stagger="80">
+				<?php foreach ( $stats as $st ) : ?>
+					<?php
+					$val = trim( (string) $st['value'] );
+					$num = str_replace( ',', '', $val );
+					?>
+					<?php // Long figures (e.g. 4,000,000) get a smaller size so four fit in a row. ?>
+					<div class="stat<?php echo mb_strlen( $val . ( $st['unit'] ?? '' ) ) > 6 ? ' is-long' : ''; ?>">
+						<dt class="stat__label"><?php echo esc_html( (string) ( $st['title'] ?? '' ) ); ?></dt>
+						<dd class="stat__value"<?php echo ctype_digit( $num ) ? ' data-count="' . esc_attr( $num ) . '"' : ''; ?>><span class="stat__digits" data-digits><?php echo esc_html( $val ); ?></span><?php if ( ! empty( $st['unit'] ) ) : ?><span class="stat__unit"><?php echo esc_html( (string) $st['unit'] ); ?></span><?php endif; ?></dd>
+						<?php if ( ! empty( $st['note'] ) ) : ?>
+							<dd class="stat__note"><?php echo esc_html( (string) $st['note'] ); ?></dd>
+						<?php endif; ?>
+					</div>
+				<?php endforeach; ?>
+			</dl>
+		</section>
+	<?php endif; ?>
+
 	<?php /* ---------- Business: lead + four stacked sections (no works on the top page) ---------- */ ?>
 	<section class="section">
 		<?php
