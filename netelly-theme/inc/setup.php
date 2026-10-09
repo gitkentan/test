@@ -112,3 +112,15 @@ add_action(
 	},
 	3
 );
+
+// One-time rewrite refresh after the seed (see bin/seed.php), so /en/ URLs work right away.
+add_action(
+	'init',
+	static function () {
+		if ( get_option( 'netelly_flush_rewrite' ) ) {
+			delete_option( 'netelly_flush_rewrite' );
+			flush_rewrite_rules( false );
+		}
+	},
+	99
+);

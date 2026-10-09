@@ -15,6 +15,10 @@ npm run seed          # サンプルデータ投入（日英。再実行する�
 - プラグイン（`.wp-env.json` で自動導入・有効化）: Secure Custom Fields / Polylang / Snow Monkey Forms
 - 起動後に日本語化・テーマ有効化・パーマリンク設定（`/news/%post_id%/`）を自動で行います。
 
+## 本番公開（さくらのレンタルサーバ）
+
+手順は `docs/DEPLOY-sakura.md`。`npm run zip` で `netelly-theme.zip`（src を除いたテーマ一式）を作り、管理画面からアップロードします。WP-CLI がないサーバーでは、初期データは 管理画面 › ツール › Netelly 初期データ から作成できます（`npm run seed` と同じ処理）。
+
 ## ビルド
 
 ```bash

@@ -8,7 +8,8 @@
     "env:clean": "wp-env clean all",
     "dev": "vite build --watch --mode development",
     "build": "vite build",
-    "seed": "wp-env run cli wp eval-file wp-content/themes/netelly-theme/bin/seed.php"
+    "seed": "wp-env run cli wp eval-file wp-content/themes/netelly-theme/bin/seed.php",
+    "zip": "npm run build && rm -f netelly-theme.zip && zip -rq netelly-theme.zip netelly-theme -x 'netelly-theme/src/*' '*.DS_Store'"
   },
   "devDependencies": {
     "@wordpress/env": "^10",

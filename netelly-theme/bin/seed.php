@@ -4,6 +4,7 @@
  *
  * Run:  npm run seed
  *  (= wp-env run cli wp eval-file wp-content/themes/netelly-theme/bin/seed.php)
+ *  or, on a server without WP-CLI: 管理画面 › ツール › Netelly 初期データ.
  *
  * Idempotent: posts created here are tracked in the option "netelly_seed_map"
  * and updated in place on re-run. Content edited in the admin IS overwritten
@@ -12,7 +13,8 @@
  * @package netelly
  */
 
-if ( ! defined( 'WP_CLI' ) ) {
+// WP-CLI (npm run seed) or the admin screen ツール › Netelly 初期データ (inc/admin-seed.php).
+if ( ! defined( 'WP_CLI' ) && ! defined( 'NETELLY_SEED_ADMIN' ) ) {
 	exit;
 }
 if ( ! function_exists( 'pll_set_post_language' ) || ! function_exists( 'update_field' ) ) {
@@ -212,6 +214,9 @@ function nts_press_media(): array {
  * ----------------------------------------------------------------------- */
 WP_CLI::log( '1/8 Languages' );
 update_option( 'timezone_string', 'Asia/Tokyo' );
+// News URLs are /news/{id}/ (pages and works keep their own slugs).
+global $wp_rewrite;
+$wp_rewrite->set_permalink_structure( '/news/%post_id%/' );
 update_option( 'date_format', 'Y.m.d' );
 update_option( 'blogname', 'Netelly' );
 $model = PLL()->model;
@@ -545,5 +550,10 @@ $mo->export_to_db( $en );
 
 // Polylang caches front/posts page translations in the language list.
 PLL()->model->clean_languages_cache();
-flush_rewrite_rules();
+if ( ! function_exists( 'save_mod_rewrite_rules' ) ) {
+	require_once ABSPATH . 'wp-admin/includes/misc.php'; // Writes .htaccess on Apache (e.g. shared hosting).
+}
+flush_rewrite_rules( true );
+// Polylang registers /en/ rules only once the languages exist, i.e. on the next request.
+update_option( 'netelly_flush_rewrite', 1 );
 WP_CLI::success( 'Seeded: pages ' . count( $pages ) . ' × 2, works ' . count( $works ) . ' × 2, news ' . count( NTS_NEWS ) . ' × 2, positions ' . count( NTS_POSITIONS ) . ' × 2.' );
