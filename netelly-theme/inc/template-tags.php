@@ -92,6 +92,7 @@ function netelly_is_latin( string $text ): bool {
  * @param bool   $blank Force new tab.
  */
 function netelly_link_attrs( string $url, bool $blank = false ): string {
+	$url   = netelly_local_url( $url );
 	$attrs = ' href="' . esc_url( $url ) . '"';
 	if ( $blank || netelly_is_external( $url ) ) {
 		$attrs .= ' target="_blank" rel="noopener"';
