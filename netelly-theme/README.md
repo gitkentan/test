@@ -76,6 +76,13 @@ npm run dev     # 監視ビルド
 - ファビコンはロゴ「NETELLY」の「N」を黒地に置いたもの（`assets/favicon/`）。外観 › カスタマイズ › サイトアイコンを設定するとそちらが優先されます。
 - meta description：ニュース＝抜粋（なければ本文）、作品＝あらすじ、それ以外＝サイト設定「検索結果の説明文」。
 
+## SEO・AI検索（inc/seo.php）
+
+- 各ページに `meta description`・OGP / X カード・構造化データ（JSON-LD）を出力。会社（Organization）・サイト（WebSite）・代表者（Person）は全ページ共通の @id で、**代表メッセージページが代表者のプロフィールページ（ProfilePage）**。ページ下部の「プロフィール」欄が構造化データと同じ内容を表示します。
+- ニュース記事は NewsArticle、作品は TVSeries / Movie（出演者・監督つき）、全ページにパンくず。
+- `/llms.txt`：AI アシスタント向けの会社概要とページ一覧（自動生成）。サイトマップは WordPress 標準の `/wp-sitemap.xml`（ユーザー一覧は除外）。
+- 入力場所：サイト設定 › **SEO・SNS共有**（トップのタイトル、共有画像、設立日、会社の公式プロフィールURL）／サイト設定 › **代表メッセージ**（よみがな、プロフィール文、経歴、本人の公式プロフィールURL）。
+
 ## フィールド定義（acf-json）
 
 `acf-json/` が正です（Secure Custom Fields / ACF Pro のどちらでも自動読み込み）。管理画面でフィールドを変更すると、このフォルダの JSON が更新されます。

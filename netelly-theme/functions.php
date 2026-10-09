@@ -21,6 +21,7 @@ require_once NETELLY_DIR . '/inc/template-tags.php';
 require_once NETELLY_DIR . '/inc/setup.php';
 require_once NETELLY_DIR . '/inc/enqueue.php';
 require_once NETELLY_DIR . '/inc/forms.php';
+require_once NETELLY_DIR . '/inc/seo.php';
 if ( is_admin() ) {
 	require_once NETELLY_DIR . '/inc/admin-seed.php';
 }

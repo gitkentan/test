@@ -88,31 +88,6 @@ add_action(
 	5
 );
 
-/*
- * Meta description: news → excerpt, work → synopsis, otherwise サイト設定「検索結果の説明文」.
- */
-add_action(
-	'wp_head',
-	static function () {
-		$text = '';
-		if ( is_singular( 'post' ) ) {
-			$text = has_excerpt() ? get_the_excerpt() : wp_strip_all_tags( (string) get_post_field( 'post_content', get_queried_object_id() ) );
-		} elseif ( is_singular( 'work' ) ) {
-			$id   = get_queried_object_id();
-			$text = trim( netelly_field( 'synopsis_lead', $id ) . ' ' . netelly_field( 'synopsis', $id ) );
-		}
-		if ( '' === trim( $text ) ) {
-			$text = (string) netelly_opt( 'meta_description' );
-		}
-		$text = preg_replace( '/(?<=[^\x00-\x7F])\s+(?=[^\x00-\x7F])/u', '', wp_strip_all_tags( $text ) ); // No spaces between Japanese lines.
-		$text = wp_html_excerpt( preg_replace( '/\s+/u', ' ', $text ), 120, '…' );
-		if ( '' !== trim( $text ) ) {
-			printf( '<meta name="description" content="%s">' . "\n", esc_attr( $text ) );
-		}
-	},
-	3
-);
-
 // One-time rewrite refresh after the seed (see bin/seed.php), so /en/ URLs work right away.
 add_action(
 	'init',

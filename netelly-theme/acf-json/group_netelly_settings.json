@@ -127,11 +127,99 @@
         },
         {
             "type": "tab",
-            "label": "外部リンク",
+            "label": "SEO・SNS共有",
             "name": "",
             "placement": "top",
             "endpoint": 0,
             "key": "field_nt_settings_tab_9",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "seo_home_title",
+            "label": "トップページのタイトル（検索結果の見出し）",
+            "instructions": "例：Netelly株式会社｜東京・ニューヨーク・ロサンゼルス発のグローバル・エンターテインメントカンパニー（30〜40字程度）",
+            "key": "field_nt_settings_seo_home_title",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "image",
+            "name": "ogp_image",
+            "label": "SNS共有画像（1200×630）",
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "instructions": "ページに画像がない場合に、X・LINE・Facebook などで共有されたときに表示する画像。空ならロゴ画像。",
+            "key": "field_nt_settings_ogp_image",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "org_founding_date",
+            "label": "設立日（YYYY-MM-DD）",
+            "instructions": "検索エンジン向けの会社情報に使います。例：2019-10-10",
+            "key": "field_nt_settings_org_founding_date",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "repeater",
+            "name": "org_same_as",
+            "label": "会社の公式プロフィール",
+            "sub_fields": [
+                {
+                    "type": "url",
+                    "name": "url",
+                    "label": "URL",
+                    "key": "field_nt_settings_org_same_as_url",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ],
+            "layout": "table",
+            "button_label": "URLを追加",
+            "collapsed": "",
+            "instructions": "SNS以外の公式ページ（Wikipedia、LinkedIn、Crunchbase、PR TIMESの企業ページなど）。SNSは「外部リンク」タブで設定したものが自動で含まれます。",
+            "key": "field_nt_settings_org_same_as",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "外部リンク",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_settings_tab_14",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -211,7 +299,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_15",
+            "key": "field_nt_settings_tab_20",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -305,7 +393,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_22",
+            "key": "field_nt_settings_tab_27",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -378,7 +466,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_27",
+            "key": "field_nt_settings_tab_32",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -496,7 +584,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_35",
+            "key": "field_nt_settings_tab_40",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -653,7 +741,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_41",
+            "key": "field_nt_settings_tab_46",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -667,7 +755,7 @@
             "name": "",
             "label": "",
             "message": "現在トップページには作品を表示していません（この欄の内容は使われません）。",
-            "key": "field_nt_settings_tab_42",
+            "key": "field_nt_settings_tab_47",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -791,7 +879,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_50",
+            "key": "field_nt_settings_tab_55",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -978,7 +1066,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_56",
+            "key": "field_nt_settings_tab_61",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -1060,7 +1148,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_62",
+            "key": "field_nt_settings_tab_67",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -1196,12 +1284,144 @@
             }
         },
         {
+            "type": "message",
+            "name": "",
+            "label": "",
+            "message": "以下は代表メッセージページの「プロフィール」欄と、検索エンジン向けの人物情報（構造化データ）に使われます。名前で検索したときにGoogleが代表者として認識しやすくなるよう、事実のみを正確に入力してください。",
+            "key": "field_nt_settings_tab_77",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "ceo_name_kana",
+            "label": "氏名（よみがな）",
+            "instructions": "例：おとざき けんた",
+            "key": "field_nt_settings_ceo_name_kana",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "ceo_bio",
+            "label": "プロフィール文",
+            "rows": 5,
+            "new_lines": "",
+            "instructions": "第三者が読んでも分かる紹介文（経歴・専門・実績）。100〜300字程度。",
+            "key": "field_nt_settings_ceo_bio",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "repeater",
+            "name": "ceo_career",
+            "label": "経歴",
+            "sub_fields": [
+                {
+                    "type": "text",
+                    "name": "year",
+                    "label": "年月",
+                    "instructions": "例：2019.10",
+                    "key": "field_nt_settings_ceo_career_year",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "textarea",
+                    "name": "text",
+                    "label": "内容",
+                    "rows": 2,
+                    "new_lines": "",
+                    "key": "field_nt_settings_ceo_career_text",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ],
+            "layout": "table",
+            "button_label": "経歴を追加",
+            "collapsed": "",
+            "key": "field_nt_settings_ceo_career",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "repeater",
+            "name": "ceo_links",
+            "label": "本人の公式プロフィール",
+            "sub_fields": [
+                {
+                    "type": "text",
+                    "name": "label",
+                    "label": "名前",
+                    "instructions": "例：X / LinkedIn / note / Wikipedia",
+                    "key": "field_nt_settings_ceo_links_label",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "url",
+                    "name": "url",
+                    "label": "URL",
+                    "key": "field_nt_settings_ceo_links_url",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ],
+            "layout": "table",
+            "button_label": "リンクを追加",
+            "collapsed": "",
+            "instructions": "本人の公式アカウント・プロフィールページのURL。Googleが同一人物として結びつける手がかりになります。",
+            "key": "field_nt_settings_ceo_links",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
             "type": "tab",
             "label": "会社概要・沿革",
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_72",
+            "key": "field_nt_settings_tab_82",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -1308,7 +1528,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_75",
+            "key": "field_nt_settings_tab_85",
             "instructions": "",
             "required": 0,
             "wrapper": {

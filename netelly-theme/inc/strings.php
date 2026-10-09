@@ -82,6 +82,12 @@ function netelly_strings(): array {
 		'nf_heading'       => array( 'ページが見つかりません', 'Page not found' ),
 		'nf_text'          => array( 'お探しのページは移動または削除された可能性があります。', 'The page you are looking for may have been moved or deleted.' ),
 		'nf_button'        => array( 'トップへ戻る →', 'Back to home →' ),
+		// CEO profile (message page).
+		'ceo_profile'         => array( 'プロフィール', 'Profile' ),
+		'name_label'          => array( '氏名', 'Name' ),
+		'role_label'          => array( '役職', 'Title' ),
+		'career_label'        => array( '経歴', 'Career' ),
+		'links_label'         => array( 'リンク', 'Links' ),
 		// Press kit.
 		'download'            => array( 'ダウンロード', 'Download' ),
 		'copy_text'           => array( 'コピー', 'Copy' ),

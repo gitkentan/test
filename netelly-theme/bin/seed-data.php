@@ -244,6 +244,14 @@ function nts_lang_data( string $lang, callable $purl, array $works ): array {
 	$settings = array(
 		// Company / contact.
 		'company_name'       => $L( 'Netelly株式会社', 'Netelly Inc.' ),
+		'seo_home_title'     => $L( 'Netelly株式会社｜東京・ニューヨーク・ロサンゼルス発のグローバル・エンターテインメントカンパニー', 'Netelly Inc. | A global entertainment company from Tokyo, New York and Los Angeles' ),
+		'ogp_image'          => '',
+		'org_founding_date'  => '2019-10-10',
+		'org_same_as'        => array(),
+		'ceo_name_kana'      => '',
+		'ceo_bio'            => '', // Real bio to be supplied (no invented facts).
+		'ceo_career'         => array(),
+		'ceo_links'          => array(),
 		'meta_description'   => $L( '東京、ニューヨーク、ロサンゼルス。国境を越えて物語を企画し、制作し、届けるグローバル・エンターテインメントカンパニー。', 'Tokyo, New York, Los Angeles — a global entertainment company that develops, produces and delivers stories across borders.' ),
 		'company_address'    => $L( "〒141-0033 東京都品川区西品川1-1-1\n住友不動産大崎ガーデンタワー 9F", "Sumitomo Fudosan Osaki Garden Tower 9F\n1-1-1 Nishi-Shinagawa, Shinagawa-ku, Tokyo" ),
 		'contact_email'      => 'info@netelly.com',
