@@ -654,8 +654,24 @@
             "return_format": "id",
             "library": "all",
             "mime_types": "mp4",
-            "instructions": "15–30秒・無音ループ・8MB以下・H.264。SP・省データ設定・動きを減らす設定ではポスター画像のみ表示します。",
+            "instructions": "15–30秒・無音ループ・8MB以下・H.264。省データ設定・動きを減らす設定ではポスター画像のみ表示します。",
             "key": "field_nt_settings_hero_video",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "file",
+            "name": "hero_video_sp",
+            "label": "スマホ用の背景動画（任意）",
+            "return_format": "id",
+            "library": "all",
+            "mime_types": "mp4",
+            "instructions": "スマホでは軽い動画がおすすめです（縦長 1080×1920 または横長 1280×720・5MB以下・H.264・無音）。空欄ならスマホでも上の動画を流します。",
+            "key": "field_nt_settings_hero_video_sp",
             "required": 0,
             "wrapper": {
                 "width": "",
@@ -713,7 +729,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_47",
+            "key": "field_nt_settings_tab_48",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -870,7 +886,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_53",
+            "key": "field_nt_settings_tab_54",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -884,7 +900,7 @@
             "name": "",
             "label": "",
             "message": "現在トップページには作品を表示していません（この欄の内容は使われません）。",
-            "key": "field_nt_settings_tab_54",
+            "key": "field_nt_settings_tab_55",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -1008,7 +1024,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_62",
+            "key": "field_nt_settings_tab_63",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -1038,7 +1054,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_64",
+            "key": "field_nt_settings_tab_65",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -1052,7 +1068,7 @@
             "name": "",
             "label": "",
             "message": "トップの「ニュースの帯」の下に、実績の数字を最大4つ並べます。1つも入っていなければ帯は表示されません。数字は実際の値だけを入れてください。",
-            "key": "field_nt_settings_tab_65",
+            "key": "field_nt_settings_tab_66",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -1151,7 +1167,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_68",
+            "key": "field_nt_settings_tab_69",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -1338,7 +1354,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_74",
+            "key": "field_nt_settings_tab_75",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -1420,7 +1436,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_80",
+            "key": "field_nt_settings_tab_81",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -1560,7 +1576,7 @@
             "name": "",
             "label": "",
             "message": "以下は代表メッセージページの「プロフィール」欄と、検索エンジン向けの人物情報（構造化データ）に使われます。名前で検索したときにGoogleが代表者として認識しやすくなるよう、事実のみを正確に入力してください。",
-            "key": "field_nt_settings_tab_90",
+            "key": "field_nt_settings_tab_91",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -1693,7 +1709,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_95",
+            "key": "field_nt_settings_tab_96",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -1800,7 +1816,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_98",
+            "key": "field_nt_settings_tab_99",
             "instructions": "",
             "required": 0,
             "wrapper": {

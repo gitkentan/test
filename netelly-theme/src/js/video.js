@@ -1,6 +1,8 @@
 // README 7 — video.
-// Hero / work KV: muted autoplay loop playsinline, poster only on SP, Save-Data and
-// reduced motion; paused off screen; pause / play toggle (WCAG 2.2.2).
+// Hero / work KV: muted autoplay loop playsinline, poster only with Save-Data, slow
+// connections and reduced motion (work KV: also on SP). The top hero plays on SP too,
+// using data-src-sp when set, and starts after the page has loaded (keeps LCP on the
+// poster). Paused off screen; pause / play toggle (WCAG 2.2.2).
 // Short dramas: muted play on hover (fine pointer); on SP only the frame in view plays.
 // Trailer: full-screen dialog, youtube-nocookie iframe created on click, Esc /
 // backdrop closes and focus returns to the button.
@@ -11,9 +13,19 @@ const play = (v) => {
 	return v.play().then(() => v.classList.add('is-playing')).catch(() => {});
 };
 
+const slowNet = () => /(^|-)2g$/.test(navigator.connection?.effectiveType || '');
+
 export function initHeroVideo() {
 	const v = document.querySelector('.hero__video, .work-hero__video');
-	if (!v || reduceMotion || saveData || isSP()) return;
+	if (!v || reduceMotion || saveData || slowNet()) return;
+	if (isSP()) {
+		if (!v.classList.contains('hero__video')) return;
+		if (v.dataset.srcSp) v.dataset.src = v.dataset.srcSp;
+	}
+	if (document.readyState !== 'complete') {
+		window.addEventListener('load', () => initHeroVideo(), { once: true });
+		return;
+	}
 	const btn = document.querySelector('.hero__toggle');
 	const label = btn && btn.querySelector('.screen-reader-text');
 	let userPaused = false;

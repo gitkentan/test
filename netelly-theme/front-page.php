@@ -24,6 +24,7 @@ $latest = get_posts(
 			<?php
 			$poster = (int) netelly_opt( 'hero_poster' );
 			$video  = (int) netelly_opt( 'hero_video' );
+			$video_sp = (int) netelly_opt( 'hero_video_sp' );
 			if ( $poster ) {
 				echo wp_get_attachment_image(
 					$poster,
@@ -40,7 +41,7 @@ $latest = get_posts(
 			}
 			if ( $video ) :
 				?>
-				<video class="hero__video" muted loop playsinline preload="none" aria-hidden="true" data-src="<?php echo esc_url( (string) wp_get_attachment_url( $video ) ); ?>"<?php echo $poster ? ' poster="' . esc_url( (string) wp_get_attachment_image_url( $poster, 'full' ) ) . '"' : ''; ?>></video>
+				<video class="hero__video" muted loop playsinline preload="none" aria-hidden="true" data-src="<?php echo esc_url( (string) wp_get_attachment_url( $video ) ); ?>"<?php echo $video_sp ? ' data-src-sp="' . esc_url( (string) wp_get_attachment_url( $video_sp ) ) . '"' : ''; ?><?php echo $poster ? ' poster="' . esc_url( (string) wp_get_attachment_image_url( $poster, 'full' ) ) . '"' : ''; ?>></video>
 			<?php endif; ?>
 		</div>
 		<div class="hero__shade" aria-hidden="true"></div>
