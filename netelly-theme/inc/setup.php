@@ -71,7 +71,7 @@ add_filter(
 );
 
 /*
- * Favicon: symbol mark 1 (一文字), small-size cut. Used until a Site Icon is set
+ * Favicon: the "N" of the NETELLY wordmark on a black tile. Used until a Site Icon is set
  * in 外観 › カスタマイズ › サイト基本情報 (WordPress then prints its own tags).
  */
 add_action(

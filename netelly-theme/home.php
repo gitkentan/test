@@ -30,7 +30,8 @@ $current    = is_category() ? get_queried_object_id() : 0;
 			<?php endforeach; ?>
 		</nav>
 		<?php if ( have_posts() ) : ?>
-			<div class="list-news" data-stagger="60">
+			<?php // No staggered reveal here: the list is the page content and shows at once (UX / LCP). ?>
+			<div class="list-news">
 				<?php
 				while ( have_posts() ) :
 					the_post();

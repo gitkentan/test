@@ -398,7 +398,7 @@ function nts_lang_data( string $lang, callable $purl, array $works ): array {
 						'num' => 'I', 'en' => 'CREATIVE', 'title' => $L( '制作', 'Production' ),
 						'text' => $L( 'スマートフォン向けの縦型ショートドラマから、ドラマ・映画・コメディまで、企画から自社で手がけます。脚本開発、キャスティング、撮影、編集までを一つのチームで行い、作品の方向性を最後まで守ります。', 'From vertical short dramas for smartphones to series, films and comedy, we develop and produce in-house. One team handles everything from script development and casting to shooting and editing, protecting each work’s vision to the very end.' ),
 						'note' => $L( '主な作品：『友達以上、恋人未満』ほか', 'Selected works: “More Than Friends, Less Than Lovers” and more' ),
-						'link' => nts_link( $L( '作品一覧 →', 'All works →' ), $wurl ), 'is_fund' => 0, 'image' => '',
+						'link' => nts_link( $L( 'オリジナル作品一覧 →', 'All originals →' ), $wurl ), 'is_fund' => 0, 'image' => '',
 					),
 					array(
 						'num' => 'II', 'en' => 'MEDIA', 'title' => $L( '配給・メディア', 'Distribution & Media' ),
@@ -582,10 +582,10 @@ function nts_menus( string $lang, callable $purl, array $works ): array {
 				),
 			),
 			array(
-				$L( '作品', 'Originals' ),
+				$L( 'オリジナル作品', 'Originals' ),
 				'#',
 				array(
-					array( $L( '作品一覧', 'All originals' ), $wurl ),
+					array( $L( 'オリジナル作品一覧', 'All originals' ), $wurl ),
 					array( $L( '友達以上、恋人未満', 'More Than Friends, Less Than Lovers' ), get_permalink( $works['more-than-friends'][ $lang ] ) ),
 				),
 			),
