@@ -26,4 +26,5 @@ require_once NETELLY_DIR . '/inc/tone.php';
 require_once NETELLY_DIR . '/inc/access.php';
 if ( is_admin() ) {
 	require_once NETELLY_DIR . '/inc/admin-seed.php';
+	require_once NETELLY_DIR . '/inc/admin-news-import.php';
 }
