@@ -244,13 +244,18 @@ function nts_lang_data( string $lang, callable $purl, array $works ): array {
 	$settings = array(
 		// Company / contact.
 		'company_name'       => $L( 'Netelly株式会社', 'Netelly Inc.' ),
-		// Candidates from the current Google sitelinks (COMPANY / SERVICE / Creators Capital / CONTACT);
-		// confirm the real old paths with a site: search or Search Console.
+		// Old netelly.co.jp URLs seen in Google (site: search, 2026-10). /company and /contact
+		// exist on the new site; /service and /creators-capital come from the old sitelinks.
 		'redirects'          => $ja ? array(
-			array( 'from' => '/service/', 'to' => $p( 'business' ) ),
-			array( 'from' => '/creators-capital/', 'to' => NTS_FUND_URL ),
-			array( 'from' => '/creatorscapital/', 'to' => NTS_FUND_URL ),
+			array( 'from' => '/publish', 'to' => home_url( '/' ) ),
+			array( 'from' => '/service', 'to' => $p( 'business' ) ),
+			array( 'from' => '/creators-capital', 'to' => NTS_FUND_URL ),
+			array( 'from' => '/funding-commingsoon', 'to' => NTS_FUND_URL ),
+			array( 'from' => '/terms', 'to' => $p( 'privacy' ) ),
+			array( 'from' => '/privacy-policy', 'to' => $p( 'privacy' ) ),
+			array( 'from' => '/posts/*', 'to' => $p( 'news' ) ),
 		) : array(),
+		'gone'               => $ja ? "/templates\n/pricing" : '',
 		'seo_home_title'     => $L( 'Netelly株式会社｜東京・ニューヨーク・ロサンゼルス発のグローバル・エンターテインメントカンパニー', 'Netelly Inc. | A global entertainment company from Tokyo, New York and Los Angeles' ),
 		'ogp_image'          => '',
 		'org_founding_date'  => '2019-10-10',

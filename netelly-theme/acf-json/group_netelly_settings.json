@@ -251,7 +251,7 @@
                     "type": "text",
                     "name": "from",
                     "label": "旧URLのパス",
-                    "instructions": "例：/service/ （ドメインより後ろ）",
+                    "instructions": "例：/service （ドメインより後ろ）。末尾に * を付けると「その下すべて」（例：/posts/*）",
                     "key": "field_nt_settings_redirects_from",
                     "required": 0,
                     "wrapper": {
@@ -287,12 +287,27 @@
             }
         },
         {
+            "type": "textarea",
+            "name": "gone",
+            "label": "削除済みとして扱うURL（410）",
+            "rows": 4,
+            "new_lines": "",
+            "instructions": "旧サイトの不要ページ（テンプレートの見本ページなど）。1行に1つ、パスを書きます。Google の検索結果から早く消えます。",
+            "key": "field_nt_settings_gone",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
             "type": "tab",
             "label": "外部リンク",
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_17",
+            "key": "field_nt_settings_tab_18",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -372,7 +387,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_23",
+            "key": "field_nt_settings_tab_24",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -466,7 +481,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_30",
+            "key": "field_nt_settings_tab_31",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -539,7 +554,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_35",
+            "key": "field_nt_settings_tab_36",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -657,7 +672,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_43",
+            "key": "field_nt_settings_tab_44",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -814,7 +829,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_49",
+            "key": "field_nt_settings_tab_50",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -828,7 +843,7 @@
             "name": "",
             "label": "",
             "message": "現在トップページには作品を表示していません（この欄の内容は使われません）。",
-            "key": "field_nt_settings_tab_50",
+            "key": "field_nt_settings_tab_51",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -952,7 +967,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_58",
+            "key": "field_nt_settings_tab_59",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -1139,7 +1154,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_64",
+            "key": "field_nt_settings_tab_65",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -1221,7 +1236,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_70",
+            "key": "field_nt_settings_tab_71",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -1361,7 +1376,7 @@
             "name": "",
             "label": "",
             "message": "以下は代表メッセージページの「プロフィール」欄と、検索エンジン向けの人物情報（構造化データ）に使われます。名前で検索したときにGoogleが代表者として認識しやすくなるよう、事実のみを正確に入力してください。",
-            "key": "field_nt_settings_tab_80",
+            "key": "field_nt_settings_tab_81",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -1494,7 +1509,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_85",
+            "key": "field_nt_settings_tab_86",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -1601,7 +1616,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_settings_tab_88",
+            "key": "field_nt_settings_tab_89",
             "instructions": "",
             "required": 0,
             "wrapper": {

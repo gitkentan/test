@@ -336,23 +336,33 @@ add_action(
 	4
 );
 
-// Old-site URLs → new pages (サイト設定 › 旧サイトからの転送). Only for URLs that 404 here.
+// Old-site URLs (サイト設定 › 旧サイトからの転送), only for URLs that 404 here:
+// 301 to the new page ("/posts/*" = everything below), or 410 for pages that are gone.
 add_action(
 	'template_redirect',
 	static function () {
 		if ( ! is_404() ) {
 			return;
 		}
-		$path = strtolower( untrailingslashit( (string) wp_parse_url( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), PHP_URL_PATH ) ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+		$norm = static fn( $p ) => strtolower( untrailingslashit( (string) wp_parse_url( trim( (string) $p ), PHP_URL_PATH ) ) );
+		$path = $norm( $_SERVER['REQUEST_URI'] ?? '' ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 		foreach ( (array) netelly_opt( 'redirects', 'ja' ) as $rule ) {
 			if ( ! is_array( $rule ) || empty( $rule['from'] ) || empty( $rule['to'] ) ) {
 				continue;
 			}
-			$from = strtolower( untrailingslashit( (string) wp_parse_url( (string) $rule['from'], PHP_URL_PATH ) ) );
-			if ( $from && $from === $path ) {
+			$from = trim( (string) $rule['from'] );
+			$hit  = str_ends_with( $from, '*' )
+				? str_starts_with( $path . '/', $norm( rtrim( $from, '*' ) ) . '/' )
+				: ( $norm( $from ) && $norm( $from ) === $path );
+			if ( $hit ) {
 				wp_redirect( esc_url_raw( (string) $rule['to'] ), 301 ); // phpcs:ignore WordPress.Security.SafeRedirect -- admin-defined targets (may be external).
 				exit;
 			}
+		}
+		$gone = array_filter( array_map( $norm, preg_split( '/\R/', (string) netelly_opt( 'gone', 'ja' ) ) ) );
+		if ( in_array( $path, $gone, true ) ) {
+			status_header( 410 );
+			nocache_headers();
 		}
 	}
 );
