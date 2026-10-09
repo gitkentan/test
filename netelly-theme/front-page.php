@@ -169,8 +169,6 @@ $latest = get_posts(
 				<span class="chapter__bg" aria-hidden="true">
 					<?php if ( $bimg ) : ?>
 						<?php echo wp_get_attachment_image( $bimg, 'full', false, array( 'class' => 'chapter__img', 'loading' => 'lazy', 'decoding' => 'async', 'sizes' => '100vw', 'alt' => '' ) ); ?>
-					<?php elseif ( netelly_samples_on() ) : ?>
-						<?php echo netelly_sample_img( '16/9', 'chapter__img' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 					<?php else : ?>
 						<span class="chapter__glow"></span>
 					<?php endif; ?>
