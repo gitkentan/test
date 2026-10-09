@@ -1,6 +1,6 @@
 <?php
 /**
- * STUDIO page (page-studio.php, /studio/): commissioned production for companies and brands.
+ * CREATIVE STUDIO page (page-studio.php, /studio/): films for companies and brands.
  * Default texts, one-time setup on theme update (JA/EN page, header + footer menu items)
  * and the page lookup used by the top-page band.
  *
@@ -70,10 +70,6 @@ function netelly_studio_defaults( string $lang ): array {
 		'cta_heading'   => $L( "映像のご相談は、\nお気軽に。", "Let’s talk about\nyour film." ),
 		'cta_text'      => $L( '企画が固まっていなくても大丈夫です。まずはお話をお聞かせください。', 'No need for a finished plan — just tell us what you have in mind.' ),
 		'cta_button'    => $L( '制作について相談する →', 'Talk to us about a project →' ),
-		'band_label'    => 'STUDIO',
-		'band_heading'  => $L( "企業の映像も、\nNetellyがつくる。", "We also make films\nfor companies and brands." ),
-		'band_text'     => $L( 'ブランデッドドラマ、ショートドラマ、CM、YouTube番組まで。企画から納品までお引き受けします。', 'Branded drama, short drama, commercials and YouTube shows — from concept to delivery.' ),
-		'band_button'   => $L( '受託制作について →', 'About our studio →' ),
 	);
 }
 
@@ -126,7 +122,7 @@ function netelly_studio_menu_insert( string $menu_name, string $title, string $u
 
 /*
  * One-time setup on theme update (option netelly_studio_v1): JA/EN page with default texts,
- * "STUDIO" after BUSINESS in the header menu, 受託制作 under 事業 in the footer.
+ * "STUDIO" after BUSINESS in the header menu, クリエイティブスタジオ under 事業 in the footer.
  */
 add_action(
 	'init',
@@ -146,7 +142,7 @@ add_action(
 				array(
 					'post_type'   => 'page',
 					'post_status' => 'publish',
-					'post_title'  => 'en' === $lang ? 'Studio' : '受託制作',
+					'post_title'  => 'en' === $lang ? 'Films for Brands' : '企業・ブランドの映像制作',
 					'menu_order'  => 3,
 				),
 				true
@@ -157,8 +153,8 @@ add_action(
 			pll_set_post_language( $id, $lang );
 			wp_update_post( array( 'ID' => $id, 'post_name' => 'studio' ) );
 			update_post_meta( $id, '_wp_page_template', 'page-studio.php' );
-			update_field( 'field_nt_page_hero_page_en_title', 'STUDIO', $id );
-			update_field( 'field_nt_page_hero_seo_description', 'en' === $lang ? 'Netelly Studio: branded drama, short drama, commercials, YouTube shows and social video for companies and brands, from concept to delivery.' : 'Netellyの受託制作。ブランデッドドラマ、ショートドラマ、CM、YouTube番組、SNS動画など、企業・ブランドの映像を企画から納品までお引き受けします。', $id );
+			update_field( 'field_nt_page_hero_page_en_title', 'CREATIVE STUDIO', $id );
+			update_field( 'field_nt_page_hero_seo_description', 'en' === $lang ? 'Netelly Creative Studio: branded drama, short drama, commercials, YouTube shows and social video for companies and brands, from concept to delivery.' : 'Netelly CREATIVE STUDIO。ブランデッドドラマ、ショートドラマ、CM、YouTube番組、SNS動画など、企業・ブランドの映像を企画から納品までお引き受けします。', $id );
 			foreach ( netelly_studio_defaults( $lang ) as $name => $value ) {
 				update_field( 'field_nt_page_studio_' . $name, $value, $id );
 			}
@@ -169,8 +165,148 @@ add_action(
 		foreach ( $tr as $lang => $id ) {
 			$url = (string) get_permalink( $id );
 			netelly_studio_menu_insert( 'primary-' . $lang, 'STUDIO', $url, '/business/' );
-			netelly_studio_menu_insert( 'footer-' . $lang, 'en' === $lang ? 'Studio' : '受託制作', $url, '/business/#creative', true );
+			netelly_studio_menu_insert( 'footer-' . $lang, 'en' === $lang ? 'Creative Studio' : 'クリエイティブスタジオ', $url, '/business/#creative', true );
 		}
 	},
 	31
+);
+
+/**
+ * Business pillars v2: I ORIGINALS (original works: distribution & media) / II CREATIVE STUDIO
+ * (commissioned films for companies and brands) / III COMMUNITY / IV CREATORS FUND.
+ *
+ * @param string $lang   ja|en.
+ * @param string $works  Works archive URL.
+ * @param string $studio STUDIO page URL.
+ * @param string $base   Business page URL.
+ * @return array{lead:string,heading:string,top:array,rows:array}
+ */
+function netelly_business_v2( string $lang, string $works, string $studio, string $base ): array {
+	$ja   = 'en' !== $lang;
+	$L    = static fn( $j, $e ) => $ja ? $j : $e;
+	$link = static fn( $title, $url, $blank = false ) => array( 'title' => $title, 'url' => $url, 'target' => $blank ? '_blank' : '' );
+	return array(
+		'lead'    => $L(
+			'Netellyは、オリジナル作品を生み出して届けること、企業・ブランドの映像をつくること、つくり手をつなぐこと、才能を支えること。四つの機能を一つの組織の中で循環させ、才能と作品が生まれ続ける環境をつくっています。',
+			'Netelly creates and delivers original works, makes films for companies and brands, connects makers and supports new talent — four functions kept in motion within one organization, so that talent and new work keep emerging.'
+		),
+		'heading' => $L( "生み出す・請け負う・つなぐ・支える。\n四つの機能を、一つの組織の中に。", "Originals, studio, community, fund.\nFour functions in one organization." ),
+		'top'     => array(
+			array( 'num' => 'I', 'en' => 'ORIGINALS', 'title' => $L( '配給・メディア', 'Distribution & Media' ), 'text' => $L( 'オリジナル作品を企画・制作し、配信・YouTube・劇場へ届ける。', 'We make original works and bring them to streaming, YouTube and theaters.' ), 'link' => $link( 'ORIGINALS', $base . '#originals' ), 'is_fund' => 0 ),
+			array( 'num' => 'II', 'en' => 'CREATIVE STUDIO', 'title' => $L( '企業ブランディング', 'Brand films' ), 'text' => $L( '企業・ブランドの映像を、企画から納品まで手がける。', 'Films for companies and brands, from concept to delivery.' ), 'link' => $link( 'CREATIVE STUDIO', $studio ), 'is_fund' => 0 ),
+			array( 'num' => 'III', 'en' => 'COMMUNITY', 'title' => $L( 'コミュニティ', 'Community' ), 'text' => $L( 'つくり手が出会い、次の企画が生まれる場。', 'A place where creators meet and new projects begin.' ), 'link' => $link( 'COMMUNITY', $base . '#community' ), 'is_fund' => 0 ),
+			array( 'num' => 'IV', 'en' => 'CREATORS FUND', 'title' => $L( 'クリエイターズファンド', 'Creators Fund' ), 'text' => $L( '監督・脚本家・プランナーの企画を支える。', 'We back projects by directors, writers and planners.' ), 'link' => '', 'is_fund' => 1 ),
+		),
+		'rows'    => array(
+			array(
+				'num' => 'I', 'en' => 'ORIGINALS', 'title' => $L( '配給・メディア', 'Distribution & Media' ),
+				'text' => $L( 'スマートフォン向けの縦型ショートドラマから、ドラマ・映画・コメディまで、Netellyのオリジナル作品を企画・制作し、動画配信サービス・公式YouTubeチャンネル・SNS・劇場など、作品に合った場所へ届けます。予告編やショート動画の展開まで含めて設計します。', 'From vertical short dramas to series, films and comedy, we develop and produce Netelly originals and deliver them where they belong — streaming services, our official YouTube channel, social media and theaters — designing the rollout down to trailers and short-form clips.' ),
+				'note' => $L( '主な作品：『友達以上、恋人未満』ほか ／ 公式YouTubeチャンネル「Netelly」', 'Selected works: “More Than Friends, Less Than Lovers” and more / Official YouTube channel “Netelly”' ),
+				'link' => $link( $L( 'オリジナル作品一覧 →', 'All originals →' ), $works ), 'is_fund' => 0,
+			),
+			array(
+				'num' => 'II', 'en' => 'CREATIVE STUDIO', 'title' => $L( '企業ブランディング', 'Brand films' ),
+				'text' => $L( 'オリジナル作品で培った企画力と制作体制で、企業・ブランドの映像をつくります。ブランデッドドラマ、ショートドラマ、CM、YouTube番組、SNS動画まで、企画から撮影・編集・納品まで一貫してお引き受けします。', 'With the planning and production we have built making our own originals, we make films for companies and brands — branded drama, short drama, commercials, YouTube shows and social video — from concept through shooting, editing and delivery.' ),
+				'note' => '',
+				'link' => $link( $L( 'CREATIVE STUDIOについて →', 'About Creative Studio →' ), $studio ), 'is_fund' => 0,
+			),
+		),
+	);
+}
+
+/*
+ * One-time restructure (netelly_business_v2): top chapters, business page rows I–II and
+ * heading, header order (STUDIO after ORIGINALS), footer 事業 links, STUDIO page title.
+ * Images already set on the panels / rows are kept.
+ */
+add_action(
+	'init',
+	static function () {
+		if ( get_option( 'netelly_business_v2' ) || ! function_exists( 'update_field' ) || ! function_exists( 'pll_get_post_language' ) ) {
+			return;
+		}
+		update_option( 'netelly_business_v2', 1 );
+		foreach ( array( 'ja', 'en' ) as $lang ) {
+			$studio_id = netelly_studio_page_id( $lang );
+			$biz_ids   = netelly_ids_by_slug( 'page', 'business', $lang );
+			if ( ! $studio_id || ! $biz_ids ) {
+				continue;
+			}
+			$studio = (string) get_permalink( $studio_id );
+			$base   = (string) get_permalink( $biz_ids[0] );
+			$works  = home_url( 'en' === $lang ? '/en/works/' : '/works/' );
+			$v2     = netelly_business_v2( $lang, $works, $studio, $base );
+			update_field( 'field_nt_page_hero_page_en_title', 'CREATIVE STUDIO', $studio_id );
+			wp_update_post( array( 'ID' => $studio_id, 'post_title' => 'en' === $lang ? 'Films for Brands' : '企業・ブランドの映像制作' ) );
+
+			// Top page chapters (サイト設定).
+			$opt  = 'netelly_' . $lang;
+			$old  = array_values( (array) get_field( 'biz_items', $opt, false ) );
+			$imgs = array_map( static fn( $r ) => is_array( $r ) ? ( reset( array_filter( $r, static fn( $k ) => str_ends_with( (string) $k, '_image' ), ARRAY_FILTER_USE_KEY ) ) ?: '' ) : '', $old );
+			$top  = $v2['top'];
+			foreach ( $top as $i => $row ) {
+				$top[ $i ]['image'] = $imgs[ $i ] ?? '';
+			}
+			update_field( 'field_nt_settings_biz_items', $top, $opt );
+			update_field( 'field_nt_settings_biz_lead', $v2['lead'], $opt );
+
+			// Business page: rows I and II, heading.
+			$page  = (int) $biz_ids[0];
+			$items = array_values( (array) get_field( 'items', $page ) );
+			foreach ( $v2['rows'] as $i => $row ) {
+				$items[ $i ] = array_merge( $row, array( 'image' => is_array( $items[ $i ]['image'] ?? null ) ? ( $items[ $i ]['image']['ID'] ?? '' ) : ( $items[ $i ]['image'] ?? '' ) ) );
+			}
+			foreach ( $items as $i => $row ) {
+				if ( is_array( $row['image'] ?? null ) ) {
+					$items[ $i ]['image'] = $row['image']['ID'] ?? '';
+				}
+			}
+			update_field( 'field_nt_page_business_items', $items, $page );
+			update_field( 'field_nt_page_business_intro_heading', $v2['heading'], $page );
+
+			// Header: STUDIO right after ORIGINALS.
+			$menu = wp_get_nav_menu_object( 'primary-' . $lang );
+			if ( $menu ) {
+				$list   = (array) wp_get_nav_menu_items( $menu->term_id );
+				$studio_item = null;
+				foreach ( $list as $it ) {
+					if ( false !== strpos( (string) $it->url, '/studio/' ) ) {
+						$studio_item = $it;
+					}
+				}
+				if ( $studio_item ) {
+					$list  = array_values( array_filter( $list, static fn( $it ) => $it->ID !== $studio_item->ID ) );
+					$order = array();
+					foreach ( $list as $it ) {
+						$order[] = $it;
+						if ( false !== strpos( (string) $it->url, '/works/' ) ) {
+							$order[] = $studio_item;
+						}
+					}
+					if ( ! in_array( $studio_item, $order, true ) ) {
+						$order[] = $studio_item;
+					}
+					foreach ( $order as $n => $it ) {
+						wp_update_post( array( 'ID' => $it->ID, 'menu_order' => $n + 1 ) );
+					}
+				}
+			}
+
+			// Footer 事業: 制作 → オリジナル作品 (#originals), drop 配給・メディア.
+			$foot = wp_get_nav_menu_object( 'footer-' . $lang );
+			if ( $foot ) {
+				foreach ( (array) wp_get_nav_menu_items( $foot->term_id ) as $it ) {
+					if ( false !== strpos( (string) $it->url, '#creative' ) ) {
+						wp_update_post( array( 'ID' => $it->ID, 'post_title' => 'en' === $lang ? 'Originals' : 'オリジナル作品' ) );
+						update_post_meta( $it->ID, '_menu_item_url', $base . '#originals' );
+					} elseif ( false !== strpos( (string) $it->url, '#media' ) ) {
+						wp_delete_post( $it->ID, true );
+					} elseif ( false !== strpos( (string) $it->url, '/studio/' ) ) {
+						wp_update_post( array( 'ID' => $it->ID, 'post_title' => 'en' === $lang ? 'Creative Studio' : 'クリエイティブスタジオ' ) );
+					}
+				}
+			}
+		}
+	},
+	32
 );

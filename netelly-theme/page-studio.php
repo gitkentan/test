@@ -1,10 +1,10 @@
 <?php
 /**
- * Template Name: STUDIO（受託制作）
+ * Template Name: CREATIVE STUDIO
  *
- * Commissioned production (/studio/): intro, services, why Netelly, process, works and
+ * CREATIVE STUDIO (/studio/): films for companies and brands: intro, services, why Netelly, process, works and
  * a contact band that opens the contact form with 制作・配給のご相談 selected (?type=production).
- * Texts: 固定ページ › 受託制作 (defaults in inc/studio.php).
+ * Texts: 固定ページ › 企業・ブランドの映像制作 (defaults in inc/studio.php).
  *
  * @package netelly
  */

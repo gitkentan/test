@@ -2,14 +2,15 @@
 /**
  * Template Name: 事業
  *
- * Business (design #p04): statement, four alternating rows, Creators Fund band.
+ * Business (design #p04): statement, four alternating rows (ORIGINALS, CREATIVE STUDIO,
+ * COMMUNITY, CREATORS FUND), Creators Fund band.
  *
  * @package netelly
  */
 
 get_header();
 $f   = static fn( $name ) => netelly_field( $name );
-$ids = array( 'creative', 'media', 'community', 'creators-fund' );
+$ids = array( 'originals', 'creative-studio', 'community', 'creators-fund' );
 ?>
 <main id="main" class="page-business">
 	<?php get_template_part( 'template-parts/page-hero' ); ?>

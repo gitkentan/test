@@ -1,5 +1,5 @@
 /* ==========================================================================
-   STUDIO (commissioned production): /studio/ page + the band on the top page.
+   CREATIVE STUDIO (/studio/): films for companies and brands.
    Built on the colour tokens, so it follows dark / light / PRISM.
    ========================================================================== */
 
@@ -33,7 +33,6 @@
 }
 
 .studio-intro__heading,
-.studio-band__heading,
 .studio-cta__heading {
 	word-break: auto-phrase;
 	text-wrap: balance;
@@ -297,77 +296,6 @@
 	color: #0b0b0a;
 }
 
-/* ---------- Top page band ---------- */
-.studio-band {
-	display: grid;
-	grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-	gap: 48px 80px;
-	align-items: center;
-	padding: var(--sec) var(--pad-x);
-}
-
-.studio-band__text {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 24px;
-}
-
-.studio-band__heading {
-	margin: 0;
-	font-family: var(--f-head);
-	font-weight: 700;
-	font-size: clamp(28px, 3.2vw, 48px);
-	line-height: 1.35;
-}
-
-.studio-band__lead {
-	font-size: 15px;
-	line-height: 2;
-	color: var(--sub);
-}
-
-.studio-band__list {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	border-top: 1px solid var(--line);
-}
-
-.studio-band__item {
-	display: grid;
-	grid-template-columns: 40px minmax(0, 1fr) auto;
-	align-items: baseline;
-	gap: 16px;
-	padding: 20px 4px;
-	border-bottom: 1px solid var(--line);
-	transition: padding var(--t-base) var(--ease-out), color var(--t-fast);
-}
-
-.studio-band__item:hover {
-	padding-left: 16px;
-	opacity: 1;
-}
-
-.studio-band__num {
-	font-family: var(--f-mono);
-	font-size: 12px;
-	color: var(--muted);
-}
-
-.studio-band__en {
-	font-family: var(--f-en);
-	font-stretch: 125%;
-	font-weight: 600;
-	font-size: clamp(20px, 2.2vw, 34px);
-	line-height: 1.1;
-}
-
-.studio-band__ja {
-	font-size: 13px;
-	color: var(--muted);
-}
-
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
 	.studio-services {
@@ -383,9 +311,6 @@
 		display: none;
 	}
 
-	.studio-band {
-		grid-template-columns: minmax(0, 1fr);
-	}
 }
 
 @media (max-width: 768px) {
@@ -406,14 +331,6 @@
 
 	.studio-service__en {
 		margin-top: 16px;
-	}
-
-	.studio-band__item {
-		grid-template-columns: 32px minmax(0, 1fr);
-	}
-
-	.studio-band__ja {
-		grid-column: 2;
 	}
 }
 

@@ -1,6 +1,6 @@
 {
     "key": "group_netelly_page_studio",
-    "title": "STUDIO（受託制作）ページ",
+    "title": "CREATIVE STUDIOページ",
     "fields": [
         {
             "type": "tab",
@@ -486,91 +486,6 @@
             "label": "ボタンの文字",
             "instructions": "お問い合わせページを「制作・配給のご相談」を選んだ状態で開きます。",
             "key": "field_nt_page_studio_cta_button",
-            "required": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            }
-        },
-        {
-            "type": "tab",
-            "label": "トップページの帯",
-            "name": "",
-            "placement": "top",
-            "endpoint": 0,
-            "key": "field_nt_page_studio_tab_26",
-            "instructions": "",
-            "required": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            }
-        },
-        {
-            "type": "message",
-            "name": "",
-            "label": "",
-            "message": "トップページの「事業」の下に表示する、このページへの案内です。",
-            "key": "field_nt_page_studio_tab_27",
-            "instructions": "",
-            "required": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            }
-        },
-        {
-            "type": "text",
-            "name": "band_label",
-            "label": "ラベル",
-            "key": "field_nt_page_studio_band_label",
-            "instructions": "",
-            "required": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            }
-        },
-        {
-            "type": "textarea",
-            "name": "band_heading",
-            "label": "見出し",
-            "rows": 2,
-            "new_lines": "",
-            "instructions": "改行はそのまま反映されます。",
-            "key": "field_nt_page_studio_band_heading",
-            "required": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            }
-        },
-        {
-            "type": "textarea",
-            "name": "band_text",
-            "label": "説明",
-            "rows": 2,
-            "new_lines": "",
-            "key": "field_nt_page_studio_band_text",
-            "instructions": "",
-            "required": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            }
-        },
-        {
-            "type": "text",
-            "name": "band_button",
-            "label": "ボタンの文字",
-            "key": "field_nt_page_studio_band_button",
-            "instructions": "",
             "required": 0,
             "wrapper": {
                 "width": "",

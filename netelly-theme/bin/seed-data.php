@@ -331,12 +331,12 @@ function nts_lang_data( string $lang, callable $purl, array $works ): array {
 		'biz_heading'        => $L( '事業', 'Business' ),
 		'biz_link'           => nts_link( $L( '事業について →', 'About our business →' ), $p( 'business' ) ),
 		'biz_lead'           => $L(
-			'Netellyは、作る・届ける・つなぐ・支えるという四つの機能を一つの組織の中に持ち、それらを循環させることで、才能と作品が生まれ続ける環境をつくっています。',
-			'Netelly brings four functions — creating, delivering, connecting and supporting — together in one organization, and keeps them in motion so that talent and new work keep emerging.'
+			'Netellyは、オリジナル作品を生み出して届けること、企業・ブランドの映像をつくること、つくり手をつなぐこと、才能を支えること。四つの機能を一つの組織の中で循環させ、才能と作品が生まれ続ける環境をつくっています。',
+			'Netelly creates and delivers original works, makes films for companies and brands, connects makers and supports new talent — four functions kept in motion within one organization, so that talent and new work keep emerging.'
 		),
 		'biz_items'          => array(
-			array( 'num' => 'I', 'en' => 'CREATIVE', 'title' => $L( '制作', 'Production' ), 'text' => $L( 'ドラマ・映画・ショートドラマを、企画から制作まで手がける。', 'We develop and produce series, films and short dramas.' ), 'image' => '', 'link' => nts_link( 'CREATIVE', $p( 'business', '#creative' ) ), 'is_fund' => 0 ),
-			array( 'num' => 'II', 'en' => 'MEDIA', 'title' => $L( '配給・メディア', 'Distribution & Media' ), 'text' => $L( '劇場・配信・YouTubeへ作品を届ける。', 'We bring our work to theaters, streaming and YouTube.' ), 'image' => '', 'link' => nts_link( 'MEDIA', $p( 'business', '#media' ) ), 'is_fund' => 0 ),
+			array( 'num' => 'I', 'en' => 'ORIGINALS', 'title' => $L( '配給・メディア', 'Distribution & Media' ), 'text' => $L( 'オリジナル作品を企画・制作し、配信・YouTube・劇場へ届ける。', 'We make original works and bring them to streaming, YouTube and theaters.' ), 'image' => '', 'link' => nts_link( 'ORIGINALS', $p( 'business', '#originals' ) ), 'is_fund' => 0 ),
+			array( 'num' => 'II', 'en' => 'CREATIVE STUDIO', 'title' => $L( '企業ブランディング', 'Brand films' ), 'text' => $L( '企業・ブランドの映像を、企画から納品まで手がける。', 'Films for companies and brands, from concept to delivery.' ), 'image' => '', 'link' => nts_link( 'CREATIVE STUDIO', home_url( $ja ? '/studio/' : '/en/studio/' ) ), 'is_fund' => 0 ),
 			array( 'num' => 'III', 'en' => 'COMMUNITY', 'title' => $L( 'コミュニティ', 'Community' ), 'text' => $L( 'つくり手が出会い、次の企画が生まれる場。', 'A place where creators meet and new projects begin.' ), 'image' => '', 'link' => nts_link( 'COMMUNITY', $p( 'business', '#community' ) ), 'is_fund' => 0 ),
 			array( 'num' => 'IV', 'en' => 'CREATORS FUND', 'title' => $L( 'クリエイターズファンド', 'Creators Fund' ), 'text' => $L( '監督・脚本家・プランナーの企画に出資する。', 'We invest in projects by directors, writers and planners.' ), 'image' => '', 'link' => '', 'is_fund' => 1 ),
 		),
@@ -425,19 +425,19 @@ function nts_lang_data( string $lang, callable $purl, array $works ): array {
 		'business' => array(
 			'page_business' => array(
 				'intro_label'   => 'WHAT WE DO',
-				'intro_heading' => $L( "作る・届ける・つなぐ・支える。\n四つの機能を、一つの組織の中に。", "Create, deliver, connect, support.\nFour functions in one organization." ),
+				'intro_heading' => $L( "生み出す・請け負う・つなぐ・支える。\n四つの機能を、一つの組織の中に。", "Originals, studio, community, fund.\nFour functions in one organization." ),
 				'items'         => array(
 					array(
-						'num' => 'I', 'en' => 'CREATIVE', 'title' => $L( '制作', 'Production' ),
-						'text' => $L( 'スマートフォン向けの縦型ショートドラマから、ドラマ・映画・コメディまで、企画から自社で手がけます。脚本開発、キャスティング、撮影、編集までを一つのチームで行い、作品の方向性を最後まで守ります。', 'From vertical short dramas for smartphones to series, films and comedy, we develop and produce in-house. One team handles everything from script development and casting to shooting and editing, protecting each work’s vision to the very end.' ),
-						'note' => $L( '主な作品：『友達以上、恋人未満』ほか', 'Selected works: “More Than Friends, Less Than Lovers” and more' ),
+						'num' => 'I', 'en' => 'ORIGINALS', 'title' => $L( '配給・メディア', 'Distribution & Media' ),
+						'text' => $L( 'スマートフォン向けの縦型ショートドラマから、ドラマ・映画・コメディまで、Netellyのオリジナル作品を企画・制作し、動画配信サービス・公式YouTubeチャンネル・SNS・劇場など、作品に合った場所へ届けます。予告編やショート動画の展開まで含めて設計します。', 'From vertical short dramas to series, films and comedy, we develop and produce Netelly originals and deliver them where they belong — streaming services, our official YouTube channel, social media and theaters — designing the rollout down to trailers and short-form clips.' ),
+						'note' => $L( '主な作品：『友達以上、恋人未満』ほか ／ 公式YouTubeチャンネル「Netelly」', 'Selected works: “More Than Friends, Less Than Lovers” and more / Official YouTube channel “Netelly”' ),
 						'link' => nts_link( $L( 'オリジナル作品一覧 →', 'All originals →' ), $wurl ), 'is_fund' => 0, 'image' => '',
 					),
 					array(
-						'num' => 'II', 'en' => 'MEDIA', 'title' => $L( '配給・メディア', 'Distribution & Media' ),
-						'text' => $L( '完成した作品を、動画配信サービス・公式YouTubeチャンネル・SNS・劇場など、作品に合った場所へ届けます。予告編やショート動画の展開まで含めて設計します。', 'We deliver finished works to the places that suit them — streaming services, our official YouTube channel, social media and theaters — and design the rollout down to trailers and short-form clips.' ),
-						'note' => $L( '公式YouTubeチャンネル「Netelly」', 'Official YouTube channel “Netelly”' ),
-						'link' => nts_link( $L( 'YouTubeを見る →', 'Watch on YouTube →' ), 'https://www.youtube.com/', true ), 'is_fund' => 0, 'image' => '',
+						'num' => 'II', 'en' => 'CREATIVE STUDIO', 'title' => $L( '企業ブランディング', 'Brand films' ),
+						'text' => $L( 'オリジナル作品で培った企画力と制作体制で、企業・ブランドの映像をつくります。ブランデッドドラマ、ショートドラマ、CM、YouTube番組、SNS動画まで、企画から撮影・編集・納品まで一貫してお引き受けします。', 'With the planning and production we have built making our own originals, we make films for companies and brands — branded drama, short drama, commercials, YouTube shows and social video — from concept through shooting, editing and delivery.' ),
+						'note' => '',
+						'link' => nts_link( $L( 'CREATIVE STUDIOについて →', 'About Creative Studio →' ), home_url( $ja ? '/studio/' : '/en/studio/' ) ), 'is_fund' => 0, 'image' => '',
 					),
 					array(
 						'num' => 'III', 'en' => 'COMMUNITY', 'title' => $L( 'コミュニティ', 'Community' ),
@@ -591,6 +591,7 @@ function nts_menus( string $lang, callable $purl, array $works ): array {
 			array( 'ABOUT', $p( 'company' ) ),
 			array( 'BUSINESS', $p( 'business' ) ),
 			array( 'ORIGINALS', $wurl ),
+			array( 'STUDIO', home_url( $ja ? '/studio/' : '/en/studio/' ) ),
 			array( 'NEWS', $p( 'news' ) ),
 			array( 'CAREERS', $p( 'careers' ) ),
 		),
@@ -609,8 +610,8 @@ function nts_menus( string $lang, callable $purl, array $works ): array {
 				$L( '事業', 'Business' ),
 				'#',
 				array(
-					array( $L( '制作', 'Production' ), $p( 'business', '#creative' ) ),
-					array( $L( '配給・メディア', 'Distribution & Media' ), $p( 'business', '#media' ) ),
+					array( $L( 'オリジナル作品', 'Originals' ), $p( 'business', '#originals' ) ),
+					array( $L( 'クリエイティブスタジオ', 'Creative Studio' ), home_url( $ja ? '/studio/' : '/en/studio/' ) ),
 					array( $L( 'コミュニティ', 'Community' ), $p( 'business', '#community' ) ),
 					array( $L( 'クリエイターズファンド', 'Creators Fund' ), $fund ),
 				),
