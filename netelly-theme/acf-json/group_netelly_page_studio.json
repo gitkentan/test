@@ -1,0 +1,601 @@
+{
+    "key": "group_netelly_page_studio",
+    "title": "STUDIO（受託制作）ページ",
+    "fields": [
+        {
+            "type": "tab",
+            "label": "導入",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_page_studio_tab_0",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "intro_label",
+            "label": "ラベル",
+            "key": "field_nt_page_studio_intro_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "intro_heading",
+            "label": "見出し",
+            "rows": 2,
+            "new_lines": "",
+            "instructions": "改行はそのまま反映されます。",
+            "key": "field_nt_page_studio_intro_heading",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "intro_text",
+            "label": "説明",
+            "rows": 4,
+            "new_lines": "",
+            "key": "field_nt_page_studio_intro_text",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "できること",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_page_studio_tab_4",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "svc_label",
+            "label": "ラベル",
+            "key": "field_nt_page_studio_svc_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "svc_heading",
+            "label": "見出し",
+            "rows": 2,
+            "new_lines": "",
+            "instructions": "改行はそのまま反映されます。",
+            "key": "field_nt_page_studio_svc_heading",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "repeater",
+            "name": "services",
+            "label": "サービス",
+            "sub_fields": [
+                {
+                    "type": "text",
+                    "name": "en",
+                    "label": "英字の見出し",
+                    "key": "field_nt_page_studio_services_en",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "text",
+                    "name": "title",
+                    "label": "タイトル",
+                    "key": "field_nt_page_studio_services_title",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "textarea",
+                    "name": "text",
+                    "label": "説明",
+                    "rows": 2,
+                    "new_lines": "",
+                    "key": "field_nt_page_studio_services_text",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ],
+            "layout": "block",
+            "button_label": "サービスを追加",
+            "collapsed": "",
+            "key": "field_nt_page_studio_services",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "強み",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_page_studio_tab_8",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "why_label",
+            "label": "ラベル",
+            "key": "field_nt_page_studio_why_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "why_heading",
+            "label": "見出し",
+            "rows": 2,
+            "new_lines": "",
+            "instructions": "改行はそのまま反映されます。",
+            "key": "field_nt_page_studio_why_heading",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "repeater",
+            "name": "points",
+            "label": "強み",
+            "sub_fields": [
+                {
+                    "type": "text",
+                    "name": "title",
+                    "label": "見出し",
+                    "key": "field_nt_page_studio_points_title",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "textarea",
+                    "name": "text",
+                    "label": "本文",
+                    "rows": 3,
+                    "new_lines": "",
+                    "key": "field_nt_page_studio_points_text",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ],
+            "layout": "table",
+            "button_label": "強みを追加",
+            "collapsed": "",
+            "max": 4,
+            "key": "field_nt_page_studio_points",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "流れ",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_page_studio_tab_12",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "flow_label",
+            "label": "ラベル",
+            "key": "field_nt_page_studio_flow_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "flow_heading",
+            "label": "見出し",
+            "rows": 2,
+            "new_lines": "",
+            "instructions": "改行はそのまま反映されます。",
+            "key": "field_nt_page_studio_flow_heading",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "repeater",
+            "name": "steps",
+            "label": "ステップ",
+            "sub_fields": [
+                {
+                    "type": "text",
+                    "name": "title",
+                    "label": "見出し",
+                    "key": "field_nt_page_studio_steps_title",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "textarea",
+                    "name": "text",
+                    "label": "本文",
+                    "rows": 2,
+                    "new_lines": "",
+                    "key": "field_nt_page_studio_steps_text",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ],
+            "layout": "table",
+            "button_label": "ステップを追加",
+            "collapsed": "",
+            "max": 5,
+            "key": "field_nt_page_studio_steps",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "実績",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_page_studio_tab_16",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "works_label",
+            "label": "ラベル",
+            "key": "field_nt_page_studio_works_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "works_heading",
+            "label": "見出し",
+            "rows": 2,
+            "new_lines": "",
+            "instructions": "改行はそのまま反映されます。",
+            "key": "field_nt_page_studio_works_heading",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "works_text",
+            "label": "説明",
+            "rows": 2,
+            "new_lines": "",
+            "key": "field_nt_page_studio_works_text",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "relationship",
+            "name": "works",
+            "label": "表示する作品（3件まで）",
+            "post_type": [
+                "work"
+            ],
+            "filters": [
+                "search"
+            ],
+            "return_format": "id",
+            "max": 3,
+            "min": 0,
+            "instructions": "空なら最新の作品を3件表示します。",
+            "key": "field_nt_page_studio_works",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "お問い合わせ",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_page_studio_tab_21",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "cta_label",
+            "label": "ラベル",
+            "key": "field_nt_page_studio_cta_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "cta_heading",
+            "label": "見出し",
+            "rows": 2,
+            "new_lines": "",
+            "instructions": "改行はそのまま反映されます。",
+            "key": "field_nt_page_studio_cta_heading",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "cta_text",
+            "label": "説明",
+            "rows": 2,
+            "new_lines": "",
+            "key": "field_nt_page_studio_cta_text",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "cta_button",
+            "label": "ボタンの文字",
+            "instructions": "お問い合わせページを「制作・配給のご相談」を選んだ状態で開きます。",
+            "key": "field_nt_page_studio_cta_button",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "トップページの帯",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_page_studio_tab_26",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "message",
+            "name": "",
+            "label": "",
+            "message": "トップページの「事業」の下に表示する、このページへの案内です。",
+            "key": "field_nt_page_studio_tab_27",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "band_label",
+            "label": "ラベル",
+            "key": "field_nt_page_studio_band_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "band_heading",
+            "label": "見出し",
+            "rows": 2,
+            "new_lines": "",
+            "instructions": "改行はそのまま反映されます。",
+            "key": "field_nt_page_studio_band_heading",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "band_text",
+            "label": "説明",
+            "rows": 2,
+            "new_lines": "",
+            "key": "field_nt_page_studio_band_text",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "band_button",
+            "label": "ボタンの文字",
+            "key": "field_nt_page_studio_band_button",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-studio.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1791446400
+}

@@ -26,6 +26,7 @@ require_once NETELLY_DIR . '/inc/seo.php';
 require_once NETELLY_DIR . '/inc/tone.php';
 require_once NETELLY_DIR . '/inc/access.php';
 require_once NETELLY_DIR . '/inc/fund.php';
+require_once NETELLY_DIR . '/inc/studio.php';
 if ( is_admin() ) {
 	require_once NETELLY_DIR . '/inc/admin-seed.php';
 	require_once NETELLY_DIR . '/inc/admin-news-import.php';

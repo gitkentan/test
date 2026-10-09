@@ -190,6 +190,30 @@ $latest = get_posts(
 		<?php endforeach; ?>
 	</div>
 
+	<?php /* ---------- Studio band: commissioned production (texts from the STUDIO page) ---------- */ ?>
+	<?php $studio = netelly_studio_page_id( netelly_lang() ); ?>
+	<?php if ( $studio && netelly_field( 'band_heading', $studio ) ) : ?>
+		<?php
+		$sv     = array_slice( array_values( (array) netelly_field( 'services', $studio ) ), 0, 6 );
+		$sv_url = (string) get_permalink( $studio );
+		?>
+		<section class="studio-band">
+			<div class="studio-band__text">
+				<p class="studio-label" lang="en"><?php echo esc_html( (string) netelly_field( 'band_label', $studio ) ); ?></p>
+				<h2 class="studio-band__heading"><?php echo netelly_br( (string) netelly_field( 'band_heading', $studio ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?></h2>
+				<p class="studio-band__lead"><?php echo esc_html( (string) netelly_field( 'band_text', $studio ) ); ?></p>
+				<?php echo netelly_button( (string) netelly_field( 'band_button', $studio ), $sv_url, 'outline', array( 'class' => 'studio-band__btn' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+			</div>
+			<?php if ( $sv ) : ?>
+				<ul class="studio-band__list" data-stagger="50">
+					<?php foreach ( $sv as $i => $s ) : ?>
+						<li><a class="studio-band__item" href="<?php echo esc_url( $sv_url ); ?>"><span class="studio-band__num"><?php echo esc_html( sprintf( '%02d', $i + 1 ) ); ?></span><span class="studio-band__en" lang="en"><?php echo esc_html( (string) ( $s['en'] ?? '' ) ); ?></span><span class="studio-band__ja"><?php echo esc_html( (string) ( $s['title'] ?? '' ) ); ?></span></a></li>
+					<?php endforeach; ?>
+				</ul>
+			<?php endif; ?>
+		</section>
+	<?php endif; ?>
+
 	<?php /* ---------- Marquee (サイト設定 › トップ：流れる帯; decorative, hidden when empty) ---------- */ ?>
 	<?php $marquee = array_values( array_filter( array_map( 'trim', preg_split( '/\R/', (string) netelly_opt( 'marquee_text' ) ) ) ) ); ?>
 	<?php if ( $marquee ) : ?>

@@ -2,7 +2,8 @@
  * Contact form UX on top of Snow Monkey Forms (README 9).
  * - Blur validation (required / email), errors in ink + ⚠ under the field.
  * - Submit stays disabled until the privacy consent is checked; 「送信中…」 while sending.
- * - Prefill: ?type=recruit selects 採用 (?position=… goes into the message), ?type=press selects 取材・プレス.
+ * - Prefill: ?type=recruit selects 採用 (?position=… goes into the message), ?type=press selects 取材・プレス,
+ *   ?type=production selects the first type (制作・配給のご相談).
  * - Privacy page link inside the consent label; .btn classes on the plugin's buttons.
  * Texts come from data-* on .contact__form (theme strings / page fields).
  */
@@ -137,7 +138,9 @@ export function initForm() {
 	const prefill = () => {
 		const params = new URLSearchParams( location.search );
 		// ?type=recruit (careers) / ?type=press (press kit) → preselect that inquiry type.
-		const want = { recruit: t.recruit, press: t.press }[ params.get( 'type' ) ];
+		// ?type=production (STUDIO page) → the first type, 制作・配給のご相談, unless set on the page.
+		const firstType = form.querySelector( 'input[type="radio"]' )?.value;
+		const want = { recruit: t.recruit, press: t.press, production: t.production || firstType }[ params.get( 'type' ) ];
 		if ( want ) {
 			const radio = [ ...form.querySelectorAll( 'input[type="radio"]' ) ].find( ( r ) => r.value === want );
 			if ( radio ) {
