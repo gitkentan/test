@@ -581,8 +581,9 @@ function nts_menus( string $lang, callable $purl, array $works ): array {
 	return array(
 		// Header / SP menu: English labels on both languages (set in Archivo, see header.css).
 		'primary' => array(
-			array( 'COMPANY', $p( 'company' ) ),
+			array( 'ABOUT', $p( 'company' ) ),
 			array( 'BUSINESS', $p( 'business' ) ),
+			array( 'ORIGINALS', $wurl ),
 			array( 'NEWS', $p( 'news' ) ),
 			array( 'CAREERS', $p( 'careers' ) ),
 		),
