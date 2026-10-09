@@ -338,3 +338,78 @@
 .smf-button-control__control > * {
 	pointer-events: none;
 }
+
+/* File upload (the plugin's per-block CSS is not loaded): native input hidden, label as a button. */
+.smf-file-control {
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 12px 16px;
+}
+
+.smf-file-control label {
+	display: inline-flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 12px 16px;
+	cursor: pointer;
+}
+
+.smf-file-control__control {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	opacity: 0;
+	overflow: hidden;
+}
+
+.smf-file-control__label {
+	padding: 10px 18px;
+	border: 1px solid var(--ink);
+	font-size: 13px;
+	transition: background var(--t-fast), color var(--t-fast);
+}
+
+.smf-file-control label:hover .smf-file-control__label,
+.smf-file-control__control:focus-visible + .smf-file-control__label {
+	background: var(--ink);
+	color: var(--paper);
+}
+
+.smf-file-control__filename {
+	font-size: 13px;
+	color: var(--muted);
+	overflow-wrap: anywhere;
+}
+
+.smf-file-control__filename--has-file,
+.smf-file-control__clear {
+	display: none;
+}
+
+.smf-file-control--set .smf-file-control__filename--no-file {
+	display: none;
+}
+
+.smf-file-control--set .smf-file-control__filename--has-file {
+	display: inline;
+	color: var(--ink);
+}
+
+.smf-file-control--set .smf-file-control__clear,
+.smf-file-control--uploaded .smf-file-control__clear {
+	display: inline-block;
+	padding: 0;
+	border: 0;
+	background: none;
+	color: var(--muted);
+	font: inherit;
+	font-size: 12px;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.smf-file-control--uploaded label {
+	display: none;
+}

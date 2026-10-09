@@ -24,6 +24,7 @@ $adjacent = static function ( $p, string $label, string $class ) {
 	}
 	$ext = (string) netelly_field( 'external_url', $p->ID );
 	$url = $ext ? $ext : get_permalink( $p );
+	$ext = $ext && netelly_is_external( $ext ) ? $ext : '';
 	return sprintf(
 		'<a class="adjacent__item %1$s"%2$s><span class="adjacent__label">%3$s</span><span class="adjacent__title">%4$s</span>%5$s</a>',
 		esc_attr( $class ),

@@ -22,8 +22,8 @@ $fund = netelly_fund_url();
 	<div class="fund-cta__lower">
 		<p class="fund-cta__text"><?php echo esc_html( (string) ( $args['text'] ?? '' ) ); ?></p>
 		<div class="btn-group fund-cta__buttons">
-			<?php echo netelly_button( (string) ( $args['primary'] ?? '' ), $fund, 'primary', array( 'blank' => true ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
-			<?php echo netelly_button( (string) ( $args['secondary'] ?? '' ), $fund, 'outline', array( 'blank' => true ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+			<?php echo netelly_button( (string) ( $args['primary'] ?? '' ), $fund, 'primary', array( 'blank' => netelly_is_external( $fund ) ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+			<?php echo netelly_button( (string) ( $args['secondary'] ?? '' ), $fund, 'outline', array( 'blank' => netelly_is_external( $fund ) ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 		</div>
 	</div>
 </section>

@@ -115,7 +115,7 @@ add_action(
 	'wp_body_open',
 	static function () {
 		echo '<div class="prism" aria-hidden="true"><div class="prism__field prism__field--a"></div><div class="prism__field prism__field--b"></div></div>' . "\n";
-		echo "<script>if(document.documentElement.getAttribute('data-theme')==='light'){var b=document.body;b.classList.remove('is-dark');if(!b.classList.contains('single-work')){b.classList.remove('page-is-dark');}}</script>\n"; // phpcs:ignore WordPress.Security.EscapeOutput
+		echo "<script>if(document.documentElement.getAttribute('data-theme')==='light'){var b=document.body;if(!b.classList.contains('page-template-page-fund')){b.classList.remove('is-dark');if(!b.classList.contains('single-work')){b.classList.remove('page-is-dark');}}}</script>\n"; // phpcs:ignore WordPress.Security.EscapeOutput
 	},
 	1
 );

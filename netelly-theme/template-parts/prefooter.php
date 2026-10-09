@@ -19,7 +19,7 @@ $cards   = array(
 		'badge' => (string) netelly_opt( 'pf_creators_badge' ),
 		'text'  => (string) netelly_opt( 'pf_creators_text' ),
 		'url'   => netelly_fund_url(),
-		'blank' => true,
+		'blank' => netelly_is_external( netelly_fund_url() ),
 	),
 );
 ?>

@@ -56,7 +56,7 @@ add_filter(
  * Whether the current view renders a form (contact page template).
  */
 function netelly_has_form(): bool {
-	return is_page_template( 'page-contact.php' );
+	return is_page_template( array( 'page-contact.php', 'page-fund.php' ) );
 }
 
 add_action(

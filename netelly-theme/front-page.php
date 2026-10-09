@@ -80,6 +80,7 @@ $latest = get_posts(
 		$band_id  = $latest[0]->ID;
 		$band_ext = (string) netelly_field( 'external_url', $band_id );
 		$band_url = $band_ext ? $band_ext : get_permalink( $band_id );
+		$band_ext = $band_ext && netelly_is_external( $band_ext ) ? $band_ext : '';
 		?>
 		<a class="row-link news-band"<?php echo netelly_link_attrs( $band_url, (bool) $band_ext ); // phpcs:ignore WordPress.Security.EscapeOutput ?>>
 			<span class="news-band__meta">
@@ -165,7 +166,7 @@ $latest = get_posts(
 			$burl    = $is_fund ? netelly_fund_url() : ( $biz['link']['url'] ?? '' );
 			$bimg    = (int) ( $biz['image'] ?? 0 );
 			?>
-			<a class="chapter" style="--k:<?php echo (int) $k; ?>" data-cursor="<?php echo esc_attr( netelly_t( 'cursor_view' ) ); ?>"<?php echo netelly_link_attrs( $burl, $is_fund ); // phpcs:ignore WordPress.Security.EscapeOutput ?>>
+			<a class="chapter" style="--k:<?php echo (int) $k; ?>" data-cursor="<?php echo esc_attr( netelly_t( 'cursor_view' ) ); ?>"<?php echo netelly_link_attrs( $burl ); // phpcs:ignore WordPress.Security.EscapeOutput ?>>
 				<span class="chapter__bg" aria-hidden="true">
 					<?php if ( $bimg ) : ?>
 						<?php echo wp_get_attachment_image( $bimg, 'full', false, array( 'class' => 'chapter__img', 'loading' => 'lazy', 'decoding' => 'async', 'sizes' => '100vw', 'alt' => '' ) ); ?>
@@ -176,7 +177,7 @@ $latest = get_posts(
 				<span class="chapter__inner">
 					<span class="chapter__top">
 						<span class="chapter__num"><?php echo esc_html( (string) ( $biz['num'] ?? '' ) ); ?> <span aria-hidden="true">/ <?php echo esc_html( (string) ( $biz_items[ count( $biz_items ) - 1 ]['num'] ?? '' ) ); ?></span></span>
-						<span class="chapter__arrow arrow" aria-hidden="true"><?php echo $is_fund ? '↗' : '→'; ?></span>
+						<span class="chapter__arrow arrow" aria-hidden="true"><?php echo netelly_is_external( $burl ) ? '↗' : '→'; ?></span>
 					</span>
 					<span class="chapter__en"><?php echo esc_html( (string) ( $biz['en'] ?? '' ) ); ?></span>
 					<span class="chapter__body">
@@ -184,7 +185,7 @@ $latest = get_posts(
 						<span class="chapter__text"><?php echo esc_html( (string) ( $biz['text'] ?? '' ) ); ?></span>
 					</span>
 				</span>
-				<?php echo netelly_new_tab_note( $burl, $is_fund ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+				<?php echo netelly_new_tab_note( $burl ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 			</a>
 		<?php endforeach; ?>
 	</div>

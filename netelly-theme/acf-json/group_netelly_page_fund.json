@@ -1,0 +1,628 @@
+{
+    "key": "group_netelly_page_fund",
+    "title": "Creators Fundページ",
+    "fields": [
+        {
+            "type": "tab",
+            "label": "ヒーロー",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_page_fund_tab_0",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "hero_label",
+            "label": "上の小さなラベル",
+            "key": "field_nt_page_fund_hero_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "hero_title",
+            "label": "大見出し（英字）",
+            "instructions": "例：CREATORS FUND",
+            "key": "field_nt_page_fund_hero_title",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "hero_copy",
+            "label": "キャッチコピー",
+            "rows": 2,
+            "new_lines": "",
+            "instructions": "改行はそのまま反映されます。",
+            "key": "field_nt_page_fund_hero_copy",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "hero_lead",
+            "label": "説明",
+            "rows": 3,
+            "new_lines": "",
+            "key": "field_nt_page_fund_hero_lead",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "hero_cta",
+            "label": "応募ボタンの文字",
+            "key": "field_nt_page_fund_hero_cta",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "image",
+            "name": "hero_image",
+            "label": "背景画像（任意）",
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "instructions": "空なら光のアニメーションが表示されます。",
+            "key": "field_nt_page_fund_hero_image",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "file",
+            "name": "hero_video",
+            "label": "背景動画（任意・mp4）",
+            "return_format": "id",
+            "library": "all",
+            "mime_types": "mp4",
+            "key": "field_nt_page_fund_hero_video",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "ステートメント",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_page_fund_tab_8",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "st_label",
+            "label": "ラベル",
+            "key": "field_nt_page_fund_st_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "st_text",
+            "label": "文章",
+            "rows": 4,
+            "new_lines": "",
+            "instructions": "スクロールに合わせて文字が浮かび上がります。",
+            "key": "field_nt_page_fund_st_text",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "支援内容",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_page_fund_tab_11",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "offer_label",
+            "label": "ラベル",
+            "key": "field_nt_page_fund_offer_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "offer_heading",
+            "label": "見出し",
+            "rows": 2,
+            "new_lines": "",
+            "instructions": "改行はそのまま反映されます。",
+            "key": "field_nt_page_fund_offer_heading",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "repeater",
+            "name": "offers",
+            "label": "支援内容",
+            "sub_fields": [
+                {
+                    "type": "text",
+                    "name": "en",
+                    "label": "英字の見出し",
+                    "key": "field_nt_page_fund_offers_en",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "text",
+                    "name": "title",
+                    "label": "タイトル",
+                    "key": "field_nt_page_fund_offers_title",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "textarea",
+                    "name": "text",
+                    "label": "説明",
+                    "rows": 3,
+                    "new_lines": "",
+                    "key": "field_nt_page_fund_offers_text",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "text",
+                    "name": "tag",
+                    "label": "小さな注記（任意）",
+                    "instructions": "例：企画により",
+                    "key": "field_nt_page_fund_offers_tag",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ],
+            "layout": "block",
+            "button_label": "支援内容を追加",
+            "collapsed": "",
+            "key": "field_nt_page_fund_offers",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "流れ",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_page_fund_tab_15",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "flow_label",
+            "label": "ラベル",
+            "key": "field_nt_page_fund_flow_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "flow_heading",
+            "label": "見出し",
+            "rows": 2,
+            "new_lines": "",
+            "instructions": "改行はそのまま反映されます。",
+            "key": "field_nt_page_fund_flow_heading",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "repeater",
+            "name": "steps",
+            "label": "ステップ",
+            "sub_fields": [
+                {
+                    "type": "text",
+                    "name": "title",
+                    "label": "タイトル",
+                    "key": "field_nt_page_fund_steps_title",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "textarea",
+                    "name": "text",
+                    "label": "説明",
+                    "rows": 2,
+                    "new_lines": "",
+                    "key": "field_nt_page_fund_steps_text",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ],
+            "layout": "block",
+            "button_label": "ステップを追加",
+            "collapsed": "",
+            "key": "field_nt_page_fund_steps",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "対象",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_page_fund_tab_19",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "who_label",
+            "label": "ラベル",
+            "key": "field_nt_page_fund_who_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "who_heading",
+            "label": "見出し",
+            "rows": 2,
+            "new_lines": "",
+            "instructions": "改行はそのまま反映されます。",
+            "key": "field_nt_page_fund_who_heading",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "who_roles",
+            "label": "対象の職種",
+            "rows": 4,
+            "new_lines": "",
+            "instructions": "1行に1つ。大きな文字で流れるように表示されます。",
+            "key": "field_nt_page_fund_who_roles",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "who_note",
+            "label": "補足",
+            "rows": 2,
+            "new_lines": "",
+            "key": "field_nt_page_fund_who_note",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "よくある質問",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_page_fund_tab_24",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "faq_label",
+            "label": "ラベル",
+            "key": "field_nt_page_fund_faq_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "faq_heading",
+            "label": "見出し",
+            "rows": 2,
+            "new_lines": "",
+            "instructions": "改行はそのまま反映されます。",
+            "key": "field_nt_page_fund_faq_heading",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "repeater",
+            "name": "faqs",
+            "label": "質問",
+            "sub_fields": [
+                {
+                    "type": "text",
+                    "name": "q",
+                    "label": "質問",
+                    "key": "field_nt_page_fund_faqs_q",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "textarea",
+                    "name": "a",
+                    "label": "回答",
+                    "rows": 3,
+                    "new_lines": "",
+                    "key": "field_nt_page_fund_faqs_a",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ],
+            "layout": "block",
+            "button_label": "質問を追加",
+            "collapsed": "",
+            "key": "field_nt_page_fund_faqs",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "tab",
+            "label": "応募フォーム",
+            "name": "",
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_nt_page_fund_tab_28",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "apply_label",
+            "label": "ラベル",
+            "key": "field_nt_page_fund_apply_label",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "apply_heading",
+            "label": "見出し",
+            "rows": 2,
+            "new_lines": "",
+            "instructions": "改行はそのまま反映されます。",
+            "key": "field_nt_page_fund_apply_heading",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "apply_text",
+            "label": "説明",
+            "rows": 3,
+            "new_lines": "",
+            "key": "field_nt_page_fund_apply_text",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "post_object",
+            "name": "form",
+            "label": "フォーム（Snow Monkey Forms）",
+            "post_type": [
+                "snow-monkey-forms"
+            ],
+            "return_format": "id",
+            "allow_null": 1,
+            "multiple": 0,
+            "ui": 1,
+            "instructions": "項目・ボタン名・完了画面・通知メールは「Snow Monkey Forms」メニューのフォームで編集します。",
+            "key": "field_nt_page_fund_form",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-fund.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1791446400
+}

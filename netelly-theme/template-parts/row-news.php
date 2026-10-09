@@ -10,6 +10,7 @@
 $nid  = (int) ( $args['id'] ?? get_the_ID() );
 $ext  = (string) netelly_field( 'external_url', $nid );
 $url  = $ext ? $ext : get_permalink( $nid );
+$ext  = $ext && netelly_is_external( $ext ) ? $ext : '';
 $cats = get_the_category( $nid );
 $cat  = $cats ? $cats[0]->name : '';
 ?>

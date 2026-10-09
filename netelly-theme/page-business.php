@@ -30,7 +30,7 @@ $ids = array( 'creative', 'media', 'community', 'creators-fund' );
 			$link    = $item['link'] ?? null;
 			if ( $is_fund && is_array( $link ) ) {
 				$link['url']    = netelly_fund_url();
-				$link['target'] = '_blank';
+				$link['target'] = netelly_is_external( $link['url'] ) ? '_blank' : '';
 			}
 			?>
 			<article class="biz-row<?php echo $i % 2 ? ' is-reverse' : ''; ?>" id="<?php echo esc_attr( $ids[ $i ] ?? 'business-' . $i ); ?>">

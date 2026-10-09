@@ -78,9 +78,13 @@ function netelly_field( string $name, ?int $post_id = null ) {
 }
 
 /**
- * Creators Fund URL (external site; README rule).
+ * Creators Fund URL: the /fund/ page when it exists, else サイト設定 › fund_url.
  */
 function netelly_fund_url(): string {
+	$page = function_exists( 'netelly_fund_page_id' ) ? netelly_fund_page_id( netelly_lang() ) : 0;
+	if ( $page ) {
+		return (string) get_permalink( $page );
+	}
 	$url = (string) netelly_opt( 'fund_url' );
 	return $url ? $url : 'https://fund.netelly.co.jp';
 }
