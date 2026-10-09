@@ -46,14 +46,24 @@ function netelly_split_words( string $text ): array {
 }
 
 /**
- * Dark / light switch (fx.js toggles html[data-theme] and remembers the choice).
+ * Colour mode switch: dark (default) / light / prism. fx.js sets html[data-theme] and
+ * remembers the choice on the device.
  */
-function netelly_theme_toggle( string $class = '' ): string {
+function netelly_theme_switch( string $class = '' ): string {
+	$modes = array(
+		'dark'  => netelly_t( 'theme_dark' ),
+		'light' => netelly_t( 'theme_light' ),
+		'prism' => netelly_t( 'theme_prism' ),
+	);
+	$html = '';
+	foreach ( $modes as $mode => $name ) {
+		$html .= sprintf( '<button class="theme-switch__btn theme-switch__btn--%1$s" type="button" role="radio" aria-checked="false" data-theme-set="%1$s" aria-label="%2$s" title="%2$s"></button>', esc_attr( $mode ), esc_attr( $name ) );
+	}
 	return sprintf(
-		'<button class="theme-toggle %1$s" type="button" data-theme-toggle data-label-light="%2$s" data-label-dark="%3$s"><span class="theme-toggle__icon" aria-hidden="true"></span><span class="theme-toggle__text">DARK / LIGHT</span><span class="screen-reader-text">%2$s</span></button>',
+		'<div class="theme-switch %1$s" role="radiogroup" aria-label="%2$s">%3$s<span class="theme-switch__label" aria-hidden="true">DARK / LIGHT / PRISM</span></div>',
 		esc_attr( $class ),
-		esc_attr( netelly_t( 'theme_to_light' ) ),
-		esc_attr( netelly_t( 'theme_to_dark' ) )
+		esc_attr( netelly_t( 'theme_label' ) ),
+		$html
 	);
 }
 

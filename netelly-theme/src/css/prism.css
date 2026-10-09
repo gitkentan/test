@@ -1,0 +1,190 @@
+/*
+ * PRISM theme (html[data-theme="prism"]): the dark theme on a deep night ground with slowly
+ * drifting fields of coloured light behind the page (.prism, printed after <body>), and the
+ * large English headings in a moving iridescent gradient. Surfaces that paint a solid ground
+ * turn transparent or frosted so the light shows through.
+ */
+.prism {
+	display: none;
+}
+
+html[data-theme="prism"] {
+	--prism-violet: #7b5cff;
+	--prism-cyan: #22d3c5;
+	--prism-magenta: #ff4fa3;
+	--prism-gold: #ffc46b;
+	--prism-ground: #06060a;
+	--prism-glass: rgba(18, 16, 30, .55);
+}
+
+html[data-theme="prism"],
+html[data-theme="prism"] body {
+	background: var(--prism-ground);
+}
+
+html[data-theme="prism"] .prism {
+	display: block;
+	position: fixed;
+	inset: 0;
+	z-index: -1;
+	overflow: hidden;
+	pointer-events: none;
+	background: var(--prism-ground);
+}
+
+html[data-theme="prism"] .prism__field {
+	position: absolute;
+	inset: -40%;
+	mix-blend-mode: screen;
+}
+
+html[data-theme="prism"] .prism__field--a {
+	opacity: .55;
+	background:
+		radial-gradient(28% 32% at 22% 30%, var(--prism-violet), transparent 70%),
+		radial-gradient(24% 30% at 78% 24%, var(--prism-cyan), transparent 70%),
+		radial-gradient(30% 34% at 60% 78%, var(--prism-magenta), transparent 70%);
+}
+
+html[data-theme="prism"] .prism__field--b {
+	opacity: .4;
+	background:
+		radial-gradient(22% 26% at 70% 50%, var(--prism-gold), transparent 70%),
+		radial-gradient(26% 30% at 30% 72%, var(--prism-cyan), transparent 70%),
+		radial-gradient(20% 24% at 46% 18%, var(--prism-magenta), transparent 70%);
+}
+
+/* Surfaces that would hide the light. */
+html[data-theme="prism"] :is(body.is-dark, .site-footer, .prefooter, .page-hero, .hero, .chapter, .short-drama, .page-work, .card-biz) {
+	background: transparent;
+}
+
+html[data-theme="prism"] :is(.fund-cta, .work-summary, .careers-band, .entry-band, .news-band, .access__map, .site-header[data-state="solid"], .page-is-dark .site-header[data-state="solid"]) {
+	background: var(--prism-glass);
+	-webkit-backdrop-filter: blur(18px);
+	backdrop-filter: blur(18px);
+}
+
+html[data-theme="prism"] .media.is-placeholder,
+html[data-theme="prism"] .is-dark .card-work__soon {
+	background: rgba(255, 255, 255, .05);
+}
+
+html[data-theme="prism"] .chapter__glow {
+	display: none;
+}
+
+/* Iridescent display type. */
+html[data-theme="prism"] :is(.chapter__en, .page-hero__en .mask > span, .section-head__en .mask > span) {
+	background: linear-gradient(100deg, #f4efff 0%, #a9d8ff 22%, #ffb6e1 44%, #fff1c7 66%, #c8b6ff 88%, #f4efff 100%) 0 0 / 220% 100%;
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	html[data-theme="prism"] .prism__field--a {
+		animation: prism-drift-a 34s ease-in-out infinite alternate;
+	}
+
+	html[data-theme="prism"] .prism__field--b {
+		animation: prism-drift-b 46s ease-in-out infinite alternate;
+	}
+
+	html[data-theme="prism"] :is(.chapter__en, .page-hero__en .mask > span, .section-head__en .mask > span) {
+		animation: prism-sheen 14s linear infinite;
+	}
+}
+
+@keyframes prism-drift-a {
+	50% {
+		translate: 8% -6%;
+		rotate: 12deg;
+	}
+
+	to {
+		translate: -6% 8%;
+		rotate: -8deg;
+		scale: 1.15;
+	}
+}
+
+@keyframes prism-drift-b {
+	50% {
+		translate: -10% 4%;
+		rotate: -14deg;
+		scale: 1.1;
+	}
+
+	to {
+		translate: 6% -8%;
+		rotate: 10deg;
+	}
+}
+
+@keyframes prism-sheen {
+	to {
+		background-position: -220% 0;
+	}
+}
+
+/* ----- Theme switch: three swatches ----- */
+.theme-switch {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.theme-switch__btn {
+	position: relative;
+	width: 14px;
+	height: 14px;
+	padding: 0;
+	border: 1px solid currentColor;
+	border-radius: 50%;
+	background: none;
+	color: inherit;
+	cursor: pointer;
+	opacity: .55;
+	transition: opacity 200ms, scale 300ms var(--ease-out);
+}
+
+/* Bigger hit area without changing the drawing. */
+.theme-switch__btn::after {
+	content: "";
+	position: absolute;
+	inset: -8px;
+}
+
+.theme-switch__btn:hover,
+.theme-switch__btn[aria-checked="true"] {
+	opacity: 1;
+}
+
+.theme-switch__btn[aria-checked="true"] {
+	scale: 1.2;
+}
+
+.theme-switch__btn--dark {
+	background: currentColor;
+}
+
+.theme-switch__btn--prism {
+	border-color: transparent;
+	background: conic-gradient(from 200deg, #7b5cff, #22d3c5, #ffc46b, #ff4fa3, #7b5cff);
+}
+
+.theme-switch__label {
+	margin-left: 4px;
+	font-family: var(--f-mono);
+	font-size: 11px;
+	letter-spacing: .14em;
+}
+
+.site-header .theme-switch__label {
+	display: none;
+}
+
+.sp-menu__theme {
+	align-self: flex-start;
+}

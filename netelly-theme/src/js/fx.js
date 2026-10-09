@@ -293,33 +293,31 @@ export function initCursor() {
 }
 
 /**
- * Dark / light switch: flips html[data-theme], the site-wide dark body classes, and
- * remembers the choice on this device (the head script applies it before paint).
+ * Colour mode switch (dark / light / prism): sets html[data-theme] and the site-wide dark
+ * body classes, and remembers the choice on this device (the head script applies it before
+ * paint).
  */
 export function initThemeToggle() {
-	const buttons = [...document.querySelectorAll('[data-theme-toggle]')];
+	const buttons = [...document.querySelectorAll('[data-theme-set]')];
 	if (!buttons.length) return;
 	const root = document.documentElement;
 	const body = document.body;
-	const label = () => {
-		const light = root.getAttribute('data-theme') === 'light';
-		buttons.forEach((b) => {
-			b.setAttribute('aria-pressed', String(light));
-			const sr = b.querySelector('.screen-reader-text');
-			if (sr) sr.textContent = light ? b.dataset.labelDark : b.dataset.labelLight;
-		});
+	const sync = () => {
+		const mode = root.getAttribute('data-theme') || 'dark';
+		buttons.forEach((b) => b.setAttribute('aria-checked', String(b.dataset.themeSet === mode)));
 	};
 	buttons.forEach((b) => b.addEventListener('click', () => {
-		const light = root.getAttribute('data-theme') !== 'light';
-		root.setAttribute('data-theme', light ? 'light' : 'dark');
-		body.classList.toggle('is-dark', !light);
-		if (!body.classList.contains('single-work')) body.classList.toggle('page-is-dark', !light);
+		const mode = b.dataset.themeSet;
+		const dark = mode !== 'light';
+		root.setAttribute('data-theme', mode);
+		body.classList.toggle('is-dark', dark);
+		if (!body.classList.contains('single-work')) body.classList.toggle('page-is-dark', dark);
 		try {
-			localStorage.setItem('netelly-theme', light ? 'light' : 'dark');
+			localStorage.setItem('netelly-theme', mode);
 		} catch (e) {
 			// Storage blocked: the switch still works for this page view.
 		}
-		label();
+		sync();
 	}));
-	label();
+	sync();
 }
