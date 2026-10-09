@@ -34,8 +34,11 @@ $f = static fn( $name ) => netelly_field( $name );
 
 	<section class="section" id="profile">
 		<?php get_template_part( 'template-parts/section-head', null, array( 'label' => (string) $f( 'profile_label' ), 'heading' => (string) $f( 'profile_heading' ) ) ); ?>
-		<?php $profile_image = (int) $f( 'profile_image' ); ?>
-		<div class="profile<?php echo $profile_image ? ' has-image' : ''; ?>">
+		<?php
+		$profile_image = (int) $f( 'profile_image' );
+		$profile_photo = $profile_image || netelly_samples_on();
+		?>
+		<div class="profile<?php echo $profile_photo ? ' has-image' : ''; ?>">
 			<dl class="table">
 				<?php foreach ( (array) netelly_opt( 'profile' ) as $row ) : ?>
 					<div class="table__row">
@@ -44,7 +47,7 @@ $f = static fn( $name ) => netelly_field( $name );
 					</div>
 				<?php endforeach; ?>
 			</dl>
-			<?php if ( $profile_image ) : ?>
+			<?php if ( $profile_photo ) : ?>
 				<div class="profile__photo"><?php echo netelly_media( $profile_image, '4/5', array( 'sizes' => '(max-width: 768px) 100vw, 40vw' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?></div>
 			<?php endif; ?>
 		</div>

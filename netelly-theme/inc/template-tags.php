@@ -328,8 +328,9 @@ function netelly_socials(): array {
  * @param array      $args  { size, class, eager (bool), sizes, alt, vt (view-transition name) }.
  */
 function netelly_media( $id, string $ratio, array $args = array() ): string {
-	$id    = (int) $id;
-	$class = trim( 'media ' . ( $args['class'] ?? '' ) . ( $id ? '' : ' is-placeholder' ) );
+	$id     = (int) $id;
+	$sample = ! $id && netelly_samples_on();
+	$class  = trim( 'media ' . ( $args['class'] ?? '' ) . ( $id ? '' : ( $sample ? ' is-sample' : ' is-placeholder' ) ) );
 	$style = 'aspect-ratio:' . $ratio . ';' . ( ! empty( $args['vt'] ) ? 'view-transition-name:' . $args['vt'] . ';' : '' );
 	$img   = '';
 	if ( $id ) {
@@ -346,6 +347,8 @@ function netelly_media( $id, string $ratio, array $args = array() ): string {
 			$attr['alt'] = $args['alt'];
 		}
 		$img = wp_get_attachment_image( $id, $args['size'] ?? 'large', false, $attr );
+	} elseif ( $sample ) {
+		$img = netelly_sample_img( $ratio, 'media__img' );
 	}
 	return sprintf( '<div class="%1$s" style="%2$s">%3$s</div>', esc_attr( $class ), esc_attr( $style ), $img );
 }
