@@ -267,7 +267,7 @@ function netelly_socials(): array {
 
 /**
  * Image box with a fixed aspect ratio. Without an image it renders the grey
- * placeholder (CLAUDE.md: keep the ratio). Inner <img> is for hover/reveal motion.
+ * placeholder (keep the ratio). Inner <img> is for hover/reveal motion.
  *
  * @param int|string $id    Attachment ID (0/'' = placeholder).
  * @param string     $ratio CSS aspect-ratio, e.g. '4/5'.

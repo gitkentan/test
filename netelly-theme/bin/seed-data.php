@@ -225,7 +225,7 @@ function nts_lang_data( string $lang, callable $purl, array $works ): array {
 		'今、世界中でテクノロジーの発展による社会、産業、ライフスタイルの変革が起こっています。つまり世界は「時代の転換点」を迎えているのです。',
 		'Around the world, technological progress is transforming society, industry and the way we live. In other words, the world has reached a turning point.'
 	);
-	// Body is the client's original text; 「ことをを」 is kept as-is until confirmed (CLAUDE.md).
+	// Body is the client's original text; 「ことをを」 is kept as-is until confirmed.
 	$msg_body = implode(
 		"\n\n",
 		array(
@@ -371,7 +371,7 @@ function nts_lang_data( string $lang, callable $purl, array $works ): array {
 			array( 'year' => '2021.08', 'text' => $L( '若手クリエイターへ出資する「Creators Fund」を設立', 'Established “Creators Fund” to invest in emerging creators' ) ),
 			array( 'year' => '2022.01', 'text' => $L( '『友達以上、恋人未満』の総再生回数が400万回を突破', '“More Than Friends, Less Than Lovers” surpassed 4 million total views' ) ),
 			array( 'year' => '2022.04', 'text' => $L( 'Z世代向けドラマ『YouTuberのマネージャーをやってみたらわかったこと。』配信開始', 'Began streaming the Gen Z drama “What I Learned as a YouTuber’s Manager”' ) ),
-			// Year not confirmed yet (CLAUDE.md) — edit in サイト設定 › 会社概要・沿革.
+			// Year not confirmed yet — edit in サイト設定 › 会社概要・沿革.
 			array( 'year' => '20XX', 'text' => $L( '米国ニューヨーク・ロサンゼルスにて映像制作に従事', 'Engaged in film production in New York and Los Angeles, USA' ) ),
 			array( 'year' => '2026', 'text' => $L( '新作オリジナルシリーズの制作を開始', 'Began production of a new original series' ) ),
 		),
