@@ -1,7 +1,8 @@
 // README 7 — video.
 // Hero / work KV: muted autoplay loop playsinline, poster only with Save-Data, slow
 // connections and reduced motion (work KV: also on SP). The top hero plays on SP too,
-// using data-src-sp when set, and starts after the page has loaded (keeps LCP on the
+// using data-src-sp when set; large high-density screens on a fast line get data-src-hd.
+// Starts after the page has loaded (keeps LCP on the
 // poster). Paused off screen; pause / play toggle (WCAG 2.2.2).
 // Short dramas: muted play on hover (fine pointer); on SP only the frame in view plays.
 // Trailer: full-screen dialog, youtube-nocookie iframe created on click, Esc /
@@ -14,6 +15,11 @@ const play = (v) => {
 };
 
 const slowNet = () => /(^|-)2g$/.test(navigator.connection?.effectiveType || '');
+// HD: ≥ 2400 device pixels wide and, where the browser reports it, a 4G line ≥ 8 Mbps.
+const wantsHD = () => {
+	const c = navigator.connection;
+	return window.innerWidth * (window.devicePixelRatio || 1) >= 2400 && (!c || (c.effectiveType === '4g' && (c.downlink || 10) >= 8));
+};
 
 export function initHeroVideo() {
 	const v = document.querySelector('.hero__video, .work-hero__video');
@@ -21,6 +27,8 @@ export function initHeroVideo() {
 	if (isSP()) {
 		if (!v.classList.contains('hero__video')) return;
 		if (v.dataset.srcSp) v.dataset.src = v.dataset.srcSp;
+	} else if (v.dataset.srcHd && wantsHD()) {
+		v.dataset.src = v.dataset.srcHd;
 	}
 	if (document.readyState !== 'complete') {
 		window.addEventListener('load', () => initHeroVideo(), { once: true });
