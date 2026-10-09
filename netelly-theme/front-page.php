@@ -155,27 +155,40 @@ $latest = get_posts(
 		);
 		?>
 		<p class="lead-text"><?php echo esc_html( (string) netelly_opt( 'biz_lead' ) ); ?></p>
-		<div class="biz-list" data-stagger="80">
-			<?php foreach ( (array) netelly_opt( 'biz_items' ) as $biz ) : ?>
-				<?php
-				$is_fund = ! empty( $biz['is_fund'] );
-				$burl    = $is_fund ? netelly_fund_url() : ( $biz['link']['url'] ?? '' );
-				?>
-				<?php $bimg = ! empty( $biz['image'] ) ? (string) wp_get_attachment_image_url( (int) $biz['image'], 'medium_large' ) : ''; ?>
-				<a class="biz-item<?php echo $bimg ? '' : ' is-textonly'; ?>"<?php echo $bimg ? ' data-preview="' . esc_url( $bimg ) . '"' : ''; ?><?php echo netelly_link_attrs( $burl, $is_fund ); // phpcs:ignore WordPress.Security.EscapeOutput ?>>
-					<span class="biz-item__num"><?php echo esc_html( (string) ( $biz['num'] ?? '' ) ); ?></span>
-					<span class="biz-item__head">
-						<span class="biz-item__en"><?php echo esc_html( (string) ( $biz['en'] ?? '' ) ); ?></span>
-						<span class="biz-item__title"><?php echo esc_html( (string) ( $biz['title'] ?? '' ) ); ?></span>
-					</span>
-					<span class="biz-item__text"><?php echo esc_html( (string) ( $biz['text'] ?? '' ) ); ?></span>
-					<span class="biz-item__media"><?php echo netelly_media( $biz['image'] ?? 0, '4/3', array( 'sizes' => '(max-width: 768px) 100vw, 25vw' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
-					<span class="biz-item__arrow arrow" aria-hidden="true"><?php echo $is_fund ? '↗' : '→'; ?></span>
-					<?php echo netelly_new_tab_note( $burl, $is_fund ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
-				</a>
-			<?php endforeach; ?>
-		</div>
 	</section>
+
+	<?php /* ---------- Business chapters: full-screen cards that stack as you scroll (fx.js recedes the one underneath) ---------- */ ?>
+	<?php $biz_items = array_values( array_filter( (array) netelly_opt( 'biz_items' ), 'is_array' ) ); ?>
+	<div class="chapters" data-chapters>
+		<?php foreach ( $biz_items as $k => $biz ) : ?>
+			<?php
+			$is_fund = ! empty( $biz['is_fund'] );
+			$burl    = $is_fund ? netelly_fund_url() : ( $biz['link']['url'] ?? '' );
+			$bimg    = (int) ( $biz['image'] ?? 0 );
+			?>
+			<a class="chapter" style="--k:<?php echo (int) $k; ?>" data-cursor="<?php echo esc_attr( netelly_t( 'cursor_view' ) ); ?>"<?php echo netelly_link_attrs( $burl, $is_fund ); // phpcs:ignore WordPress.Security.EscapeOutput ?>>
+				<span class="chapter__bg" aria-hidden="true">
+					<?php if ( $bimg ) : ?>
+						<?php echo wp_get_attachment_image( $bimg, 'full', false, array( 'class' => 'chapter__img', 'loading' => 'lazy', 'decoding' => 'async', 'sizes' => '100vw', 'alt' => '' ) ); ?>
+					<?php else : ?>
+						<span class="chapter__glow"></span>
+					<?php endif; ?>
+				</span>
+				<span class="chapter__inner">
+					<span class="chapter__top">
+						<span class="chapter__num"><?php echo esc_html( (string) ( $biz['num'] ?? '' ) ); ?> <span aria-hidden="true">/ <?php echo esc_html( (string) ( $biz_items[ count( $biz_items ) - 1 ]['num'] ?? '' ) ); ?></span></span>
+						<span class="chapter__arrow arrow" aria-hidden="true"><?php echo $is_fund ? '↗' : '→'; ?></span>
+					</span>
+					<span class="chapter__en"><?php echo esc_html( (string) ( $biz['en'] ?? '' ) ); ?></span>
+					<span class="chapter__body">
+						<span class="chapter__title"><?php echo esc_html( (string) ( $biz['title'] ?? '' ) ); ?></span>
+						<span class="chapter__text"><?php echo esc_html( (string) ( $biz['text'] ?? '' ) ); ?></span>
+					</span>
+				</span>
+				<?php echo netelly_new_tab_note( $burl, $is_fund ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+			</a>
+		<?php endforeach; ?>
+	</div>
 
 	<?php /* ---------- Marquee (サイト設定 › トップ：流れる帯; decorative, hidden when empty) ---------- */ ?>
 	<?php $marquee = array_values( array_filter( array_map( 'trim', preg_split( '/\R/', (string) netelly_opt( 'marquee_text' ) ) ) ) ); ?>

@@ -1,0 +1,263 @@
+/*
+ * Cinematic top page: the whole page (header and footer included) runs dark by
+ * flipping the colour tokens on body.home, so every component follows.
+ */
+body.home {
+	--paper: #0c0c0b;
+	--ink: #efede7;
+	--line: #2a2a28;
+	--sub: #bdbab3;
+	--muted: #8a8984;
+}
+
+/* The light grey news band becomes a quiet strip. */
+body.home .news-band {
+	background: #141413;
+	border-color: var(--line);
+}
+
+/* Empty image slots go dark with the page. */
+body.home .media.is-placeholder {
+	background: linear-gradient(155deg, #1f1f1d 0%, #121211 100%);
+}
+
+body.home .media.is-placeholder::after {
+	mix-blend-mode: screen;
+	opacity: .35;
+}
+
+/* ----- Business chapters ----- */
+.chapters {
+	position: relative;
+}
+
+.chapter {
+	position: sticky;
+	top: 0;
+	display: block;
+	height: 100vh;
+	height: 100svh;
+	overflow: hidden;
+	background: var(--paper);
+	color: var(--ink);
+	border-top: 1px solid var(--line);
+}
+
+/* Darkens as the next chapter slides over (--r from fx.js). */
+.chapter::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: #000;
+	opacity: calc(var(--r, 0) * .65);
+	pointer-events: none;
+}
+
+.chapter__bg {
+	position: absolute;
+	inset: 0;
+	scale: calc(1 - var(--r, 0) * .06);
+	transform-origin: 50% 0;
+}
+
+.chapter__img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	opacity: .55;
+	transition: opacity 900ms var(--ease-out), scale 1600ms var(--ease-out);
+}
+
+.chapter:hover .chapter__img {
+	opacity: .7;
+	scale: 1.04;
+}
+
+/* No photo: a slow light leak in a different hue per chapter. */
+.chapter__glow {
+	position: absolute;
+	inset: -20%;
+	--h1: #c8742b;
+	--h2: #6b2a1d;
+	background:
+		radial-gradient(40% 50% at 72% 38%, var(--h1) 0%, transparent 70%),
+		radial-gradient(35% 45% at 88% 78%, var(--h2) 0%, transparent 70%);
+	opacity: .38;
+	filter: blur(40px);
+}
+
+.chapter:nth-child(4n + 2) .chapter__glow {
+	--h1: #1f6f78;
+	--h2: #173a5a;
+}
+
+.chapter:nth-child(4n + 3) .chapter__glow {
+	--h1: #8e2a3b;
+	--h2: #3d1b4a;
+}
+
+.chapter:nth-child(4n + 4) .chapter__glow {
+	--h1: #b8913a;
+	--h2: #5a3a14;
+}
+
+.chapter__inner {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	height: 100%;
+	padding: calc(var(--pad-x) + 72px) var(--pad-x) var(--pad-x);
+	scale: calc(1 - var(--r, 0) * .06);
+	transform-origin: 50% 0;
+}
+
+.chapter__top {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-family: var(--f-mono);
+	font-size: 12px;
+	letter-spacing: .14em;
+	color: var(--muted);
+}
+
+.chapter__arrow {
+	font-size: 22px;
+	color: var(--ink);
+}
+
+.chapter__en {
+	align-self: end;
+	font-family: var(--f-en);
+	font-stretch: 125%;
+	font-weight: 600;
+	font-size: clamp(56px, 10.4vw, 188px);
+	line-height: .9;
+	letter-spacing: -.005em;
+	overflow-wrap: anywhere;
+}
+
+.chapter__body {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	gap: 40px;
+	margin-top: 36px;
+	padding-top: 24px;
+	border-top: 1px solid var(--line);
+}
+
+.chapter__title {
+	font-family: var(--f-head);
+	font-weight: 700;
+	font-size: 18px;
+}
+
+.chapter__text {
+	max-width: 30em;
+	font-size: 16px;
+	line-height: 1.9;
+	color: var(--sub);
+}
+
+/* ----- Trailing cursor ring (fx.js) ----- */
+.cursor {
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 1001;
+	width: 0;
+	height: 0;
+	pointer-events: none;
+	mix-blend-mode: difference;
+}
+
+.cursor::before {
+	content: "";
+	position: absolute;
+	left: -14px;
+	top: -14px;
+	width: 28px;
+	height: 28px;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	opacity: 0;
+	transition: opacity 300ms, scale 400ms var(--ease-out), background-color 300ms;
+}
+
+.cursor.is-visible::before {
+	opacity: 1;
+}
+
+.cursor.is-link::before {
+	scale: 1.6;
+}
+
+.cursor.is-label::before {
+	scale: 3.4;
+	background: #fff;
+}
+
+.cursor span {
+	position: absolute;
+	left: 0;
+	top: 0;
+	translate: -50% -50%;
+	font-family: var(--f-mono);
+	font-size: 11px;
+	letter-spacing: .14em;
+	color: #000;
+	opacity: 0;
+	transition: opacity 200ms;
+}
+
+.cursor.is-label span {
+	opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.chapter__glow {
+		animation: glow-drift 18s ease-in-out infinite alternate;
+	}
+
+	/* Page change: the new page wipes up from the bottom. */
+	::view-transition-new(root) {
+		animation: vt-wipe-in 700ms var(--ease-out) both;
+	}
+}
+
+@keyframes glow-drift {
+	to {
+		translate: -8% 6%;
+		scale: 1.15;
+	}
+}
+
+@keyframes vt-wipe-in {
+	from {
+		clip-path: inset(100% 0 0 0);
+	}
+
+	to {
+		clip-path: inset(0);
+	}
+}
+
+@media (max-width: 768px) {
+	.chapter__inner {
+		padding: calc(var(--pad-x) + 72px) var(--pad-x) 40px;
+	}
+
+	.chapter__en {
+		font-size: clamp(40px, 14vw, 72px);
+	}
+
+	.chapter__body {
+		grid-template-columns: 1fr;
+		gap: 12px;
+	}
+
+	.chapter__text {
+		font-size: 15px;
+	}
+}

@@ -29,7 +29,7 @@
 
 /* Plain text links: design global "a:hover{opacity:.65}". Components with their own hover opt out. */
 @media (hover: hover) and (pointer: fine) {
-	a:where(:not(.btn, .pf-card, .sns-bar__link, .site-nav__link, .sp-menu__link, .card, .row-link)):hover {
+	a:where(:not(.btn, .pf-card, .sns-bar__link, .site-nav__link, .sp-menu__link, .card, .row-link, .chapter)):hover {
 		opacity: .65;
 	}
 }

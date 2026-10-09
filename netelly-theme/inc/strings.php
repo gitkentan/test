@@ -29,6 +29,7 @@ function netelly_strings(): array {
 		'lang_switch'      => array( '言語を切り替える', 'Switch language' ),
 		// Hero video.
 		'video_pause'      => array( '背景動画を一時停止', 'Pause background video' ),
+		'cursor_view'      => array( 'VIEW', 'VIEW' ),
 		'video_play'       => array( '背景動画を再生', 'Play background video' ),
 		// News band / lists.
 		'news_label'       => array( 'NEWS', 'NEWS' ),

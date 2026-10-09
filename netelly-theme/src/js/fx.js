@@ -231,3 +231,63 @@ export function initHoverPreview() {
 		row.addEventListener('pointerleave', () => fig.classList.remove('is-on'));
 	});
 }
+
+/**
+ * Business chapters: while the next chapter slides over, the current one recedes
+ * (--r 0→1: slight scale-down + darkening, see cinema.css).
+ */
+export function initChapters() {
+	const cards = [...document.querySelectorAll('[data-chapters] .chapter')];
+	if (cards.length < 2 || reduceMotion) return;
+	let raf = 0;
+	const update = () => {
+		raf = 0;
+		const vh = window.innerHeight;
+		cards.forEach((card, i) => {
+			const next = cards[i + 1];
+			const r = next ? 1 - Math.min(1, Math.max(0, next.getBoundingClientRect().top / vh)) : 0;
+			card.style.setProperty('--r', r.toFixed(3));
+		});
+	};
+	window.addEventListener('scroll', () => {
+		raf ||= requestAnimationFrame(update);
+	}, { passive: true });
+	update();
+}
+
+/**
+ * Trailing cursor ring (fine pointers). Grows over links; shows a label over [data-cursor].
+ * The system cursor stays visible, the ring only follows it.
+ */
+export function initCursor() {
+	if (reduceMotion || !finePointer()) return;
+	const ring = document.createElement('div');
+	ring.className = 'cursor';
+	ring.setAttribute('aria-hidden', 'true');
+	const label = document.createElement('span');
+	ring.append(label);
+	document.body.append(ring);
+	let x = -100;
+	let y = -100;
+	let cx = x;
+	let cy = y;
+	let raf = 0;
+	const loop = () => {
+		cx += (x - cx) * 0.2;
+		cy += (y - cy) * 0.2;
+		ring.style.transform = `translate3d(${cx.toFixed(1)}px, ${cy.toFixed(1)}px, 0)`;
+		raf = Math.abs(x - cx) + Math.abs(y - cy) > 0.2 ? requestAnimationFrame(loop) : 0;
+	};
+	window.addEventListener('pointermove', (e) => {
+		x = e.clientX;
+		y = e.clientY;
+		ring.classList.add('is-visible');
+		const target = e.target.closest?.('[data-cursor], a, button, [role="button"], label, input, textarea, select');
+		const text = target?.dataset?.cursor || '';
+		ring.classList.toggle('is-link', !!target && !text);
+		ring.classList.toggle('is-label', !!text);
+		if (text && label.textContent !== text) label.textContent = text;
+		raf ||= requestAnimationFrame(loop);
+	}, { passive: true });
+	document.documentElement.addEventListener('pointerleave', () => ring.classList.remove('is-visible'));
+}
