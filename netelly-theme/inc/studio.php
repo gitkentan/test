@@ -310,3 +310,27 @@ add_action(
 	},
 	32
 );
+
+// Header back to five items (netelly_studio_menu_v3): STUDIO is reached from BUSINESS
+// (CREATIVE STUDIO) and the footer.
+add_action(
+	'init',
+	static function () {
+		if ( get_option( 'netelly_studio_menu_v3' ) ) {
+			return;
+		}
+		update_option( 'netelly_studio_menu_v3', 1 );
+		foreach ( array( 'ja', 'en' ) as $lang ) {
+			$menu = wp_get_nav_menu_object( 'primary-' . $lang );
+			if ( ! $menu ) {
+				continue;
+			}
+			foreach ( (array) wp_get_nav_menu_items( $menu->term_id ) as $it ) {
+				if ( false !== strpos( (string) $it->url, '/studio/' ) ) {
+					wp_delete_post( $it->ID, true );
+				}
+			}
+		}
+	},
+	33
+);

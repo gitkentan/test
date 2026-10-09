@@ -591,7 +591,6 @@ function nts_menus( string $lang, callable $purl, array $works ): array {
 			array( 'ABOUT', $p( 'company' ) ),
 			array( 'BUSINESS', $p( 'business' ) ),
 			array( 'ORIGINALS', $wurl ),
-			array( 'STUDIO', home_url( $ja ? '/studio/' : '/en/studio/' ) ),
 			array( 'NEWS', $p( 'news' ) ),
 			array( 'CAREERS', $p( 'careers' ) ),
 		),
