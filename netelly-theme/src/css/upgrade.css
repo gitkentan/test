@@ -222,3 +222,93 @@ main > .page-hero + .section {
 		top: calc(64% + 16px);
 	}
 }
+
+/* ----- Company: profile beside a photo, access with a live map ----- */
+.profile.has-image {
+	display: grid;
+	grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+	gap: 64px;
+	align-items: start;
+}
+
+.profile__photo {
+	position: sticky;
+	top: 120px;
+}
+
+.access__map {
+	position: relative;
+	aspect-ratio: 4 / 3;
+	overflow: hidden;
+	background: #151514;
+}
+
+/* Toned to the dark page; full colour while the visitor is using it. */
+.access__iframe {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	border: 0;
+	filter: grayscale(1) invert(.9) contrast(.9) brightness(.95);
+	transition: filter 500ms var(--ease-out);
+}
+
+.access__map:hover .access__iframe,
+.access__map:focus-within .access__iframe {
+	filter: none;
+}
+
+.access__text {
+	gap: 20px;
+}
+
+.access__rows {
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr);
+	gap: 14px 28px;
+	width: 100%;
+	padding-top: 20px;
+	border-top: 1px solid var(--line);
+	font-size: 15px;
+	line-height: 1.9;
+}
+
+.access__rows dt {
+	font-weight: 700;
+}
+
+.access__rows dd {
+	color: var(--sub);
+}
+
+.access__links {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+@media (max-width: 768px) {
+	.profile.has-image {
+		grid-template-columns: 1fr;
+		gap: 32px;
+	}
+
+	.profile__photo {
+		position: static;
+		order: -1;
+	}
+
+	.access__rows {
+		grid-template-columns: 1fr;
+		gap: 4px;
+	}
+
+	.access__rows dd + dt {
+		margin-top: 12px;
+	}
+}
+
+.section-head + .profile > .table {
+	border-top: 0;
+}

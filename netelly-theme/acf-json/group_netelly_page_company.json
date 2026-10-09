@@ -187,6 +187,22 @@
             }
         },
         {
+            "type": "image",
+            "name": "profile_image",
+            "label": "会社概要の写真",
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "instructions": "オフィスやビルの写真。会社概要の表の右側に表示します（空欄なら表だけ）。",
+            "key": "field_nt_page_company_profile_image",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
             "type": "text",
             "name": "history_label",
             "label": "沿革：ラベル",
@@ -217,7 +233,7 @@
             "name": "",
             "label": "",
             "message": "会社概要の表・沿革の内容は「サイト設定」で編集します。",
-            "key": "field_nt_page_company_tab_15",
+            "key": "field_nt_page_company_tab_16",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -232,7 +248,7 @@
             "name": "",
             "placement": "top",
             "endpoint": 0,
-            "key": "field_nt_page_company_tab_16",
+            "key": "field_nt_page_company_tab_17",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -288,6 +304,97 @@
             "new_lines": "",
             "instructions": "改行はそのまま反映されます。",
             "key": "field_nt_page_company_access_address",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "text",
+            "name": "access_map_query",
+            "label": "地図に表示する場所",
+            "instructions": "Google マップで検索する住所や建物名（例：住友不動産大崎ガーデンタワー）。入れると、その場で動かせる地図を表示します。空欄なら下の「地図画像」を表示します。",
+            "key": "field_nt_page_company_access_map_query",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "repeater",
+            "name": "access_rows",
+            "label": "アクセス情報",
+            "sub_fields": [
+                {
+                    "type": "text",
+                    "name": "label",
+                    "label": "項目",
+                    "key": "field_nt_page_company_access_rows_label",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "type": "textarea",
+                    "name": "value",
+                    "label": "内容",
+                    "rows": 3,
+                    "new_lines": "",
+                    "instructions": "改行はそのまま反映されます。",
+                    "key": "field_nt_page_company_access_rows_value",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ],
+            "layout": "table",
+            "button_label": "行を追加",
+            "collapsed": "",
+            "instructions": "例：アクセス ／ 大崎駅南口 徒歩6分（JR／りんかい線）",
+            "key": "field_nt_page_company_access_rows",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "type": "repeater",
+            "name": "access_links",
+            "label": "リンク（バス時刻表など）",
+            "sub_fields": [
+                {
+                    "type": "link",
+                    "name": "link",
+                    "label": "リンク",
+                    "return_format": "array",
+                    "key": "field_nt_page_company_access_links_link",
+                    "instructions": "",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ],
+            "layout": "table",
+            "button_label": "リンクを追加",
+            "collapsed": "",
+            "key": "field_nt_page_company_access_links",
+            "instructions": "",
             "required": 0,
             "wrapper": {
                 "width": "",
