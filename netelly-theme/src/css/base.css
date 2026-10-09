@@ -35,7 +35,7 @@ body {
 body {
 	font-family: var(--f-body);
 	font-stretch: var(--stretch-body);
-	font-size: 15px;
+	font-size: 16px;
 	line-height: 1.85;
 	letter-spacing: .03em;
 	font-feature-settings: "palt" 1;
@@ -116,5 +116,9 @@ ol {
 @media (max-width: 768px) {
 	html {
 		scroll-padding-top: 64px;
+	}
+
+	body {
+		font-size: 15px;
 	}
 }

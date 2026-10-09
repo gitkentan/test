@@ -258,6 +258,9 @@ function nts_lang_data( string $lang, callable $purl, array $works ): array {
 		'gone'               => $ja ? "/templates\n/pricing" : '',
 		'ga4_id'             => '',
 		'gsc_verification'   => '',
+		'manifesto_label'    => 'WHO WE ARE',
+		'manifesto_link'     => nts_link( $L( 'Netellyについて →', 'About Netelly →' ), $p( 'company' ) ),
+		'manifesto_text'     => $L( 'Netellyは、国や言語を越えて届く物語をつくるグローバル・エンターテインメント企業です。', 'Netelly is a global entertainment company creating stories that travel across countries and languages.' ),
 		'marquee_text'       => "New Entertainment, New Value.\nTokyo — New York — Los Angeles",
 		'stats_label'        => 'BY THE NUMBERS',
 		'stats'              => array(), // Real figures only; the band stays hidden until filled.

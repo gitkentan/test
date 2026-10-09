@@ -1,5 +1,6 @@
 // Signature effects layered on top of the README motion (all off with reduced motion):
-// split hero headline, label scramble, magnetic buttons, velocity marquee.
+// split hero headline, label scramble, magnetic buttons, velocity marquee, scroll-lit
+// statement, cursor-following previews on the business rows.
 // Scroll-linked pieces (hero drift, progress horizon, image parallax, grain) are CSS (fx.css).
 import { reduceMotion, finePointer } from './env.js';
 
@@ -155,5 +156,78 @@ export function initMarquee() {
 			requestAnimationFrame(loop);
 		};
 		requestAnimationFrame(loop);
+	});
+}
+
+/**
+ * Statement: characters light up with scroll progress through the block
+ * (--p 0→1 drives each unit's opacity in CSS). One style write per frame.
+ */
+export function initManifesto() {
+	const el = document.querySelector('[data-manifesto]');
+	if (!el || reduceMotion) return;
+	const text = el.querySelector('.manifesto__text');
+	el.classList.add('is-scrubbed');
+	let raf = 0;
+	const update = () => {
+		raf = 0;
+		const r = text.getBoundingClientRect();
+		const vh = window.innerHeight;
+		// Starts when the text top reaches 85% of the screen, done when its bottom passes 45%.
+		const p = (vh * 0.85 - r.top) / (r.height + vh * 0.4);
+		el.style.setProperty('--p', Math.min(1, Math.max(0, p)).toFixed(4));
+	};
+	const onScroll = () => {
+		raf ||= requestAnimationFrame(update);
+	};
+	new IntersectionObserver(([e]) => {
+		if (e.isIntersecting) window.addEventListener('scroll', onScroll, { passive: true });
+		else window.removeEventListener('scroll', onScroll);
+		update();
+	}).observe(el);
+}
+
+/**
+ * Rows with data-preview: a floating image follows the cursor (fine pointers, ≥ 1025px).
+ */
+export function initHoverPreview() {
+	const rows = [...document.querySelectorAll('[data-preview]')];
+	if (!rows.length || reduceMotion || !finePointer() || window.innerWidth < 1025) return;
+	const fig = document.createElement('div');
+	fig.className = 'hover-preview';
+	fig.setAttribute('aria-hidden', 'true');
+	const img = document.createElement('img');
+	img.alt = '';
+	img.decoding = 'async';
+	fig.append(img);
+	document.body.append(fig);
+	document.documentElement.classList.add('has-hover-preview');
+	let x = 0;
+	let y = 0;
+	let cx = 0;
+	let cy = 0;
+	let raf = 0;
+	const loop = () => {
+		cx += (x - cx) * 0.16;
+		cy += (y - cy) * 0.16;
+		fig.style.transform = `translate3d(${cx.toFixed(1)}px, ${cy.toFixed(1)}px, 0) rotate(${((x - cx) * 0.03).toFixed(2)}deg)`;
+		raf = Math.abs(x - cx) + Math.abs(y - cy) > 0.3 ? requestAnimationFrame(loop) : 0;
+	};
+	rows.forEach((row) => {
+		row.addEventListener('pointerenter', (e) => {
+			if (img.getAttribute('src') !== row.dataset.preview) img.src = row.dataset.preview;
+			if (!fig.classList.contains('is-on')) {
+				cx = x = e.clientX;
+				cy = y = e.clientY;
+			}
+			fig.classList.add('is-on');
+			raf ||= requestAnimationFrame(loop);
+		});
+		row.addEventListener('pointermove', (e) => {
+			x = e.clientX;
+			y = e.clientY;
+			raf ||= requestAnimationFrame(loop);
+		});
+		row.addEventListener('pointerleave', () => fig.classList.remove('is-on'));
 	});
 }

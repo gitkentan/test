@@ -113,6 +113,34 @@ $latest = get_posts(
 		</section>
 	<?php endif; ?>
 
+	<?php /* ---------- Statement (サイト設定 › トップ：ステートメント): lights up as it scrolls by ---------- */ ?>
+	<?php
+	$manifesto = netelly_opt( 'manifesto_text' );
+	if ( null === $manifesto ) { // Never saved (site seeded before this field existed): use the company line.
+		$manifesto = 'en' === netelly_lang() ? 'Netelly is a global entertainment company creating stories that travel across countries and languages.' : 'Netellyは、国や言語を越えて届く物語をつくるグローバル・エンターテインメント企業です。';
+	}
+	$manifesto = trim( (string) $manifesto );
+	?>
+	<?php if ( '' !== $manifesto ) : ?>
+		<?php
+		$m_split = netelly_split_words( $manifesto );
+		$m_label = netelly_opt( 'manifesto_label' );
+		$m_label = null === $m_label ? 'WHO WE ARE' : (string) $m_label;
+		$m_link  = netelly_opt( 'manifesto_link' );
+		$m_link  = null === $m_link ? netelly_opt( 'hero_cta1' ) : $m_link;
+		?>
+		<section class="manifesto" data-manifesto style="--n:<?php echo (int) $m_split['count']; ?>">
+			<?php if ( $m_label ) : ?>
+				<p class="manifesto__label"><?php echo esc_html( $m_label ); ?></p>
+			<?php endif; ?>
+			<p class="manifesto__text<?php echo netelly_is_latin( $manifesto ) ? ' is-latin' : ''; ?>">
+				<span class="screen-reader-text"><?php echo esc_html( $manifesto ); ?></span>
+				<span aria-hidden="true"><?php echo $m_split['html']; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped per unit. ?></span>
+			</p>
+			<?php echo netelly_text_link( $m_link ? $m_link : null, 'manifesto__link' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+		</section>
+	<?php endif; ?>
+
 	<?php /* ---------- Business: lead + four stacked sections (no works on the top page) ---------- */ ?>
 	<section class="section">
 		<?php
@@ -133,7 +161,8 @@ $latest = get_posts(
 				$is_fund = ! empty( $biz['is_fund'] );
 				$burl    = $is_fund ? netelly_fund_url() : ( $biz['link']['url'] ?? '' );
 				?>
-				<a class="biz-item"<?php echo netelly_link_attrs( $burl, $is_fund ); // phpcs:ignore WordPress.Security.EscapeOutput ?>>
+				<?php $bimg = ! empty( $biz['image'] ) ? (string) wp_get_attachment_image_url( (int) $biz['image'], 'medium_large' ) : ''; ?>
+				<a class="biz-item<?php echo $bimg ? '' : ' is-textonly'; ?>"<?php echo $bimg ? ' data-preview="' . esc_url( $bimg ) . '"' : ''; ?><?php echo netelly_link_attrs( $burl, $is_fund ); // phpcs:ignore WordPress.Security.EscapeOutput ?>>
 					<span class="biz-item__num"><?php echo esc_html( (string) ( $biz['num'] ?? '' ) ); ?></span>
 					<span class="biz-item__head">
 						<span class="biz-item__en"><?php echo esc_html( (string) ( $biz['en'] ?? '' ) ); ?></span>

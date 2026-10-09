@@ -15,6 +15,37 @@ function netelly_br( ?string $text ): string {
 }
 
 /**
+ * Splits text into spans for the scroll-lit statement: one span per Latin word, one per
+ * CJK character (index in --i). The readable text is given separately to assistive tech.
+ *
+ * @return array{html:string,count:int}
+ */
+function netelly_split_words( string $text ): array {
+	$html = '';
+	$i    = 0;
+	foreach ( preg_split( '/(\s+)/u', trim( $text ), -1, PREG_SPLIT_DELIM_CAPTURE ) as $token ) {
+		if ( '' === $token ) {
+			continue;
+		}
+		if ( preg_match( '/^\s+$/u', $token ) ) {
+			$html .= str_contains( $token, "\n" ) ? '<br>' : ' ';
+			continue;
+		}
+		// Latin runs stay whole words; everything else (Japanese) goes character by character.
+		foreach ( preg_split( '/([\x21-\x7E’‘“”–—]+)/u', $token, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY ) as $part ) {
+			$units = preg_match( '/^[\x21-\x7E’‘“”–—]+$/u', $part ) ? array( $part ) : mb_str_split( $part );
+			foreach ( $units as $u ) {
+				$html .= '<span class="manifesto__w" style="--i:' . $i++ . '">' . esc_html( $u ) . '</span>';
+			}
+		}
+	}
+	return array(
+		'html'  => $html,
+		'count' => $i,
+	);
+}
+
+/**
  * Wraps a trailing arrow (→ / ↗) of a label in a span so it can move on hover.
  */
 function netelly_label( string $label ): string {

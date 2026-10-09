@@ -1,0 +1,193 @@
+/*
+ * Layout / reading refinements and the top-page statement (UI upgrade).
+ */
+
+/* A list that directly follows a section head starts under the head's own rule. */
+.section-head.section-head + * {
+	border-top: 0;
+}
+
+/* Empty image slots read as a film-toned panel rather than a grey box. */
+.media.is-placeholder {
+	background: linear-gradient(155deg, #ebe9e3 0%, #dad7cf 100%);
+}
+
+.is-dark .media.is-placeholder {
+	background: linear-gradient(155deg, #20201e 0%, #121211 100%);
+}
+
+.media.is-placeholder::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	opacity: .5;
+	mix-blend-mode: multiply;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .18 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.is-dark .media.is-placeholder::after {
+	mix-blend-mode: screen;
+	opacity: .35;
+}
+
+/* ----- Statement (top) ----- */
+.manifesto {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 40px;
+	padding: var(--sec) var(--pad-x) calc(var(--sec) * .85);
+}
+
+.manifesto__label {
+	font-family: var(--f-mono);
+	font-size: 12px;
+	letter-spacing: .14em;
+	color: var(--muted);
+}
+
+.manifesto__text {
+	max-width: 17em;
+	font-family: var(--f-head);
+	font-weight: 700;
+	font-size: clamp(30px, 3.9vw, 60px);
+	line-height: 1.5;
+	letter-spacing: .02em;
+}
+
+.manifesto__text.is-latin {
+	max-width: 15em;
+	font-family: 'Instrument Serif', 'Times New Roman', serif;
+	font-weight: 400;
+	font-size: clamp(40px, 5.4vw, 84px);
+	line-height: 1.08;
+	letter-spacing: -.01em;
+}
+
+/* Each unit fades from 12% to full as --p (0→1, set by fx.js) passes its index. */
+.manifesto.is-scrubbed .manifesto__w {
+	opacity: clamp(.12, calc(var(--p, 0) * (var(--n) + 6) - var(--i)), 1);
+	transition: opacity 160ms linear;
+}
+
+/* ----- Business rows without a photo (or with the cursor preview): typographic rows ----- */
+.biz-item.is-textonly .biz-item__media {
+	display: none;
+}
+
+@media (min-width: 1025px) {
+	.biz-item.is-textonly,
+	.has-hover-preview .biz-item {
+		grid-template-columns: 72px minmax(0, 5fr) minmax(0, 4fr) 32px;
+		grid-template-areas: "num head text arrow";
+		padding: 52px 0;
+	}
+
+	.has-hover-preview .biz-item__media {
+		display: none;
+	}
+
+	.biz-item.is-textonly .biz-item__en,
+	.has-hover-preview .biz-item__en {
+		font-size: clamp(34px, 3.4vw, 52px);
+	}
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+	.biz-item.is-textonly {
+		grid-template-columns: 48px minmax(0, 1fr) 24px;
+		grid-template-areas:
+			"num head arrow"
+			"num text arrow";
+	}
+}
+
+.biz-item__text {
+	font-size: 16px;
+}
+
+/* Cursor-following preview (fx.js). */
+.hover-preview {
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 60;
+	width: 340px;
+	aspect-ratio: 4 / 3;
+	margin: -128px 0 0 32px;
+	overflow: hidden;
+	pointer-events: none;
+	clip-path: inset(50% 0 50% 0);
+	transition: clip-path 520ms var(--ease-out);
+}
+
+.hover-preview.is-on {
+	clip-path: inset(0);
+}
+
+.hover-preview img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	scale: 1.15;
+	transition: scale 900ms var(--ease-out);
+}
+
+.hover-preview.is-on img {
+	scale: 1;
+}
+
+/* ----- Footer: the wordmark across the full width ----- */
+.site-footer__mark {
+	padding: 8px var(--pad-x) calc(var(--pad-x) * .6);
+	line-height: 0;
+	overflow: hidden;
+}
+
+.site-footer__mark svg {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	@supports (animation-timeline: view()) {
+		.site-footer__mark svg {
+			animation: mark-rise linear both;
+			animation-timeline: view();
+			animation-range: entry 0% cover 40%;
+		}
+	}
+}
+
+@keyframes mark-rise {
+	from {
+		translate: 0 40%;
+		opacity: 0;
+	}
+}
+
+@media (max-width: 768px) {
+	.manifesto {
+		gap: 28px;
+	}
+
+	.manifesto__text {
+		font-size: 24px;
+		line-height: 1.6;
+	}
+
+	.manifesto__text.is-latin {
+		font-size: 36px;
+	}
+
+	.biz-item__text {
+		font-size: 15px;
+	}
+}
+
+/* Careers: body copy at the site's reading size. */
+.reason__text,
+.step__text {
+	font-size: 15px;
+}

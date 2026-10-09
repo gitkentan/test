@@ -35,4 +35,5 @@ $columns = netelly_menu( 'footer' );
 		<small><?php echo esc_html( (string) netelly_opt( 'copyright' ) ); ?></small>
 		<span><?php echo esc_html( (string) netelly_opt( 'footer_domain' ) ); ?></span>
 	</div>
+	<div class="site-footer__mark" aria-hidden="true"><?php echo netelly_logo(); // phpcs:ignore WordPress.Security.EscapeOutput ?></div>
 </footer>

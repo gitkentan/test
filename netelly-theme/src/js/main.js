@@ -7,7 +7,7 @@ import { initHeroVideo, initShortDrama, initTrailer } from './video.js';
 import { initFilter } from './filter.js';
 import { initSmoothScroll } from './scroll.js';
 import { initForm } from './form.js';
-import { splitHero, initScramble, initMagnetic, initHeroHover, initMarquee } from './fx.js';
+import { splitHero, initScramble, initMagnetic, initHeroHover, initMarquee, initManifesto, initHoverPreview } from './fx.js';
 
 splitHero(); // Before the intro collects its animations.
 initIntro();
@@ -26,6 +26,8 @@ initScramble();
 initMagnetic();
 initHeroHover();
 initMarquee();
+initManifesto();
+initHoverPreview();
 
 // Article share: copy link.
 document.querySelectorAll('.share__copy').forEach((btn) => {
