@@ -55,7 +55,7 @@ html[data-theme="prism"] .prism__field--b {
 }
 
 /* Surfaces that would hide the light. */
-html[data-theme="prism"] :is(body.is-dark, .site-footer, .prefooter, .page-hero, .hero, .chapter, .short-drama, .page-work, .card-biz) {
+html[data-theme="prism"] :is(body.is-dark, .site-footer, .prefooter, .page-hero, .hero, .short-drama, .page-work, .card-biz) {
 	background: transparent;
 }
 
@@ -70,8 +70,30 @@ html[data-theme="prism"] .is-dark .card-work__soon {
 	background: rgba(255, 255, 255, .05);
 }
 
+/* Chapters slide over one another, so each keeps a solid ground with its own light field. */
+html[data-theme="prism"] .chapter {
+	background: var(--prism-ground);
+}
+
 html[data-theme="prism"] .chapter__glow {
-	display: none;
+	--h1: var(--prism-violet);
+	--h2: var(--prism-cyan);
+	opacity: .55;
+}
+
+html[data-theme="prism"] .chapter:nth-child(4n + 2) .chapter__glow {
+	--h1: var(--prism-cyan);
+	--h2: var(--prism-magenta);
+}
+
+html[data-theme="prism"] .chapter:nth-child(4n + 3) .chapter__glow {
+	--h1: var(--prism-magenta);
+	--h2: var(--prism-gold);
+}
+
+html[data-theme="prism"] .chapter:nth-child(4n + 4) .chapter__glow {
+	--h1: var(--prism-gold);
+	--h2: var(--prism-violet);
 }
 
 /* Iridescent display type. */
