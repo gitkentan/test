@@ -15,18 +15,36 @@
 	gap: 10px;
 }
 
-.section-head__label {
-	font-family: var(--f-mono);
-	font-size: 12px;
-	letter-spacing: .14em;
-	color: var(--muted);
-}
-
 .section-head__heading {
 	font-family: var(--f-head);
 	font-weight: 700;
 	font-size: 44px;
 	line-height: 1.3;
+}
+
+/* English label large (same face as the page titles), Japanese heading small under it. */
+.section-head--en .section-head__heading {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	font-size: inherit;
+	line-height: inherit;
+}
+
+.section-head__en {
+	font-family: var(--f-en);
+	font-stretch: 125%;
+	font-weight: 600;
+	font-size: 56px;
+	line-height: .95;
+	letter-spacing: .02em;
+}
+
+.section-head__ja {
+	font-size: 14px;
+	line-height: 1.6;
+	letter-spacing: .06em;
+	color: var(--muted);
 }
 
 
@@ -38,7 +56,7 @@
 	border-bottom-color: var(--cream);
 }
 
-.is-dark .section-head__label {
+.is-dark .section-head__ja {
 	color: var(--muted-dark);
 }
 
@@ -55,11 +73,19 @@
 		gap: 6px;
 	}
 
-	.section-head__label {
-		font-size: 11px;
-	}
-
 	.section-head__heading {
 		font-size: 26px;
+	}
+
+	.section-head--en .section-head__heading {
+		gap: 10px;
+	}
+
+	.section-head__en {
+		font-size: clamp(26px, 8vw, 32px);
+	}
+
+	.section-head__ja {
+		font-size: 12px;
 	}
 }

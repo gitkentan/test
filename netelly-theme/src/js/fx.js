@@ -42,7 +42,7 @@ export function splitHero() {
  */
 export function initScramble() {
 	if (reduceMotion) return;
-	const els = document.querySelectorAll('.section-head__label, .stats__label, .statement__label, .entry-band__label, .short-drama__label, .careers-band__label, .fund-cta__label');
+	const els = document.querySelectorAll('.section-head__en .mask > span, .stats__label, .statement__label, .entry-band__label, .short-drama__label, .careers-band__label, .fund-cta__label');
 	if (!els.length) return;
 	const glyphs = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/+—·';
 	const run = (el) => {
