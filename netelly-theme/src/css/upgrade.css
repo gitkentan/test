@@ -137,36 +137,6 @@
 	scale: 1;
 }
 
-/* ----- Footer: the wordmark across the full width ----- */
-.site-footer__mark {
-	padding: 8px var(--pad-x) calc(var(--pad-x) * .6);
-	line-height: 0;
-	overflow: hidden;
-}
-
-.site-footer__mark svg {
-	display: block;
-	width: 100%;
-	height: auto;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-	@supports (animation-timeline: view()) {
-		.site-footer__mark svg {
-			animation: mark-rise linear both;
-			animation-timeline: view();
-			animation-range: entry 0% cover 40%;
-		}
-	}
-}
-
-@keyframes mark-rise {
-	from {
-		translate: 0 40%;
-		opacity: 0;
-	}
-}
-
 @media (max-width: 768px) {
 	.manifesto {
 		gap: 28px;
