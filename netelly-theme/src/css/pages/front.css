@@ -75,11 +75,12 @@
 }
 
 /* Latin-only copy (e.g. "New Entertainment, New Value."): editorial display serif,
-   last line italic, horizon raised so the type can run large. */
+   last line italic, set in the lower half over a left-side shade. */
 .hero__copy.is-latin {
 	font-family: 'Instrument Serif', 'Times New Roman', serif;
 	font-weight: 400;
-	font-size: clamp(56px, 10.6vw, 156px);
+	/* Capped so the type fits the lower half of the 810px hero and leaves the footage readable. */
+	font-size: clamp(48px, 7.2vw, 100px);
 	line-height: .94;
 	letter-spacing: -.012em;
 }
@@ -94,12 +95,18 @@
 	font-style: italic;
 }
 
+.hero--display .hero__shade {
+	background:
+		linear-gradient(90deg, rgba(11, 11, 10, .6) 0%, rgba(11, 11, 10, .25) 45%, rgba(11, 11, 10, 0) 70%),
+		linear-gradient(180deg, rgba(11, 11, 10, .5) 0%, rgba(11, 11, 10, 0) 20%, rgba(11, 11, 10, 0) 42%, rgba(11, 11, 10, .85) 100%);
+}
+
 .hero--display .hero__line {
-	top: 26%;
+	top: 44%;
 }
 
 .hero--display .hero__body {
-	top: calc(26% + 40px);
+	top: calc(44% + 32px);
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: flex-start;
@@ -541,16 +548,16 @@
 	}
 
 	.hero__copy.is-latin {
-		font-size: 12.8vw;
+		font-size: 11.6vw;
 		line-height: .95;
 	}
 
 	.hero--display .hero__line {
-		top: 36%;
+		top: 50%;
 	}
 
 	.hero--display .hero__body {
-		top: calc(36% + 24px);
+		top: calc(50% + 24px);
 		align-items: stretch;
 		gap: 24px;
 	}
