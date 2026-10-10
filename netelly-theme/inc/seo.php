@@ -69,6 +69,10 @@ function netelly_share_image(): string {
 	if ( is_singular( 'work' ) ) {
 		$wid = get_queried_object_id();
 		$id  = (int) ( netelly_field( 'key_visual', $wid ) ?: netelly_field( 'key_art', $wid ) );
+		$yt  = $id ? '' : netelly_work_youtube_thumb( $wid );
+		if ( $yt ) {
+			return str_replace( '/maxresdefault.jpg', '/hqdefault.jpg', $yt ); // hqdefault always exists.
+		}
 	} elseif ( is_page_template( 'page-message.php' ) ) {
 		$id = (int) netelly_opt( 'msg_photo' );
 	} elseif ( is_singular() && has_post_thumbnail() ) {

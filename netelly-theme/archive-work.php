@@ -25,7 +25,7 @@ $featured = (int) netelly_opt( 'wa_featured' );
 	<?php if ( $featured ) : ?>
 		<section class="section section--tight">
 			<a class="featured-work" href="<?php echo esc_url( get_permalink( $featured ) ); ?>">
-				<?php echo netelly_media( netelly_field( 'key_visual', $featured ), '16/9', array( 'vt' => 'work-kv-' . $featured, 'sizes' => '(max-width: 768px) 100vw, 60vw' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+				<?php echo netelly_media( netelly_field( 'key_visual', $featured ), '16/9', array( 'vt' => 'work-kv-' . $featured, 'sizes' => '(max-width: 768px) 100vw, 60vw', 'remote' => netelly_work_youtube_thumb( (int) $featured ) ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 				<span class="featured-work__text">
 					<span class="featured-work__meta"><?php echo esc_html( implode( ' · ', array_filter( array( netelly_t( 'featured' ), netelly_work_meta( $featured ) ) ) ) ); ?></span>
 					<span class="featured-work__title"><?php echo esc_html( get_the_title( $featured ) ); ?></span>

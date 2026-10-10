@@ -76,3 +76,51 @@ add_action(
 		);
 	}
 );
+
+/**
+ * YouTube video ID from a watch / youtu.be / shorts / embed URL ('' if none).
+ *
+ * @param string $url URL.
+ */
+function netelly_youtube_id( string $url ): string {
+	if ( preg_match( '~(?:youtu\.be/|youtube(?:-nocookie)?\.com/(?:watch\?(?:.*&)?v=|shorts/|embed/|live/))([A-Za-z0-9_-]{11})~', $url, $m ) ) {
+		return $m[1];
+	}
+	return '';
+}
+
+/**
+ * Thumbnail of a work's own YouTube video (trailer URL, else the first episode URL), used
+ * when the work has no uploaded image. '' when there is no YouTube URL.
+ *
+ * @param int $work_id Work ID.
+ */
+function netelly_work_youtube_thumb( int $work_id ): string {
+	$urls = array( (string) netelly_field( 'trailer_url', $work_id ) );
+	foreach ( (array) netelly_field( 'episodes', $work_id ) as $ep ) {
+		$urls[] = (string) ( $ep['url'] ?? '' );
+	}
+	foreach ( $urls as $url ) {
+		$id = netelly_youtube_id( $url );
+		if ( $id ) {
+			return 'https://i.ytimg.com/vi/' . $id . '/maxresdefault.jpg';
+		}
+	}
+	return '';
+}
+
+/**
+ * <img> for a remote image (YouTube thumbnail). maxresdefault falls back to hqdefault.
+ *
+ * @param string $src   Image URL.
+ * @param string $class Image class.
+ */
+function netelly_remote_img( string $src, string $class ): string {
+	$fallback = str_replace( '/maxresdefault.jpg', '/hqdefault.jpg', $src );
+	return sprintf(
+		'<img class="%1$s" src="%2$s" width="1280" height="720" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer"%3$s>',
+		esc_attr( $class ),
+		esc_url( $src ),
+		$fallback !== $src ? ' onerror="this.onerror=null;this.src=\'' . esc_js( esc_url( $fallback ) ) . '\'"' : ''
+	);
+}

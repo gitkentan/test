@@ -42,7 +42,7 @@ $more     = get_posts(
 <main id="main" class="page-work is-dark">
 	<section class="work-hero" aria-labelledby="work-title">
 		<div class="work-hero__media" data-parallax>
-			<?php echo netelly_media( $f( 'key_visual' ), 'auto', array( 'vt' => 'work-' . $wid, 'eager' => true, 'size' => 'full', 'sizes' => '100vw' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+			<?php echo netelly_media( $f( 'key_visual' ), 'auto', array( 'vt' => 'work-' . $wid, 'eager' => true, 'size' => 'full', 'sizes' => '100vw', 'remote' => netelly_work_youtube_thumb( $wid ) ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 			<?php if ( $kv_video ) : ?>
 				<video class="work-hero__video" muted loop playsinline preload="none" aria-hidden="true" data-src="<?php echo esc_url( (string) wp_get_attachment_url( $kv_video ) ); ?>"></video>
 			<?php endif; ?>
@@ -92,7 +92,7 @@ $more     = get_posts(
 				<?php foreach ( $episodes as $ep ) : ?>
 					<?php $ep_url = (string) ( $ep['url'] ?? '' ); ?>
 					<<?php echo $ep_url ? 'a' : 'div'; ?> class="card episode"<?php echo $ep_url ? netelly_link_attrs( $ep_url ) : ''; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
-						<?php echo netelly_media( $ep['thumb'] ?? 0, '16/9', array( 'sizes' => '(max-width: 768px) 140px, 25vw' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+						<?php echo netelly_media( $ep['thumb'] ?? 0, '16/9', array( 'sizes' => '(max-width: 768px) 140px, 25vw', 'remote' => netelly_youtube_id( $ep_url ) ? 'https://i.ytimg.com/vi/' . netelly_youtube_id( $ep_url ) . '/maxresdefault.jpg' : '' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 						<span class="episode__body">
 							<span class="episode__meta"><?php echo esc_html( implode( ' · ', array_filter( array( $ep['no'] ?? '', $ep['date'] ?? '' ) ) ) ); ?></span>
 							<span class="episode__title"><?php echo esc_html( (string) ( $ep['title'] ?? '' ) ); ?></span>

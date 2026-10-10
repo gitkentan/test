@@ -24,7 +24,7 @@ $plat  = (string) netelly_field( 'platform', $wid );
 				<span class="card-work__soon-label"><?php echo esc_html( netelly_t( 'coming_soon' ) ); ?></span>
 			</div>
 		<?php else : ?>
-			<?php echo netelly_media( netelly_field( 'key_art', $wid ), '4/5', array( 'vt' => 'work-' . $wid, 'sizes' => '(max-width: 768px) 100vw, 40vw' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+			<?php echo netelly_media( netelly_field( 'key_art', $wid ), '4/5', array( 'vt' => 'work-' . $wid, 'sizes' => '(max-width: 768px) 100vw, 40vw', 'remote' => netelly_work_youtube_thumb( $wid ) ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 		<?php endif; ?>
 	</div>
 	<div class="work-row__text">

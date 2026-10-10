@@ -21,7 +21,7 @@ $genre  = (string) netelly_field( 'genre', $wid );
 			<span class="card-work__soon-label"><?php echo esc_html( netelly_t( 'coming_soon' ) ); ?></span>
 		</div>
 	<?php else : ?>
-		<?php echo netelly_media( netelly_field( 'key_art', $wid ), '4/5', array( 'vt' => 'work-' . $wid, 'sizes' => '(max-width: 768px) 50vw, 25vw' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+		<?php echo netelly_media( netelly_field( 'key_art', $wid ), '4/5', array( 'vt' => 'work-' . $wid, 'sizes' => '(max-width: 768px) 50vw, 25vw', 'remote' => netelly_work_youtube_thumb( $wid ) ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 	<?php endif; ?>
 	<span class="card-work__meta"><?php echo esc_html( netelly_work_meta( $wid ) ); ?></span>
 	<span class="card-work__title"><?php echo esc_html( get_the_title( $wid ) ); ?></span>
