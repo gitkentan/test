@@ -58,8 +58,33 @@ export function initMenu() {
 	}
 
 	toggle.addEventListener('click', () => (toggle.getAttribute('aria-expanded') === 'true' ? close() : open()));
+	// Going to another page: keep the menu on screen (the chosen item lit, the others dimmed)
+	// so the page change goes straight from the menu to the next page — closing it first
+	// flashed the current page underneath before the transition.
+	const leavesPage = (a, e) => {
+		if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return false;
+		if (a.target && a.target !== '_self') return false;
+		const url = new URL(a.href, location.href);
+		if (url.origin !== location.origin) return false;
+		return url.pathname !== location.pathname || url.search !== location.search;
+	};
 	menu.addEventListener('click', (e) => {
-		if (e.target.closest('a')) close({ restoreFocus: false });
+		const a = e.target.closest('a');
+		if (!a) return;
+		if (leavesPage(a, e)) {
+			menu.classList.add('is-leaving');
+			a.closest('li')?.classList.add('is-chosen');
+			return;
+		}
+		close({ restoreFocus: false });
+	});
+	// Back / forward restores this page from the cache with the menu still open.
+	window.addEventListener('pageshow', (e) => {
+		if (e.persisted && !menu.hidden) {
+			menu.classList.remove('is-leaving');
+			menu.querySelectorAll('.is-chosen').forEach((li) => li.classList.remove('is-chosen'));
+			close({ restoreFocus: false });
+		}
 	});
 	window.matchMedia('(min-width: 1101px)').addEventListener('change', (mq) => {
 		if (mq.matches && !menu.hidden) close({ restoreFocus: false });

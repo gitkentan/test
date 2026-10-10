@@ -148,3 +148,19 @@ body.is-menu-open {
 .sp-menu__item:has(.is-current)::before {
 	color: var(--cream);
 }
+
+/* Leaving for another page: the chosen item stays lit while the next page loads. */
+.sp-menu.is-leaving .sp-menu__item,
+.sp-menu.is-leaving .sp-menu__foot {
+	transition: opacity 280ms var(--ease-out);
+}
+
+.sp-menu.is-leaving .sp-menu__item:not(.is-chosen),
+.sp-menu.is-leaving .sp-menu__foot {
+	opacity: .2;
+}
+
+.sp-menu.is-leaving .sp-menu__item.is-chosen::before,
+.sp-menu.is-leaving .sp-menu__item.is-chosen .sp-menu__sub {
+	color: var(--cream);
+}
